@@ -1,4 +1,4 @@
-# Agents and Planning Models Evaluation
+# Agents and Planning Models Evaluation 🤖
 
 Toolkit for collecting datasets for Agents and Planning models and running evaluation pipelines.
 
@@ -7,10 +7,8 @@ The challenge is to **generate project template** -- small compilable project th
 containing small examples of all mentioned libraries/technologies/functionality.
 
 ### Dataset
-* `Java` and `Kotlin` programming languages with 10+ stars, permissive licences, not forks (collected by https://seart-ghs.si.usi.ch)
-* Project from GitHub with `is_template` set to `True`
-* Project from GitHub with `template`|`example` words in description
+`Java` and `Kotlin` programming languages with 10+ stars, permissive licences, not forks (collected by https://seart-ghs.si.usi.ch) 
+filtered by `is_template=True` or template-related keywords words presence in description
 
 ### Agent Models
-* OpenAI GTP-4 with function calling, prompted with file system api (create/delete/list/... files)
-
+OpenAI GTP-4 with function calling, prompted with file system api (create/delete/list/... files)
