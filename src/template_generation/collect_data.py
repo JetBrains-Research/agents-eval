@@ -1,10 +1,14 @@
 import json
+import os
 
+import huggingface_hub
 import hydra
 import pandas as pd
+from datasets import Dataset, DatasetDict
 from omegaconf import DictConfig
 
 from src.data.github_data_provider import GithubDataProvider
+from src.utils.hf_utils import CATEGORIES, FEATURES, HUGGINGFACE_REPO
 from src.utils.jsonl_utils import read_jsonl
 
 TEMPLATE_KEYWORDS = [
@@ -33,43 +37,64 @@ PERMISSIVE_LICENSES = ["MIT License",
 
 
 def load_repos_data(config: DictConfig):
-    with open(config.repos_list_path, "r", errors='ignore') as f:
-        repos_search = json.load(f)
-    repos = [repo['name'].split('/') for repo in repos_search['items']]
-    with open(config.github_tokens_path, "r") as f:
-        github_tokens = [token.strip() for token in f.readlines()]
+    for category in CATEGORIES:
+        with open(os.path.join(config.data_path, f"{category}_search.json"), "r", errors='ignore') as f:
+            repos_search = json.load(f)
+        repos = [repo['name'].split('/') for repo in repos_search['items']]
 
-    data_provider = GithubDataProvider(github_tokens=github_tokens)
-    data_provider.load_repos_meta(repos, config.repos_meta_path)
+        with open(config.github_tokens_path, "r") as f:
+            github_tokens = [token.strip() for token in f.readlines()]
+
+        data_provider = GithubDataProvider(github_tokens=github_tokens)
+        data_provider.load_repos_meta(repos, os.path.join(config.data_path, f"{category}_repos_meta.jsonl"))
 
 
 def filter_template_repos(config: DictConfig):
-    repos = read_jsonl(config.repos_meta_path)
-    template_repos = []
-    for repo in repos:
-        if repo['license'] is None or repo['license']['name'] not in PERMISSIVE_LICENSES:
-            continue
-        if repo['description'] is None:
-            repo['description'] = ''
-        template_keywords = [token for token in TEMPLATE_KEYWORDS if token in repo['description'].lower()]
-        if repo['is_template'] or len(template_keywords):
-            template_repos.append({
-                'repo_owner': repo['full_name'].split('/')[0],
-                'repo_name': repo['full_name'].split('/')[1],
-                'repo_url': repo['html_url'],
-                'is_template': repo['is_template'],
-                'description': repo['description'],
-                'template_key_words': template_keywords,
-                'license': repo['license']['name'],
-            })
-    df = pd.DataFrame(template_repos)
-    df.to_csv(config.template_repos_path, index=False)
+    for category in CATEGORIES:
+        repos = read_jsonl(os.path.join(config.data_path, f"{category}_repos_meta.jsonl"))
+        template_repos = []
+        for repo in repos:
+            if repo['license'] is None or repo['license']['name'] not in PERMISSIVE_LICENSES:
+                continue
+            if repo['description'] is None:
+                repo['description'] = ''
+            template_keywords = [token for token in TEMPLATE_KEYWORDS if token in repo['description'].lower()]
+            if repo['is_template'] or len(template_keywords):
+                template_repos.append({
+                    'repo_owner': repo['full_name'].split('/')[0],
+                    'repo_name': repo['full_name'].split('/')[1],
+                    'html_url': repo['html_url'],
+                    'is_template': repo['is_template'],
+                    'description': repo['description'],
+                    'template_keywords': template_keywords,
+                    'license': repo['license']['name'],
+                })
+        df = pd.DataFrame(template_repos)
+        df['id'] = df.index
+        df.to_csv(os.path.join(config.data_path, f"{category}_template_repos.csv"), index=False)
+
+
+def upload_to_hf(config: DictConfig):
+    huggingface_hub.login(token=os.environ['HUGGINGFACE_TOKEN'])
+
+    for category in CATEGORIES:
+        df = Dataset.from_csv(
+            os.path.join(config.data_path, f'{category}_template_repos.csv'),
+            features=FEATURES['template_generation_data'],
+        )
+        dataset_dict = DatasetDict({
+            'dev': df,
+            'test': df.filter(lambda dp: dp['id'] in config['splits'][category]),
+            'train': df.filter(lambda dp: dp['id'] not in config['splits'][category]),
+        })
+        dataset_dict.push_to_hub(HUGGINGFACE_REPO, category)
 
 
 @hydra.main(config_path="../../configs", config_name="template_generation", version_base=None)
 def main(config: DictConfig):
     load_repos_data(config)
     filter_template_repos(config)
+    upload_to_hf(config)
 
 
 if __name__ == "__main__":
