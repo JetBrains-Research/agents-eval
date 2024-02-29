@@ -1,0 +1,7 @@
+repos_list_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/java_search.json
+repos_meta_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/java_repos_meta.jsonl
+repos_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/repos
+gen_templates_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/gen_templates
+gen_templates_results_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/java_results.csv
+template_repos_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/java_template_repos.csv
+github_tokens_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/tokens.txt
