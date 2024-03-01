@@ -8,3 +8,5 @@ tiktoken==0.6.0
 transformers==4.38.1
 openai==1.13.3
 gitpython==3.1.40
+datasets==2.17.1
+docker==7.0.0
