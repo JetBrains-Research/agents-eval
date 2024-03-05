@@ -20,6 +20,8 @@ FEATURES = {
             "description": datasets.Value("string"),
             "template_keywords": datasets.Value("string"),
             "license": datasets.Value("string"),
+            'topics': datasets.Value("string"),
+            'size': datasets.Value("int64"),
         }
     )
 }
