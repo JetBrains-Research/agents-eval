@@ -2,10 +2,19 @@ from abc import ABC, abstractmethod
 
 
 class Agent(ABC):
+
     @abstractmethod
-    def run(self, function_name: str, function_params: dict) -> str:
+    async def init(self, init_params: dict) -> str:
         pass
 
     @abstractmethod
-    def get_tools(self) -> list[str]:
+    async def run_command(self, command_name: str, command_params: dict) -> str:
+        pass
+
+    @abstractmethod
+    async def get_tools(self) -> list[str]:
+        pass
+
+    @abstractmethod
+    async def get_state(self) -> str:
         pass

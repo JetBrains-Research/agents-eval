@@ -72,7 +72,7 @@ async def run_tool_calls_loop(
     while run_tool_calls:
         try:
             chat_response = await chat_completion_request(
-                client, messages, tools=agent.get_tools()
+                client, messages, tools=await agent.get_tools()
             )
             print(chat_response.choices[0].message)
             tool_calls = chat_response.choices[0].message.tool_calls
@@ -88,7 +88,7 @@ async def run_tool_calls_loop(
         for tool_call in tool_calls:
             function_name = tool_call.function.name
             function_args = json.loads(tool_call.function.arguments)
-            function_response = agent.run(function_name, function_args)
+            function_response = await agent.run_command(function_name, function_args)
             print(function_response)
             messages.append(
                 {

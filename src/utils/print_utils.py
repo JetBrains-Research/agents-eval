@@ -16,8 +16,7 @@ class ColorCodes:
 
 
 def tee(*values, end: str = "", color: Union[ColorCodes, str] = None, file=sys.stdout, flush=False) -> str:
-    """Prints the values to a stream, or to sys.stdout by default
-    and returns the string that was printed.
+    """Prints the values to a stream, or to sys.stdout by default and returns the string that was printed.
 
     Optional arguments except `end` affect only the output stream and not the return value.
     `end` is always appended to both the stream and the return value.
