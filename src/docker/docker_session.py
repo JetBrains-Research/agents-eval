@@ -1,15 +1,15 @@
 import random
 import re
-from contextlib import contextmanager
 from dataclasses import dataclass
-from os import PathLike
 from pathlib import Path
 from time import sleep
-from typing import List, Dict, Union
+from typing import List
 
 import docker
 from docker import DockerClient
 from docker.models.containers import Container
+
+from src.docker.docker_session_config import DockerSessionConfig
 
 
 @dataclass
@@ -37,7 +37,7 @@ class DockerInterface:
     _node_regex: re.Pattern = re.compile(r'@.*:')
 
     container: Container = None
-    container_create_configuration = None
+    container_create_configuration: DockerSessionConfig = None
 
     _interactive_session_name: str = None
 
@@ -53,71 +53,48 @@ class DockerInterface:
 
         self.docker_client = docker_client or docker.from_env()
 
-    def initialize(self, image: str = None, command: Union[str, List[str]] = None,
-                   working_dir: PathLike = None, ports: Dict[int, int] = None,
-                   volumes: Union[Dict[Union[str, Path], Dict], List[str]] = None,
-                   environment: Dict[str, str] = None, user: str = None,
-                   interactive: bool = False, interactive_interpreter: str = None,
-                   destroy_if_exists: bool = False):
+    def initialize(self, config: DockerSessionConfig, destroy_if_exists: bool = False):
         """
         Initializes the container for the DockerManager.
-
-        :param image: The name or ID of the Docker image to use. Defaults to 'ubuntu' if not provided.
-        :param command: The command to execute inside the container. Defaults to '/bin/sh' if not provided.
-        :param working_dir: The working directory inside the container. Defaults to '/' if not provided.
-        :param ports: A dictionary of ports to expose inside the container. The key is the port inside the container
-        and the value is the port on the host machine.
-        :param volumes: Either a dictionary of volume configurations or a list of volume names. Defaults to None if
-        not provided.
-        :param environment: A dictionary of environment variables to set in the container. Defaults to None if not
-        provided.
-        :param user: The user to run the container as. Defaults to 'root' if not provided.
-        :param interactive: Whether to start an interactive session inside the container. Defaults to False if not
-        provided.
-        :param interactive_interpreter: The interpreter to use in the interactive session. Defaults to None if not
-        provided.
+        :param config: Configuration for the docker session
         :param destroy_if_exists: Whether to destroy the existing container if one is already initialized. Defaults
         to False if not provided.
-        :param docker_client: An optional Docker client instance to use. If not provided, a new client will be
-        created using the default configuration.
         :return: None
         """
-        image = image or 'ubuntu'
-        working_dir = working_dir or '/'
-        command = command or '/bin/sh'
-        user = user or 'root'
-
-        self.container_create_configuration = {'image': image, 'working_dir': working_dir, 'command': command,
-                                               'ports': ports, 'volumes': volumes, 'environment': environment,
-                                               'user': user}
-
-        if isinstance(volumes, dict):
-            # filter out volumes with mode 'cp'
-            # (additional mode that copies the contents of the volume to the container)
-            copy_volumes = {k: v for k, v in volumes.items() if v.get('mode', 'rw') == 'cp'}
-            volumes = {k: v for k, v in volumes.items() if v.get('mode', 'rw') != 'cp'}
-
-            # mount every copy volume to a temporary directory
-            for source_path, volume_config in copy_volumes.items():
-                temp_dir = Path('/tmp') / str(volume_config['bind']).replace('/', '_')
-                new_volume_config = {'bind': str(temp_dir), 'mode': 'ro'}
-                volumes[source_path] = new_volume_config
-
-        create_configuration = self.container_create_configuration.copy()
-        create_configuration['volumes'] = volumes
 
         if self.container is not None and destroy_if_exists:
             self.destroy()
         elif self.container is not None:
             raise Exception('Container is already initialized')
 
+        self.container_create_configuration = config
+
+        # Copy config in order not to change
+        create_configuration = self.container_create_configuration.copy()
+
+        copy_volumes = None
+        volumes = None
+        if create_configuration.volumes:
+            # Filter out volumes with mode 'cp'
+            # (additional mode that copies the contents of the volume to the container)
+            copy_volumes = {k: v for k, v in config.volumes.items() if v.get('mode', 'rw') == 'cp'}
+            volumes = {k: v for k, v in config.volumes.items() if v.get('mode', 'rw') != 'cp'}
+
+            # Mount every copy volume to a temporary directory
+            for source_path, volume_config in copy_volumes.items():
+                temp_dir = Path('/tmp') / str(volume_config['bind']).replace('/', '_')
+                new_volume_config = {'bind': str(temp_dir), 'mode': 'ro'}
+                volumes[source_path] = new_volume_config
+
+        create_configuration.volumes = volumes
+
         try:
             # Start a new container with open stdin and tty
             self.container = self.docker_client.containers.run(stdin_open=True, tty=True, detach=True,
-                                                               **create_configuration)
+                                                               **create_configuration.to_docker_configuration())
 
-            # copy contents of copy volumes to the actual target directories
-            if isinstance(volumes, dict) and len(copy_volumes) > 0:
+            # Copy contents of copy volumes to the actual target directories
+            if copy_volumes and len(copy_volumes) > 0:
                 self._ensure_installed('rsync')
                 for source_path, volume_config in copy_volumes.items():
                     temp_dir = Path('/tmp') / str(volume_config['bind']).replace('/', '_')
@@ -125,12 +102,12 @@ class DockerInterface:
                     self.container.exec_run(['mkdir', '-p', str(volume_config['bind'])])
                     self.container.exec_run(['rsync', '-a', str(temp_dir) + '/', str(volume_config['bind'])])
 
-            if interactive or self._interactive_session_name is not None:
+            if create_configuration.interactive or self._interactive_session_name is not None:
                 self._interactive_session_name = self._ensure_tmux_session(
                     name=f'interactive_session_{random.randint(10000, 99999)}', interpreter=interactive_interpreter)
         except Exception as e:
-            # rethrow exception
-            raise
+            # Rethrow exception
+            raise e
 
     def recreate(self):
         """
@@ -148,7 +125,7 @@ class DockerInterface:
             pass
 
         try:
-            self.initialize(**self.container_create_configuration)
+            self.initialize(self.container_create_configuration)
         except Exception:
             # rethrow exception
             raise
@@ -335,53 +312,3 @@ class DockerInterface:
             return command_result.exit_code == 0
         except Exception as e:
             return False
-
-
-@contextmanager
-def docker_session(image: str = None, command: Union[str, List[str]] = None,
-                   working_dir: PathLike = None, ports: Dict[int, int] = None,
-                   volumes: Union[Dict[Union[str, Path], Dict], List[str]] = None,
-                   environment: Dict[str, str] = None, user: str = None,
-                   interactive: bool = False, interactive_interpreter: str = None,
-                   destroy_if_exists: bool = False, docker_client=None) -> DockerInterface:
-    """
-    Context manager that provides a docker session.
-
-    :param image: The name or ID of the Docker image to use.
-    :param command: The command to execute inside the container. Defaults to '/bin/sh' if not provided.
-    :param working_dir: The working directory inside the Docker container.
-    :param ports: A dictionary of ports to expose inside the container. The key is the port inside the container
-    and the value is the port on the host machine.
-    :param volumes: A dictionary or list specifying the volumes to mount inside the container.
-    :param environment: A dictionary of environment variables to set inside the container.
-    :param user: The user to run commands as inside the container.
-    :param interactive: Whether to run the container in interactive mode.
-    :param interactive_interpreter: The interpreter to use for interactive mode.
-    :param destroy_if_exists: Whether to destroy the container if it already exists.
-    :param docker_client: The Docker client object to use.
-    :return: A DockerInterface object that represents the Docker session.
-    :rtype: DockerInterface
-
-    Example usage:
-
-    ```python
-    with docker_session(
-        image='my_image',
-        work_dir='/app',
-        environment={'FOO': 'bar'},
-        volumes={'/host_path': '/app'},
-    ) as docker:
-        # Do something with the Docker interface
-        docker.run('python app.py')
-    ```
-    """
-    docker_interface = DockerInterface(docker_client)
-
-    try:
-        docker_interface.initialize(image=image, working_dir=working_dir, command=command, ports=ports,
-                                    volumes=volumes, environment=environment, user=user,
-                                    interactive=interactive, interactive_interpreter=interactive_interpreter,
-                                    destroy_if_exists=destroy_if_exists)
-        yield docker_interface
-    finally:
-        docker_interface.destroy(silent=True)
