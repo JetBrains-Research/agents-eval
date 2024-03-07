@@ -30,10 +30,10 @@ TEMPLATE_KEYWORDS = [
     "prototype"
 ]
 
-PERMISSIVE_LICENSES = ["MIT License",
-                       "Apache License 2.0",
-                       "BSD 3-Clause New or Revised License",
-                       "BSD 2-Clause Simplified License"]
+PERMISSIVE_LICENSES = ['MIT License',
+                       'Apache License 2.0',
+                       'BSD 3-Clause "New" or "Revised" License',
+                       'BSD 2-Clause "Simplified" License']
 
 
 def load_repos_data(config: DictConfig):
@@ -67,10 +67,13 @@ def filter_template_repos(config: DictConfig):
                     'is_template': repo['is_template'],
                     'description': repo['description'],
                     'template_keywords': template_keywords,
+                    'topics': repo['topics'],
                     'license': repo['license']['name'],
+                    'size': repo['size']
                 })
         df = pd.DataFrame(template_repos)
-        df['id'] = df.index
+        df.sort_values(by='repo_owner', key=lambda col: col.str.lower(), ascending=True, inplace=True)
+        df.insert(0, 'id', range(0, len(df)))
         df.to_csv(os.path.join(config.data_path, f"{category}_template_repos.csv"), index=False)
 
 

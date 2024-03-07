@@ -3,7 +3,7 @@ import json
 from openai import AsyncOpenAI
 from tenacity import retry, wait_random_exponential, stop_after_attempt
 
-from src.eval.agents.agent import Agent
+from src.eval.envs.env import Env
 from src.utils.tokenization_utils import TokenizationUtils
 
 GPT_MODEL = "gpt-4-1106-preview"
@@ -49,7 +49,7 @@ async def get_plan(client: AsyncOpenAI, planning_system_prompt: str, user_prompt
 
 
 async def run_tool_calls_loop(
-        client: AsyncOpenAI, agent: Agent, execution_system_prompt: str, user_prompt: str, plan: str
+        client: AsyncOpenAI, agent: Env, execution_system_prompt: str, user_prompt: str, plan: str
 ) -> list[tuple[str, str]]:
     messages = [
         {
@@ -72,7 +72,7 @@ async def run_tool_calls_loop(
     while run_tool_calls:
         try:
             chat_response = await chat_completion_request(
-                client, messages, tools=agent.get_tools()
+                client, messages, tools=await agent.get_tools()
             )
             print(chat_response.choices[0].message)
             tool_calls = chat_response.choices[0].message.tool_calls
@@ -88,7 +88,7 @@ async def run_tool_calls_loop(
         for tool_call in tool_calls:
             function_name = tool_call.function.name
             function_args = json.loads(tool_call.function.arguments)
-            function_response = agent.run(function_name, function_args)
+            function_response = await agent.run_command(function_name, function_args)
             print(function_response)
             messages.append(
                 {
