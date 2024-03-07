@@ -90,8 +90,8 @@ class DockerInterface:
 
         try:
             # Start a new container with open stdin and tty
-            self.container = self.docker_client.containers.run_command(stdin_open=True, tty=True, detach=True,
-                                                                       **create_configuration.to_docker_configuration())
+            self.container = self.docker_client.containers.run(stdin_open=True, tty=True, detach=True,
+                                                               **create_configuration.to_docker_configuration())
 
             # Copy contents of copy volumes to the actual target directories
             if copy_volumes and len(copy_volumes) > 0:

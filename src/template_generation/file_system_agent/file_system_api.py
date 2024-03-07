@@ -1,98 +1,56 @@
-from flask import Flask, request, jsonify
-
-from src.template_generation.file_system_agent.file_system_agent import FileSystemAgent
-from src.template_generation.file_system_agent.file_system_agent_tools import read_write_fs_tools
-
-app = Flask(__name__)
-
-agent: FileSystemAgent = None
+import os
+import shutil
+from pathlib import Path
+from typing import Optional, List, Dict
 
 
-@app.route('/init', methods=['POST'])
-def init():
-    global agent
-    content_root_path = request.json.get('content_root_path')
-    agent = FileSystemAgent(content_root_path)
-    return jsonify({"status": "success"})
+class FileSystemAPI:
 
+    def __init__(self, content_root_path: str):
+        self.content_root_path = content_root_path
 
-@app.route('/run_command', methods=['POST'])
-def run():
-    command_name = request.json.get('command_name')
-    command_params = request.json.get('command_params')
+    def to_absolute_path(self, path: str) -> str:
+        return os.path.join(self.content_root_path, path)
 
-    try:
-        if command_name == 'create_directory':
-            _assert_args(command_name, command_params, ['path'])
-            agent.create_directory(
-                path=command_params.get("path"),
-            )
-            message = f"Directory {command_params.get('path')} was successfully created"
-        elif command_name == 'delete_directory':
-            _assert_args(command_name, command_params, ['path'])
-            agent.delete_directory(
-                path=command_params.get("path"),
-            )
-            message = f"Directory {command_params.get('path')} was successfully deleted"
-        elif command_name == 'create_file':
-            _assert_args(command_name, command_params, ['path'])
-            agent.create_file(
-                path=command_params.get("path"),
-                text=command_params.get("text", ""),
-            )
-            message = f"File {command_params.get('path')} was successfully created"
-        elif command_name == 'delete_file':
-            _assert_args(command_name, command_params, ['path'])
-            agent.delete_file(
-                path=command_params.get("path"),
-            )
-            message = f"File {command_params.get('path')} was successfully deleted"
-        elif command_name == 'read_file':
-            _assert_args(command_name, command_params, ['path'])
-            message = agent.read_file(
-                path=command_params.get("path"),
-            )
-        elif command_name == 'write_file':
-            _assert_args(command_name, command_params, ['path', 'text'])
-            agent.write_file(
-                path=command_params.get("path"),
-                text=command_params.get("text"),
-            )
-            message = f"Text was successfully written to the file {command_params.get('path')}"
-        elif command_name == 'list_directory':
-            _assert_args(command_name, command_params, ['path'])
-            message = agent.list_directory(
-                path=command_params.get("path"),
-            )
-        else:
-            message = f"Unknown function {command_name}"
+    def to_relative_path(self, path: str) -> str:
+        return path.replace(self.content_root_path + '/', '')
 
-        return jsonify({"status": "success", "message": message})
+    def create_directory(self, path: str):
+        os.makedirs(self.to_absolute_path(path), exist_ok=True)
 
-    except Exception as e:
-        return jsonify({"status": "fail",
-                        "message": "Exception occurred while tool call execution",
-                        "error": agent.to_relative_path(str(e))})
+    def delete_directory(self, path: str):
+        shutil.rmtree(self.to_absolute_path(path))
 
+    def create_file(self, path: str, text: str):
+        self.create_directory(os.path.dirname(self.to_absolute_path(path)))
+        with open(self.to_absolute_path(path), 'w') as file:
+            file.write(text)
 
-def _assert_args(command_name: str, command_params, expected_args: list[str]):
-    for arg in expected_args:
-        assert command_params.get(arg), Exception(f"Argument {arg} is not provided for tool call {command_name}")
+    def delete_file(self, path: str):
+        os.remove(self.to_absolute_path(path))
 
+    def read_file(self, path: str) -> Optional[str]:
+        with open(self.to_absolute_path(path), 'r') as file:
+            return file.read()
 
-@app.route('/tools', methods=['GET'])
-def get_tools():
-    return jsonify(read_write_fs_tools)
+    def write_file(self, path: str, text: str):
+        with open(self.to_absolute_path(path), 'w') as file:
+            file.write(text)
 
+    def list_directory(self, path: str) -> Optional[List[str]]:
+        return [os.path.join(path, f) for f in os.listdir(self.to_absolute_path(path))]
 
-@app.route('/status', methods=['GET'])
-def get_status():
-    try:
-        file_tree = agent.get_file_tree()
-        return jsonify({"status": "success", "data": file_tree})
-    except Exception as e:
-        return jsonify({"status": "fail", "error": agent.to_relative_path(str(e))})
+    def get_file_tree(self) -> Dict[str, str]:
+        file_tree = {}
+        for root, dirs, files in os.walk(self.content_root_path):
+            for file in files:
+                file_path = Path(root) / file
+                try:
+                    with open(file_path, 'r') as f:
+                        print(file_path)
+                        content = f.read()
+                    file_tree[str(file_path)] = content
+                except Exception as e:
+                    print(f"Can not rad file {file_path}", e)
 
-
-if __name__ == '__main__':
-    app.run(debug=True, port=5050)
+        return file_tree

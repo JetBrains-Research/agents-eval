@@ -44,3 +44,10 @@ class HttpAgent(Agent):
         async with aiohttp.ClientSession() as session:
             async with session.get(url) as response:
                 return json.loads(await response.text())
+
+    async def ping(self) -> str:
+        url = f'{self.base_url}/ping'
+
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url) as response:
+                return await response.text()

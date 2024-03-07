@@ -6,3 +6,4 @@ github_tokens_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/tokens.
 splits:
   java: [0]
   kt: [0]
+docker_image: mariatigina/file-system-service:latest
