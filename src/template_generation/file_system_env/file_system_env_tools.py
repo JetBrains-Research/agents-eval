@@ -90,7 +90,7 @@ read_write_fs_tools = [
                     },
                     "text": {
                         "type": "string",
-                        "description": "Text to be written to the created file"
+                        "description": "Text to be written into the created file"
                     }
                 },
                 "required": ["path"]
@@ -148,7 +148,7 @@ read_write_fs_tools = [
                     },
                     "text": {
                         "type": "string",
-                        "description": "Text to be written to the file"
+                        "description": "Text to be written into the file"
                     }
                 },
                 "required": ["path", "text"]
