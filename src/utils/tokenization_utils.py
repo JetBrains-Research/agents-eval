@@ -54,7 +54,7 @@ class TokenizationUtils:
     def count_tokens(self, messages: list[dict[str, str]]) -> int:
         """Estimates the number of tokens for a given list of messages.
 
-        Note: Currently, for some models (e.g., OpenAI) the returned number might be slightly lower than the actual number of tokens, because the
+        Note: Currently, for some agents (e.g., OpenAI) the returned number might be slightly lower than the actual number of tokens, because the
         special tokens are not considered.
         """
         return sum([self._count_tokens(value) for message in messages for key, value in message.items()])

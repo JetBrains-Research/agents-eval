@@ -1,6 +1,6 @@
 from openai import AsyncOpenAI
 
-from src.eval.models.openai.openai_model import chat_completion_request
+from src.eval.agents.openai.openai_agent import chat_completion_request
 from src.utils.git_utils import get_diff_between_directories
 
 

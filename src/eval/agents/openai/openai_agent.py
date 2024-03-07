@@ -3,7 +3,7 @@ import json
 from openai import AsyncOpenAI
 from tenacity import retry, wait_random_exponential, stop_after_attempt
 
-from src.eval.agents.agent import Agent
+from src.eval.envs.env import Env
 from src.utils.tokenization_utils import TokenizationUtils
 
 GPT_MODEL = "gpt-4-1106-preview"
@@ -49,7 +49,7 @@ async def get_plan(client: AsyncOpenAI, planning_system_prompt: str, user_prompt
 
 
 async def run_tool_calls_loop(
-        client: AsyncOpenAI, agent: Agent, execution_system_prompt: str, user_prompt: str, plan: str
+        client: AsyncOpenAI, agent: Env, execution_system_prompt: str, user_prompt: str, plan: str
 ) -> list[tuple[str, str]]:
     messages = [
         {

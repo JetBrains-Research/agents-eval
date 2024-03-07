@@ -3,7 +3,7 @@ repos_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/repos
 gen_templates_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/gen_templates
 gen_templates_results_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/gen_templates_result
 github_tokens_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/tokens.txt
+docker_image: 'mariatigina/file-system-service:latest'
 splits:
   java: [0]
   kt: [0]
-docker_image: mariatigina/file-system-service:latest

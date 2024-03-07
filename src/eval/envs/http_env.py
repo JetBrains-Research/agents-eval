@@ -2,10 +2,10 @@ import json
 
 import aiohttp
 
-from src.eval.agents.agent import Agent
+from src.eval.envs.env import Env
 
 
-class HttpAgent(Agent):
+class HttpEnv(Env):
 
     def __init__(self, host: str, port: str):
         self.host = host

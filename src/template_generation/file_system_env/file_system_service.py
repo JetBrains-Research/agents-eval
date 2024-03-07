@@ -4,7 +4,7 @@ from typing import List
 from flask import Flask, request, jsonify
 
 from file_system_api import FileSystemAPI
-from file_system_agent_tools import read_write_fs_tools
+from file_system_env_tools import read_write_fs_tools
 
 app = Flask(__name__)
 
@@ -104,4 +104,4 @@ def _assert_args(command_name: str, command_params, expected_args: List[str]):
 
 if __name__ == '__main__':
     app.run(port=os.environ.get('FLASK_RUN_PORT', 5050),
-            host=os.environ.get('FLASK_RUN_HOST', '0.0.0.0'))
+            host=os.environ.get('FLASK_RUN_HOST', '127.0.0.1'))
