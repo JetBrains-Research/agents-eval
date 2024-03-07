@@ -10,6 +10,7 @@ from openai import AsyncOpenAI
 from src.docker.docker_session import docker_session
 from src.docker.docker_session_config import DockerSessionConfig
 from src.eval.agents.http_agent import HttpAgent
+from src.eval.metrics.diff_metric import diff_metric
 from src.eval.models.openai.openai_model import run_tool_calls_loop, get_plan
 from src.template_generation.template_generation_prompts import get_user_prompt, get_planning_system_prompt, \
     get_execution_system_prompt
@@ -40,24 +41,24 @@ async def run_template_generation(projects: pd.DataFrame, config: DictConfig) ->
         with docker_session(docker_config) as s:
             http_agent = HttpAgent('127.0.0.1', '5050')
             print(await http_agent.ping())
-            # print(await http_agent.run_command('create_file', {'path': 'hello.txt'}))
+            print(await http_agent.run_command('create_file', {'path': 'hello.txt'}))
 
-            # await http_agent.init({'content_root_path': '.'})
-            #
-            # # Run planning
-            # user_prompt = get_user_prompt(project['description'])
-            # planning_system_prompt = get_planning_system_prompt()
-            # plan = await get_plan(AsyncOpenAI(), planning_system_prompt, user_prompt)
-            #
-            # # Run plan execution
-            # execution_system_prompt = get_execution_system_prompt()
-            # tool_calls = await run_tool_calls_loop(AsyncOpenAI(), http_agent,
-            #                                        execution_system_prompt, user_prompt, plan)
+            await http_agent.init({'content_root_path': '.'})
 
-            # # Compare with golden project
-            # template_path = os.path.join(project_path, f'{repo_owner}__{repo_name}')
-            # diff, metric = await diff_metric(template_path, gen_template_path)
-            # results.append((project['id'], plan, tool_calls, diff, metric))
+            # Run planning
+            user_prompt = get_user_prompt(project['description'])
+            planning_system_prompt = get_planning_system_prompt()
+            plan = await get_plan(AsyncOpenAI(), planning_system_prompt, user_prompt)
+
+            # Run plan execution
+            execution_system_prompt = get_execution_system_prompt()
+            tool_calls = await run_tool_calls_loop(AsyncOpenAI(), http_agent,
+                                                   execution_system_prompt, user_prompt, plan)
+
+            # Compare with golden project
+            template_path = os.path.join(config.repos_path, f'{repo_owner}__{repo_name}')
+            diff, metric = await diff_metric(template_path, gen_template_path)
+            results.append((project['id'], plan, tool_calls, diff, metric))
 
     return pd.DataFrame(results)
 
