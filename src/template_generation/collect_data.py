@@ -8,7 +8,7 @@ from datasets import Dataset, DatasetDict
 from omegaconf import DictConfig
 
 from src.data.github_data_provider import GithubDataProvider
-from src.utils.hf_utils import CATEGORIES, FEATURES, HUGGINGFACE_REPO
+from src.utils.hf_utils import CATEGORIES, FEATURES, HUGGINGFACE_REPO, load_data
 from src.utils.jsonl_utils import read_jsonl
 
 TEMPLATE_KEYWORDS = [
@@ -93,11 +93,21 @@ def upload_to_hf(config: DictConfig):
         dataset_dict.push_to_hub(HUGGINGFACE_REPO, category)
 
 
+def clone_repos(config: DictConfig):
+    for category in CATEGORIES:
+        df = load_data(category, 'test')
+        with open(config.github_tokens_path, 'r') as f:
+            github_tokens = [t.strip() for t in f.readlines()]
+        github_data_provider = GithubDataProvider(github_tokens=github_tokens)
+        github_data_provider.clone_repos([(d["repo_owner"], d["repo_name"]) for d in df], config.repos_path)
+
+
 @hydra.main(config_path="../../configs", config_name="template_generation", version_base=None)
 def main(config: DictConfig):
-    load_repos_data(config)
-    filter_template_repos(config)
-    upload_to_hf(config)
+    # load_repos_data(config)
+    # filter_template_repos(config)
+    # upload_to_hf(config)
+    clone_repos(config)
 
 
 if __name__ == "__main__":

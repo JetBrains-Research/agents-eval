@@ -1,6 +1,7 @@
 from openai import AsyncOpenAI
 
-from src.eval.agents.openai.openai_agent import chat_completion_request
+from src.eval.agents.openai_agent import chat_completion_request
+from src.eval.metrics.metrics_prompts import get_diff_metrics_prompt
 from src.utils.git_utils import get_diff_between_directories
 
 
@@ -9,8 +10,7 @@ async def diff_metric(actual_project_path: str, gen_project_path: str) -> tuple[
     chat_response = await chat_completion_request(AsyncOpenAI(), messages=[
         {
             "role": "system",
-            "content": "Estimate the difference between two projects. "
-                       "Return 1 if they are the same in terms of functionality or 0 if the essential part is missed."
+            "content": get_diff_metrics_prompt()
         },
         {
             "role": "user",
@@ -22,5 +22,5 @@ async def diff_metric(actual_project_path: str, gen_project_path: str) -> tuple[
     try:
         score = int(chat_response.choices[0].message.content)
     except ValueError:
-        print("Invalid resonance:", chat_response.choices[0].message.content)
+        print("Can not parse score from response:", chat_response.choices[0].message.content)
     return diff, score

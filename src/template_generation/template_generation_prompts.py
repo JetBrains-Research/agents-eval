@@ -1,6 +1,8 @@
-def get_user_prompt(project_description: str) -> str:
+def get_user_prompt(project_name: str, project_description: str, project_language: str) -> str:
     return f"""
-    Generate template for project which aligns following description: {project_description}."
+    Generate template for project named {project_name} 
+    which mainly written on {project_language} 
+    and aligns following description: {project_description}."
     Take into account only code producing steps, without setup and deployment.
     Project content root directory is already created, use relative paths from it."""
 
