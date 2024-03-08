@@ -42,13 +42,13 @@ async def run_template_generation(projects: Dataset, language: str, config: Dict
 
         # Agents to compare
         agents = [
-            (
-                VanillaOpenAIAgent(),
-                AgentRequest(
-                    env=env,
-                    user_prompt=get_vanilla_user_prompt(project['description'], project['repo_name'], language)
-                )
-            ),
+            # (
+            #     VanillaOpenAIAgent(),
+            #     AgentRequest(
+            #         env=env,
+            #         user_prompt=get_vanilla_user_prompt(project['description'], project['repo_name'], language)
+            #     )
+            # ),
             (
                 PlanningOpenAIAgent("gpt-4-1106-preview", "openai-gpt-4", 128000),
                 AgentRequest(
@@ -58,15 +58,15 @@ async def run_template_generation(projects: Dataset, language: str, config: Dict
                     execution_system_prompt=get_execution_system_prompt(),
                 )
             ),
-            (
-                PlanningOpenAIAgent("gpt-3.5-turbo-1106", "openai-chat-gpt-16k", 16000),
-                AgentRequest(
-                    env=env,
-                    user_prompt=get_user_prompt(project['description'], project['repo_name'], language),
-                    planning_system_prompt=get_planning_system_prompt(),
-                    execution_system_prompt=get_execution_system_prompt(),
-                )
-            )
+            # (
+            #     PlanningOpenAIAgent("gpt-3.5-turbo-1106", "openai-chat-gpt-16k", 16000),
+            #     AgentRequest(
+            #         env=env,
+            #         user_prompt=get_user_prompt(project['description'], project['repo_name'], language),
+            #         planning_system_prompt=get_planning_system_prompt(),
+            #         execution_system_prompt=get_execution_system_prompt(),
+            #     )
+            # )
         ]
 
         for agent, agent_request in agents:

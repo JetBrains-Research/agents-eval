@@ -1,4 +1,7 @@
+import os
 import subprocess
+from pathlib import Path
+from typing import Dict
 
 
 def get_project_file_tree(project_path) -> str:
@@ -8,3 +11,19 @@ def get_project_file_tree(project_path) -> str:
     project_file_tree = result.stdout
 
     return project_file_tree
+
+
+def get_project_file_tree_as_dict(self) -> Dict[str, str]:
+    file_tree = {}
+    for root, dirs, files in os.walk(self.content_root_path):
+        for file in files:
+            file_path = Path(root) / file
+            try:
+                with open(file_path, 'r') as f:
+                    print(file_path)
+                    content = f.read()
+                file_tree[str(file_path)] = content
+            except Exception as e:
+                print(f"Can not rad file {file_path}", e)
+
+    return file_tree
