@@ -1,3 +1,10 @@
+def get_vanilla_user_prompt(project_name: str, project_description: str, project_language: str) -> str:
+    return f"""
+    Generate template for project named {project_name} 
+    which mainly written on {project_language} 
+    and aligns following description: {project_description}."""
+
+
 def get_user_prompt(project_name: str, project_description: str, project_language: str) -> str:
     return f"""
     Template is a small compilable project that can be described in 1-5 sentences containing small examples 

@@ -1,39 +1,15 @@
 import json
+from abc import ABC
 
 from openai import AsyncOpenAI
-from openai.types.chat import ChatCompletion
-from tenacity import retry, wait_random_exponential, stop_after_attempt
 
 from src.eval.agents.agent import Agent
+from src.eval.agents.utils.openai_utils import DEFAULT_MODEL, DEFAULT_PROFILE_NAME, DEFAULT_MAX_TOKENS, \
+    chat_completion_request
 from src.eval.envs.env import Env
-from src.utils.tokenization_utils import TokenizationUtils
-
-DEFAULT_MODEL = "gpt-4-1106-preview"
-DEFAULT_PROFILE_NAME = "openai-gpt-4"
-DEFAULT_MAX_TOKENS = 128000
 
 
-@retry(wait=wait_random_exponential(multiplier=1, max=40), stop=stop_after_attempt(3))
-async def chat_completion_request(client: AsyncOpenAI, messages: list[dict[str, str]], model: str = DEFAULT_MODEL,
-                                  max_tokens: int = DEFAULT_MAX_TOKENS, profile_name: str = DEFAULT_PROFILE_NAME,
-                                  tools=None, tool_choice=None) -> ChatCompletion:
-    tokenization_utils = TokenizationUtils(profile_name)
-    try:
-        response = await client.chat.completions.create(
-            model=model,
-            messages=tokenization_utils.truncate(messages, max_tokens),
-            tools=tools,
-            tool_choice=tool_choice,
-        )
-        return response
-    except Exception as e:
-        print("Unable to generate chat completion response")
-        print(f"Exception: {e}")
-        return e
-
-
-class OpenAIAgent(Agent):
-    name = "OpenAI"
+class OpenAIAgent(Agent, ABC):
 
     def __init__(self, model: str = DEFAULT_MODEL,
                  profile_name: str = DEFAULT_PROFILE_NAME,
@@ -42,19 +18,9 @@ class OpenAIAgent(Agent):
         self.profile_name = profile_name
         self.max_tokens = max_tokens
         self.client = AsyncOpenAI()
+        self.name = self.model
 
-    async def get_plan(self, planning_system_prompt: str, user_prompt: str) -> str:
-        messages = [
-            {
-                "role": "system",
-                "content": planning_system_prompt
-            },
-            {
-                "role": "user",
-                "content": user_prompt
-            }
-        ]
-
+    async def _run_request(self, messages: list[dict]) -> str:
         chat_response = await chat_completion_request(
             client=self.client,
             messages=messages,
@@ -66,27 +32,11 @@ class OpenAIAgent(Agent):
         print(chat_response.choices[0].message.content)
         return chat_response.choices[0].message.content
 
-    async def run_tool_calls_loop(self, agent: Env, execution_system_prompt: str, user_prompt: str, plan: str) \
-            -> list[tuple[str, str]]:
-        messages = [
-            {
-                "role": "system",
-                "content": execution_system_prompt
-            },
-            {
-                "role": "user",
-                "content": user_prompt
-            },
-            {
-                "role": "system",
-                "content": plan,
-            }
-        ]
-
+    async def _run_tool_calls_loop(self, env: Env, messages: list[dict]) -> list[tuple[str, str]]:
         all_tool_calls = []
         run_tool_calls = True
 
-        tools = await agent.get_tools()
+        tools = await env.get_tools()
 
         while run_tool_calls:
             try:
@@ -113,7 +63,7 @@ class OpenAIAgent(Agent):
             for tool_call in tool_calls:
                 function_name = tool_call.function.name
                 function_args = json.loads(tool_call.function.arguments)
-                function_response = await agent.run_command(function_name, function_args)
+                function_response = await env.run_command(function_name, function_args)
                 print(function_response)
                 messages.append(
                     {
