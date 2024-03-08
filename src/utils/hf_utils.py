@@ -1,4 +1,8 @@
+import os
+
 import datasets
+import huggingface_hub
+from datasets import Dataset
 
 HUGGINGFACE_REPO = 'JetBrains-Research/template-generation'
 CATEGORIES = ['java', 'kt']
@@ -25,3 +29,13 @@ FEATURES = {
         }
     )
 }
+
+
+def load_data(category: str, split: str) -> Dataset:
+    huggingface_hub.login(token=os.environ['HUGGINGFACE_TOKEN'])
+
+    return datasets.load_dataset(
+        HUGGINGFACE_REPO, category,
+        split=split,
+        ignore_verifications=True,
+    )

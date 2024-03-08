@@ -230,7 +230,7 @@ async def clone_repo(owner: str, name: str, github_token: str, repo_dir: str) ->
         git_cmd = ["git", "clone", f"https://{github_token}@github.com/{owner}/{name}.git", repo_dir]
         process = await asyncio.create_subprocess_exec(*git_cmd)
         stdout, stderr = await process.communicate()
-        print(f"Repository {owner}/{name} cloned successfully to repo_dir.")
+        print(f"Repository {owner}/{name} cloned successfully to {repo_dir}.")
         return None
     except subprocess.CalledProcessError as e:
         print(f"Failed to clone repository {owner}/{name}", e)
