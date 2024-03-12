@@ -102,7 +102,7 @@ def clone_repos(config: DictConfig):
         github_data_provider.clone_repos([(d["repo_owner"], d["repo_name"]) for d in df], config.repos_path)
 
 
-@hydra.main(config_path="../../configs", config_name="template_generation", version_base=None)
+@hydra.main(config_path="../configs", config_name="template_generation", version_base=None)
 def main(config: DictConfig):
     # load_repos_data(config)
     # filter_template_repos(config)

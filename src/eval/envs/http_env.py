@@ -7,7 +7,7 @@ from src.eval.envs.env import Env
 
 class HttpEnv(Env):
 
-    def __init__(self, host: str, port: str):
+    def __init__(self, host: str, port: int):
         self.host = host
         self.port = port
         self.base_url = f'http://{self.host}:{self.port}'

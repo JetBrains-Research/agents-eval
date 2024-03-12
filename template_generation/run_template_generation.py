@@ -12,7 +12,7 @@ from src.eval.agents.agent import Agent, AgentRequest, AgentResult
 from src.eval.agents.planning_openai_agent import PlanningOpenAIAgent
 from src.eval.agents.vanilla_openai_agent import VanillaOpenAIAgent
 from src.eval.envs.http_env import HttpEnv
-from src.template_generation.template_generation_prompts import get_user_prompt, get_planning_system_prompt, \
+from template_generation.template_generation_prompts import get_user_prompt, get_planning_system_prompt, \
     get_execution_system_prompt, get_vanilla_user_prompt
 from src.utils.git_utils import get_diff_between_directories
 from src.utils.hf_utils import load_data
@@ -42,13 +42,13 @@ async def run_template_generation(projects: Dataset, language: str, config: Dict
 
         # Agents to compare
         agents = [
-            # (
-            #     VanillaOpenAIAgent(),
-            #     AgentRequest(
-            #         env=env,
-            #         user_prompt=get_vanilla_user_prompt(project['description'], project['repo_name'], language)
-            #     )
-            # ),
+            (
+                VanillaOpenAIAgent(),
+                AgentRequest(
+                    env=env,
+                    user_prompt=get_vanilla_user_prompt(project['description'], project['repo_name'], language)
+                )
+            ),
             (
                 PlanningOpenAIAgent("gpt-4-1106-preview", "openai-gpt-4", 128000),
                 AgentRequest(
@@ -58,15 +58,15 @@ async def run_template_generation(projects: Dataset, language: str, config: Dict
                     execution_system_prompt=get_execution_system_prompt(),
                 )
             ),
-            # (
-            #     PlanningOpenAIAgent("gpt-3.5-turbo-1106", "openai-chat-gpt-16k", 16000),
-            #     AgentRequest(
-            #         env=env,
-            #         user_prompt=get_user_prompt(project['description'], project['repo_name'], language),
-            #         planning_system_prompt=get_planning_system_prompt(),
-            #         execution_system_prompt=get_execution_system_prompt(),
-            #     )
-            # )
+            (
+                PlanningOpenAIAgent("gpt-3.5-turbo-1106", "openai-chat-gpt-16k", 16000),
+                AgentRequest(
+                    env=env,
+                    user_prompt=get_user_prompt(project['description'], project['repo_name'], language),
+                    planning_system_prompt=get_planning_system_prompt(),
+                    execution_system_prompt=get_execution_system_prompt(),
+                )
+            )
         ]
 
         for agent, agent_request in agents:
@@ -83,11 +83,11 @@ async def run_template_generation(projects: Dataset, language: str, config: Dict
     return results
 
 
-# def run_template_metrics(results: dict[str, list]):
-#     vanilla_results = results["vanilla"]
+def run_template_metrics(results: dict[str, list]):
+    vanilla_results = results["vanilla"]
 
 
-@hydra.main(config_path="./../../configs", config_name="template_generation", version_base=None)
+@hydra.main(config_path="../configs", config_name="template_generation", version_base=None)
 def main(config: DictConfig) -> None:
     category, split = 'kt', 'test'
     df = load_data(category, split)
