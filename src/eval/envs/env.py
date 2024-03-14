@@ -12,7 +12,7 @@ class Env(ABC):
         pass
 
     @abstractmethod
-    async def get_tools(self) -> list[str]:
+    async def get_tools(self) -> list[dict]:
         pass
 
     @abstractmethod

@@ -1,6 +1,10 @@
+from typing import List
+
+from langchain_core.language_models import BaseChatModel
 from langchain_core.tools import StructuredTool
-from pydantic.v1 import Field, Extra, create_model, BaseModel
-from pydantic.v1.fields import Undefined
+from langchain_openai import ChatOpenAI
+from pydantic.v1 import BaseModel, Extra, create_model
+from pydantic.v1.fields import Undefined, Field
 
 from src.eval.envs.env import Env
 
@@ -13,6 +17,15 @@ PLUGIN_TO_PYTHON_TYPES = {
 
 class PydanticModel(BaseModel, extra=Extra.forbid):
     pass
+
+
+async def parse_tools(env: Env) -> List[StructuredTool]:
+    tools = []
+    tool_dicts = await env.get_tools()
+    for tool_dict in tool_dicts:
+        tool = parse_tool(tool_dict['function'], env)
+        tools.append(tool)
+    return tools
 
 
 def parse_tool(tool_dict: dict, env: Env) -> StructuredTool:
@@ -35,18 +48,21 @@ def parse_tool(tool_dict: dict, env: Env) -> StructuredTool:
     async def tool_impl(**kwargs):
         args_schema(**kwargs)
         args_schema.validate(kwargs)
-        # TODO: make async
-        message = env.run_command(name, kwargs)
+        message = await env.run_command(name, kwargs)
 
         return message
 
     tool = StructuredTool(
         name=name,
         description=description,
-        func=tool_impl,
-        # TODO: make async
-        coroutine=None,
+        func=None,
+        coroutine=tool_impl,
         args_schema=args_schema,
     )
 
     return tool
+
+
+def create_chat(model_name: str, temperature: int, model_kwargs: dict) -> BaseChatModel:
+    # TODO: Support not only openai models
+    return ChatOpenAI(model_name=model_name, temperature=temperature, model_kwargs=model_kwargs)

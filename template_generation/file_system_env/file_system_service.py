@@ -14,7 +14,7 @@ agent: FileSystemAPI = None
 @app.route('/init', methods=['POST'])
 def init():
     global agent
-    content_root_path = request.json.get('content_root_path')
+    content_root_path = request.json.get('content_root_path', '.')
     agent = FileSystemAPI(content_root_path)
     return jsonify({"status": "success"}), 200
 
@@ -104,4 +104,5 @@ def _assert_args(command_name: str, command_params, expected_args: List[str]):
 
 if __name__ == '__main__':
     app.run(port=os.environ.get('FLASK_RUN_PORT', 5050),
-            host=os.environ.get('FLASK_RUN_HOST', '127.0.0.1'))
+            host=os.environ.get('FLASK_RUN_HOST', '127.0.0.1'),
+            debug=True)

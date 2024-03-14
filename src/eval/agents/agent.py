@@ -1,27 +1,18 @@
-import dataclasses
 from abc import ABC, abstractmethod
-from typing import Optional
 
 from src.eval.envs.env import Env
 
 
-@dataclasses.dataclass
-class AgentRequest:
-    env: Env
-    user_prompt: str
-    planning_system_prompt: Optional[str] = None
-    execution_system_prompt: Optional[str] = None
-
-
-@dataclasses.dataclass
-class AgentResult:
-    plan: Optional[str]
-    tool_calls: list[tuple[str, str]]
-
-
-class Agent(ABC):
+class IAgent(ABC):
     name: str = "base"
 
+    def __init__(self, env: Env):
+        self.env = env
+
     @abstractmethod
-    async def run(self, agent_request: AgentRequest) -> AgentResult:
+    async def run(self, user_prompt: str):
+        pass
+
+    @abstractmethod
+    async def init(self, **kwargs):
         pass

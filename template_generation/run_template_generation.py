@@ -8,25 +8,24 @@ import pandas as pd
 from datasets import Dataset
 from omegaconf import DictConfig
 
-from src.eval.agents.agent import Agent, AgentRequest, AgentResult
-from src.eval.agents.planning_openai_agent import PlanningOpenAIAgent
-from src.eval.agents.vanilla_openai_agent import VanillaOpenAIAgent
+from src.eval.agents.planning_agent import PlanningAgent
 from src.eval.envs.http_env import HttpEnv
-from template_generation.template_generation_prompts import get_user_prompt, get_planning_system_prompt, \
-    get_execution_system_prompt, get_vanilla_user_prompt
 from src.utils.git_utils import get_diff_between_directories
 from src.utils.hf_utils import load_data
+from template_generation.template_generation_prompts import get_user_prompt
 
 
-async def run_agent(agent: Agent, agent_request: AgentRequest, gen_template_path) -> AgentResult:
+async def run_agent(agent, agent_init_params, user_prompt, gen_template_path):
     # Init template directory
     if os.path.exists(gen_template_path):
         shutil.rmtree(gen_template_path)
     os.makedirs(gen_template_path, exist_ok=True)
 
     # Init environment
-    await agent_request.env.init({'content_root_path': gen_template_path})
-    return await agent.run(agent_request)
+    await agent.env.init({'content_root_path': gen_template_path})
+    await agent.init(agent_init_params)
+
+    return await agent.run(user_prompt)
 
 
 async def run_template_generation(projects: Dataset, language: str, config: DictConfig) -> dict[str, list]:
@@ -43,39 +42,17 @@ async def run_template_generation(projects: Dataset, language: str, config: Dict
         # Agents to compare
         agents = [
             (
-                VanillaOpenAIAgent(),
-                AgentRequest(
-                    env=env,
-                    user_prompt=get_vanilla_user_prompt(project['description'], project['repo_name'], language)
-                )
+                PlanningAgent(env),
+                {'model_name': 'gpt-3.5-turbo-1106', 'temperature': 0, 'model_kwargs': {'seed': 45}},
+                get_user_prompt(project['description'], project['repo_name'], language),
             ),
-            (
-                PlanningOpenAIAgent("gpt-4-1106-preview", "openai-gpt-4", 128000),
-                AgentRequest(
-                    env=env,
-                    user_prompt=get_user_prompt(project['description'], project['repo_name'], language),
-                    planning_system_prompt=get_planning_system_prompt(),
-                    execution_system_prompt=get_execution_system_prompt(),
-                )
-            ),
-            (
-                PlanningOpenAIAgent("gpt-3.5-turbo-1106", "openai-chat-gpt-16k", 16000),
-                AgentRequest(
-                    env=env,
-                    user_prompt=get_user_prompt(project['description'], project['repo_name'], language),
-                    planning_system_prompt=get_planning_system_prompt(),
-                    execution_system_prompt=get_execution_system_prompt(),
-                )
-            )
         ]
 
-        for agent, agent_request in agents:
+        for agent, agent_init_params, user_prompt in agents:
             agent_template_path = os.path.join(config.gen_templates_path, f'{repo_owner}__{repo_name}_{agent.name}')
-            agent_result = await run_agent(agent, agent_request, agent_template_path)
+            await run_agent(agent, agent_init_params, user_prompt, agent_template_path)
             results[agent.name].append(
                 (project['id'], project['repo_name'], project['repo_owner'],
-                 agent_result.plan,
-                 agent_result.tool_calls,
                  agent_template_path,
                  get_diff_between_directories(golden_template_path, agent_template_path))
             )
