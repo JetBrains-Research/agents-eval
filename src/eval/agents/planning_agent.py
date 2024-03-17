@@ -54,7 +54,7 @@ class PlanningAgent(LangchainAgent):
         agent_executor = AgentExecutor(
             agent=agent,
             tools=self.tools,
-            verbose=True,
+            verbose=False,
             return_intermediate_steps=True,
             max_iterations=50,
             early_stopping_method="force",
@@ -68,7 +68,7 @@ async def main():
     await env.init({'content_root_path': "/Users/Maria.Tigina/PycharmProjects/agents-eval-data/example"})
     agent = PlanningAgent(env)
     await agent.init(**{'model_name': 'gpt-3.5-turbo-1106', 'temperature': 0, 'model_kwargs': {'seed': 45}})
-    await agent.run("Generate template for weather forcast python app with MIT License")
+    print(await agent.run("Generate template for weather forcast python app with MIT License"))
 
 
 if __name__ == '__main__':
