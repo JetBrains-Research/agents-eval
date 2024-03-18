@@ -20,11 +20,11 @@ class LangchainAgent(IAgent, ABC):
 
     async def init(self, **kwargs):
         self.tools = await parse_tools(self.env)
+        self.name = kwargs.get('agent_name')
         self.chat = create_chat(
             kwargs.get('model_name'),
             kwargs.get('temperature'),
-            kwargs.get('model_kwargs')
-        )
+            kwargs.get('model_kwargs'))
 
     async def run(self, use_prompt: str):
         agent_executor = await self._create_agent_executor(use_prompt)
