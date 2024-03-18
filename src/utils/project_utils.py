@@ -13,9 +13,9 @@ def get_project_file_tree(project_path) -> str:
     return project_file_tree
 
 
-def get_project_file_tree_as_dict(self) -> Dict[str, str]:
+def get_project_file_tree_as_dict(project_path: str) -> Dict[str, str]:
     file_tree = {}
-    for root, dirs, files in os.walk(self.content_root_path):
+    for root, dirs, files in os.walk(project_path):
         for file in files:
             file_path = Path(root) / file
             try:

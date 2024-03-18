@@ -12,8 +12,8 @@ def get_user_prompt(full_name: str, project_description: str, project_language: 
     Generate template for project named {full_name.replace("/", "__")} 
     which mainly written on {project_language} 
     and aligns following description: {project_description}.
-    Provide files and directory structure as well as program files contents with all required functionality.
-    Take into account only code producing steps, without setup and deployment.
+    Provide files and directory structure (tree) as well as program files contents with all required functionality.
+    Take into account only code producing steps.
     Project content root directory is already created, use relative paths from it."""
 
 
