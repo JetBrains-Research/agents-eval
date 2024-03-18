@@ -57,6 +57,7 @@ splits:
     'mpetuska/template-kmp-library',
     'team-dodn/spring-boot-kotlin-template',
     'ximedes/ktor-authorization',
+    'JetBrains/intellij-platform-plugin-template'
   ]
   android: [
     'amzn/firetv-sample-touch-app'

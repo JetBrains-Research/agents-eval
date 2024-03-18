@@ -162,9 +162,9 @@ def clone_repos(config: DictConfig):
 @hydra.main(config_path="../configs", config_name="template_generation", version_base=None)
 def main(config: DictConfig):
     # load_repos_data(config)
-    filter_template_repos(config)
-    separate_android_repos(config)
-    set_ids(config)
+    # filter_template_repos(config)
+    # separate_android_repos(config)
+    # set_ids(config)
     upload_to_hf(config)
     # clone_repos(config)
 
