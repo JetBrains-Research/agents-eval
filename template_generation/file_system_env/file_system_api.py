@@ -51,6 +51,6 @@ class FileSystemAPI:
                         content = f.read()
                     file_tree[str(file_path)] = content
                 except Exception as e:
-                    print(f"Can not rad file {file_path}", e)
+                    print(f"Can not read file {file_path}", e)
 
         return file_tree

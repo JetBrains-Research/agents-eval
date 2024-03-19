@@ -1,3 +1,5 @@
+from typing import List
+
 import anthropic
 import tiktoken
 from transformers import AutoTokenizer
@@ -38,16 +40,23 @@ class TokenizationUtils:
         elif self._model_provider == "huggingface":
             self._tokenizer = AutoTokenizer.from_pretrained(self._model_name)
 
+    def _encode(self, text: str) -> List[str]:
+        """Estimates the number of tokens for a given string."""
+        if self._model_provider == "openai":
+            return self._tokenizer.encode(text)
+
+        if self._model_provider == "anthropic":
+            return self._tokenizer.encode(text)
+
+        if self._model_provider == "huggingface":
+            return self._tokenizer(text).input_ids
+
+        raise ValueError(f"{self._model_provider} is currently not supported for token estimation.")
+
     def _count_tokens(self, text: str) -> int:
         """Estimates the number of tokens for a given string."""
         if self._model_provider == "openai":
-            return len(self._tokenizer.encode(text))
-
-        if self._model_provider == "anthropic":
-            return len(self._tokenizer.encode(text))
-
-        if self._model_provider == "huggingface":
-            return len(self._tokenizer(text).input_ids)
+            return len(self._encode(text))
 
         raise ValueError(f"{self._model_provider} is currently not supported for token estimation.")
 

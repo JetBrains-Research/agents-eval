@@ -14,6 +14,8 @@ async def chat_completion_request(client: AsyncOpenAI, messages: list[dict[str, 
                                   max_tokens: int = DEFAULT_MAX_TOKENS, profile_name: str = DEFAULT_PROFILE_NAME,
                                   tools=None, tool_choice=None) -> ChatCompletion:
     tokenization_utils = TokenizationUtils(profile_name)
+    tokens_count = tokenization_utils.count_tokens(messages)
+    print(f"Tokens: {tokens_count}/{max_tokens}")
     try:
         response = await client.chat.completions.create(
             model=model,

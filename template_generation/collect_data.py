@@ -6,6 +6,7 @@ import huggingface_hub
 import hydra
 import pandas as pd
 from datasets import Dataset, DatasetDict
+from dotenv import load_dotenv
 from omegaconf import DictConfig
 
 from src.data.github_data_provider import GithubDataProvider
@@ -161,6 +162,7 @@ def clone_repos(config: DictConfig):
 
 @hydra.main(config_path="../configs", config_name="template_generation", version_base=None)
 def main(config: DictConfig):
+    load_dotenv()
     # load_repos_data(config)
     # filter_template_repos(config)
     # separate_android_repos(config)
