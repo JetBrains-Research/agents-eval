@@ -6,6 +6,7 @@ from collections import defaultdict
 import hydra
 import pandas as pd
 from datasets import Dataset
+from dotenv import load_dotenv
 from omegaconf import DictConfig
 
 from src.eval.agents.openai_planning_agent import OpenAiPlanningAgent
@@ -13,7 +14,7 @@ from src.eval.agents.openai_vanilla_agent import OpenAiVanillaAgent
 from src.eval.envs.http_env import HttpEnv
 from src.utils.hf_utils import load_data
 from template_generation.template_generation_prompts import get_planning_system_prompt, \
-    get_execution_system_prompt, get_vanilla_user_prompt
+    get_execution_system_prompt, get_vanilla_user_prompt, get_user_prompt
 
 
 async def run_template_generation(projects: Dataset, language: str, config: DictConfig) -> dict[str, list]:
@@ -80,6 +81,8 @@ async def run_template_generation(projects: Dataset, language: str, config: Dict
 
 @hydra.main(config_path="../configs", config_name="template_generation", version_base=None)
 def main(config: DictConfig) -> None:
+    load_dotenv()
+
     category, split = 'kt', 'test'
     df = load_data(category, split)
     df = df.filter(lambda x: x['full_name'].lower() == 'JetBrains/intellij-platform-plugin-template'.lower())
