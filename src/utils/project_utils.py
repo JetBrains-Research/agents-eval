@@ -40,6 +40,6 @@ def get_project_file_tree_as_dict(project_path: str,
                 print(str(file_path))
                 file_tree[str(file_path)] = content
             except Exception as e:
-                print(f"Can not rad file {file_path}", e)
+                print(f"Can not read file {file_path}", e)
 
     return file_tree

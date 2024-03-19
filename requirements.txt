@@ -24,3 +24,4 @@ rouge-score==0.1.2
 bert-score==0.3.13
 evaluate==0.4.1
 codebleu==0.6.0
+sentence-transformers==2.5.1
