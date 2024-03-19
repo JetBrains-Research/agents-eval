@@ -2,12 +2,14 @@ import os
 from typing import Any
 
 import evaluate
+import numpy as np
 from evaluate import load
 
 from src.utils.project_utils import get_project_file_tree_as_dict
 
 
-def calc_metrics(predictions: list[str], references: list[str], metrics: list[str]) -> dict[str, Any]:
+def calc_metrics(predictions: list[str], references: list[str], metrics: list[str]) -> dict[
+    str, Any]:
     result = {}
     for metric in metrics:
         if metric == "chrf":
@@ -23,6 +25,7 @@ def calc_metrics(predictions: list[str], references: list[str], metrics: list[st
             bertscore_results = bertscore.compute(predictions=predictions, references=references, lang='en')
             result["bertscore"] = bertscore_results
         elif metric == "bleu":
+            # "k4black/codebleu" for code
             bleu = load("bleu")
             bleu_results = bleu.compute(predictions=predictions, references=references)
             result["bleu"] = bleu_results
@@ -45,14 +48,28 @@ def gen_golden_code_metric(gen_project_path: str, golden_project_path: str) -> d
     predictions = [concat_code(gen_dict)]
     references = [concat_code(golden_dict)]
 
-    return calc_metrics(predictions, references, ["chrf", "rouge", "bertscore", "bleu"])
+    return calc_metrics(predictions, references, ["bleu"])
 
 
-def gen_golden_code_metric_by_files(gen_project_path: str, golden_project_path: str) -> dict[str, Any]:
+def gen_golden_code_metric_by_files(gen_project_path: str, golden_project_path: str, metric: str = "bleu") -> dict[str, Any]:
     gen_dict = get_project_file_tree_as_dict(gen_project_path)
     golden_dict = get_project_file_tree_as_dict(golden_project_path)
 
-    pass
+    golden_files = [content for file, content in golden_dict.items()]
+    golden_files_count = len(golden_files)
+    golden_selected_files = set()
+    best_metrics = []
+
+    for file, content in gen_dict.items():
+        metrics = [calc_metrics([content], [golden_file], [metric])[metric][metric]
+                   for golden_file in golden_files]
+        max_index = np.argmax(np.array(metrics))
+        golden_selected_files.add(max_index)
+        best_metrics.append(metrics[max_index])
+    return {
+        f'avg_{metric}_match': np.average(best_metrics),
+        'uncovered_golden': (golden_files_count - len(golden_selected_files)) / golden_files_count
+    }
 
 
 def gen_golden_code_metric_by_code_entities(gen_project_path: str, golden_project_path: str) -> dict[str, Any]:
@@ -64,7 +81,7 @@ def gen_golden_code_metric_by_code_entities(gen_project_path: str, golden_projec
 
 if __name__ == '__main__':
     base_path = '/Users/Maria.Tigina/PycharmProjects/agents-eval-data/'
-    score = gen_golden_code_metric(
+    score = gen_golden_code_metric_by_files(
         os.path.join(base_path, 'gen_templates/JetBrains__intellij-platform-plugin-template_gpt-4-planning'),
         os.path.join(base_path, 'repos/JetBrains__intellij-platform-plugin-template')
     )
