@@ -13,7 +13,7 @@ filtered by `is_template=True` or template-related keywords words presence in de
 From `Java` and `Kotlin` the `Android` projects were identified by `android` token in description or tags and 
 moved to separate category.
 
-Collected data is available in [HuggingFace 🤗](https://huggingface.co/datasets/JetBrains-Research/template-generation) and in [Google Sheets](https://docs.google.com/spreadsheets/d/1tQLWBBlfDA9l72wpXT7DbqkAt9FWUo0bt9dDX1X9AU8/edit#gid=907232403) for labeling
+Collected data is available in [HuggingFace 🤗](https://huggingface.co/datasets/JetBrains-Research/template-generation), data was manually labeled to select test subset in [Google Sheets](https://docs.google.com/spreadsheets/d/1tQLWBBlfDA9l72wpXT7DbqkAt9FWUo0bt9dDX1X9AU8/edit#gid=907232403)
 
 ### Agent Models
 OpenAI GTP-4 with function calling, prompted with file system api (create/delete/list/... files)
