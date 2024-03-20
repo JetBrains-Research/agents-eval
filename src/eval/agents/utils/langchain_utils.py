@@ -48,7 +48,10 @@ def parse_tool(tool_dict: dict, env: Env) -> StructuredTool:
     async def tool_impl(**kwargs):
         args_schema(**kwargs)
         args_schema.validate(kwargs)
-        message = await env.run_command(name, kwargs)
+        try:
+            message = await env.run_command(name, kwargs)
+        except Exception as e:
+            return f"Failed to run command: {e}"
 
         return message
 

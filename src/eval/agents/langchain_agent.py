@@ -28,7 +28,10 @@ class LangchainAgent(IAgent, ABC):
 
     async def run(self, use_prompt: str):
         agent_executor = await self._create_agent_executor(use_prompt)
-
-        return await agent_executor.ainvoke(
+        messages = await agent_executor.ainvoke(
             {"input": use_prompt}
         )
+        telemetry = {
+            "cb": {}  # TODO return get_openai_callback
+        }
+        return messages, telemetry
