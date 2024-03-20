@@ -1,17 +1,17 @@
-def get_vanilla_user_prompt(full_name: str, project_description: str, project_language: str) -> str:
+def get_vanilla_user_prompt(full_name: str, project_description: str, project_language: str, project_additional_info: str) -> str:
     return f"""
     Generate template for project named {full_name.replace("/", "__")} 
     which mainly written on {project_language} 
-    and aligns following description: {project_description}."""
+    and aligns following description: {project_description}. {project_additional_info}."""
 
 
-def get_user_prompt(full_name: str, project_description: str, project_language: str) -> str:
+def get_user_prompt(full_name: str, project_description: str, project_language: str, project_additional_info: str) -> str:
     return f"""
     Template is a small compilable project that can be described in 1-5 sentences containing small examples 
     of all mentioned libraries, technologies, functionality.
     Generate template for project named {full_name.replace("/", "__")} 
     which mainly written on {project_language} 
-    and aligns following description: {project_description}.
+    and aligns following description: {project_description}. {project_additional_info}.
     Provide files and directory structure (tree) as well as program files contents with all required functionality.
     Take into account only code producing steps.
     Project content root directory is already created, use relative paths from it."""

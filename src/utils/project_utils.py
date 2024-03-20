@@ -37,7 +37,6 @@ def get_project_file_tree_as_dict(project_path: str,
             try:
                 with open(file_path, 'r') as f:
                     content = f.read()
-                print(str(file_path))
                 file_tree[str(file_path)] = content
             except Exception as e:
                 print(f"Can not read file {file_path}", e)
