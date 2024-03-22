@@ -31,7 +31,4 @@ class LangchainAgent(IAgent, ABC):
         messages = await agent_executor.ainvoke(
             {"input": use_prompt}
         )
-        telemetry = {
-            "cb": {}  # TODO return get_openai_callback
-        }
-        return messages, telemetry
+        return messages
