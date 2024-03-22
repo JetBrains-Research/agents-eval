@@ -119,7 +119,7 @@ def main(config: DictConfig) -> None:
     load_dotenv()
 
     category, split = 'java', 'test'
-    selected = [5, 15, 24, 26, 34, 57, 197]
+    selected = [197]
     df = load_data(category, split)
     df = df.filter(lambda x: x['id'] in selected)
     asyncio.run(clone_repos(df, config))
