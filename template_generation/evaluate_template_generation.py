@@ -17,13 +17,22 @@ from src.utils.project_utils import get_project_file_tree_as_dict
 async def eval_metrics(config: DictConfig):
     agents = ['gpt-3-5-planning', 'gpt-4-planning', 'gpt-4-vanilla']
     vanilla_agent = 'gpt-4-vanilla'
-    df_vanilla = pd.read_csv(os.path.join(config.gen_templates_results_path, f'{vanilla_agent}.csv'))
-    df_agents = {agent: pd.read_csv(os.path.join(config.gen_templates_results_path, f'{agent}.csv')) for agent in
-                 agents}
+    language = 'java'
+    df_vanilla = pd.read_csv(os.path.join(config.gen_templates_results_path, f'{language}-{vanilla_agent}.csv'))
+    df_agents = {agent: pd.read_csv(os.path.join(config.gen_templates_results_path, f'{language}-{agent}.csv')) for
+                 agent in agents}
 
     for agent, df_agent in df_agents.items():
+        results_path = os.path.join(config.gen_templates_results_path, f'{language}-{agent}-quality-metrics.csv')
+        df_prev_results = None
+        if os.path.exists(results_path):
+            df_prev_results = pd.read_csv(results_path)
         for _, project in df_agent.iterrows():
             agent_metrics = {}
+            if df_prev_results is not None and project['id'] in list(df_prev_results['id']):
+                print(f"Skipping project: {project['full_name']}")
+                continue
+
             print(f"Processing project: {project['full_name']}")
             vanilla_project_path = df_vanilla[df_vanilla['id'] == project['id']]['template_path'].values[0]
             golden_project_path = os.path.join(config.repos_path, f"{project['owner']}__{project['name']}")
@@ -41,33 +50,35 @@ async def eval_metrics(config: DictConfig):
             agent_metrics['tree_result'] = tree_metrics.get("result", "-1")
             agent_metrics['tree_comment'] = tree_metrics.get("comment", "")
 
-            with open(os.path.join(config.gen_templates_results_path, f'{agent}-quality-metrics.csv'), 'a',
-                      newline='') as f:
+            with open(results_path, 'a', newline='') as f:
                 writer = csv.writer(f)
                 if f.tell() == 0:
                     writer.writerow(['id', 'full_name', 'owner', 'name'] + list(agent_metrics.keys()))
-                writer.writerow(
-                    [project['id'], project['full_name'], project['owner'], project['name']] + list(
-                        agent_metrics.values()))
+                writer.writerow([project['id'], project['full_name'], project['owner'],
+                                 project['name']] + list(agent_metrics.values()))
 
 
 def eval_costs(config: DictConfig):
     agents = ['gpt-4-vanilla', 'gpt-3-5-planning', 'gpt-4-planning']
     client = Client()
+    language = 'java'
     for agent in agents:
-        df = pd.read_csv(os.path.join(config.gen_templates_results_path, f'{agent}.csv'))
+        df = pd.read_csv(os.path.join(config.gen_templates_results_path, f'{language}-{agent}.csv'))
         for i, project in df.iterrows():
-            gen_files_count = len(
-                list(get_project_file_tree_as_dict(project['template_path'], ignore_hidden=False).keys()))
+            gen_files_count = len(list(
+                get_project_file_tree_as_dict(project['template_path'],
+                                              ignore_hidden=False).keys()))
             golden_files_count = len(list(
                 get_project_file_tree_as_dict(os.path.join(config.repos_path, f"{project['owner']}__{project['name']}"),
                                               ignore_hidden=False).keys()))
 
             langsmith_project_name = f"{agent}-{project['full_name']}"
+            if not client.has_project(langsmith_project_name):
+                continue
             langsmith_project = client.read_project(project_name=langsmith_project_name)
             intermediate_steps_count, run_url = get_intermediate_steps_count(langsmith_project_name)
 
-            with open(os.path.join(config.gen_templates_results_path, f'{agent}-cost-metrics.csv'), 'a',
+            with open(os.path.join(config.gen_templates_results_path, f'{language}-{agent}-cost-metrics.csv'), 'a',
                       newline='') as f:
                 writer = csv.writer(f)
                 if f.tell() == 0:
