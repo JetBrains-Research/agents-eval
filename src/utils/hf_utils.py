@@ -33,6 +33,7 @@ FEATURES = {
             'created_at': datasets.Value("string"),
             'updated_at': datasets.Value("string"),
             'code_lines': datasets.Value("string"),
+            'gpt_description': datasets.Value("string"),
         }
     )
 }
