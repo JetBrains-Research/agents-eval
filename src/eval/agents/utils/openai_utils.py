@@ -1,3 +1,5 @@
+from langchain_core.language_models import BaseChatModel
+from langchain_openai import ChatOpenAI
 from openai import AsyncOpenAI
 from openai.types.chat import ChatCompletion
 from tenacity import wait_random_exponential, stop_after_attempt, retry
@@ -28,3 +30,8 @@ async def chat_completion_request(client: AsyncOpenAI, messages: list[dict[str, 
         print("Unable to generate chat completion response")
         print(f"Exception: {e}")
         return e
+
+
+def create_chat(model_name: str, temperature: int, model_kwargs: dict) -> BaseChatModel:
+    # TODO: Support not only openai models
+    return ChatOpenAI(model_name=model_name, temperature=temperature, model_kwargs=model_kwargs)

@@ -15,9 +15,9 @@ from openai import AsyncOpenAI
 from src.data.github_data_provider import GithubDataProvider
 from src.eval.agents.utils.openai_utils import chat_completion_request
 from src.utils.github_utils import clone_repo
-from src.utils.hf_utils import CATEGORIES, FEATURES, HUGGINGFACE_REPO, load_data
+from src.utils.hf_utils import CATEGORIES, FEATURES, HUGGINGFACE_REPO
 from src.utils.jsonl_utils import read_jsonl
-from template_generation.template_generation_prompts import get_gpt_description_system_prompt
+from src.template_generation.template_generation_prompts import get_gpt_description_system_prompt
 
 logging.basicConfig(
     format='%(asctime)s %(message)s',
@@ -209,7 +209,7 @@ def add_gpt_description_column(config: DictConfig):
         df.to_csv(os.path.join(config.data_path, f"{category}_template_repos.csv"), index=False)
 
 
-@hydra.main(config_path="../configs", config_name="template_generation", version_base=None)
+@hydra.main(config_path="../../configs", config_name="template_generation", version_base=None)
 def main(config: DictConfig):
     load_dotenv()
     # load_repos_data(config)

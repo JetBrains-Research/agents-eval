@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class Env(ABC):
+class BaseEnv(ABC):
 
     @abstractmethod
     async def init(self, init_params: dict) -> str:

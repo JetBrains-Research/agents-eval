@@ -13,21 +13,21 @@ from langsmith import Client
 from omegaconf import DictConfig
 from tenacity import stop_after_attempt, retry
 
-from src.eval.agents.agent import IAgent
+from src.eval.agents.base_agent import BaseAgent
 from src.eval.agents.openai_planning_agent import OpenAiPlanningAgent
 from src.eval.agents.openai_vanilla_agent import OpenAiVanillaAgent
 from src.eval.envs.http_env import HttpEnv
 from src.utils.hf_utils import load_data
-from template_generation.template_generation_prompts import get_planning_system_prompt, \
+from src.template_generation.template_generation_prompts import get_planning_system_prompt, \
     get_execution_system_prompt, get_vanilla_user_prompt, get_user_prompt
 
 
 @retry(stop=stop_after_attempt(3))
-async def run_template_generation_for_project(agent: IAgent, agent_init_params: dict, user_prompt: str, project,
+async def run_template_generation_for_project(agent: BaseAgent, agent_init_params: dict, user_prompt: str, project,
                                               gen_templates_path: str) -> tuple:
     start_time = time.time()
     # Init agent
-    await agent.init(**agent_init_params)
+    await agent.init_tools(**agent_init_params)
 
     # Init template directory
     agent_template_path = os.path.join(gen_templates_path, f'{project["owner"]}__{project["name"]}_{agent.name}')
@@ -108,7 +108,7 @@ async def run_template_generation(projects: Dataset, language: str, config: Dict
                 writer.writerow(row)
 
 
-@hydra.main(config_path="../configs", config_name="template_generation", version_base=None)
+@hydra.main(config_path="../../configs", config_name="template_generation", version_base=None)
 def main(config: DictConfig) -> None:
     load_dotenv()
 
