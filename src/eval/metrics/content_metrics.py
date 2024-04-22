@@ -1,4 +1,3 @@
-import os
 from typing import Any
 
 import evaluate
@@ -82,7 +81,7 @@ def gen_golden_content_metric_by_files(gen_project_path: str, golden_project_pat
     gen_files = [file for file, content in gen_dict.items()]
 
     metric = 'gte'
-    metrics = calc_metrics(gen_contents, gen_files, [metric])[metric][metric]
+    metrics = calc_metrics(gen_contents, golden_contents, [metric])[metric][metric]
     best_match = torch.argmax(metrics, dim=1).tolist()
 
     best_metrics = []
@@ -96,3 +95,11 @@ def gen_golden_content_metric_by_files(gen_project_path: str, golden_project_pat
         f'avg_{metric}_match': np.average(best_metrics),
         'uncovered_golden': (golden_files_count - len(golden_selected_files)) / golden_files_count
     }
+
+
+def get_closest_project_index(description: str, other_descriptions: list[str]):
+    metric = 'gte'
+    metrics = calc_metrics([description], [d if d is not None else "" for d in other_descriptions], [metric])[metric][metric]
+    best_match = torch.argmax(metrics, dim=1).tolist()[0]
+
+    return best_match
