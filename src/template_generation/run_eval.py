@@ -21,18 +21,19 @@ from src.template_generation.template_generation_prompts import get_user_prompt
 @retry(stop=stop_after_attempt(3))
 async def run_template_generation_for_project(project, agent: BaseAgent, env: BaseEnv,
                                               gen_templates_path: str, eval_name: str) -> dict[str, any]:
-    start_time = time.time()
-    # Init agent
-    await agent.init_tools(env)
 
     # Init template directory
-    project_template_path = os.path.join(gen_templates_path, f'{project["owner"]}__{project["name"]}_{eval_name}')
+    project_name = f'{project["owner"]}__{project["name"]}_{eval_name}'
+    project_template_path = os.path.join(gen_templates_path, project_name)
     if os.path.exists(project_template_path):
         shutil.rmtree(project_template_path)
     os.makedirs(project_template_path, exist_ok=True)
 
     # Init environment
     await env.init({'content_root_path': project_template_path})
+
+    # Init agent
+    await agent.init_tools(env)
 
     # Build user prompt
     user_prompt = get_user_prompt(
@@ -43,11 +44,13 @@ async def run_template_generation_for_project(project, agent: BaseAgent, env: Ba
     )
 
     # Init langsmith project
-    langsmith_project_name = "-".join([eval_name, project["full_name"]])
     client = Client()
-    if client.has_project(langsmith_project_name):
-        client.delete_project(project_name=langsmith_project_name)
-    with tracing_v2_enabled(project_name=langsmith_project_name):
+    if client.has_project(project_name):
+        client.delete_project(project_name=project_name)
+
+    start_time = time.time()
+
+    with tracing_v2_enabled(project_name=project_name):
         messages = await agent.run(user_prompt)
 
     end_time = time.time()

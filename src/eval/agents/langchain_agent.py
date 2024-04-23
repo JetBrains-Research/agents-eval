@@ -32,8 +32,30 @@ class LangchainAgent(BaseAgent, ABC):
         pass
 
     async def init_tools(self, env: BaseEnv):
-        tools_dict_list = await env.get_tools()
         tools = []
+        tool_dicts = await env.get_tools()
+        for tool_dict in tool_dicts:
+            tool = self._parse_tool(tool_dict['function'], env)
+            tools.append(tool)
+        self.tools = tools
+
+    @staticmethod
+    def _parse_tool(tool_dict: dict, env: BaseEnv) -> StructuredTool:
+        name = tool_dict["name"]
+        description = tool_dict["description"]
+        parameters = {}
+
+        for p_name, p_data in tool_dict['parameters']['properties'].items():
+            p_type = PLUGIN_TO_PYTHON_TYPES.get(p_data['type'], object)
+            p_desc = p_data["description"]
+            if p_name in tool_dict['parameters']['required']:
+                p_default = Undefined
+            else:
+                p_default = ...
+            parameters[p_name] = (p_type, Field(p_default, description=p_desc))
+
+        args_schema = create_model(f"{name}_args_schema", __base__=PydanticModel, **parameters)
+        args_schema.required = []  # type: ignore
 
         async def tool_impl(**kwargs):
             args_schema(**kwargs)
@@ -45,41 +67,19 @@ class LangchainAgent(BaseAgent, ABC):
 
             return message
 
-        for tool_dict in tools_dict_list:
-            if 'function' not in tool_dict:
-                continue
-            tool_dict_function = tool_dict['function']
-            name = tool_dict_function["name"]
-            description = tool_dict_function["description"]
-            parameters = {}
+        tool = StructuredTool(
+            name=name,
+            description=description,
+            func=None,
+            coroutine=tool_impl,
+            args_schema=args_schema,
+        )
 
-            for p_name, p_data in tool_dict_function['parameters']['properties'].items():
-                p_type = PLUGIN_TO_PYTHON_TYPES.get(p_data['type'], object)
-                p_desc = p_data["description"]
-                if p_name in tool_dict_function['parameters']['required']:
-                    p_default = Undefined
-                else:
-                    p_default = ...
-                parameters[p_name] = (p_type, Field(p_default, description=p_desc))
-
-            args_schema = create_model(f"{name}_args_schema", __base__=PydanticModel, **parameters)
-            args_schema.required = []  # type: ignore
-
-            tool = StructuredTool(
-                name=name,
-                description=description,
-                func=None,
-                coroutine=tool_impl,
-                args_schema=args_schema,
-            )
-
-            tools.append(tool)
-
-        self.tools = tools
+        return tool
 
     async def run(self, user_prompt: str, **kwargs):
-        chat_prompt = await self.prompt.chat(user_prompt, **kwargs)
-        agent_executor = await self._create_agent_executor(chat_prompt)
+        execution_prompt = await self.prompt.execution_prompt(user_prompt)
+        agent_executor = await self._create_agent_executor(execution_prompt)
         messages = await agent_executor.ainvoke(
             {"input": user_prompt}
         )
