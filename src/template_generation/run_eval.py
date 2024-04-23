@@ -20,10 +20,10 @@ from src.template_generation.template_generation_prompts import get_user_prompt
 
 @retry(stop=stop_after_attempt(3))
 async def run_template_generation_for_project(project, agent: BaseAgent, env: BaseEnv,
-                                              gen_templates_path: str, eval_name: str) -> dict[str, any]:
+                                              gen_templates_path: str, eval_cfg_name: str) -> dict[str, any]:
 
     # Init template directory
-    project_name = f'{project["owner"]}__{project["name"]}_{eval_name}'
+    project_name = f'{project["owner"]}__{project["name"]}'
     project_template_path = os.path.join(gen_templates_path, project_name)
     if os.path.exists(project_template_path):
         shutil.rmtree(project_template_path)
@@ -45,12 +45,13 @@ async def run_template_generation_for_project(project, agent: BaseAgent, env: Ba
 
     # Init langsmith project
     client = Client()
-    if client.has_project(project_name):
-        client.delete_project(project_name=project_name)
+    langsmith_project_name = f"{project['full_name']}-{eval_cfg_name}"
+    if client.has_project(langsmith_project_name):
+        client.delete_project(project_name=langsmith_project_name)
 
     start_time = time.time()
 
-    with tracing_v2_enabled(project_name=project_name):
+    with tracing_v2_enabled(project_name=langsmith_project_name):
         messages = await agent.run(user_prompt)
 
     end_time = time.time()
@@ -74,18 +75,15 @@ async def run_template_generation_for_project(project, agent: BaseAgent, env: Ba
 
 
 async def run_template_generation(agent: BaseAgent, env: BaseEnv, data_src: BaseDataSource,
-                                  output_path: str, eval_name: str):
+                                  output_path: str, eval_cfg_name: str):
     gen_templates_path = os.path.join(output_path, "gen_templates")
     os.makedirs(gen_templates_path, exist_ok=True)
 
-    results_path = os.path.join(output_path, "results")
-    os.makedirs(results_path, exist_ok=True)
-
     for project in data_src:
         results_dict = await run_template_generation_for_project(
-            project, agent, env, gen_templates_path, eval_name)
+            project, agent, env, gen_templates_path, eval_cfg_name)
 
-        result_csv_path = os.path.join(results_path, f"{project['language']}-{eval_name}.csv")
+        result_csv_path = os.path.join(output_path, "gen_template_results.csv")
         with open(result_csv_path, 'a', newline='') as f:
             writer = csv.writer(f)
             if f.tell() == 0:
@@ -98,10 +96,10 @@ def main(cfg: EvalConfig) -> None:
     agent: BaseAgent = hydra.utils.instantiate(cfg.agent)
     env: BaseEnv = hydra.utils.instantiate(cfg.env)
     data_src: BaseDataSource = hydra.utils.instantiate(cfg.data_src)
-    output_path = cfg.output_path
-    eval_name = cfg.name
+    eval_cfg_name = cfg.name
+    output_path = os.path.join(cfg.output_path, eval_cfg_name)
 
-    asyncio.run(run_template_generation(agent, env, data_src, output_path, eval_name))
+    asyncio.run(run_template_generation(agent, env, data_src, output_path, eval_cfg_name))
 
 
 if __name__ == '__main__':
