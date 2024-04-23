@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 
+from src.eval.envs.base_env import BaseEnv
+
 
 class BaseAgent(ABC):
     name: str = "base"
@@ -9,5 +11,5 @@ class BaseAgent(ABC):
         pass
 
     @abstractmethod
-    async def init_tools(self, tools: list[dict]):
+    async def init_tools(self, env: BaseEnv):
         pass

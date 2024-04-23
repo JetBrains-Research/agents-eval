@@ -7,20 +7,23 @@ from src.eval.prompts.base_prompt import BasePrompt
 
 class PlanningPrompt(BasePrompt):
 
-    def __init__(self, model_name: str, temperature: int, model_kwargs: dict):
+    def __init__(self, model_name: str, temperature: int, model_kwargs: dict,
+                 planning_system_prompt: str, execution_system_prompt: str):
         self.chat = create_chat(model_name, temperature, model_kwargs)
+        self.planning_system_prompt = planning_system_prompt
+        self.execution_system_prompt = execution_system_prompt
 
-    async def chat(self, user_text_query: str, **kwargs) -> ChatPromptTemplate:
+    async def chat(self, user_prompt: str, **kwargs) -> ChatPromptTemplate:
         planning_prompt = [
-            SystemMessage(content=kwargs.get('planning_system_prompt')),
-            HumanMessage(content=user_text_query),
+            SystemMessage(content=self.planning_system_prompt),
+            HumanMessage(content=user_prompt),
         ]
 
         plan = await self.chat.ainvoke(planning_prompt)
         print(f"Received plan:\n{plan.content}")
 
         execution_messages = [
-            ("system", kwargs.get('execution_system_prompt')),
+            ("system", self.execution_system_prompt),
             ("user", "{input}"),
             ("system", plan.content),
             MessagesPlaceholder(variable_name='chat_history', optional=True),
