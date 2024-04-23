@@ -15,8 +15,11 @@ class PlanningPromptConfig(PromptConfig):
     model_name: str = MISSING
     temperature: int = MISSING
     model_kwargs: Dict[str, Any] = field(default_factory=lambda: {})
+    planning_system_prompt: str = MISSING
+    execution_system_prompt: str = MISSING
 
 
 @dataclass
 class VanillaPromptConfig(PromptConfig):
     _target_: str = f"src.eval.prompts.planning_prompt.VanillaPrompt"
+    execution_system_prompt: str = MISSING

@@ -24,6 +24,7 @@ def run():
     command_name = request.json.get('command_name')
     command_params = request.json.get('command_params')
 
+    print(f"Running command {command_name} with params {command_params}")
     try:
         if command_name == 'create_directory':
             _assert_args(command_name, command_params, ['path'])

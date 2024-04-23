@@ -20,14 +20,14 @@ class OpenAiLangchainAgent(LangchainAgent):
         super().__init__(prompt)
         self.chat = create_chat(model_name, temperature, model_kwargs)
 
-    async def _create_agent_executor(self, prompt: ChatPromptTemplate) -> AgentExecutor:
+    async def _create_agent_executor(self, execution_prompt: ChatPromptTemplate) -> AgentExecutor:
         agent: RunnableSerializable = (
                 RunnablePassthrough.assign(
                     agent_scratchpad=lambda x: format_to_openai_tool_messages(
                         x["intermediate_steps"]
                     )
                 )
-                | prompt
+                | execution_prompt
                 | self.chat.bind(tools=[convert_to_openai_tool(tool) for tool in self.tools])
                 | OpenAIToolsAgentOutputParser()
         )
