@@ -1,3 +1,4 @@
+name: vanilla-gpt-4-1106-preview
 env:
   _target_: src.eval.envs.http_env.HttpEnv
   host: '127.0.0.1'
@@ -10,11 +11,20 @@ agent:
     temperature: 0.8
     model_kwargs:
       seed: 76097149
+    execution_system_prompt: |
+      Execute the following detailed action plan methodically. 
+      For each step of the plan:
+      - Call the appropriate function with the required arguments, corresponding directly to the outlined plan's next action.
+      - Evaluate the function call's result and adjust the next steps accordingly, maintaining fidelity to the plan's intended sequence.
+      - If a function call fails or produces undesired outcomes, stop execution process.
+      - Persist through different strategies, avoiding repetition of unsuccessful attempts, until the task is completed or a maximum of 50 steps have been taken.
+      - Document solely the function calls and their outcomes. Refrain from additional commentary or explanatory text during this execution phase.
+      Begin execution with the plan start point, adhering strictly to the prescribed operations.
   model_name: gpt-4-1106-preview
   temperature: 0.8
   model_kwargs:
     seed: 76097149
-data:
+data_src:
   _target_: src.eval.data.hf.HFDataSource
   cache_dir: null
   hub_name: JetBrains-Research/template-generation
@@ -22,4 +32,4 @@ data:
     - java
     - kt
   split: test
-output_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/eval_results
+output_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/gen_template

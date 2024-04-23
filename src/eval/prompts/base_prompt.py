@@ -6,5 +6,5 @@ from langchain_core.prompts import ChatPromptTemplate
 class BasePrompt(ABC):
 
     @abstractmethod
-    async def chat(self, user_text_query: str, **kwargs) -> ChatPromptTemplate:
+    async def chat(self, user_prompt: str, **kwargs) -> ChatPromptTemplate:
         pass

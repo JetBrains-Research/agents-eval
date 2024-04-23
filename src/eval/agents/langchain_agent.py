@@ -46,14 +46,17 @@ class LangchainAgent(BaseAgent, ABC):
             return message
 
         for tool_dict in tools_dict_list:
-            name = tool_dict["name"]
-            description = tool_dict["description"]
+            if 'function' not in tool_dict:
+                continue
+            tool_dict_function = tool_dict['function']
+            name = tool_dict_function["name"]
+            description = tool_dict_function["description"]
             parameters = {}
 
-            for p_name, p_data in tool_dict['parameters']['properties'].items():
+            for p_name, p_data in tool_dict_function['parameters']['properties'].items():
                 p_type = PLUGIN_TO_PYTHON_TYPES.get(p_data['type'], object)
                 p_desc = p_data["description"]
-                if p_name in tool_dict['parameters']['required']:
+                if p_name in tool_dict_function['parameters']['required']:
                     p_default = Undefined
                 else:
                     p_default = ...
@@ -74,10 +77,10 @@ class LangchainAgent(BaseAgent, ABC):
 
         self.tools = tools
 
-    async def run(self, user_text_query: str, **kwargs):
-        chat_prompt = await self.prompt.chat(user_text_query, **kwargs)
+    async def run(self, user_prompt: str, **kwargs):
+        chat_prompt = await self.prompt.chat(user_prompt, **kwargs)
         agent_executor = await self._create_agent_executor(chat_prompt)
         messages = await agent_executor.ainvoke(
-            {"input": user_text_query}
+            {"input": user_prompt}
         )
         return messages
