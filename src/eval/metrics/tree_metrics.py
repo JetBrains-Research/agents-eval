@@ -1,3 +1,4 @@
+import json
 from typing import Any
 
 from openai import AsyncOpenAI
@@ -10,9 +11,9 @@ from src.utils.project_utils import get_project_file_tree
 
 async def gen_vanilla_golden_tree_metric(gen_project_path: str, vanilla_project_path: str, golden_project_path: str) \
         -> dict[str, Any]:
-    golden_tree = get_project_file_tree(golden_project_path)
-    vanilla_tree = get_project_file_tree(vanilla_project_path)
     gen_tree = get_project_file_tree(gen_project_path)
+    vanilla_tree = get_project_file_tree(vanilla_project_path)
+    golden_tree = get_project_file_tree(golden_project_path)
 
     chat_response = await chat_completion_request(AsyncOpenAI(), messages=[
         {
@@ -28,7 +29,14 @@ async def gen_vanilla_golden_tree_metric(gen_project_path: str, vanilla_project_
     json_response = {"unparsed_response": chat_response.choices[0].message.content}
     try:
         json_response = parse_json_response(chat_response.choices[0].message.content)
+        return json_response
     except Exception as e:
-        print("Can not parse score from response:", chat_response.choices[0].message.content, e)
+        print("Can not parse score from response json'''...''':", chat_response.choices[0].message.content, e)
+
+    try:
+        json_response = json.loads(chat_response.choices[0].message.content)
+        return json_response
+    except Exception as e:
+        print("Can not parse score from response dict:", chat_response.choices[0].message.content, e)
 
     return json_response

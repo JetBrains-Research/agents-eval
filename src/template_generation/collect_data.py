@@ -1,6 +1,8 @@
+import asyncio
 import json
 import logging
 import os
+import re
 
 import huggingface_hub
 import hydra
@@ -8,16 +10,19 @@ import pandas as pd
 from datasets import Dataset, DatasetDict
 from dotenv import load_dotenv
 from omegaconf import DictConfig
+from openai import AsyncOpenAI
 
 from src.data.github_data_provider import GithubDataProvider
-from src.utils.hf_utils import CATEGORIES, FEATURES, HUGGINGFACE_REPO, load_data
+from src.eval.agents.utils.openai_utils import chat_completion_request
+from src.utils.github_utils import clone_repo
+from src.utils.hf_utils import CATEGORIES, FEATURES, HUGGINGFACE_REPO
 from src.utils.jsonl_utils import read_jsonl
+from src.template_generation.template_generation_prompts import get_gpt_description_system_prompt
 
 logging.basicConfig(
     format='%(asctime)s %(message)s',
     level=logging.INFO
 )
-
 
 TEMPLATE_KEYWORDS = [
     "template",
@@ -81,7 +86,8 @@ def filter_template_repos(config: DictConfig):
                 logging.info(f"Skipping repo {repo['full_name'].lower()} as it is archived, disabled or locked")
                 continue
             if str(repo_json['updatedAt']) < '2023':
-                logging.info(f"Skipping repo {repo['full_name'].lower()} as it was updated at {repo_json['updatedAt']} < 2023")
+                logging.info(
+                    f"Skipping repo {repo['full_name'].lower()} as it was updated at {repo_json['updatedAt']} < 2023")
                 continue
             if int(repo_json['codeLines']) > 3000:
                 logging.info(f"Skipping repo {repo['full_name'].lower()} as it has {repo_json['codeLines']} > 3000")
@@ -151,22 +157,66 @@ def upload_to_hf(config: DictConfig):
         dataset_dict.push_to_hub(HUGGINGFACE_REPO, category)
 
 
-def clone_repos(config: DictConfig):
+def add_gpt_description_column(config: DictConfig):
+    huggingface_hub.login(token=os.environ['HUGGINGFACE_TOKEN'])
+
+    with open(config.github_tokens_path, 'r') as f:
+        github_tokens = [t.strip() for t in f.readlines()]
+
+    async def get_gpt_description(project):
+        repo_dir = os.path.join(config.repos_path, f'{project["owner"]}__{project["name"]}')
+        await clone_repo(project["owner"], project["name"], github_tokens[0], repo_dir)
+        readme_path = os.path.join(repo_dir, 'README.md')
+        if not os.path.exists(readme_path):
+            return project['description']
+        try:
+            with open(readme_path, 'r') as f:
+                readme_content = f.read()
+            readme_title_split = readme_content.split('# ')
+            readme_title = readme_title_split[0] if len(readme_title_split) == 1 else readme_title_split[1]
+            readme_title_without_links = re.sub(r'\!?\[(.*?)\]\((.*?)\)', r'\1', readme_title)
+            readme_title_without_links = re.sub(r'\!?\[(.*?)\]\((.*?)\)', r'\1', readme_title_without_links)
+
+            chat_response = await chat_completion_request(AsyncOpenAI(), messages=[
+                {
+                    "role": "system",
+                    "content": get_gpt_description_system_prompt()
+                },
+                {
+                    "role": "user",
+                    "content": project['description'] + readme_title_without_links
+                }
+            ])
+
+            gpt_description = chat_response.choices[0].message.content
+            return gpt_description
+        except Exception as e:
+            print(e)
+            return project['description']
+
+    def add_gpt_description(project, test_full_names: list[str]):
+        if project['full_name'].lower() in test_full_names:
+            project['gpt_description'] = asyncio.run(get_gpt_description(project))
+        else:
+            project['gpt_description'] = project['description']
+
+        return project
+
     for category in CATEGORIES:
-        df = load_data(category, 'test')
-        with open(config.github_tokens_path, 'r') as f:
-            github_tokens = [t.strip() for t in f.readlines()]
-        github_data_provider = GithubDataProvider(github_tokens=github_tokens)
-        github_data_provider.clone_repos([(d["repo_owner"], d["repo_name"]) for d in df], config.repos_path)
+        df = pd.read_csv(os.path.join(config.data_path, f'{category}_template_repos.csv'))
+        test_full_names = [full_name.lower() for full_name in config['splits'][category]]
+        df = df.apply(lambda x: add_gpt_description(x, test_full_names), axis=1)
+        df.to_csv(os.path.join(config.data_path, f"{category}_template_repos.csv"), index=False)
 
 
-@hydra.main(config_path="../configs", config_name="template_generation", version_base=None)
+@hydra.main(config_path="../../configs", config_name="template_generation", version_base=None)
 def main(config: DictConfig):
     load_dotenv()
     # load_repos_data(config)
     # filter_template_repos(config)
     # separate_android_repos(config)
     # set_ids(config)
+    add_gpt_description_column(config)
     upload_to_hf(config)
     # clone_repos(config)
 

@@ -1,7 +1,7 @@
 from contextlib import contextmanager
 
-from src.docker.docker_interface import DockerInterface
-from src.docker.docker_session_config import DockerSessionConfig
+from src.utils.docker.docker_interface import DockerInterface
+from src.utils.docker.docker_session_config import DockerSessionConfig
 
 
 @contextmanager

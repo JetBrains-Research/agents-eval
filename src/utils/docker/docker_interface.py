@@ -9,7 +9,7 @@ import docker
 from docker import DockerClient
 from docker.models.containers import Container
 
-from src.docker.docker_session_config import DockerSessionConfig
+from src.utils.docker.docker_session_config import DockerSessionConfig
 
 
 @dataclass

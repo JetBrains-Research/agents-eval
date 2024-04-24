@@ -2,10 +2,10 @@ import json
 
 import aiohttp
 
-from src.eval.envs.env import Env
+from src.eval.envs.base_env import BaseEnv
 
 
-class HttpEnv(Env):
+class HttpEnv(BaseEnv):
 
     def __init__(self, host: str, port: int):
         self.host = host
