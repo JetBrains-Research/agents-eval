@@ -12,9 +12,9 @@ from dotenv import load_dotenv
 from omegaconf import DictConfig
 from openai import AsyncOpenAI
 
-from src.data.github_data_provider import GithubDataProvider
 from src.eval.agents.utils.openai_utils import chat_completion_request
-from src.utils.github_utils import clone_repo
+from src.utils.github.github_data_provider import GithubDataProvider
+from src.utils.github.github_utils import clone_repo
 from src.utils.hf_utils import CATEGORIES, FEATURES, HUGGINGFACE_REPO
 from src.utils.jsonl_utils import read_jsonl
 from src.template_generation.prompts import get_gpt_description_system_prompt

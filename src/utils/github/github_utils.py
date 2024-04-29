@@ -28,7 +28,7 @@ X_RATELIMIT_RESET = "X-RateLimit-Reset"  # Indicates when the primary rate limit
 @dataclasses.dataclass(frozen=True)
 class GithubRepository:
     """
-    Github repository data with branch, last commit SHA and collection timestamp
+    Github repository github with branch, last commit SHA and collection timestamp
     """
 
     repo_id: Optional[int]
@@ -68,7 +68,7 @@ class GithubApiResponse:
 @dataclasses.dataclass(frozen=True)
 class GithubApiListRepositoriesResponse:
     """
-    Search response which contains repository data, link to the next page of results if any and basic information
+    Search response which contains repository github, link to the next page of results if any and basic information
     like total number of found repositories and whether the search result is incomplete.
     """
 

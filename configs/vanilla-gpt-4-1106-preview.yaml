@@ -25,11 +25,11 @@ agent:
   model_kwargs:
     seed: 76097149
 data_src:
-  _target_: src.eval.data.hf.HFDataSource
+  _target_: src.eval.github.hf.HFDataSource
   cache_dir: null
   hub_name: JetBrains-Research/template-generation
   configs:
     - java
     - kt
   split: test
-output_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/gen_template
+output_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-github/gen_template

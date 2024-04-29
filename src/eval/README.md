@@ -1,4 +1,4 @@
-# Tools for evaluation pipeline
+# Evaluation pipeline components
 
 ## Agents
 All agents are driven by OpenAI models which support function calling and are written with usage of [LangChain](https://www.langchain.com/) library. 

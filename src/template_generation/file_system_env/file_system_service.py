@@ -93,7 +93,7 @@ def ping():
 def get_status():
     try:
         file_tree = agent.get_file_tree()
-        return jsonify({"status": "success", "data": file_tree}), 200
+        return jsonify({"status": "success", "github": file_tree}), 200
     except Exception as e:
         return jsonify({"status": "fail", "error": agent.to_relative_path(str(e))}), 403
 

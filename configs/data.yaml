@@ -1,6 +1,6 @@
-data_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data
-repos_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/repos
-github_tokens_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/tokens.txt
+data_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-github
+repos_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-github/repos
+github_tokens_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-github/tokens.txt
 splits:
   java: [
     'amiya-pattnaik/selenium-cucumber-java',

@@ -7,7 +7,7 @@ from typing import Optional, Callable, Any
 import aiohttp
 
 from src.utils.jsonl_utils import append_to_jsonl
-from src.utils.github_utils import make_github_http_request, clone_repo, GITHUB_API_URL
+from src.utils.github.github_utils import make_github_http_request, clone_repo, GITHUB_API_URL
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
