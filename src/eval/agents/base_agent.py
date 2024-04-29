@@ -7,7 +7,7 @@ class BaseAgent(ABC):
     name: str = "base"
 
     @abstractmethod
-    async def run(self, user_text_query: str, **kwargs):
+    async def run(self, user_prompt: str, **kwargs):
         pass
 
     @abstractmethod

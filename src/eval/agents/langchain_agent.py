@@ -23,6 +23,8 @@ class PydanticModel(BaseModel, extra=Extra.forbid):
 
 class LangchainAgent(BaseAgent, ABC):
 
+    name = "langchain"
+
     def __init__(self, prompt: BasePrompt):
         self.prompt = prompt
         self.tools = None

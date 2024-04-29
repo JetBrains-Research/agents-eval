@@ -4,8 +4,8 @@ from typing import Any
 from openai import AsyncOpenAI
 
 from src.eval.agents.utils.openai_utils import chat_completion_request
-from src.eval.metrics.metrics_prompts import get_gen_vanilla_golden_tree_metric_prompt
-from src.eval.metrics.metrics_result import parse_json_response
+from src.metrics.metrics_prompts import get_gen_vanilla_golden_tree_metric_prompt
+from src.metrics.metrics_result import parse_json_response
 from src.utils.project_utils import get_project_file_tree
 
 

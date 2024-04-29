@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from datasets import get_dataset_config_names, load_dataset  # type: ignore[import-untyped]
+from datasets import get_dataset_config_names, load_dataset
 
 from .base import BaseDataSource
 

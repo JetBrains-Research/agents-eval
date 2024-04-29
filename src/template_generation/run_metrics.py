@@ -10,9 +10,9 @@ from dotenv import load_dotenv
 from langsmith import Client
 from omegaconf import DictConfig
 
-from src.eval.metrics.content_metrics import gen_golden_content_metric, gen_golden_content_metric_by_files, \
+from src.metrics.content_metrics import gen_golden_content_metric, gen_golden_content_metric_by_files, \
     get_closest_project_index
-from src.eval.metrics.tree_metrics import gen_vanilla_golden_tree_metric
+from src.metrics.tree_metrics import gen_vanilla_golden_tree_metric
 from src.utils.git_utils import clone_repo
 from src.utils.hf_utils import load_data
 from src.utils.project_utils import get_project_file_tree_as_dict

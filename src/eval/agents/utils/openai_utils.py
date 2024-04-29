@@ -33,5 +33,4 @@ async def chat_completion_request(client: AsyncOpenAI, messages: list[dict[str, 
 
 
 def create_chat(model_name: str, temperature: int, model_kwargs: dict) -> BaseChatModel:
-    # TODO: Support not only openai models
     return ChatOpenAI(model_name=model_name, temperature=temperature, model_kwargs=model_kwargs)

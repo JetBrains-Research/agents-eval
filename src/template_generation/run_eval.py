@@ -15,7 +15,7 @@ from src.configs.eval_configs import EvalConfig
 from src.eval.agents.base_agent import BaseAgent
 from src.eval.data.base import BaseDataSource
 from src.eval.envs.base_env import BaseEnv
-from src.template_generation.template_generation_prompts import get_user_prompt
+from src.template_generation.prompts import get_user_prompt
 
 
 @retry(stop=stop_after_attempt(3))

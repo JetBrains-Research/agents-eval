@@ -17,7 +17,7 @@ from src.eval.agents.utils.openai_utils import chat_completion_request
 from src.utils.github_utils import clone_repo
 from src.utils.hf_utils import CATEGORIES, FEATURES, HUGGINGFACE_REPO
 from src.utils.jsonl_utils import read_jsonl
-from src.template_generation.template_generation_prompts import get_gpt_description_system_prompt
+from src.template_generation.prompts import get_gpt_description_system_prompt
 
 logging.basicConfig(
     format='%(asctime)s %(message)s',

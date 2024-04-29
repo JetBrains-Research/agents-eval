@@ -1,7 +1,7 @@
 from openai import AsyncOpenAI
 
 from src.eval.agents.utils.openai_utils import chat_completion_request
-from src.eval.metrics.metrics_prompts import get_gen_golden_diff_metric_prompt, \
+from src.metrics.metrics_prompts import get_gen_golden_diff_metric_prompt, \
     get_gen_vanilla_golden_diff_metric_prompt
 from src.utils.git_utils import get_diff_between_directories
 
