@@ -2,6 +2,9 @@
 
 Toolkit for collecting datasets for Agents and Planning models and running evaluation pipelines.
 
+## SetUp
+
+
 ## Project Template Generation
 The challenge is to **generate project template** -- small compilable project that can be described in 1-5 sentences 
 containing small examples of all mentioned libraries/technologies/functionality.

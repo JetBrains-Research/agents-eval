@@ -1,7 +1,6 @@
 from langchain.agents import AgentExecutor
 from langchain.agents.format_scratchpad.openai_tools import format_to_openai_tool_messages
 from langchain.agents.output_parsers.openai_tools import OpenAIToolsAgentOutputParser
-from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough, RunnableSerializable
 from langchain_core.utils.function_calling import convert_to_openai_tool
 
@@ -12,15 +11,16 @@ from src.eval.prompts.base_prompt import BasePrompt
 
 class OpenAiLangchainAgent(LangchainAgent):
 
-    def __init__(self,
-                 prompt: BasePrompt,
-                 model_name: str,
-                 temperature: int,
-                 model_kwargs: dict):
-        super().__init__(prompt)
-        self.chat = create_chat(model_name, temperature, model_kwargs)
+    def __init__(self, prompt: BasePrompt, model_name: str, temperature: int, model_kwargs: dict):
+        super().__init__()
+        self.prompt = prompt
+        self.model_name = model_name
+        self.temperature = temperature
+        self.model_kwargs = model_kwargs
 
-    async def _create_agent_executor(self, execution_prompt: ChatPromptTemplate) -> AgentExecutor:
+    async def _create_agent_executor(self, **kwargs) -> AgentExecutor:
+        execution_prompt = await self.prompt.execution_prompt(**kwargs)
+        chat = create_chat(self.model_name, self.temperature, self.model_kwargs)
         agent: RunnableSerializable = (
                 RunnablePassthrough.assign(
                     agent_scratchpad=lambda x: format_to_openai_tool_messages(
@@ -28,7 +28,7 @@ class OpenAiLangchainAgent(LangchainAgent):
                     )
                 )
                 | execution_prompt
-                | self.chat.bind(tools=[convert_to_openai_tool(tool) for tool in self.tools])
+                | chat.bind(tools=[convert_to_openai_tool(tool) for tool in self.tools])
                 | OpenAIToolsAgentOutputParser()
         )
 

@@ -37,6 +37,21 @@ read_fs_tools = [
     }
 ]
 
+meta_fs_tools = [
+    {
+        "type": "function",
+        "function": {
+            "name": "reset",
+            "description": "Reset all template to empty template.",
+            "parameters": {
+                "type": "object",
+                "properties": {},
+                'required': []
+            },
+        }
+    },
+]
+
 read_write_fs_tools = [
     {
         "type": "function",

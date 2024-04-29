@@ -20,6 +20,13 @@ class PlanningPromptConfig(PromptConfig):
 
 
 @dataclass
-class VanillaPromptConfig(PromptConfig):
-    _target_: str = f"src.eval.prompts.planning_prompt.VanillaPrompt"
+class TreeOfThoughtsPromptConfig(PromptConfig):
+    _target_: str = f"src.eval.prompts.tree_of_thoughts_prompt.PlanningPrompt"
+    thought_evaluator_message: str = MISSING
+    thought_generator_message: str = MISSING
+
+
+@dataclass
+class SimplePromptConfig(PromptConfig):
+    _target_: str = f"src.eval.prompts.simple_prompt.SimplePrompt"
     execution_system_prompt: str = MISSING

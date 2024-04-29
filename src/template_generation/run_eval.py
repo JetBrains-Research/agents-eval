@@ -18,10 +18,9 @@ from src.eval.envs.base_env import BaseEnv
 from src.template_generation.prompts import get_user_prompt
 
 
-@retry(stop=stop_after_attempt(3))
+# @retry(stop=stop_after_attempt(3))
 async def run_template_generation_for_project(project, agent: BaseAgent, env: BaseEnv,
                                               gen_templates_path: str, eval_cfg_name: str) -> dict[str, any]:
-
     # Init template directory
     project_name = f'{project["owner"]}__{project["name"]}'
     project_template_path = os.path.join(gen_templates_path, project_name)
@@ -91,7 +90,7 @@ async def run_template_generation(agent: BaseAgent, env: BaseEnv, data_src: Base
             writer.writerow(results_dict.values())
 
 
-@hydra.main(config_path="../../configs", version_base="1.1")
+@hydra.main(config_path="../../configs/template_generation", version_base="1.1")
 def main(cfg: EvalConfig) -> None:
     agent: BaseAgent = hydra.utils.instantiate(cfg.agent)
     env: BaseEnv = hydra.utils.instantiate(cfg.env)

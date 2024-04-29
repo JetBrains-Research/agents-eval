@@ -8,6 +8,11 @@ class FileSystemAPI:
 
     def __init__(self, content_root_path: str):
         self.content_root_path = content_root_path
+        os.makedirs(self.content_root_path, exist_ok=True)
+
+    def reset(self):
+        shutil.rmtree(self.content_root_path)
+        os.makedirs(self.content_root_path)
 
     def to_absolute_path(self, path: str) -> str:
         return os.path.join(self.content_root_path, path)

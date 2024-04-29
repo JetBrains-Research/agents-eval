@@ -1,3 +1,5 @@
+import os
+
 from langchain_core.language_models import BaseChatModel
 from langchain_openai import ChatOpenAI
 from openai import AsyncOpenAI
@@ -33,4 +35,5 @@ async def chat_completion_request(client: AsyncOpenAI, messages: list[dict[str, 
 
 
 def create_chat(model_name: str, temperature: int, model_kwargs: dict) -> BaseChatModel:
-    return ChatOpenAI(model_name=model_name, temperature=temperature, model_kwargs=model_kwargs)
+    return ChatOpenAI(model_name=model_name, openai_api_key=os.environ["OPENAI_API_KEY"],
+                      temperature=temperature, model_kwargs=model_kwargs)

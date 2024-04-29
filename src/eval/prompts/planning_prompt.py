@@ -1,3 +1,5 @@
+from textwrap import dedent
+
 from langchain_core.messages import SystemMessage, HumanMessage
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 
@@ -9,21 +11,24 @@ class PlanningPrompt(BasePrompt):
 
     def __init__(self, model_name: str, temperature: int, model_kwargs: dict,
                  planning_system_prompt: str, execution_system_prompt: str):
-        self._chat = create_chat(model_name, temperature, model_kwargs)
+        self._model_name = model_name
+        self._temperature = temperature
+        self._model_kwargs = model_kwargs
         self._planning_system_prompt = planning_system_prompt
         self._execution_system_prompt = execution_system_prompt
 
-    async def execution_prompt(self, user_prompt: str) -> ChatPromptTemplate:
+    async def execution_prompt(self, **kwargs) -> ChatPromptTemplate:
         planning_prompt = [
-            SystemMessage(content=self._planning_system_prompt),
-            HumanMessage(content=user_prompt),
+            SystemMessage(content=dedent(self._planning_system_prompt)),
+            HumanMessage(content=kwargs.get("user_prompt")),
         ]
 
-        plan = await self._chat.ainvoke(planning_prompt)
+        chat = create_chat(self._model_name, self._temperature, self._model_kwargs)
+        plan = await chat.ainvoke(planning_prompt)
         print(f"Received plan:\n{plan.content}")
 
         execution_messages = [
-            ("system", self._execution_system_prompt),
+            ("system", dedent(self._execution_system_prompt)),
             ("user", "{input}"),
             ("system", plan.content),
             MessagesPlaceholder(variable_name='chat_history', optional=True),
