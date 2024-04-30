@@ -3,7 +3,8 @@ from dataclasses import dataclass
 from hydra.core.config_store import ConfigStore
 from omegaconf import MISSING
 
-from src.configs.agent_configs import AgentConfig, OpenAiLangchainAgentConfig, TreeOfThoughtsAgentConfig
+from src.configs.agent_configs import AgentConfig, OpenAiLangchainAgentConfig, TreeOfThoughtsAgentConfig, \
+    ADaPTAgentConfig
 from src.configs.data_configs import DataSourceConfig, HFDataSourceConfig
 from src.configs.env_configs import EnvConfig, HttpEnvConfig
 from src.configs.prompt_configs import PlanningPromptConfig, SimplePromptConfig, TreeOfThoughtsPromptConfig
@@ -27,6 +28,7 @@ cs.store(name="http", group="env", node=HttpEnvConfig)
 # all available options for the backbone
 cs.store(name="openai", group="agent", node=OpenAiLangchainAgentConfig)
 cs.store(name="thee_of_thoughts", group="agent", node=TreeOfThoughtsAgentConfig)
+cs.store(name="adapt", group="agent", node=ADaPTAgentConfig)
 
 # all available options for the prompt
 cs.store(name="planning", group="agent/prompt", node=PlanningPromptConfig)

@@ -30,3 +30,15 @@ class TreeOfThoughtsAgentConfig(AgentConfig):
     value_threshold: float = MISSING
     max_num_thoughts: int = MISSING
     max_num_steps: int = MISSING
+
+
+@dataclass
+class ADaPTAgentConfig(AgentConfig):
+    _target_: str = f"src.eval.agents.adapt_agent.ADaPTAgent"
+    prompt: TreeOfThoughtsPromptConfig = MISSING
+    model_name: str = MISSING
+    temperature: int = MISSING
+    model_kwargs: Dict[str, Any] = field(default_factory=lambda: {})
+    max_depth: int = MISSING
+    executor_max_iterations: int = MISSING
+    max_num_thoughts: int = MISSING

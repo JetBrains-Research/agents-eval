@@ -15,8 +15,7 @@ class ADaPTAgent(LangchainStrategicAgent):
                  temperature: int,
                  model_kwargs: dict,
                  max_depth: int,
-                 executor_max_iterations: int,
-                 max_num_thoughts: int):
+                 executor_max_iterations: int):
         super().__init__()
         self.prompt = prompt
         self.model_name = model_name
@@ -24,7 +23,6 @@ class ADaPTAgent(LangchainStrategicAgent):
         self.model_kwargs = model_kwargs
         self.max_depth = max_depth
         self.executor_max_iterations = executor_max_iterations
-        self.max_num_thoughts = max_num_thoughts
 
     async def _create_strategy(self) -> BaseCustomStrategy:
         action_executor = LangchainActionExecutor(tools=self.tools, meta_tools=self.meta_tools)
