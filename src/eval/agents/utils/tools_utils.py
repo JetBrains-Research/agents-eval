@@ -1,6 +1,6 @@
-import asyncio
+from typing import Any
 
-from langchain_core.tools import StructuredTool
+from langchain_core.tools import BaseTool, StructuredTool
 from pydantic.v1 import BaseModel, Extra, create_model
 from pydantic.v1.fields import Undefined, Field
 
@@ -15,6 +15,27 @@ PLUGIN_TO_PYTHON_TYPES = {
 
 class PydanticModel(BaseModel, extra=Extra.forbid):
     pass
+
+
+class AsyncTool(BaseTool, BaseModel):
+    env: BaseEnv
+    name: str
+    description: str
+    parameters: dict
+
+    def _run(self, *args: Any, **kwargs: Any) -> Any:
+        pass
+
+    async def _arun(self, *args: Any, **kwargs: Any) -> Any:
+        args_schema = create_model(f"{self.name}_args_schema", __base__=PydanticModel, **self.parameters)
+        args_schema.required = []
+
+        try:
+            message = await self.env.run_command(self.name, kwargs)
+        except Exception as e:
+            return f"Failed to run command: {e}"
+
+        return message
 
 
 def parse_tool(tool_dict: dict, env: BaseEnv) -> StructuredTool:
@@ -53,5 +74,3 @@ def parse_tool(tool_dict: dict, env: BaseEnv) -> StructuredTool:
     )
 
     return tool
-
-
