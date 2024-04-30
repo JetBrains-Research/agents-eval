@@ -18,12 +18,8 @@ class LangchainAgent(BaseAgent, ABC):
         pass
 
     async def init_tools(self, env: BaseEnv):
-        tools = []
         tool_dicts = await env.get_tools()
-        for tool_dict in tool_dicts:
-            tool = parse_tool(tool_dict['function'], env)
-            tools.append(tool)
-        self.tools = tools
+        self.tools = [parse_tool(tool_dict['function'], env) for tool_dict in tool_dicts]
 
     async def run(self, user_prompt: str, **kwargs):
         kwargs['user_prompt'] = user_prompt

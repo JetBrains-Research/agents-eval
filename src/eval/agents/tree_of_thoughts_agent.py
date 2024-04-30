@@ -27,8 +27,7 @@ class TreeOfThoughtsAgent(LangchainStrategicAgent):
         self.max_num_steps = max_num_steps
 
     async def _create_strategy(self) -> BaseCustomStrategy:
-        action_executor = LangchainActionExecutor(tools=self.tools,
-                                                  meta_tools=self.meta_tools)
+        action_executor = LangchainActionExecutor(tools=self.tools, meta_tools=self.meta_tools)
 
         thought_evaluator = ThoughtEvaluator.create(
             llm=create_chat(self.model_name, self.temperature, self.model_kwargs),

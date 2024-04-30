@@ -9,7 +9,7 @@ from src.eval.envs.base_env import BaseEnv
 
 
 class LangchainStrategicAgent(BaseAgent, ABC):
-    name = "langchain"
+    name = "langchain_strategic"
 
     def __init__(self):
         self.tools = None
@@ -20,11 +20,8 @@ class LangchainStrategicAgent(BaseAgent, ABC):
         pass
 
     async def init_tools(self, env: BaseEnv):
-        tools = []
         tool_dicts = await env.get_tools()
-        for tool_dict in tool_dicts:
-            tools.append(parse_tool(tool_dict['function'], env))
-        self.tools = tools
+        self.tools = [parse_tool(tool_dict['function'], env) for tool_dict in tool_dicts]
 
         # TODO: find better solution to set meta tools
         self.meta_tools = MetaTools(

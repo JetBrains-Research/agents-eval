@@ -18,7 +18,7 @@ from src.eval.envs.base_env import BaseEnv
 from src.template_generation.prompts import get_user_prompt
 
 
-# @retry(stop=stop_after_attempt(3))
+@retry(stop=stop_after_attempt(3))
 async def run_template_generation_for_project(project, agent: BaseAgent, env: BaseEnv,
                                               gen_templates_path: str, eval_cfg_name: str) -> dict[str, any]:
     # Init template directory
