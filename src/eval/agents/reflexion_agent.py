@@ -10,19 +10,19 @@ from src.eval.prompts.reflexion_prompt import ReflexionPrompt
 class ReflexionAgent(LangchainStrategicAgent):
 
     def __init__(self,
-                 prompt: ReflexionPrompt,
                  model_name: str,
                  temperature: int,
                  model_kwargs: dict,
                  value_threshold: float,
-                 max_num_iterations: int):
+                 max_num_iterations: int,
+                 prompt: ReflexionPrompt):
         super().__init__()
-        self.prompt = prompt
         self.model_name = model_name
         self.temperature = temperature
         self.model_kwargs = model_kwargs
         self.value_threshold = value_threshold
         self.max_num_iterations = max_num_iterations
+        self.prompt = prompt
 
     async def _create_strategy(self) -> BaseCustomStrategy:
         action_executor = LangchainActionExecutor(self.tools, meta_tools=self.meta_tools)

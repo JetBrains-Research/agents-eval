@@ -88,6 +88,7 @@ async def run_template_generation(agent: BaseAgent, env: BaseEnv, data_src: Base
             if f.tell() == 0:
                 writer.writerow(results_dict.keys())
             writer.writerow(results_dict.values())
+        break
 
 
 @hydra.main(config_path="../../configs/template_generation", version_base="1.1")

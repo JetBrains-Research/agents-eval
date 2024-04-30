@@ -1,10 +1,26 @@
-name: thee-of-thoughts-gpt-3.5-turbo-1106
+name: thee-of-thoughts
+data_src:
+  _target_: src.eval.data.hf.HFDataSource
+  cache_dir: null
+  hub_name: JetBrains-Research/template-generation
+  configs:
+    - java
+    - kt
+  split: test
+output_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-github/gen_template
 env:
   _target_: src.eval.envs.http_env.HttpEnv
   host: '127.0.0.1'
   port: '5050'
 agent:
   _target_: src.eval.agents.tree_of_thoughts_agent.TreeOfThoughtsAgent
+  model_name: gpt-3.5-turbo-1106
+  temperature: 0
+  model_kwargs:
+    seed: 76097149
+  max_num_thoughts: 3  # number of thoughts to generate at each iteration
+  max_num_steps: 20  # total maximum number of iterations
+  value_threshold: 0.49  # threshold for evaluation; only thoughts with value > value_threshold will be explored
   prompt:
     _target_: src.eval.prompts.tree_of_thoughts_prompt.TreeOfThoughtsPrompt
     thought_evaluator_message: |
@@ -15,19 +31,3 @@ agent:
     thought_generator_message: |
       You are given basic api for operation with files in software engineering empty project. 
       Your goal is generate template project by given description.
-  model_name: gpt-3.5-turbo-1106
-  temperature: 0.8
-  value_threshold: 0.49
-  max_num_thoughts: 3
-  max_num_steps: 20
-  model_kwargs:
-    seed: 76097149
-data_src:
-  _target_: src.eval.data.hf.HFDataSource
-  cache_dir: null
-  hub_name: JetBrains-Research/template-generation
-  configs:
-    - java
-    - kt
-  split: test
-output_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-github/gen_template
