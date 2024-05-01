@@ -40,6 +40,13 @@ Request Body: Json with initialization parameters.
 }
 ```
 
+### Reset Endpoint
+
+URL: /reset\
+Method: POST\
+Description: Reset environment to initial state.\
+Response: Resetting status.
+
 ### Tools Endpoint
 
 URL: /tools\

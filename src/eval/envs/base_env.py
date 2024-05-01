@@ -8,6 +8,10 @@ class BaseEnv(ABC):
         pass
 
     @abstractmethod
+    async def reset(self) -> str:
+        pass
+
+    @abstractmethod
     async def run_command(self, command_name: str, command_params: dict) -> str:
         pass
 

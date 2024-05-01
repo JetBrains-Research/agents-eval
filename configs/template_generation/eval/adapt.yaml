@@ -1,4 +1,11 @@
-name: adapt
+hydra:
+  job:
+    name: planning_${agent.model_name}
+  run:
+    dir: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/template_generation/${hydra:job.name}
+  job_logging:
+    root:
+      handlers: [console, file]
 data_source:
   _target_: src.eval.data_sources.hf_data_source.HFDataSource
   cache_dir: null
@@ -7,7 +14,6 @@ data_source:
     - java
     - kt
   split: test
-output_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-github/gen_template
 env:
   _target_: src.eval.envs.http_env.HttpEnv
   host: '127.0.0.1'

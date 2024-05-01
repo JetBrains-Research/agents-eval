@@ -13,11 +13,9 @@ from src.configs.prompt_configs import PlanningPromptConfig, SimplePromptConfig,
 
 @dataclass
 class EvalConfig:
-    name: str = MISSING
     env: EnvConfig = MISSING
     agent: AgentConfig = MISSING
     data_source: DataSourceConfig = MISSING
-    output_path: str = MISSING
 
 
 cs = ConfigStore.instance()

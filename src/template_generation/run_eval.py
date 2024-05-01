@@ -2,11 +2,11 @@ import asyncio
 import csv
 import json
 import os
-import shutil
 import time
 
 import hydra
 from dotenv import load_dotenv
+from hydra.core.hydra_config import HydraConfig
 from langchain_core.tracers.context import tracing_v2_enabled
 from langsmith import Client
 from tenacity import stop_after_attempt, retry
@@ -20,16 +20,14 @@ from src.template_generation.prompts import get_user_prompt
 
 @retry(stop=stop_after_attempt(3))
 async def run_template_generation_for_project(project, agent: BaseAgent, env: BaseEnv,
-                                              gen_templates_path: str, eval_cfg_name: str) -> dict[str, any]:
+                                              template_generation_path: str, job_name: str) -> dict[str, any]:
     # Init template directory
     project_name = f'{project["owner"]}__{project["name"]}'
-    project_template_path = os.path.join(gen_templates_path, project_name)
-    if os.path.exists(project_template_path):
-        shutil.rmtree(project_template_path)
-    os.makedirs(project_template_path, exist_ok=True)
+    project_template_path = os.path.join(template_generation_path, project_name)
 
     # Init environment
     await env.init({'content_root_path': project_template_path})
+    await env.reset()
 
     # Build user prompt
     user_prompt = get_user_prompt(
@@ -41,7 +39,7 @@ async def run_template_generation_for_project(project, agent: BaseAgent, env: Ba
 
     # Init langsmith project
     client = Client()
-    langsmith_project_name = f"{project['full_name']}-{eval_cfg_name}"
+    langsmith_project_name = f"{project['full_name']}_{job_name}"
     if client.has_project(langsmith_project_name):
         client.delete_project(project_name=langsmith_project_name)
 
@@ -71,13 +69,13 @@ async def run_template_generation_for_project(project, agent: BaseAgent, env: Ba
 
 
 async def run_template_generation(agent: BaseAgent, env: BaseEnv, data_source: BaseDataSource,
-                                  output_path: str, eval_cfg_name: str):
+                                  output_path: str, job_name: str):
     gen_templates_path = os.path.join(output_path, "gen_templates")
     os.makedirs(gen_templates_path, exist_ok=True)
 
     for project in data_source:
         results_dict = await run_template_generation_for_project(
-            project, agent, env, gen_templates_path, eval_cfg_name)
+            project, agent, env, gen_templates_path, job_name)
 
         result_csv_path = os.path.join(output_path, "gen_template_results.csv")
         with open(result_csv_path, 'a', newline='') as f:
@@ -93,10 +91,11 @@ def main(cfg: EvalConfig) -> None:
     agent: BaseAgent = hydra.utils.instantiate(cfg.agent)
     env: BaseEnv = hydra.utils.instantiate(cfg.env)
     data_source: BaseDataSource = hydra.utils.instantiate(cfg.data_source)
-    eval_cfg_name = cfg.name
-    output_path = os.path.join(cfg.output_path, eval_cfg_name)
 
-    asyncio.run(run_template_generation(agent, env, data_source, output_path, eval_cfg_name))
+    output_path = HydraConfig.get().run.dir
+    job_name = HydraConfig.get().job.name
+
+    asyncio.run(run_template_generation(agent, env, data_source, output_path, job_name))
 
 
 if __name__ == '__main__':

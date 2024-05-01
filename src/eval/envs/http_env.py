@@ -21,6 +21,13 @@ class HttpEnv(BaseEnv):
             async with session.post(url, data=data, headers=headers) as response:
                 await response.text()
 
+    async def reset(self) -> str:
+        url = f'{self.base_url}/reset'
+
+        async with aiohttp.ClientSession() as session:
+            async with session.post(url) as response:
+                return await response.text()
+
     async def run_command(self, command_name: str, command_params: dict) -> str:
         url = f'{self.base_url}/run_command'
         headers = {'Content-type': 'application/json'}

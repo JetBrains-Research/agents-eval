@@ -4,7 +4,7 @@ from planning_library.action_executors import MetaTools
 from planning_library.strategies import BaseCustomStrategy
 
 from src.eval.agents.base_agent import BaseAgent
-from src.eval.agents.utils.tools_utils import parse_tool, AsyncTool
+from src.eval.agents.utils.tools_utils import parse_tool, ResetTool
 from src.eval.envs.base_env import BaseEnv
 
 
@@ -24,9 +24,7 @@ class LangchainStrategicAgent(BaseAgent, ABC):
         self.tools = [parse_tool(tool_dict['function'], env) for tool_dict in tool_dicts]
 
         # TODO: find better solution to set meta tools
-        self.meta_tools = MetaTools(
-            reset=AsyncTool(env=env, name='reset', description='Reset environment', parameters={})
-        )
+        self.meta_tools = MetaTools(reset=ResetTool(env=env))
 
     async def run(self, env: BaseEnv, user_prompt: str, **kwargs):
         await self._init_tools(env)

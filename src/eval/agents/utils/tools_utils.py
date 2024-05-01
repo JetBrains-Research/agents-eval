@@ -17,11 +17,11 @@ class PydanticModel(BaseModel, extra=Extra.forbid):
     pass
 
 
-class AsyncTool(BaseTool, BaseModel):
+class ResetTool(BaseTool, BaseModel):
     env: BaseEnv
-    name: str
-    description: str
-    parameters: dict
+    name: str = 'reset'
+    description: str = "Reset environment"
+    parameters: dict = {}
 
     def _run(self, *args: Any, **kwargs: Any) -> Any:
         pass
@@ -31,7 +31,7 @@ class AsyncTool(BaseTool, BaseModel):
         args_schema.required = []
 
         try:
-            message = await self.env.run_command(self.name, kwargs)
+            message = await self.env.reset()
         except Exception as e:
             return f"Failed to run command: {e}"
 

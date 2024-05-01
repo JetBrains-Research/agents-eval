@@ -19,6 +19,13 @@ def init():
     return jsonify({"status": "success"}), 200
 
 
+@app.route('/reset', methods=['POST'])
+def reset():
+    global fs_api
+    fs_api.reset()
+    return jsonify({"status": "success"}), 200
+
+
 @app.route('/run_command', methods=['POST'])
 def run():
     command_name = request.json.get('command_name')
@@ -26,10 +33,7 @@ def run():
 
     print(f"Running command {command_name} with params {command_params}")
     try:
-        if command_name == 'reset':
-            fs_api.reset()
-            message = f"Environment was successfully reseted"
-        elif command_name == 'create_directory':
+        if command_name == 'create_directory':
             _assert_args(command_name, command_params, ['path'])
             fs_api.create_directory(
                 path=command_params.get("path"),

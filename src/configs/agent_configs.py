@@ -14,7 +14,7 @@ class AgentConfig:
 
 @dataclass
 class OpenAiLangchainAgentConfig(AgentConfig):
-    _target_: str = f"src.eval.agents.openai_langchain_agent.OpenAiLangchainAgent"
+    _target_: str = f"src.eval.agents.openai_langchain_agent.OpenAILangchainAgent"
     prompt: PromptConfig = MISSING
     model_name: str = MISSING
     temperature: int = MISSING
