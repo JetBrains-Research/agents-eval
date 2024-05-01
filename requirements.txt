@@ -16,6 +16,9 @@ langchain==0.1.12
 langchain-openai==0.0.8
 langchain-core==0.1.32
 python-dotenv==0.21.1
+numpy==1.26.4
+torch==2.2.1
+langsmith==0.1.23
 # Metrics
 nltk==3.8.1
 sacrebleu==2.4.1

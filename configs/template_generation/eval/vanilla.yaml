@@ -15,7 +15,7 @@ env:
 agent:
   _target_: src.eval.agents.openai_langchain_agent.OpenAiLangchainAgent
   model_name: gpt-4-1106-preview
-  temperature: 0.8
+  temperature: 0
   model_kwargs:
     seed: 76097149
   prompt:
