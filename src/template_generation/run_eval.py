@@ -86,7 +86,7 @@ async def run_template_generation(agent: BaseAgent, env: BaseEnv, data_source: B
         break
 
 
-@hydra.main(config_path="../../configs/template_generation/eval", version_base="1.1")
+@hydra.main(config_path="../../configs/template_generation", config_name="config.yaml", version_base="1.2")
 def main(cfg: EvalConfig) -> None:
     agent: BaseAgent = hydra.utils.instantiate(cfg.agent)
     env: BaseEnv = hydra.utils.instantiate(cfg.env)

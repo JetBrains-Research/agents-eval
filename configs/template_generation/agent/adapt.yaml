@@ -1,0 +1,16 @@
+_target_: src.eval.agents.adapt_agent.ADaPTAgent
+model_name: gpt-3.5-turbo-1106
+temperature: 0
+model_kwargs:
+  seed: 76097149
+max_depth: 3  # maximum decomposition depth
+executor_max_iterations: 2  # maximum number of iterations for the executor; when reached, the loop will exit
+prompt:
+  _target_: src.eval.prompts.adapt_prompt.ADaPTPrompt
+  executor_prompt: |
+    You are given basic api for operation with files in software engineering empty project. 
+    Your goal is generate template project by given description.
+  agent_planner_prompt: |
+    Here is the essence of the original task:
+  simple_planner_prompt: |
+    Here is the essence of the original task:

@@ -1,0 +1,14 @@
+# @package _global_
+hydra:
+  job:
+    name: planning_${agent.model_name}
+  run:
+    dir: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/template_generation/${hydra:job.name}
+  job_logging:
+    root:
+      handlers: [console, file]
+defaults:
+  - _self_
+  - data_source: hf
+  - env: http
+  - agent: planning

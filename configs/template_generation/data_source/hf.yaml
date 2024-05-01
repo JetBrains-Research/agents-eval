@@ -1,0 +1,7 @@
+_target_: src.eval.data_sources.hf_data_source.HFDataSource
+cache_dir: null
+hub_name: JetBrains-Research/template-generation
+configs:
+  - java
+  - kt
+split: test
