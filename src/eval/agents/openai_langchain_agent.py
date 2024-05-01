@@ -12,8 +12,8 @@ from src.eval.prompts.openai_chat_prompt import OpenAIChatPrompt
 class OpenAILangchainAgent(LangchainAgent):
     name = "openai_langchain"
 
-    def __init__(self, model_name: str, temperature: int, model_kwargs: dict, prompt: OpenAIChatPrompt):
-        super().__init__()
+    def __init__(self, name: str, model_name: str, temperature: int, model_kwargs: dict, prompt: OpenAIChatPrompt):
+        super().__init__(name)
         self._model_name = model_name
         self._temperature = temperature
         self._model_kwargs = model_kwargs

@@ -10,6 +10,7 @@ from src.configs.prompt_configs import PromptConfig, TreeOfThoughtsPromptConfig,
 @dataclass
 class AgentConfig:
     _target_: str = MISSING
+    name: str = MISSING
 
 
 @dataclass

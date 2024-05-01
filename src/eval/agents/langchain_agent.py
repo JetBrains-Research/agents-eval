@@ -10,7 +10,8 @@ from src.eval.envs.base_env import BaseEnv
 class LangchainAgent(BaseAgent, ABC):
     name = "langchain"
 
-    def __init__(self):
+    def __init__(self, name: str):
+        super().__init__(name)
         self.tools = None
 
     @abstractmethod

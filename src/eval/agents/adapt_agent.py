@@ -8,16 +8,16 @@ from src.eval.prompts.adapt_prompt import ADaPTPrompt
 
 
 class ADaPTAgent(LangchainStrategicAgent):
-    name = "ADaPT"
 
     def __init__(self,
+                 name: str,
                  model_name: str,
                  temperature: int,
                  model_kwargs: dict,
                  max_depth: int,
                  executor_max_iterations: int,
                  prompt: ADaPTPrompt):
-        super().__init__()
+        super().__init__(name)
         self._prompt = prompt
         self._model_name = model_name
         self._temperature = temperature

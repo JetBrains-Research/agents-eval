@@ -11,6 +11,7 @@ class TreeOfThoughtsAgent(LangchainStrategicAgent):
     name = "thee_of_thoughts"
 
     def __init__(self,
+                 name: str,
                  model_name: str,
                  temperature: int,
                  model_kwargs: dict,
@@ -18,7 +19,7 @@ class TreeOfThoughtsAgent(LangchainStrategicAgent):
                  max_num_thoughts: int,
                  max_num_steps: int,
                  prompt: TreeOfThoughtsPrompt):
-        super().__init__()
+        super().__init__(name)
         self._model_name = model_name
         self._temperature = temperature
         self._model_kwargs = model_kwargs

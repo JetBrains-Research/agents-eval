@@ -11,7 +11,8 @@ from src.eval.envs.base_env import BaseEnv
 class LangchainStrategicAgent(BaseAgent, ABC):
     name = "langchain_strategic"
 
-    def __init__(self):
+    def __init__(self, name: str):
+        super().__init__(name)
         self.tools = None
         self.meta_tools = None
 

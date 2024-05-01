@@ -8,16 +8,16 @@ from src.eval.prompts.reflexion_prompt import ReflexionPrompt
 
 
 class ReflexionAgent(LangchainStrategicAgent):
-    name = "reflexion"
 
     def __init__(self,
+                 name: str,
                  model_name: str,
                  temperature: int,
                  model_kwargs: dict,
                  value_threshold: float,
                  max_num_iterations: int,
                  prompt: ReflexionPrompt):
-        super().__init__()
+        super().__init__(name)
         self._model_name = model_name
         self._temperature = temperature
         self._model_kwargs = model_kwargs

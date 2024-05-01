@@ -1,4 +1,5 @@
 _target_: src.eval.agents.openai_langchain_agent.OpenAiLangchainAgent
+name: vanilla
 model_name: gpt-4-1106-preview
 temperature: 0
 model_kwargs:

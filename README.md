@@ -7,50 +7,54 @@ Toolkit for collecting datasets for Agents and Planning models and running evalu
 ```shell 
 pip install requirements.txt
 ```
+
 ## Evaluation Pipeline Configuration
-We use [Hydra](https://hydra.cc/docs/intro/) library for evaluation pipeline. 
+
+We use [Hydra](https://hydra.cc/docs/intro/) library for evaluation pipeline.
 Each configuration is specified in `config.yaml` format:
+
 ```yaml
 # @package _global_
 hydra:
   job:
     name: planning_${agent.model_name}
   run:
-    dir: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/template_generation/${hydra:job.name}
+    dir:[YOUR_PATH_TO_OUTPUT_DIR]/${hydra:job.name}
   job_logging:
     root:
-      handlers: [console, file]
+      handlers: [ console, file ]
 defaults:
   - _self_
   - data_source: hf
   - env: http
   - agent: planning
 ```
-Where you can define the datasource, env and agent you want to evaluate. 
+
+Where you can define the datasource, env and agent you want to evaluate.
 We present several implementations for each defined in sub yamls:\
-data_source:
-* [hf.yaml]()
 
-env: 
-* [http.yaml]()
+| field         | options                                                                                                                                                                                                                                                                                                                                                          |
+|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `data_source` | [hf.yaml](configs/template_generation/data_source/hf.yaml)                                                                                                                                                                                                                                                                                                       |
+| `env`         | [http.yaml](configs/template_generation/env/http.yaml)                                                                                                                                                                                                                                                                                                           |
+| `agent`       | [vanilla.yaml](configs/template_generation/agent/vanilla.yaml)<br> [planning.yaml](configs/template_generation/agent/planning.yaml) <br> [reflexion.yaml](configs/template_generation/agent/reflexion.yaml)<br> [tree_of_thoughts.yaml](configs/template_generation/agent/tree_of_thoughts.yaml) <br> [adapt.yaml](configs/template_generation/agent/adapt.yaml) |
 
-agent: 
-* [planning.yaml]() 
-* ...
+# Project Template Generation Evaluation
 
-
-## Project Template Generation
-The challenge is to **generate project template** -- small compilable project that can be described in 1-5 sentences 
+The challenge is to **generate project template** -- small compilable project that can be described in 1-5 sentences
 containing small examples of all mentioned libraries/technologies/functionality.
 
 ### Dataset
-Project from [GitHub](https://github.com/) written in `Java` and `Kotlin` programming languages 
-with 10+ stars and 10+ code lines, permissive licences, without forks (collected by https://seart-ghs.si.usi.ch) 
-filtered by `is_template=True` or template-related keywords words presence in description.
-From `Java` and `Kotlin` the `Android` projects were identified by `android` token in description or tags and 
-moved to separate category.
 
-Collected data is available in [HuggingFace 🤗](https://huggingface.co/datasets/JetBrains-Research/template-generation), data was manually labeled to select test subset in [Google Sheets](https://docs.google.com/spreadsheets/d/1tQLWBBlfDA9l72wpXT7DbqkAt9FWUo0bt9dDX1X9AU8/edit#gid=907232403)
+Dataset of template-related repos collected GitHub are published
+to [HuggingFace 🤗](https://huggingface.co/datasets/JetBrains-Research/template-generation). Detains about dataset
+collection and source code is placed in [template_generation](src/template_generation) directory
 
 ### Agent Models
-OpenAI GTP-4 with function calling, prompted with file system api (create/delete/list/... files)
+
+| Model             | Metrics          |
+|-------------------|------------------|
+| ⚠️ Coming soon ⚠️ | ⚠️ Coming soon ⚠ |
+
+
+

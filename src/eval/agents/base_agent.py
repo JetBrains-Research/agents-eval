@@ -4,7 +4,9 @@ from src.eval.envs.base_env import BaseEnv
 
 
 class BaseAgent(ABC):
-    name: str = "base"
+
+    def __init__(self, name: str):
+        self.name = name
 
     @abstractmethod
     async def run(self, env: BaseEnv, user_prompt: str, **kwargs):
