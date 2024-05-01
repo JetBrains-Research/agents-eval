@@ -1,12 +1,12 @@
 # Evaluation Pipeline Components
 
 ## Agents
-
+### 🦜🔗 LangChain 
 One group of agents is based on raw  [LangChain](https://www.langchain.com/) library and
 extends [LangchainAgent](agents/langchain_agent.py):
-
 * [openai_langchain_agent.py](agents/openai_langchain_agent.py) - OpenAI LangChain agent without strategies
 
+### 🤖📝 Planning Library 
 Another group uses [JetBrains-Research/planning-lib](https://github.com/JetBrains-Research/planning-library) - extension
 of LangChain with several planning strategies. Such agents
 extend [LangchainStrategicAgent](agents/langchain_strategic_agent.py):
