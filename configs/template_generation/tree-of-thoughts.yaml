@@ -1,6 +1,6 @@
 name: thee-of-thoughts
 data_src:
-  _target_: src.eval.data.hf.HFDataSource
+  _target_: src.eval.data_sources.hf.HFDataSource
   cache_dir: null
   hub_name: JetBrains-Research/template-generation
   configs:
@@ -23,11 +23,11 @@ agent:
   value_threshold: 0.49  # threshold for evaluation; only thoughts with value > value_threshold will be explored
   prompt:
     _target_: src.eval.prompts.tree_of_thoughts_prompt.TreeOfThoughtsPrompt
-    thought_evaluator_message: |
+    thought_evaluator_prompt: |
       Given a project template description and a step of generation process, give a judgement if the step is correct, i.e. 
       1) the action aligns with the main goal and description of project template; 
       2) action fits current project structure and does not break it; 
       3) action extends current project functionality and does not break it;
-    thought_generator_message: |
+    thought_generator_prompt: |
       You are given basic api for operation with files in software engineering empty project. 
       Your goal is generate template project by given description.

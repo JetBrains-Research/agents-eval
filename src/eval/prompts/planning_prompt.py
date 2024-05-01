@@ -4,10 +4,10 @@ from langchain_core.messages import SystemMessage, HumanMessage
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 
 from src.eval.agents.utils.openai_utils import create_chat
-from src.eval.prompts.base_prompt import BasePrompt
+from src.eval.prompts.openai_chat_prompt import OpenAIChatPrompt
 
 
-class PlanningPrompt(BasePrompt):
+class PlanningPrompt(OpenAIChatPrompt):
 
     def __init__(self, model_name: str, temperature: int, model_kwargs: dict,
                  planning_system_prompt: str, execution_system_prompt: str):

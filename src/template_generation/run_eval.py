@@ -13,7 +13,7 @@ from tenacity import stop_after_attempt, retry
 
 from src.configs.eval_configs import EvalConfig
 from src.eval.agents.base_agent import BaseAgent
-from src.eval.data.base import BaseDataSource
+from src.eval.data_sources.base_data_source import BaseDataSource
 from src.eval.envs.base_env import BaseEnv
 from src.template_generation.prompts import get_user_prompt
 
@@ -30,9 +30,6 @@ async def run_template_generation_for_project(project, agent: BaseAgent, env: Ba
 
     # Init environment
     await env.init({'content_root_path': project_template_path})
-
-    # Init agent
-    await agent.init_tools(env)
 
     # Build user prompt
     user_prompt = get_user_prompt(
@@ -51,7 +48,7 @@ async def run_template_generation_for_project(project, agent: BaseAgent, env: Ba
     start_time = time.time()
 
     with tracing_v2_enabled(project_name=langsmith_project_name):
-        messages = await agent.run(user_prompt)
+        messages = await agent.run(env, user_prompt)
 
     end_time = time.time()
 

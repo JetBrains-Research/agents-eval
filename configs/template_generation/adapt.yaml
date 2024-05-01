@@ -1,6 +1,6 @@
 name: adapt
 data_src:
-  _target_: src.eval.data.hf.HFDataSource
+  _target_: src.eval.data_sources.hf.HFDataSource
   cache_dir: null
   hub_name: JetBrains-Research/template-generation
   configs:

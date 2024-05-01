@@ -1,10 +1,12 @@
-from abc import ABC, abstractmethod
-
-from langchain_core.prompts import ChatPromptTemplate
+from abc import ABC
+from textwrap import dedent
 
 
 class BasePrompt(ABC):
 
-    @abstractmethod
-    async def execution_prompt(self, **kwargs) -> ChatPromptTemplate:
-        pass
+    @staticmethod
+    def _input_prompt() -> str:
+        return dedent("""
+            Inputs:
+            {input}
+        """)

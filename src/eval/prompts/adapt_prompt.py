@@ -1,7 +1,7 @@
-from textwrap import dedent
+from src.eval.prompts.base_prompt import BasePrompt
 
 
-class ADaPTPrompt:
+class ADaPTPrompt(BasePrompt):
     def __init__(self,
                  executor_prompt: str,
                  agent_planner_prompt: str,
@@ -9,13 +9,6 @@ class ADaPTPrompt:
         self._executor_prompt = executor_prompt
         self._agent_planner_prompt = agent_planner_prompt
         self._simple_planner_prompt = simple_planner_prompt
-
-    @staticmethod
-    def _input_prompt() -> str:
-        return dedent("""
-            Inputs:
-            {input}
-        """)
 
     def executor_prompt(self) -> str:
         return self._executor_prompt + self._input_prompt()

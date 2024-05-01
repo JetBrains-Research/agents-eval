@@ -45,13 +45,6 @@ class HttpEnv(BaseEnv):
             async with session.get(url) as response:
                 return json.loads(await response.text())
 
-    async def get_meta_tools(self):
-        url = f'{self.base_url}/meta_tools'
-
-        async with aiohttp.ClientSession() as session:
-            async with session.get(url) as response:
-                return json.loads(await response.text())
-
     async def ping(self) -> str:
         url = f'{self.base_url}/ping'
 

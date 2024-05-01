@@ -2,7 +2,7 @@ from typing import List, Optional
 
 from datasets import get_dataset_config_names, load_dataset
 
-from .base import BaseDataSource
+from .base_data_source import BaseDataSource
 
 
 class HFDataSource(BaseDataSource):

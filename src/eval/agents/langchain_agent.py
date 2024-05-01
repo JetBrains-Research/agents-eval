@@ -17,11 +17,12 @@ class LangchainAgent(BaseAgent, ABC):
     async def _create_agent_executor(self, **kwargs) -> AgentExecutor:
         pass
 
-    async def init_tools(self, env: BaseEnv):
+    async def _init_tools(self, env: BaseEnv):
         tool_dicts = await env.get_tools()
         self.tools = [parse_tool(tool_dict['function'], env) for tool_dict in tool_dicts]
 
-    async def run(self, user_prompt: str, **kwargs):
+    async def run(self, env: BaseEnv, user_prompt: str, **kwargs):
+        await self._init_tools(env)
         kwargs['user_prompt'] = user_prompt
         agent_executor = await self._create_agent_executor(**kwargs)
         messages = await agent_executor.ainvoke(

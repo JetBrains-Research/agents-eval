@@ -7,9 +7,5 @@ class BaseAgent(ABC):
     name: str = "base"
 
     @abstractmethod
-    async def run(self, user_prompt: str, **kwargs):
-        pass
-
-    @abstractmethod
-    async def init_tools(self, env: BaseEnv):
+    async def run(self, env: BaseEnv, user_prompt: str, **kwargs):
         pass

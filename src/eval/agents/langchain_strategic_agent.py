@@ -19,7 +19,7 @@ class LangchainStrategicAgent(BaseAgent, ABC):
     async def _create_strategy(self) -> BaseCustomStrategy:
         pass
 
-    async def init_tools(self, env: BaseEnv):
+    async def _init_tools(self, env: BaseEnv):
         tool_dicts = await env.get_tools()
         self.tools = [parse_tool(tool_dict['function'], env) for tool_dict in tool_dicts]
 
@@ -28,7 +28,8 @@ class LangchainStrategicAgent(BaseAgent, ABC):
             reset=AsyncTool(env=env, name='reset', description='Reset environment', parameters={})
         )
 
-    async def run(self, user_prompt: str, **kwargs):
+    async def run(self, env: BaseEnv, user_prompt: str, **kwargs):
+        await self._init_tools(env)
         strategy_executor = await self._create_strategy()
         messages = await strategy_executor.ainvoke(
             {"input": user_prompt}

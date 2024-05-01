@@ -1,10 +1,23 @@
 name: vanilla
+data_src:
+  _target_: src.eval.data_sources.hf.HFDataSource
+  cache_dir: null
+  hub_name: JetBrains-Research/template-generation
+  configs:
+    - java
+    - kt
+  split: test
+output_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-github/gen_template
 env:
   _target_: src.eval.envs.http_env.HttpEnv
   host: '127.0.0.1'
   port: '5050'
 agent:
   _target_: src.eval.agents.openai_langchain_agent.OpenAiLangchainAgent
+  model_name: gpt-4-1106-preview
+  temperature: 0.8
+  model_kwargs:
+    seed: 76097149
   prompt:
     _target_: src.eval.prompts.planning_prompt.VanillaPrompt
     model_name: gpt-4-1106-preview
@@ -20,16 +33,3 @@ agent:
       - Persist through different strategies, avoiding repetition of unsuccessful attempts, until the task is completed or a maximum of 50 steps have been taken.
       - Document solely the function calls and their outcomes. Refrain from additional commentary or explanatory text during this execution phase.
       Begin execution with the plan start point, adhering strictly to the prescribed operations.
-  model_name: gpt-4-1106-preview
-  temperature: 0.8
-  model_kwargs:
-    seed: 76097149
-data_src:
-  _target_: src.eval.data.hf.HFDataSource
-  cache_dir: null
-  hub_name: JetBrains-Research/template-generation
-  configs:
-    - java
-    - kt
-  split: test
-output_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-github/gen_template

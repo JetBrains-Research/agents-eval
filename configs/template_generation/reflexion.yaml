@@ -1,6 +1,6 @@
 name: reflexion
 data_src:
-  _target_: src.eval.data.hf.HFDataSource
+  _target_: src.eval.data_sources.hf.HFDataSource
   cache_dir: null
   hub_name: JetBrains-Research/template-generation
   configs:
@@ -21,7 +21,7 @@ agent:
   value_threshold: 1.0,  # threshold for evaluation; when reached, the loop will exit
   max_num_iterations: 2,  # maximum number of iterations; when reached, the loop will exit
   prompt:
-    _target_: src.eval.prompts.tree_of_thoughts_prompt.ReflexionPrompt
+    _target_: src.eval.prompts.reflexion_prompt.ReflexionPrompt
     action_prompt: |
       You are given basic api for operation with files in software engineering empty project. 
       Your goal is generate template project by given description.

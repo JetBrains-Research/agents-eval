@@ -2,10 +2,10 @@ from textwrap import dedent
 
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 
-from src.eval.prompts.base_prompt import BasePrompt
+from src.eval.prompts.openai_chat_prompt import OpenAIChatPrompt
 
 
-class SimplePrompt(BasePrompt):
+class SimplePrompt(OpenAIChatPrompt):
 
     def __init__(self, execution_system_prompt: str):
         self._execution_system_prompt = execution_system_prompt

@@ -16,9 +16,5 @@ class BaseEnv(ABC):
         pass
 
     @abstractmethod
-    async def get_meta_tools(self) -> list[dict]:
-        pass
-
-    @abstractmethod
     async def get_state(self) -> str:
         pass
