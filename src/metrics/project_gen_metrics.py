@@ -1,44 +1,10 @@
 from typing import Any
 
-import evaluate
 import numpy as np
 import torch
-from evaluate import load
-from sentence_transformers import SentenceTransformer
-from sentence_transformers.util import cos_sim
 
+from src.metrics.base_metrics import calc_base_metrics
 from src.utils.project_utils import get_project_file_tree_as_dict
-
-
-def calc_metrics(predictions: list[str], references: list[str], metrics: list[str]) \
-        -> dict[str, Any]:
-    result = {}
-    for metric in metrics:
-        if metric == "chrf":
-            chrf = evaluate.load("chrf")
-            chrf_results = chrf.compute(predictions=predictions, references=references)
-            result["chrf"] = chrf_results
-        elif metric == "rouge":
-            rouge = evaluate.load("rouge")
-            rouge_results = rouge.compute(predictions=predictions, references=references)
-            result["rouge"] = rouge_results
-        elif metric == "bertscore":
-            bertscore = load("bertscore")
-            bertscore_results = bertscore.compute(predictions=predictions, references=references, lang='en')
-            result["bertscore"] = bertscore_results
-        elif metric == "bleu":
-            # "k4black/codebleu" for code
-            bleu = load("bleu")
-            bleu_results = bleu.compute(predictions=predictions, references=references)
-            result["bleu"] = bleu_results
-        elif metric == "gte":
-            model = SentenceTransformer('thenlper/gte-large')
-            embeddings = model.encode(predictions + references)
-            result["gte"] = {"gte": cos_sim(embeddings[:len(predictions)], embeddings[len(predictions):])}
-        else:
-            raise ValueError(f"Metrics {metric} is not supported")
-
-    return result
 
 
 def gen_golden_content_metric(gen_project_path: str, golden_project_path: str) -> dict[str, Any]:
@@ -54,7 +20,7 @@ def gen_golden_content_metric(gen_project_path: str, golden_project_path: str) -
     predictions = concat_code(gen_dict)
     references = concat_code(golden_dict)
 
-    metrics = calc_metrics([predictions], [references], ["bleu", "rouge", "chrf", "bertscore", "gte"])
+    metrics = calc_base_metrics([predictions], [references], ["bleu", "rouge", "chrf", "bertscore", "gte"])
 
     return {
         "bleu": metrics["bleu"]["bleu"],
@@ -81,7 +47,7 @@ def gen_golden_content_metric_by_files(gen_project_path: str, golden_project_pat
     gen_files = [file for file, content in gen_dict.items()]
 
     metric = 'gte'
-    metrics = calc_metrics(gen_contents, golden_contents, [metric])[metric][metric]
+    metrics = calc_base_metrics(gen_contents, golden_contents, [metric])[metric][metric]
     best_match = torch.argmax(metrics, dim=1).tolist()
 
     best_metrics = []
@@ -99,7 +65,8 @@ def gen_golden_content_metric_by_files(gen_project_path: str, golden_project_pat
 
 def get_closest_project_index(description: str, other_descriptions: list[str]):
     metric = 'gte'
-    metrics = calc_metrics([description], [d if d is not None else "" for d in other_descriptions], [metric])[metric][metric]
+    metrics = calc_base_metrics([description], [d if d is not None else "" for d in other_descriptions], [metric])[metric][
+        metric]
     best_match = torch.argmax(metrics, dim=1).tolist()[0]
 
     return best_match

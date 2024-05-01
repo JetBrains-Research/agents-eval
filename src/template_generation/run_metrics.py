@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 from langsmith import Client
 from omegaconf import DictConfig
 
-from src.metrics.content_metrics import gen_golden_content_metric, gen_golden_content_metric_by_files, \
+from src.metrics.project_gen_metrics import gen_golden_content_metric, gen_golden_content_metric_by_files, \
     get_closest_project_index
 from src.metrics.tree_metrics import gen_vanilla_golden_tree_metric
 from src.utils.git_utils import clone_repo
