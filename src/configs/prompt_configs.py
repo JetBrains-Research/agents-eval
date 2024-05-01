@@ -21,9 +21,24 @@ class PlanningPromptConfig(PromptConfig):
 
 @dataclass
 class TreeOfThoughtsPromptConfig(PromptConfig):
-    _target_: str = f"src.eval.prompts.tree_of_thoughts_prompt.PlanningPrompt"
+    _target_: str = f"src.eval.prompts.tree_of_thoughts_prompt.TheeOfThoughtsPrompt"
     thought_evaluator_message: str = MISSING
     thought_generator_message: str = MISSING
+
+
+@dataclass
+class ADaPTPromptConfig(PromptConfig):
+    _target_: str = f"src.eval.prompts.adapt_prompt.ADaPTPrompt"
+    thought_evaluator_message: str = MISSING
+    thought_generator_message: str = MISSING
+
+
+@dataclass
+class ReflexionPromptConfig(PromptConfig):
+    _target_: str = f"src.eval.prompts.reflexion_prompt.ReflexionPrompt"
+    action_prompt: str = MISSING
+    evaluator_prompt: str = MISSING
+    self_reflexion_prompt: str = MISSING
 
 
 @dataclass

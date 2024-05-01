@@ -70,12 +70,12 @@ async def run_template_generation_for_project(project, agent: BaseAgent, env: Ba
     return result_dict
 
 
-async def run_template_generation(agent: BaseAgent, env: BaseEnv, data_src: BaseDataSource,
+async def run_template_generation(agent: BaseAgent, env: BaseEnv, data_source: BaseDataSource,
                                   output_path: str, eval_cfg_name: str):
     gen_templates_path = os.path.join(output_path, "gen_templates")
     os.makedirs(gen_templates_path, exist_ok=True)
 
-    for project in data_src:
+    for project in data_source:
         results_dict = await run_template_generation_for_project(
             project, agent, env, gen_templates_path, eval_cfg_name)
 
@@ -88,15 +88,15 @@ async def run_template_generation(agent: BaseAgent, env: BaseEnv, data_src: Base
         break
 
 
-@hydra.main(config_path="../../configs/template_generation", version_base="1.1")
+@hydra.main(config_path="../../configs/template_generation/eval", version_base="1.1")
 def main(cfg: EvalConfig) -> None:
     agent: BaseAgent = hydra.utils.instantiate(cfg.agent)
     env: BaseEnv = hydra.utils.instantiate(cfg.env)
-    data_src: BaseDataSource = hydra.utils.instantiate(cfg.data_src)
+    data_source: BaseDataSource = hydra.utils.instantiate(cfg.data_source)
     eval_cfg_name = cfg.name
     output_path = os.path.join(cfg.output_path, eval_cfg_name)
 
-    asyncio.run(run_template_generation(agent, env, data_src, output_path, eval_cfg_name))
+    asyncio.run(run_template_generation(agent, env, data_source, output_path, eval_cfg_name))
 
 
 if __name__ == '__main__':
