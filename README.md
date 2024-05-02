@@ -52,9 +52,9 @@ collection and source code is placed in [template_generation](src/template_gener
 
 ### Agent Models
 
-| Model             | Metrics          |
-|-------------------|------------------|
-| ⚠️ Coming soon ⚠️ | ⚠️ Coming soon ⚠ |
+| Model             | Metrics            |
+|-------------------|--------------------|
+| ⚠️ Coming soon ⚠️ | ⚠️ Coming soon  ⚠️ |
 
 
 
