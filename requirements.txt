@@ -30,3 +30,4 @@ codebleu==0.6.0
 sentence-transformers==2.5.1
 # Planning library
 git+https://github.com/JetBrains-Research/planning-library.git@tigina/default-action-executor-fixes
+notebook==5.7.4

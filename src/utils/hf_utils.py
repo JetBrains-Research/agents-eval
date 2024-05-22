@@ -5,7 +5,7 @@ import huggingface_hub
 from datasets import Dataset
 
 HUGGINGFACE_REPO = 'JetBrains-Research/template-generation'
-CATEGORIES = ['java', 'kt', 'android']
+CATEGORIES = ['java', 'kt', 'py', 'android']
 SPLITS = ['dev', 'test', 'train']
 
 FEATURES = {

@@ -96,6 +96,9 @@ class GithubDataProvider:
                                  github_api_response_or_error)
                     return github_api_response_or_error
 
+                if github_api_response_or_error is None:
+                    return
+
                 data = github_api_response_or_error.data
                 append_to_jsonl([data], data_path)
                 logger.info(f"Successfully finished processing {repo_owner}/{repo_name}")
