@@ -5,7 +5,7 @@ import huggingface_hub
 from datasets import Dataset
 
 HUGGINGFACE_REPO = 'JetBrains-Research/template-generation'
-CATEGORIES = ['java', 'kt', 'android']
+CATEGORIES = ['java', 'kt', 'py', 'android']
 SPLITS = ['dev', 'test', 'train']
 
 FEATURES = {
@@ -35,7 +35,14 @@ FEATURES = {
             'code_lines': datasets.Value("string"),
             'gpt_description': datasets.Value("string"),
         }
-    )
+    ),
+    'ide_template_generation_data': datasets.Features(
+        {
+            "name": datasets.Value("string"),
+            'language': datasets.Value("string"),
+            'description': datasets.Value("string"),
+        }
+    ),
 }
 
 

@@ -160,7 +160,7 @@ async def make_github_http_request(
             elif status_code == 504:
                 return await handle_github_ban(response)
 
-            elif status_code in [404, 422, 409, 451, 410, 502]:
+            elif status_code in [401, 404, 422, 409, 451, 410, 502]:
                 # Not retryable errors:
                 # 404 - Not Found
                 # 422 - Unprocessable Entity

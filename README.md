@@ -47,10 +47,15 @@ containing small examples of all mentioned libraries/technologies/functionality.
 ### Dataset
 
 Dataset of template-related repos collected GitHub are published
-to [HuggingFace 🤗](https://huggingface.co/datasets/JetBrains-Research/template-generation). Detains about dataset
-collection and source code is placed in [template_generation](src/template_generation) directory
+to [HuggingFace 🤗](https://huggingface.co/datasets/JetBrains-Research/template-generation). Details about the dataset
+collection and source code is placed in [template_generation](src/template_generation) directory.
 
 ### Agent Models
+
+To run the evaluation pipeline, please execute the following command in your console:
+```commandline
+python3 -m src/template_generation/run_eval --multirun agent=planning agent.model_name=gpt-3.5-turbo-1106,gpt-4-1106-preview
+```
 
 | Model             | Metrics            |
 |-------------------|--------------------|

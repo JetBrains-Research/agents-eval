@@ -50,10 +50,21 @@ PERMISSIVE_LICENSES = ['MIT License',
 
 
 def load_repos_data(config: DictConfig):
-    for category in CATEGORIES:
+    for category in ['py']:
         with open(os.path.join(config.data_path, f"{category}_search.json"), "r", errors='ignore') as f:
             repos_search = json.load(f)
         repos = [repo['name'].split('/') for repo in repos_search['items']]
+
+        repos_meta_extra = []
+        if os.path.exists(os.path.join(config.data_path, f"{category}_repos_meta_extra.jsonl")):
+            with open(os.path.join(config.data_path, f"{category}_repos_meta_extra.jsonl"), "r", errors='ignore') as f:
+                for line in f:
+                    data = json.loads(line.strip())  # load it as Python dict
+                    repos_meta_extra.append(data)
+                repos_meta_extra_repos = [repo['full_name'] for repo in repos_meta_extra]
+
+        repos = [repo['name'].split('/') for repo in repos_search['items']
+                 if repo['name'] not in repos_meta_extra_repos]
 
         with open(config.github_tokens_path, "r") as f:
             github_tokens = [token.strip() for token in f.readlines()]
@@ -63,11 +74,11 @@ def load_repos_data(config: DictConfig):
 
 
 def filter_template_repos(config: DictConfig):
-    for category in ['java', 'kt']:
+    for category in ['py']:
         with open(os.path.join(config.data_path, f"{category}_search.json"), "r", errors='ignore') as f:
             repos_search = json.load(f)
         repo_name_to_search = {repo['name'].lower(): repo for repo in repos_search['items']}
-        repos = read_jsonl(os.path.join(config.data_path, f"{category}_repos_meta.jsonl"))
+        repos = read_jsonl(os.path.join(config.data_path, f"{category}_repos_meta_extra.jsonl"))
         repo_name_to_json = {repo['full_name'].lower(): repo for repo in repos}
         template_repos = []
         for _, repo in repo_name_to_json.items():
@@ -112,6 +123,7 @@ def filter_template_repos(config: DictConfig):
                     'code_lines': repo_json['codeLines'],
                 })
         df = pd.DataFrame(template_repos)
+        print(len(df))
         df.to_csv(os.path.join(config.data_path, f"{category}_template_repos.csv"), index=False)
 
 
@@ -133,7 +145,7 @@ def separate_android_repos(config: DictConfig):
 
 
 def set_ids(config: DictConfig):
-    for category in CATEGORIES:
+    for category in ['py']:
         df = pd.read_csv(os.path.join(config.data_path, f"{category}_template_repos.csv"))
         df.sort_values(by='owner', key=lambda col: col.str.lower(), ascending=True, inplace=True)
         df.insert(0, 'id', range(0, len(df)))
@@ -143,7 +155,7 @@ def set_ids(config: DictConfig):
 def upload_to_hf(config: DictConfig):
     huggingface_hub.login(token=os.environ['HUGGINGFACE_TOKEN'])
 
-    for category in CATEGORIES:
+    for category in ['py']:
         df = Dataset.from_csv(
             os.path.join(config.data_path, f'{category}_template_repos.csv'),
             features=FEATURES['template_generation_data'],
@@ -202,14 +214,15 @@ def add_gpt_description_column(config: DictConfig):
 
         return project
 
-    for category in CATEGORIES:
+    for category in ['py']:
         df = pd.read_csv(os.path.join(config.data_path, f'{category}_template_repos.csv'))
-        test_full_names = [full_name.lower() for full_name in config['splits'][category]]
-        df = df.apply(lambda x: add_gpt_description(x, test_full_names), axis=1)
+        # test_full_names = [full_name.lower() for full_name in config['splits'][category]]
+        # df = df.apply(lambda x: add_gpt_description(x, test_full_names), axis=1)
+        df['gpt_description'] = df['description']
         df.to_csv(os.path.join(config.data_path, f"{category}_template_repos.csv"), index=False)
 
 
-@hydra.main(config_path="../../configs", config_name="template_generation", version_base=None)
+@hydra.main(config_path="../../configs/template_generation", config_name="data", version_base=None)
 def main(config: DictConfig):
     load_dotenv()
     # load_repos_data(config)
@@ -218,7 +231,6 @@ def main(config: DictConfig):
     # set_ids(config)
     add_gpt_description_column(config)
     upload_to_hf(config)
-    # clone_repos(config)
 
 
 if __name__ == "__main__":
