@@ -35,7 +35,14 @@ FEATURES = {
             'code_lines': datasets.Value("string"),
             'gpt_description': datasets.Value("string"),
         }
-    )
+    ),
+    'ide_template_generation_data': datasets.Features(
+        {
+            "name": datasets.Value("string"),
+            'language': datasets.Value("string"),
+            'description': datasets.Value("string"),
+        }
+    ),
 }
 
 

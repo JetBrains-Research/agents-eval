@@ -1,5 +1,7 @@
 data_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data
 repos_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/repos
+projects_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/ide_templates
+archives_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/ide_templates_arch
 github_tokens_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/tokens.txt
 splits:
   java: [
