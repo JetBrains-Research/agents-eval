@@ -229,7 +229,7 @@ def main(config: DictConfig):
     # filter_template_repos(config)
     # separate_android_repos(config)
     # set_ids(config)
-    add_gpt_description_column(config)
+    # add_gpt_description_column(config)
     upload_to_hf(config)
 
 

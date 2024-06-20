@@ -6,58 +6,13 @@ github_tokens_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/tokens.
 splits:
   java: [
     'amiya-pattnaik/selenium-cucumber-java',
-    'arothuis/antlr4-calculator',
-    'Azure-Samples/hdinsight-kafka-java-get-started',
-    'Azure-Samples/hello-spring-function-azure',
-    'Azure-Samples/spring-openai-bot',
-    'Azure-Samples/spring-chatgpt-sample',
-    'berndruecker/ticket-booking-camunda-8',
-    'berndruecker/kafka-camunda-spring-simple',
-    'bfwg/springboot-jwt-starter',
-    'binxio/cfn-lint-plugin',
-    'bonigarcia/selenium-jupiter-examples',
-    'candrews/log4jdbc-spring-boot-starter',
-    'chirontt/lwjgl3-helloworld-native',
-    'CiscoDevNet/jtapi-samples',
-    'codecentric/springboot-sample-app',
-    'Coreoz/PPT-Templates',
-    'curityio/example-java-oauth-protected-api',
-    'dadoonet/elasticsearch-java-client-demo',
-    'datumbox/datumbox-framework-examples',
-    'eiselems/ultimate-redis-boot',
-    'Esri/java-maven-starter-project',
-    'flashvayne/chatgpt-spring-boot-starter',
-    'freefair/okhttp-spring-boot',
-    'grafana/grafana-opentelemetry-starter',
-    'hmcts/spring-boot-template',
-    'jlefebure/spring-boot-starter-minio',
-    'jonashackt/spring-boot-openapi-kong',
-    'jonashackt/spring-rabbitmq-messaging-microservices',
-    'jonashackt/traefik-cache-nginx-spring-boot',
-    'jonashackt/spring-boot-rest-clientcertificates-docker-compose',
-    'jonashackt/cxf-spring-cloud-netflix-docker',
-    'jonashackt/spring-reactive-redis-messaging',
-    'Nasruddin/spring-boot-3-jwt-auth',
-    'neo4j-examples/movies-java-bolt',
-    'Ons-diweni/Spring-Security-6-JWT',
-    'OpenAPITools/openapi-petstore',
-    'RawSanj/spring-redis-websocket',
-    'rimmelasghar/SpringBoot-boilerPlate',
-    'slack-samples/bolt-java-starter-template',
-    'teambankrupt/open-project-bankrupt',
-    'yidongnan/spring-boot-grpc-example'
   ]
   kt: [
     'arkivanov/decompose-multiplatform-template',
-    'christian-draeger/basic-selenium-project',
-    'jmfayard/kotlin-cli-starter',
-    'mpetuska/template-kmp-library',
-    'team-dodn/spring-boot-kotlin-template',
-    'ximedes/ktor-authorization',
-    'JetBrains/intellij-platform-plugin-template'
   ]
   android: [
     'amzn/firetv-sample-touch-app'
   ]
   py: [
+      '12rambau/pytest-copie'
   ]
