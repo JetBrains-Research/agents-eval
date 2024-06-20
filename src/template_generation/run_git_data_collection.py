@@ -87,7 +87,8 @@ def filter_template_repos(config: DictConfig):
                 logging.info(f"Skipping repo {repo['full_name']} as it has not permissive license {repo['license']}")
                 continue
             if repo['description'] is None:
-                repo['description'] = ''
+                logging.info(f"Skipping repo {repo['full_name']} as it has empty description")
+                continue
             template_keywords = [token for token in TEMPLATE_KEYWORDS if token in repo['description'].lower()]
             if repo['full_name'].lower() not in repo_name_to_search:
                 logging.info(f"Skipping repo {repo['full_name'].lower()} as it is not presented in search dataset")
@@ -100,8 +101,8 @@ def filter_template_repos(config: DictConfig):
                 logging.info(
                     f"Skipping repo {repo['full_name'].lower()} as it was updated at {repo_json['updatedAt']} < 2023")
                 continue
-            if int(repo_json['codeLines']) > 3000:
-                logging.info(f"Skipping repo {repo['full_name'].lower()} as it has {repo_json['codeLines']} > 3000")
+            if int(repo_json['codeLines']) > 1000:
+                logging.info(f"Skipping repo {repo['full_name'].lower()} as it has {repo_json['codeLines']} > 1000")
                 continue
             if repo['is_template'] or len(template_keywords):
                 template_repos.append({
@@ -155,7 +156,7 @@ def set_ids(config: DictConfig):
 def upload_to_hf(config: DictConfig):
     huggingface_hub.login(token=os.environ['HUGGINGFACE_TOKEN'])
 
-    for category in ['py']:
+    for category in CATEGORIES:
         df = Dataset.from_csv(
             os.path.join(config.data_path, f'{category}_template_repos.csv'),
             features=FEATURES['template_generation_data'],
@@ -214,11 +215,10 @@ def add_gpt_description_column(config: DictConfig):
 
         return project
 
-    for category in ['py']:
+    for category in CATEGORIES:
         df = pd.read_csv(os.path.join(config.data_path, f'{category}_template_repos.csv'))
-        # test_full_names = [full_name.lower() for full_name in config['splits'][category]]
-        # df = df.apply(lambda x: add_gpt_description(x, test_full_names), axis=1)
-        df['gpt_description'] = df['description']
+        test_full_names = [full_name.lower() for full_name in config['splits'][category]]
+        df = df.apply(lambda x: add_gpt_description(x, test_full_names), axis=1)
         df.to_csv(os.path.join(config.data_path, f"{category}_template_repos.csv"), index=False)
 
 
