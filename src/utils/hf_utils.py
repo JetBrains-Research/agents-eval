@@ -48,11 +48,11 @@ FEATURES = {
             "description_tokens_count": datasets.Value("int64"),
             "description_words_count": datasets.Value("int64"),
             "description_lines_count": datasets.Value("int64"),
-            "readme_header": datasets.Value("string"),
-            "readme_header_symbols_count": datasets.Value("int64"),
-            "readme_header_tokens_count": datasets.Value("int64"),
-            "readme_header_words_count": datasets.Value("int64"),
-            "readme_header_lines_count": datasets.Value("int64"),
+            "readme": datasets.Value("string"),
+            "readme_symbols_count": datasets.Value("int64"),
+            "readme_tokens_count": datasets.Value("int64"),
+            "readme_words_count": datasets.Value("int64"),
+            "readme_lines_count": datasets.Value("int64"),
         }
     ),
     'ide_template_generation_data': datasets.Features(
