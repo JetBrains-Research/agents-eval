@@ -1,21 +1,14 @@
-_target_: src.eval.agents.openai_langchain_agent.OpenAiLangchainAgent
+_target_: src.eval.agents.openai_langchain_agent.OpenAILangchainAgent
 name: vanilla
 model_name: gpt-4-1106-preview
 temperature: 0
 model_kwargs:
   seed: 76097149
 prompt:
-  _target_: src.eval.prompts.planning_prompt.VanillaPrompt
-  model_name: gpt-4-1106-preview
-  temperature: 0.8
-  model_kwargs:
-    seed: 76097149
+  _target_: src.eval.prompts.simple_prompt.SimplePrompt
   execution_system_prompt: |
-    Execute the following detailed action plan methodically. 
-    For each step of the plan:
-    - Call the appropriate function with the required arguments, corresponding directly to the outlined plan's next action.
-    - Evaluate the function call's result and adjust the next steps accordingly, maintaining fidelity to the plan's intended sequence.
-    - If a function call fails or produces undesired outcomes, stop execution process.
-    - Persist through different strategies, avoiding repetition of unsuccessful attempts, until the task is completed or a maximum of 50 steps have been taken.
-    - Document solely the function calls and their outcomes. Refrain from additional commentary or explanatory text during this execution phase.
-    Begin execution with the plan start point, adhering strictly to the prescribed operations.
+    We are developing a benchmark to assess quality of project template generation code agents.
+    As a part of the benchmark, we include the task of generating project templates code by description in natural language.
+    As a source of data for this task we will use template repositories in Python, Java and Kotlin from GitHub.
+    Your task will try to reproduce this template by textual description and create file structure of this project with
+    code inside that compilable and contains minimal example of required functionality provided in description.

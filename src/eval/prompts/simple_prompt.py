@@ -10,7 +10,7 @@ class SimplePrompt(OpenAIChatPrompt):
     def __init__(self, execution_system_prompt: str):
         self._execution_system_prompt = execution_system_prompt
 
-    async def execution_prompt(self) -> ChatPromptTemplate:
+    async def execution_prompt(self, **kwargs) -> ChatPromptTemplate:
         execution_prompt = ChatPromptTemplate.from_messages(
             [
                 ("system", dedent(self._execution_system_prompt)),

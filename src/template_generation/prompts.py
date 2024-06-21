@@ -1,11 +1,10 @@
-def get_user_prompt(full_name: str, project_description: str, project_language: str,
-                    gpt_description: str) -> str:
+def get_user_prompt(full_name: str, project_description: str, project_language: str) -> str:
     return f"""
     Template is a small compilable project that contains small examples of all mentioned in description 
     libraries, technologies, functionality.
     Generate template for project named {full_name.replace("/", "__")} 
     which mainly written on {project_language} 
-    and aligns following description: {project_description}. {gpt_description}.
+    and aligns following description: {project_description}.
     Provide files and directory structure (tree) as well as program files contents with all required functionality.
     Take into account only code producing steps.
     Project content root directory is already created, use relative paths from it."""

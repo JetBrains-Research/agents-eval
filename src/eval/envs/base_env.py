@@ -22,3 +22,7 @@ class BaseEnv(ABC):
     @abstractmethod
     async def get_state(self) -> str:
         pass
+
+    @abstractmethod
+    async def shutdown(self):
+        pass

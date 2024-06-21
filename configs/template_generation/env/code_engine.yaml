@@ -1,0 +1,5 @@
+_target_: src.eval.envs.code_engine_env.CodeEngineEnv
+host: '127.0.0.1'
+port: '5050'
+docker_image_name: 'mariatigina/code-engine:latest'
+docker_container_name: 'code-engine'
