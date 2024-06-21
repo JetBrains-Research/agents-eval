@@ -5,10 +5,53 @@ archives_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/ide_template
 github_tokens_path: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/tokens.txt
 splits:
   java: [
-    'amiya-pattnaik/selenium-cucumber-java',
+    'AdamBien/aws-lambda-cdk-plain',
+    'auth0-samples/auth0-spring-security5-api-sample',
+    'Azure-Samples/hello-spring-function-azure',
+    'berndruecker/ticket-booking-camunda-8',
+    'berndruecker/kafka-camunda-spring-simple',
+    'binxio/cfn-lint-plugin',
+    'ChristianAA/selenium-springboot-example',
+    'codecentric/springboot-sample-app',
+    'ContextMapper/context-mapper-standalone-example',
+    'dadoonet/elasticsearch-java-client-demo',
+    'datumbox/datumbox-framework-examples',
+    'eiselems/ultimate-redis-boot',
+    'eliasnogueira/selenium-java-browser-factory',
+    'Esri/java-maven-starter-project',
+    'flashvayne/chatgpt-spring-boot-starter',
+    'GoogleChromeLabs/cronet-sample',
+    'hollingsworthd/micronaut-libgdx-teavm',
+    'IntuitDeveloper/HelloWorld-Java',
+    'JanLoebel/json-schema-validation-starter',
+    'jonashackt/traefik-cache-nginx-spring-boot',
+    'jonashackt/spring-boot-rest-clientcertificates-docker-compose',
+    'jonashackt/spring-reactive-redis-messaging',
+    'lydtechconsulting/kafka-consumer-retry',
+    'lydtechconsulting/kafka-transactions',
+    'manifold-systems/manifold-sample-graphql-app',
+    'melix/gradle-tapi-demo-artifacts',
+    'Pi4J/pi4j-example-minimal',
+    'slack-samples/bolt-java-starter-template',
+    'tomitribe/tomee-jaxrs-starter-project',
+    'xeraa/integration-test-demo',
+    'yidongnan/spring-boot-grpc-example'
   ]
   kt: [
-    'arkivanov/decompose-multiplatform-template',
+    'alidehkhodaei/notification-example',
+    'davidvavra/showkase-screenshot-tests',
+    'Foso/KotlinCompilerPluginExample',
+    'InsertKoinIO/hello-kmp',
+    'Kotlin/kmm-basic-sample',
+    'kotlin-orm/ktorm-example-spring-boot',
+    'MortezaNedaei/RTMP-ExoPlayer',
+    'mvysny/vaadin-kotlin-pwa',
+    'nhachicha/sample-KMP-compiler-plugin',
+    'nomisRev/ktor-k8s-zero-downtime',
+    'PleahMaCaka/forge-kotlin-template',
+    'tiulpin/kotlin-cv.js',
+    'ximedes/ktor-authorization',
+    'ZebraDevs/DataWedge-Flutter-Demo'
   ]
   android: [
     'amzn/firetv-sample-touch-app'
