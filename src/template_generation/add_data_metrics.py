@@ -1,5 +1,6 @@
 import multiprocessing
 import os
+import re
 from typing import Optional
 
 import hydra
@@ -75,7 +76,7 @@ def get_repo_content(repos_path, owner: str, name: str) -> dict[str, str]:
     return repo_content
 
 
-def get_readme_header(repo_content):
+def get_readme(repo_content):
     readme_content = None
     for f, c in repo_content.items():
         if f.lower().endswith('readme.md'):
@@ -83,12 +84,14 @@ def get_readme_header(repo_content):
             break
     if readme_content is None:
         return ''
-    readme_title_split = readme_content.split('# ')
-    if len(readme_title_split) == 1:
-        # Title
-        return readme_title_split[0]
-    # Title + header
-    return readme_title_split[0] + '\n' + readme_title_split[1]
+
+    # Delete some build or other indicator links
+    readme_content = re.sub(r'\[\!\[.*?\]\(.*?\)\]\(.*?\)', '', readme_content)
+    readme_content = re.sub("\n+", "\n", readme_content)
+    readme_content = readme_content.strip('\n')
+    readme_content = readme_content.strip('#')
+
+    return readme_content
 
 
 def add_stats(config: DictConfig, dp, category: str):
@@ -114,12 +117,12 @@ def add_stats(config: DictConfig, dp, category: str):
     dp['description_words_count'] = count_words(description)
     dp['description_lines_count'] = count_lines(description)
 
-    readme_header = get_readme_header(repo_content)
-    dp['readme_header'] = readme_header
-    dp['readme_header_symbols_count'] = count_symbols(readme_header)
-    dp['readme_header_tokens_count'] = count_tokens(readme_header)
-    dp['readme_header_words_count'] = count_words(readme_header)
-    dp['readme_header_lines_count'] = count_lines(readme_header)
+    readme = get_readme(repo_content)
+    dp['readme'] = readme
+    dp['readme_symbols_count'] = count_symbols(readme)
+    dp['readme_tokens_count'] = count_tokens(readme)
+    dp['readme_words_count'] = count_words(readme)
+    dp['readme_lines_count'] = count_lines(readme)
 
     return dp
 
@@ -141,7 +144,7 @@ def calc_stats(config: DictConfig):
         df['repo_tokens_count'] = df['repo_tokens_count'].astype('int64')
         df['repo_code_tokens_count'] = df['repo_code_tokens_count'].astype('int64')
         df['description_tokens_count'] = df['description_tokens_count'].astype('int64')
-        df['readme_header_tokens_count'] = df['readme_header_tokens_count'].astype('int64')
+        df['readme_tokens_count'] = df['readme_tokens_count'].astype('int64')
         df.to_csv(os.path.join(config.data_path, f'{category}_template_repos.csv'), index=False)
 
 
