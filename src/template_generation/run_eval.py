@@ -90,7 +90,6 @@ async def run_template_generation(agent: BaseAgent, env: BaseEnv, data_source: B
             if f.tell() == 0:
                 writer.writerow(results_dict.keys())
             writer.writerow(results_dict.values())
-        break
 
 
 @hydra.main(config_path="../../configs/template_generation", config_name="config.yaml", version_base="1.2")
@@ -105,7 +104,14 @@ def main(cfg: EvalConfig) -> None:
     asyncio.run(run_template_generation(agent, env, data_source, output_path, job_name))
 
 
+def delete_langsmith_projects():
+    client = Client()
+    for project in client.list_projects():
+        client.delete_project(project_name=project.name)
+
+
 if __name__ == '__main__':
     os.environ['HYDRA_FULL_ERROR'] = '1'
     load_dotenv()
+    # delete_langsmith_projects()
     main()

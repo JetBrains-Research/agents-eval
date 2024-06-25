@@ -7,7 +7,7 @@ from src.metrics.base_metrics import calc_base_metrics
 from src.utils.project_utils import get_project_file_tree_as_dict
 
 
-def gen_golden_content_metric(gen_project_path: str, golden_project_path: str) -> dict[str, Any]:
+def gen_golden_content_metrics(gen_project_path: str, golden_project_path: str) -> dict[str, Any]:
     gen_dict = get_project_file_tree_as_dict(gen_project_path)
     golden_dict = get_project_file_tree_as_dict(golden_project_path)
 

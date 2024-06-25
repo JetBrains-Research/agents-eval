@@ -7,8 +7,9 @@ model_kwargs:
 prompt:
   _target_: src.eval.prompts.simple_prompt.SimplePrompt
   execution_system_prompt: |
-    We are developing a benchmark to assess quality of project template generation code agents.
-    As a part of the benchmark, we include the task of generating project templates code by description in natural language.
-    As a source of data for this task we will use template repositories in Python, Java and Kotlin from GitHub.
-    Your task will try to reproduce this template by textual description and create file structure of this project with
-    code inside that compilable and contains minimal example of required functionality provided in description.
+    We are developing a benchmark to assess the quality of project template generation code agents. 
+    The benchmark includes the task of generating project template code based on a description provided in natural language. 
+    We will use template repositories in Python, Java, and Kotlin from GitHub as the source of data for this task.
+    Your task is to reproduce a given template based on its textual description and create the file structure of this project, 
+    including the code inside. 
+    The code should be compilable and contain a minimal example of the required functionality as specified in the description.

@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 from langsmith import Client
 from omegaconf import DictConfig
 
-from src.metrics.project_gen_metrics import gen_golden_content_metric, gen_golden_content_metric_by_files, \
+from src.metrics.project_gen_metrics import gen_golden_content_metrics, gen_golden_content_metric_by_files, \
     get_closest_project_index
 from src.metrics.tree_metrics import gen_vanilla_golden_tree_metric
 from src.utils.git_utils import clone_repo
@@ -18,10 +18,10 @@ from src.utils.hf_utils import load_data
 from src.utils.project_utils import get_project_file_tree_as_dict
 
 
-async def quality_metric(project, vanilla_project_path, language: str, agent: str, config: DictConfig):
+async def get_quality_metrics(project, vanilla_project_path, language: str, agent: str, config: DictConfig):
     golden_project_path = os.path.join(config.repos_path, f"{project['owner']}__{project['name']}")
 
-    agent_metrics = {}
+    quality_metrics = {}
     results_path = os.path.join(config.gen_templates_results_path, f'{language}-{agent}-quality-metrics.csv')
     if os.path.exists(results_path) and project['id'] in list(pd.read_csv(results_path)['id']):
         print(f"Skipping project: {project['full_name']}")
@@ -30,27 +30,27 @@ async def quality_metric(project, vanilla_project_path, language: str, agent: st
     print(f"Processing project: {project['full_name']}")
     gen_project_path = project['template_path']
 
-    content_metric = gen_golden_content_metric(gen_project_path, golden_project_path)
-    agent_metrics.update(content_metric)
+    content_metrics = gen_golden_content_metrics(gen_project_path, golden_project_path)
+    quality_metrics.update(content_metrics)
 
     content_metric_by_files = gen_golden_content_metric_by_files(gen_project_path, golden_project_path)
-    agent_metrics.update(content_metric_by_files)
+    quality_metrics.update(content_metric_by_files)
 
     tree_metrics = await gen_vanilla_golden_tree_metric(gen_project_path,
                                                         vanilla_project_path,
                                                         golden_project_path)
-    agent_metrics['tree_result'] = tree_metrics.get("result", "-1")
-    agent_metrics['tree_comment'] = tree_metrics.get("comment", "")
+    quality_metrics['tree_result'] = tree_metrics.get("result", "-1")
+    quality_metrics['tree_comment'] = tree_metrics.get("comment", "")
 
     with open(results_path, 'a', newline='') as f:
         writer = csv.writer(f)
         if f.tell() == 0:
-            writer.writerow(['id', 'full_name', 'owner', 'name'] + list(agent_metrics.keys()))
+            writer.writerow(['id', 'full_name', 'owner', 'name'] + list(quality_metrics.keys()))
         writer.writerow([project['id'], project['full_name'], project['owner'],
-                         project['name']] + list(agent_metrics.values()))
+                         project['name']] + list(quality_metrics.values()))
 
 
-def cost_metrics(project, language: str, agent: str, config: DictConfig):
+def get_cost_metrics(project, language: str, agent: str, config: DictConfig):
     gen_files_count = len(list(
         get_project_file_tree_as_dict(project['template_path'],
                                       ignore_hidden=False).keys()))
@@ -130,7 +130,7 @@ async def prove_quality_metric(project, projects: Dataset, language: str, agent:
         github_tokens = [t.strip() for t in f.readlines()]
 
     await clone_repo(closest_project["owner"], closest_project["name"], closest_project_path)
-    content_metric = gen_golden_content_metric(closest_project_path, golden_project_path)
+    content_metric = gen_golden_content_metrics(closest_project_path, golden_project_path)
     prove_quality_metrics.update(content_metric)
 
     content_metric_by_files = gen_golden_content_metric_by_files(closest_project_path, golden_project_path)
