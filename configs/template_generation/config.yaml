@@ -11,4 +11,4 @@ defaults:
   - _self_
   - data_source: hf
   - env: code_engine
-  - agent: vanilla
+  - agent: planning

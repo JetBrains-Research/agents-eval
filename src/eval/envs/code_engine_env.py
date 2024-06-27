@@ -48,7 +48,7 @@ class CodeEngineEnv(BaseEnv):
         container_path = f'/{os.path.basename(local_path)}'
 
         self._run_docker_container(local_path, container_path)
-        await asyncio.sleep(1)
+        await asyncio.sleep(2)
 
         url = f'{self.base_url}/file-system/set-working-dir'
         headers = {'Content-Type': 'application/json'}
@@ -73,6 +73,11 @@ class CodeEngineEnv(BaseEnv):
                 status = response.status
                 text = await response.text()
                 print(status, command_name, command_params, text)
+                if status != 200:
+                    return (f"Error occurred while executing command {command_name} with parameters: {command_params}: "
+                            f"status {status}: {text}")
+                if text == "":
+                    return f"Command {command_name} with parameters: {command_params} executed successfully"
                 return text
 
     async def get_state(self) -> str:

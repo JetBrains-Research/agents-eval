@@ -26,4 +26,5 @@ class HFDataSource(BaseDataSource):
     def __iter__(self):
         for config in self._configs:
             dataset = load_dataset(self._hub_name, config, split=self._split, cache_dir=self._cache_dir)
-            yield from dataset
+            for dp in dataset:
+                yield dp, config

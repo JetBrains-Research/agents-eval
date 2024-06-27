@@ -9,7 +9,7 @@ from src.metrics.metrics_result import parse_json_response
 from src.utils.project_utils import get_project_file_tree
 
 
-async def gen_vanilla_golden_tree_metric(gen_project_path: str, vanilla_project_path: str, golden_project_path: str) \
+async def compare_tree_metric(gen_project_path: str, vanilla_project_path: str, golden_project_path: str) \
         -> dict[str, Any]:
     gen_tree = get_project_file_tree(gen_project_path)
     vanilla_tree = get_project_file_tree(vanilla_project_path)

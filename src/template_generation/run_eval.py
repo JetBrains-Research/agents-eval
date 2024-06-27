@@ -6,10 +6,12 @@ import shutil
 import time
 
 import hydra
+import pandas as pd
 from dotenv import load_dotenv
 from hydra.core.hydra_config import HydraConfig
 from langchain_core.tracers.context import tracing_v2_enabled
 from langsmith import Client
+from tenacity import retry, stop_after_attempt
 
 from src.configs.eval_configs import EvalConfig
 from src.eval.agents.base_agent import BaseAgent
@@ -18,6 +20,7 @@ from src.eval.envs.base_env import BaseEnv
 from src.template_generation.prompts import get_user_prompt
 
 
+@retry(stop=stop_after_attempt(3))
 async def run_template_generation_for_project(project, agent: BaseAgent, env: BaseEnv,
                                               template_generation_path: str, job_name: str) -> dict[str, any]:
     try:
@@ -40,7 +43,7 @@ async def run_template_generation_for_project(project, agent: BaseAgent, env: Ba
 
         # Init langsmith project
         client = Client()
-        langsmith_project_name = f"{project['full_name']}_{job_name}"
+        langsmith_project_name = f"{project['full_name']}-{job_name}"
         if client.has_project(langsmith_project_name):
             client.delete_project(project_name=langsmith_project_name)
 
@@ -75,17 +78,24 @@ async def run_template_generation_for_project(project, agent: BaseAgent, env: Ba
     return result_dict
 
 
+@retry(stop=stop_after_attempt(3))
 async def run_template_generation(agent: BaseAgent, env: BaseEnv, data_source: BaseDataSource,
                                   output_path: str, job_name: str):
-    gen_templates_path = os.path.join(output_path, "gen_templates")
-    os.makedirs(gen_templates_path, exist_ok=True)
+    for project, config in data_source:
+        config_path = os.path.join(output_path, config)
+        os.makedirs(config_path, exist_ok=True)
+        result_path = os.path.join(config_path, "results.csv")
+        if os.path.exists(result_path):
+            df = pd.read_csv(result_path)
+            if project['full_name'] in list(df['full_name']):
+                continue
+        gen_templates_path = os.path.join(config_path, "gen_templates")
+        os.makedirs(gen_templates_path, exist_ok=True)
 
-    for project in data_source:
         results_dict = await run_template_generation_for_project(
             project, agent, env, gen_templates_path, job_name)
 
-        result_csv_path = os.path.join(output_path, "gen_template_results.csv")
-        with open(result_csv_path, 'a', newline='') as f:
+        with open(result_path, 'a', newline='') as f:
             writer = csv.writer(f)
             if f.tell() == 0:
                 writer.writerow(results_dict.keys())

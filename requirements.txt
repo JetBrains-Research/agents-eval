@@ -12,9 +12,9 @@ datasets==2.17.1
 docker==7.1.0
 Flask==3.0.2
 pydantic==2.6.3
-langchain==0.2.5
-langchain-openai==0.1.8
-langchain-core==0.2.9
+langchain==0.2.6
+langchain-openai==0.1.10
+langchain-core==0.2.10
 python-dotenv==0.21.1
 numpy==1.26.4
 torch==2.2.1
