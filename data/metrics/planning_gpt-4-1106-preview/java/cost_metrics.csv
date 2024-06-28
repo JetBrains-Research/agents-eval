@@ -1,0 +1,11 @@
+id,full_name,owner,name,time,total_tokens,prompt_tokens,completion_tokens,api_calls_count,api_failed_calls_count,llm_calls_count,langsmith_project_link
+1,AdamBien/aws-lambda-cdk-plain,AdamBien,aws-lambda-cdk-plain,118.85145092010498,14760,13711,1049,15,0,11,https://smith.langchain.com/public/9d32b311-e9b5-48d4-b2e3-ee8853656d18/r
+35,binxio/cfn-lint-plugin,binxio,cfn-lint-plugin,118.24904704093932,22789,21762,1027,19,0,17,https://smith.langchain.com/public/5846b68d-c50e-489a-a3ee-c74e2c415878/r
+45,ChristianAA/selenium-springboot-example,ChristianAA,selenium-springboot-example,192.19355010986328,33605,32471,1134,44,9,24,https://smith.langchain.com/public/3314d509-ed94-408c-9439-254c13ece095/r
+57,dadoonet/elasticsearch-java-client-demo,dadoonet,elasticsearch-java-client-demo,100.40233206748962,25998,24988,1010,22,0,21,https://smith.langchain.com/public/5e2fac89-e3cc-47dc-9872-b235faca287f/r
+63,datumbox/datumbox-framework-examples,datumbox,datumbox-framework-examples,67.08299112319946,11300,10311,989,11,0,9,https://smith.langchain.com/public/9a0857e0-d345-4e86-bdf0-ad9ffe4d366f/r
+77,Esri/java-maven-starter-project,Esri,java-maven-starter-project,87.2390661239624,15193,14306,887,13,0,12,https://smith.langchain.com/public/bf1684aa-0ab8-4d06-90be-a1b409e2a68e/r
+82,flashvayne/chatgpt-spring-boot-starter,flashvayne,chatgpt-spring-boot-starter,149.31959199905396,35767,34539,1228,27,2,25,https://smith.langchain.com/public/b0f1e07a-35ee-4093-a382-524d3321fab2/r
+136,jonashackt/spring-reactive-redis-messaging,jonashackt,spring-reactive-redis-messaging,146.83921670913696,33539,32513,1026,28,1,26,https://smith.langchain.com/public/6aaca921-bba8-4e82-838f-80283828c17c/r
+176,melix/gradle-tapi-demo-artifacts,melix,gradle-tapi-demo-artifacts,88.78227019309998,16199,15190,1009,17,0,13,https://smith.langchain.com/public/db7c4c0e-53f5-4df9-839b-69809b8e0172/r
+246,slack-samples/bolt-java-starter-template,slack-samples,bolt-java-starter-template,84.53575491905212,18561,17611,950,17,0,14,https://smith.langchain.com/public/d15e9dfa-a094-4fa2-a8d1-c782d5615fdb/r

@@ -1,0 +1,11 @@
+id,full_name,owner,name,time,total_tokens,prompt_tokens,completion_tokens,api_calls_count,api_failed_calls_count,llm_calls_count,langsmith_project_link
+2,alidehkhodaei/notification-example,alidehkhodaei,notification-example,79.0062108039856,14177,13211,966,13,0,11,https://smith.langchain.com/public/30e299c4-b258-4115-b8ae-78b607720768/r
+10,davidvavra/showkase-screenshot-tests,davidvavra,showkase-screenshot-tests,100.3721799850464,16879,15915,964,16,0,14,https://smith.langchain.com/public/7f61484e-ed95-40f5-a951-280ef39cf4c4/r
+14,Foso/KotlinCompilerPluginExample,Foso,KotlinCompilerPluginExample,90.60543298721312,14212,13235,977,14,0,11,https://smith.langchain.com/public/c0bc5390-e74f-4a2d-aee0-a62852771373/r
+33,Kotlin/kmm-basic-sample,Kotlin,kmm-basic-sample,108.56179094314577,14476,13659,817,31,0,12,https://smith.langchain.com/public/4f5c196e-aca9-4c2d-951e-df4536f7e0dd/r
+36,kotlin-orm/ktorm-example-spring-boot,kotlin-orm,ktorm-example-spring-boot,105.77751207351685,28285,27286,999,24,0,23,https://smith.langchain.com/public/8bde07b3-452c-4914-8517-45c61b8554dc/r
+39,MortezaNedaei/RTMP-ExoPlayer,MortezaNedaei,RTMP-ExoPlayer,62.049944162368774,13321,12420,901,12,0,11,https://smith.langchain.com/public/8c6559cf-0568-4caf-a3a2-b74a2049a7ad/r
+42,mvysny/vaadin-kotlin-pwa,mvysny,vaadin-kotlin-pwa,79.14165019989014,11326,10359,967,14,0,9,https://smith.langchain.com/public/6ec338cd-4414-4fda-8548-dbd15edacb1f/r
+45,nomisRev/ktor-k8s-zero-downtime,nomisRev,ktor-k8s-zero-downtime,76.8725209236145,14520,13695,825,12,0,12,https://smith.langchain.com/public/a7279108-c35d-47af-bd54-c229ee890fae/r
+50,PleahMaCaka/forge-kotlin-template,PleahMaCaka,forge-kotlin-template,106.05090832710266,21382,20523,859,20,2,18,https://smith.langchain.com/public/d1fb72eb-2d2f-4b67-85ea-bcab642bfd72/r
+67,ZebraDevs/DataWedge-Flutter-Demo,ZebraDevs,DataWedge-Flutter-Demo,141.61730098724365,17088,16173,915,21,2,13,https://smith.langchain.com/public/d47c9f83-2c74-4f2f-aae4-3fce5132877d/r

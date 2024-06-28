@@ -1,0 +1,11 @@
+id,full_name,owner,name,time,total_tokens,prompt_tokens,completion_tokens,api_calls_count,api_failed_calls_count,llm_calls_count,langsmith_project_link
+6,aaronleetw/flask-boilerplate,aaronleetw,flask-boilerplate,131.86332082748413,14934,14116,818,25,0,12,https://smith.langchain.com/public/5073da03-eb63-4450-b352-d10a29cd6de1/r
+14,adilkhash/django-telegram-auth-example,adilkhash,django-telegram-auth-example,80.97267293930054,13606,12641,965,19,0,10,https://smith.langchain.com/public/50034984-b947-4d3f-a51a-7f713f25bac5/r
+158,Binacy/discord-http-interaction-bot,Binacy,discord-http-interaction-bot,85.75441527366638,12346,11272,1074,14,0,9,https://smith.langchain.com/public/2bb49a50-9b0c-4427-82f3-6569a6d39cb0/r
+440,ido-ran/google-photos-api-python-quickstart,ido-ran,google-photos-api-python-quickstart,77.26399111747742,7466,6540,926,8,0,6,https://smith.langchain.com/public/cce30a1e-f159-4158-87d4-a992ae8a2334/r
+565,m0kr4n3/fastapi_project_template,m0kr4n3,fastapi_project_template,86.84087705612183,6744,6028,716,23,0,6,https://smith.langchain.com/public/046cf493-08f0-4704-b88b-f64debd169a7/r
+591,MaxHalford/taxi-demo-rp-mz-rv-rd-st,MaxHalford,taxi-demo-rp-mz-rv-rd-st,77.7277479171753,12739,11760,979,19,0,10,https://smith.langchain.com/public/437b8ff2-4de0-4b32-bbf5-32192a819730/r
+592,mayflower/cloudbot,mayflower,cloudbot,86.90787506103516,10057,9068,989,17,0,8,https://smith.langchain.com/public/69b035b9-7b6c-4443-98dd-1bed81a3a351/r
+841,rohankishore/Spotifyte,rohankishore,Spotifyte,80.46556115150452,11699,10641,1058,12,0,9,https://smith.langchain.com/public/3183b3ad-b36c-40b2-bab2-332644c0ccd3/r
+875,scivision/pybluez-examples,scivision,pybluez-examples,67.17859482765198,8763,7798,965,10,0,7,https://smith.langchain.com/public/10a6d8a9-9981-45c6-945c-cda458576b27/r
+906,slack-samples/bolt-python-starter-template,slack-samples,bolt-python-starter-template,86.38465619087219,10870,9926,944,14,0,9,https://smith.langchain.com/public/8b3074ca-9e0a-4078-a5cd-b8c15431df59/r

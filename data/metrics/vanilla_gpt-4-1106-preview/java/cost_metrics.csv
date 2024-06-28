@@ -1,0 +1,11 @@
+id,full_name,owner,name,time,total_tokens,prompt_tokens,completion_tokens,api_calls_count,api_failed_calls_count,llm_calls_count,langsmith_project_link
+1,AdamBien/aws-lambda-cdk-plain,AdamBien,aws-lambda-cdk-plain,89.70682311058044,914,712,202,4,0,2,https://smith.langchain.com/public/a17a297b-0475-423d-8587-4265feeed390/r
+35,binxio/cfn-lint-plugin,binxio,cfn-lint-plugin,39.45176386833191,3353,3177,176,14,0,9,https://smith.langchain.com/public/44a35263-a665-439b-ad96-70e6c8febe8f/r
+45,ChristianAA/selenium-springboot-example,ChristianAA,selenium-springboot-example,75.73268389701843,3807,3550,257,23,1,10,https://smith.langchain.com/public/3e2bede2-3db7-4eec-aa28-63282ef899d1/r
+57,dadoonet/elasticsearch-java-client-demo,dadoonet,elasticsearch-java-client-demo,58.857754945755005,4270,4116,154,14,0,12,https://smith.langchain.com/public/19a74480-a0f6-4d87-a0da-3daa1731ea46/r
+63,datumbox/datumbox-framework-examples,datumbox,datumbox-framework-examples,38.9675829410553,4759,4550,209,12,0,13,https://smith.langchain.com/public/29f88c73-2c3d-46c3-ada1-8fcfc591407c/r
+77,Esri/java-maven-starter-project,Esri,java-maven-starter-project,79.91944313049316,4745,4563,182,18,3,13,https://smith.langchain.com/public/876e9d94-9ba8-4e47-aea3-1734ac47f060/r
+82,flashvayne/chatgpt-spring-boot-starter,flashvayne,chatgpt-spring-boot-starter,65.18979001045227,4149,3894,255,17,0,11,https://smith.langchain.com/public/871a80db-0c88-42ef-b12f-fd7016f307d1/r
+136,jonashackt/spring-reactive-redis-messaging,jonashackt,spring-reactive-redis-messaging,62.408365964889526,3736,3530,206,20,0,10,https://smith.langchain.com/public/a7c65348-8278-421b-be57-072134345c95/r
+176,melix/gradle-tapi-demo-artifacts,melix,gradle-tapi-demo-artifacts,32.97111392021179,2323,2166,157,9,0,6,https://smith.langchain.com/public/13314d7e-326a-46a0-928b-d51e0b7d3ed3/r
+246,slack-samples/bolt-java-starter-template,slack-samples,bolt-java-starter-template,41.29486584663391,3626,3490,136,11,0,10,https://smith.langchain.com/public/90fa06e6-b892-4df7-a7de-a51dcf8b9882/r
