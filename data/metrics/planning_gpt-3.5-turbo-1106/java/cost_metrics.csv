@@ -3,9 +3,9 @@ id,full_name,owner,name,time,total_tokens,prompt_tokens,completion_tokens,api_ca
 35,binxio/cfn-lint-plugin,binxio,cfn-lint-plugin,17.96199607849121,9663,9068,595,9,0,10,https://smith.langchain.com/public/f45214d5-de11-4635-9279-cb8f435d0466/r
 45,ChristianAA/selenium-springboot-example,ChristianAA,selenium-springboot-example,46.897186040878296,13981,13566,415,13,13,14,https://smith.langchain.com/public/b3140e67-574a-44db-afc2-de9691b1f419/r
 57,dadoonet/elasticsearch-java-client-demo,dadoonet,elasticsearch-java-client-demo,15.213198900222778,7882,7265,617,8,0,8,https://smith.langchain.com/public/d804f19e-a798-4ee1-97ec-f5b5f698785f/r
-63,datumbox/datumbox-framework-examples,datumbox,datumbox-framework-examples,13.211292266845703,7687,7020,667,6,1,8,https://smith.langchain.com/public/aadf806e-1332-47c6-a938-16720e2014f5/r
 77,Esri/java-maven-starter-project,Esri,java-maven-starter-project,23.404621839523315,13971,13258,713,16,2,14,https://smith.langchain.com/public/7eb4e467-4d63-42c4-9b37-a4fa6e902903/r
 82,flashvayne/chatgpt-spring-boot-starter,flashvayne,chatgpt-spring-boot-starter,14.661629915237429,7659,7108,551,9,0,8,https://smith.langchain.com/public/0cabdde0-21ae-4f4a-b87c-c2a655fe88ef/r
 136,jonashackt/spring-reactive-redis-messaging,jonashackt,spring-reactive-redis-messaging,19.157235860824585,7111,6428,683,7,0,7,https://smith.langchain.com/public/ce0449b7-9bbf-4536-9158-597702e8c6a4/r
-176,melix/gradle-tapi-demo-artifacts,melix,gradle-tapi-demo-artifacts,15.421849012374878,,,,0,0,0,
 246,slack-samples/bolt-java-starter-template,slack-samples,bolt-java-starter-template,8.96265196800232,3882,3283,599,2,0,4,https://smith.langchain.com/public/30982c85-b3ea-483d-8bf7-f630b6403291/r
+176,melix/gradle-tapi-demo-artifacts,melix,gradle-tapi-demo-artifacts,12.59830403327942,6951,6380,571,7,0,8,https://smith.langchain.com/public/373f2273-2518-4174-8933-7dda78ce7109/r
+63,datumbox/datumbox-framework-examples,datumbox,datumbox-framework-examples,17.04248309135437,12065,11379,686,10,1,12,https://smith.langchain.com/public/e80f0912-b8ec-4e90-ae96-e8b8d301075d/r

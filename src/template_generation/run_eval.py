@@ -88,6 +88,7 @@ async def run_template_generation(agent: BaseAgent, env: BaseEnv, data_source: B
         if os.path.exists(result_path):
             df = pd.read_csv(result_path)
             if project['full_name'] in list(df['full_name']):
+                print(f"Skipping {project['full_name']}")
                 continue
         gen_templates_path = os.path.join(config_path, "gen_templates")
         os.makedirs(gen_templates_path, exist_ok=True)
