@@ -13,9 +13,10 @@ from omegaconf import DictConfig
 from src.metrics.project_gen_metrics import gen_golden_content_metrics, gen_golden_content_metric_by_files, \
     get_closest_project_index
 from src.metrics.tree_metrics import compare_tree_metric
+from src.metrics.file_metrics import get_files_metrics
+from src.template_generation.code_engine_env.code_engine_env_tools import code_engine_tools_to_handler
 from src.utils.git_utils import clone_repo
 from src.utils.hf_utils import load_data
-from src.utils.project_utils import get_project_file_tree_as_dict
 
 
 def get_quality_metrics(gen_template_result, repos_path: str, output_path: str):
@@ -36,7 +37,8 @@ def get_quality_metrics(gen_template_result, repos_path: str, output_path: str):
     content_metric_by_files = gen_golden_content_metric_by_files(gen_project_path, golden_project_path)
     quality_metrics.update(content_metric_by_files)
 
-    # TODO: metrics by files
+    files_metrics = get_files_metrics(gen_project_path, golden_project_path)
+    quality_metrics.update(files_metrics)
 
     with open(metrics_path, 'a', newline='') as f:
         writer = csv.writer(f)
@@ -48,44 +50,40 @@ def get_quality_metrics(gen_template_result, repos_path: str, output_path: str):
                          gen_template_result['name']] + list(quality_metrics.values()))
 
 
-def get_cost_metrics(gen_template_result, agent_name: str, repos_path: str, output_path: str):
+def get_cost_metrics(gen_template_result, agent_name: str, output_path: str):
     metrics_path = os.path.join(output_path, f'cost_metrics.csv')
     if os.path.exists(metrics_path) and gen_template_result['id'] in list(pd.read_csv(metrics_path)['id']):
         print(f"Skipping project: {gen_template_result['full_name']}")
         return
-
-    gen_files_count = len(list(
-        get_project_file_tree_as_dict(gen_template_result['project_template_path'],
-                                      ignore_hidden=False).keys()))
-    golden_files_count = len(list(
-        get_project_file_tree_as_dict(
-            os.path.join(repos_path, f"{gen_template_result['owner']}__{gen_template_result['name']}"),
-            ignore_hidden=False).keys()))
 
     langsmith_project_name = f"{gen_template_result['full_name']}-{agent_name}"
     client = Client()
     if not client.has_project(langsmith_project_name):
         return
 
+    cost_metrics = {}
     langsmith_project = client.read_project(project_name=langsmith_project_name)
-    intermediate_steps_count, run_url = get_intermediate_steps_count(langsmith_project_name)
+    cost_metrics['total_tokens'] = langsmith_project.total_tokens
+    cost_metrics['prompt_tokens'] = langsmith_project.prompt_tokens
+    cost_metrics['completion_tokens'] = langsmith_project.completion_tokens
+
+    runs_stats = get_runs_stats(langsmith_project_name)
+    cost_metrics.update(runs_stats)
 
     with open(metrics_path, 'a', newline='') as f:
         writer = csv.writer(f)
         if f.tell() == 0:
             writer.writerow(
-                ['id', 'full_name', 'owner', 'name', 'time', 'gen_files_count', 'golden_files_count',
-                 'total_tokens', 'prompt_tokens',
-                 'completion_tokens', 'intermediate_steps_count', 'run_url'])
+                ['id', 'full_name', 'owner', 'name', 'time'] + list(cost_metrics.keys()))
         writer.writerow(
-            [gen_template_result['id'], gen_template_result['full_name'], gen_template_result['owner'],
-             gen_template_result['name'], gen_template_result['time'],
-             gen_files_count, golden_files_count, langsmith_project.total_tokens,
-             langsmith_project.prompt_tokens,
-             langsmith_project.completion_tokens, intermediate_steps_count, run_url])
+            [gen_template_result['id'],
+             gen_template_result['full_name'],
+             gen_template_result['owner'],
+             gen_template_result['name'],
+             gen_template_result['time']] + list(cost_metrics.values()))
 
 
-def get_intermediate_steps_count(langsmith_project_name: str) -> tuple[int, str]:
+def get_runs_stats(langsmith_project_name: str) -> dict:
     client = Client()
     runs = client.list_runs(project_name=langsmith_project_name)
     traces = defaultdict(list)
@@ -93,22 +91,28 @@ def get_intermediate_steps_count(langsmith_project_name: str) -> tuple[int, str]
     for run in runs:
         traces[run.trace_id].append(run)
 
-    intermediate_steps_count = 0
-    share_run = ""
+    runs_stats = {
+        'api_calls_count': 0,
+        'api_failed_calls_count': 0,
+        'llm_calls_count': 0,
+        'langsmith_project_link': ""
+    }
 
     for trace_id, trace_runs in traces.items():
         for run in trace_runs:
             if run.name == 'AgentExecutor':
                 if client.run_is_shared(run.id):
                     client.unshare_run(run.id)
-                share_run = client.share_run(run.id)
-            if (run.outputs and
-                    'output' in run.outputs and \
-                    'return_values' in run.outputs['output'] and \
-                    'intermediate_steps' in run.outputs['output']['return_values']):
-                intermediate_steps_count += len(run.outputs['output']['return_values']['intermediate_steps'])
+                runs_stats['langsmith_project_link'] = client.share_run(run.id)
+            if run.name == 'ChatOpenAI':
+                runs_stats['llm_calls_count'] += 1
+            elif run.name in code_engine_tools_to_handler:
+                runs_stats['api_calls_count'] += 1
+                print(run.outputs)
+                if 'Error occurred while executing command' in run.outputs['output']:
+                    runs_stats['api_failed_calls_count'] += 1
 
-    return intermediate_steps_count, share_run
+    return runs_stats
 
 
 async def get_quality_compare_metrics(gen_template_result, projects: Dataset, repos_path: str, output_path: str):
@@ -167,10 +171,12 @@ async def eval_metrics(config: DictConfig):
                 continue
             projects = load_data(language, 'dev')
             df = pd.read_csv(os.path.join(output_path, 'results.csv'))
+            metrics_path = os.path.join(config.metrics_path, agent_name, language)
+            os.makedirs(metrics_path, exist_ok=True)
             for _, dp in df.iterrows():
-                get_quality_metrics(dp, config.repos_path, output_path)
-                get_cost_metrics(dp, agent_name, config.repos_path, output_path)
-                await get_quality_compare_metrics(dp, projects, config.repos_path, output_path)
+                get_quality_metrics(dp, config.repos_path, metrics_path)
+                get_cost_metrics(dp, agent_name, metrics_path)
+                # await get_quality_compare_metrics(dp, projects, config.repos_path, metrics_path)
 
 
 @hydra.main(config_path="../../configs/template_generation", config_name="metrics", version_base=None)

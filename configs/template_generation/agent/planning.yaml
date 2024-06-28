@@ -1,12 +1,12 @@
 _target_: src.eval.agents.openai_langchain_agent.OpenAILangchainAgent
 name: planning
-model_name: gpt-3.5-turbo-1106
+model_name: gpt-4-1106-preview
 temperature: 0
 model_kwargs:
   seed: 76097149
 prompt:
   _target_: src.eval.prompts.planning_prompt.PlanningPrompt
-  model_name: gpt-3.5-turbo-1106
+  model_name: gpt-4-1106-preview
   temperature: 0
   model_kwargs:
     seed: 76097149
@@ -42,4 +42,4 @@ prompt:
     - If you are stuck, do not try to repeat the request, as it will not help. Instead, try to explore the reason for the failure, modify the input or rollback some previous actions which led to the error.
     - Document solely the function calls and their outcomes. Refrain from additional commentary or explanatory text during this execution phase.
     Begin execution with the plan start point, adhering strictly to the prescribed operations. 
-    The project’s working directory has already been set up. Use it as the root directory by starting your paths with an empty string ''.
+    The project’s template root directory has already been created, so you don't need to create it. Produce files inside this directory. Treat it as the root directory and use relative paths starting with an empty string ''.

@@ -20,8 +20,19 @@ def gen_golden_content_metrics(gen_project_path: str, golden_project_path: str) 
     predictions = concat_code(gen_dict)
     references = concat_code(golden_dict)
 
-    metrics = calc_base_metrics([predictions], [references], ["bleu", "rouge", "chrf", "bertscore", "gte"])
+    if len(predictions) == 0 or len(references) == 0:
+        return {
+            "bleu": None,
+            "rouge1": None,
+            "rouge2": None,
+            "rougeL": None,
+            "rougeLsum": None,
+            "chrf": None,
+            "bertscoref1": None,
+            "gte": None,
+        }
 
+    metrics = calc_base_metrics([predictions], [references], ["bleu", "rouge", "chrf", "bertscore", "gte"])
     return {
         "bleu": metrics["bleu"]["bleu"],
         "rouge1": metrics["rouge"]["rouge1"],
@@ -65,7 +76,8 @@ def gen_golden_content_metric_by_files(gen_project_path: str, golden_project_pat
 
 def get_closest_project_index(description: str, other_descriptions: list[str]):
     metric = 'gte'
-    metrics = calc_base_metrics([description], [d if d is not None else "" for d in other_descriptions], [metric])[metric][
+    metrics = \
+    calc_base_metrics([description], [d if d is not None else "" for d in other_descriptions], [metric])[metric][
         metric]
     best_match = torch.argmax(metrics, dim=1).tolist()[0]
 

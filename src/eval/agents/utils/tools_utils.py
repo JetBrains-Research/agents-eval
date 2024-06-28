@@ -31,7 +31,7 @@ class ResetTool(BaseTool, BaseModel):
         args_schema.required = []
 
         try:
-            message = self.env.reset()
+            message = await self.env.reset()
         except Exception as e:
             return f"Failed to run command: {e}"
 
@@ -60,7 +60,7 @@ def parse_tool(tool_dict: dict, env: BaseEnv) -> StructuredTool:
         args_schema.validate(kwargs)
         try:
             print(name, kwargs)
-            message = env.run_command(name, kwargs)
+            message = await env.run_command(name, kwargs)
         except Exception as e:
             return f"Failed to run command: {e}"
 

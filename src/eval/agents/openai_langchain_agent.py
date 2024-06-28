@@ -37,7 +37,7 @@ class OpenAILangchainAgent(LangchainAgent):
             agent=agent,
             tools=self.tools,
             # TODO: move to yaml
-            verbose=True,
+            verbose=False,
             return_intermediate_steps=True,
             max_iterations=100,
             early_stopping_method="force",

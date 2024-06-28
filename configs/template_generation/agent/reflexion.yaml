@@ -1,22 +1,37 @@
 _target_: src.eval.agents.reflexion_agent.ReflexionAgent
 name: reflexion
-model_name: gpt-3.5-turbo-1106
+model_name: gpt-4-1106-preview
 temperature: 0
 model_kwargs:
   seed: 76097149
 value_threshold: 1.0,  # threshold for evaluation; when reached, the loop will exit
-max_num_iterations: 2,  # maximum number of iterations; when reached, the loop will exit
+max_num_iterations: 3,  # maximum number of iterations; when reached, the loop will exit
 prompt:
   _target_: src.eval.prompts.reflexion_prompt.ReflexionPrompt
   action_prompt: |
-    You are given basic api for operation with files in software engineering empty project. 
-    Your goal is generate template project by given description.
+    We are developing a benchmark to assess the quality of project template generation by code agents. 
+    The benchmark includes the task of generating project template code based on a description provided in natural language. 
+    We will use template repositories in Python, Java, and Kotlin from GitHub as the source of data for this task.
+    Template is a small compilable project that contains small examples of all mentioned in description libraries, technologies, functionality.
+    Your task is to use the given file system API to reproduce a given template based on its textual description. 
+    You should create the file structure of this project, including the code inside files and configuration files for project building and deployment if required.
+    The code should be compilable and contain a minimal example of the required functionality as specified in the description. 
+    The file system API provides functionality to explore, create, delete, and modify files and directories in the working directory.
+    If you are stuck, do not try to repeat the request, as it will not help. 
+    Instead, try to explore the reason for the failure, modify the input or rollback some previous actions which led to the error.
+    The project’s template root directory has already been created, so you don't need to create it. 
+    Produce files inside this directory. Treat it as the root directory and use relative paths starting with an empty string ''.
   evaluator_prompt: |
     Given a project template description and a step of generation process, give a judgement if the step is correct, i.e. 
-    1) the action aligns with the main goal and description of project template; 
-    2) action fits current project structure and does not break it; 
-    3) action extends current project functionality and does not break it;
+    1) The action aligns with the main goal and description of project template; 
+    2) Action fits current project structure and does not break it; 
+    3) Action extends current project functionality and does not break it;
   self_reflexion_prompt: |
-    You were given basic api for operation with files in software engineering empty project. 
-    Your goal was to generate template project by given description.
-    You were unsuccessful.
+    Reflect on the process of generating the project template based on the provided description. 
+    Consider what aspects of the task were accomplished successfully and which parts of the template were generated correctly. 
+    Identify the challenges you encountered during the task and how you attempted to resolve them. 
+    Think about what you could have done differently to avoid or better address the challenges. 
+    Are there any steps or strategies that could improve the efficiency and accuracy of the template generation process? 
+    What did you learn from this task that will help you in future tasks? 
+    How can you apply this knowledge to improve your performance in generating project templates? 
+    Reflect on these points and provide a detailed response to guide your future actions.
