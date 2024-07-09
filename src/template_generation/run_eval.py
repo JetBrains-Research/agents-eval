@@ -7,6 +7,7 @@ import time
 
 import hydra
 import pandas as pd
+import yaml
 from dotenv import load_dotenv
 from hydra.core.hydra_config import HydraConfig
 from langchain_core.tracers.context import tracing_v2_enabled
@@ -85,7 +86,7 @@ async def run_template_generation(agent: BaseAgent, env: BaseEnv, data_source: B
         config_path = os.path.join(output_path, config)
         os.makedirs(config_path, exist_ok=True)
         result_path = os.path.join(config_path, "results.csv")
-        if os.path.exists(result_path):
+        if os.path.exists(result_path) and os.path.getsize(result_path) > 0:
             df = pd.read_csv(result_path)
             if project['full_name'] in list(df['full_name']):
                 print(f"Skipping {project['full_name']}")
@@ -124,5 +125,4 @@ def delete_langsmith_projects():
 if __name__ == '__main__':
     os.environ['HYDRA_FULL_ERROR'] = '1'
     load_dotenv()
-    # delete_langsmith_projects()
     main()

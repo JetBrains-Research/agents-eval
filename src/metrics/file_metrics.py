@@ -15,7 +15,7 @@ def calc_files_metrics(project_path: str) -> dict:
     for dir, subdirs, files in os.walk(project_path):
         if '.git' in dir:
             continue
-        depth = dir.count(os.path.sep) - dir.count(project_path)
+        depth = dir.count(os.path.sep) - project_path.count(os.path.sep)
         if depth > files_metrics['file_tree_depth']:
             files_metrics['file_tree_depth'] = depth
         files_metrics['dirs_count'] += 1

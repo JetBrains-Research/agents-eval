@@ -9,23 +9,17 @@ from tenacity import wait_random_exponential, stop_after_attempt, retry
 from src.eval.agents.utils.tokenization_utils import TokenizationUtils
 
 DEFAULT_MODEL = "gpt-4-1106-preview"
-DEFAULT_PROFILE_NAME = "openai-gpt-4"
-DEFAULT_MAX_TOKENS = 128000
 
 
 @retry(wait=wait_random_exponential(multiplier=1, max=40), stop=stop_after_attempt(3))
-async def chat_completion_request(client: AsyncOpenAI, messages: list[dict[str, str]], model: str = DEFAULT_MODEL,
-                                  max_tokens: int = DEFAULT_MAX_TOKENS, profile_name: str = DEFAULT_PROFILE_NAME,
-                                  tools=None, tool_choice=None) -> ChatCompletion:
-    tokenization_utils = TokenizationUtils(profile_name)
-    tokens_count = tokenization_utils.count_tokens(messages)
-    print(f"Tokens: {tokens_count}/{max_tokens}")
+async def chat_completion_request(client: AsyncOpenAI, messages: list[dict[str, str]], temperature=1.0, model: str = DEFAULT_MODEL, **model_kwargs) -> ChatCompletion:
+    tokenization_utils = TokenizationUtils(model)
     try:
         response = await client.chat.completions.create(
             model=model,
-            messages=tokenization_utils.truncate(messages, max_tokens),
-            tools=tools,
-            tool_choice=tool_choice,
+            messages=tokenization_utils.truncate(messages),
+            temperature=temperature,
+            **model_kwargs
         )
         return response
     except Exception as e:

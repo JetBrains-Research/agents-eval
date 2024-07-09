@@ -10,5 +10,5 @@ hydra:
 defaults:
   - _self_
   - data_source: hf
-  - env: code_engine
-  - agent: planning
+  - env: fleet
+  - agent: few_shot

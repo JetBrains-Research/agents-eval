@@ -1,0 +1,9 @@
+_target_: src.eval.agents.few_shot_agent.FewShotAgent
+name: few_shot_fleet
+model_name: gpt-4-1106-preview
+temperature: 0
+model_kwargs:
+  seed: 76097149
+prompt:
+  _target_: src.eval.prompts.few_shot_prompt.FewShotPrompt
+  execution_system_prompt_path: configs/template_generation/prompts/fleet_execution_system_prompt.md
