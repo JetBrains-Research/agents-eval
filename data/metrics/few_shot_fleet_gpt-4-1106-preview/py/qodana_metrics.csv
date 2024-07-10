@@ -1,0 +1,822 @@
+id,full_name,owner,name,logs,url,problems,problems_count,problems_by_name_count,open_status,error
+6,aaronleetw/flask-boilerplate,aaronleetw,flask-boilerplate,"✓  Linked qodana.cloud project: agents-eval
+By using this Docker image, you agree to
+- JetBrains Privacy Policy (https://jb.gg/jetbrains-privacy-policy)
+- Qodana Linters Agreement (https://www.jetbrains.com/legal/docs/agreements/qodana/license/)
+Licensed to JetBrains Team
+Subscription is active until June 30, 2025.
+Qodana license plan: Ultimate Plus
+                                        
+          _              _       
+         /\ \           /\ \        Qodana for Python 2024.1
+        /  \ \         /  \ \       Documentation
+       / /\ \ \       / /\ \ \      https://jb.gg/qodana-docs
+      / / /\ \ \     / / /\ \ \     Contact us at
+     / / /  \ \_\   / / /  \ \_\    qodana-support@jetbrains.com
+    / / / _ / / /  / / /   / / /    Or via our issue tracker
+   / / / /\ \/ /  / / /   / / /     https://jb.gg/qodana-issue
+  / / /__\ \ \/  / / /___/ / /      Or share your feedback at our forum
+ / / /____\ \ \ / / /____\/ /       https://jb.gg/qodana-forum
+ \/________\_\/ \/_________/     
+                                                   
+                                        
+Starting up Qodana for Python 2024.1 (build QDPY-241.17568.159)…done.
+Preparing for the Project opening stage ...
+Opening project…Waiting for startup activities
+Startup activities finished
+done.
+The Project opening stage completed in 3s
+Preparing for the Project configuration stage ...
+Detected 0 package.json files under the project to install dependencies
+The Project configuration stage completed in 8s
+Initializing project…Inspecting with the 'qodana.starter' profile
+Preparing for the Project analysis stage ...
+Analyzing code 7%
+Analyzing code 11%
+Analyzing code 7%
+Analyzing code 7%
+Analyzing code 7%
+Analyzing code 9%
+Analyzing code 19%
+Analyzing code 16%
+Analyzing code 14%
+Analyzing code 21%
+Analyzing code 30%
+Analyzing code 28%
+Analyzing code 26%
+Analyzing code 23%
+Analyzing code 33%
+Analyzing code 35%
+Analyzing code 38%
+Analyzing code 40%
+Analyzing code 42%
+Analyzing code 45%
+Analyzing code 47%
+Analyzing code 50%
+Analyzing code 52%
+Analyzing code 57%
+Analyzing code 59%
+Analyzing code 57%
+Analyzing code 61%
+Analyzing code 61%
+Analyzing code 66%
+Analyzing code 64%
+Analyzing code 69%
+The Project analysis stage completed in 23s
+
+Qodana - Sanity summary
+Analysis results: 15 problems detected
+15 suspicious problems were detected during Sanity Check. Probably there are some troubles with corresponding inspections. You may fix the problems or exclude the files containing them from the analysis
+-----------------------------------------------------------------------------------------
+File                                                 Inspection  Severity  Problems count
+-----------------------------------------------------------------------------------------
+__init__.py                               Unresolved references  Critical               4
+forms.py                                  Unresolved references  Critical               4
+routes.py                                 Unresolved references  Critical               3
+admin.py                                  Unresolved references  Critical               2
+models.py                                 Unresolved references  Critical               2
+-----------------------------------------------------------------------------------------
+
+
+
+Qodana - Detailed summary
+Analysis results: 8 problems detected
+By severity: Moderate - 8
+----------------------------------------------------------------------------
+Name                                                Severity  Problems count
+----------------------------------------------------------------------------
+PEP 8 coding style violation                        Moderate               4
+Unsatisfied package requirements                    Moderate               4
+----------------------------------------------------------------------------
+
+
+The report is uploaded to https://qodana.cloud/projects/Alj20/reports/vnkKa
+Generating final reports...
+Done
+",https://qodana.cloud/projects/Alj20/reports/vnkKa,"[{'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Package containing module 'flask' is not listed in the project requirements"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'app/routes.py', 'language': 'Python', 'line': 1, 'offset': 6, 'length': 5, 'code': {'startLine': 1, 'length': 5, 'offset': 5, 'surroundingCode': ""from flask import Blueprint, render_template\n\nmain = Blueprint('main', __name__)""}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': 'b1b49971e97f337fe0e53b9286e0c40876892f8b9651ab15dbcfaeaf6e40c764'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Package containing module 'wtforms' is not listed in the project requirements"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'app/forms.py', 'language': 'Python', 'line': 2, 'offset': 6, 'length': 7, 'code': {'startLine': 1, 'length': 7, 'offset': 37, 'surroundingCode': 'from flask_wtf import FlaskForm\nfrom wtforms import StringField, PasswordField\nfrom wtforms.validators import InputRequired\n'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': 'c75252062b8b50cc378ad3d984d3acd77b4a06dde0431e92deca1d6b42824c98'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Package containing module 'wtforms' is not listed in the project requirements"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'app/forms.py', 'language': 'Python', 'line': 3, 'offset': 6, 'length': 7, 'code': {'startLine': 1, 'length': 7, 'offset': 84, 'surroundingCode': 'from flask_wtf import FlaskForm\nfrom wtforms import StringField, PasswordField\nfrom wtforms.validators import InputRequired\n\nclass LoginForm(FlaskForm):'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': 'd0ad0f08e2afc64af296d42fa0ff156126535285c5a1a67433b1f83c74dc4a30'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Package containing module 'flask' is not listed in the project requirements"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'app/__init__.py', 'language': 'Python', 'line': 1, 'offset': 6, 'length': 5, 'code': {'startLine': 1, 'length': 5, 'offset': 5, 'surroundingCode': 'from flask import Flask\nfrom .models import db\nfrom .admin import admin'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': 'f3e8b0e43e151e81b8efd761d48ff3293535dca9e5004a9f3bd499bc64c8f4fa'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'app/forms.py', 'language': 'Python', 'line': 5, 'offset': 1, 'length': 27, 'code': {'startLine': 3, 'length': 27, 'offset': 46, 'surroundingCode': ""from wtforms.validators import InputRequired\n\nclass LoginForm(FlaskForm):\n    username = StringField('Username', validators=[InputRequired()])\n    password = PasswordField('Password', validators=[InputRequired()])""}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': '2dfdb6e30359039be93570eb1be635a4ed9d45145d56bf050e7200405dabbe83'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'app/models.py', 'language': 'Python', 'line': 5, 'offset': 1, 'length': 21, 'code': {'startLine': 3, 'length': 21, 'offset': 19, 'surroundingCode': 'db = SQLAlchemy()\n\nclass User(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    username = db.Column(db.String(80), unique=True, nullable=False)'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': '8b2bbd7d7b97d5d9dacc104143e1a00c4cd69942e2cbcef05befeb8cd4fdb69b'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'app/routes.py', 'language': 'Python', 'line': 5, 'offset': 1, 'length': 16, 'code': {'startLine': 3, 'length': 16, 'offset': 36, 'surroundingCode': ""main = Blueprint('main', __name__)\n\n@main.route('/')\ndef index():\n    return render_template('index.html')""}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': 'e783b99f28ff6fd2bbeeaf3cc6fd1b91177f0776debf71e6c153bb1b6c0edd7d'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'app/__init__.py', 'language': 'Python', 'line': 6, 'offset': 1, 'length': 17, 'code': {'startLine': 4, 'length': 17, 'offset': 38, 'surroundingCode': ""from flask_login import LoginManager\n\ndef create_app():\n    app = Flask(__name__)\n    app.config.from_object('config.Config')""}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': 'edb75fed794f337163c246a15c35077de0d5a0bd5f0b634d4c5ed7198ad700eb'}]",8,"{'PyPackageRequirementsInspection': 4, 'PyPep8Inspection': 4}",True,
+14,adilkhash/django-telegram-auth-example,adilkhash,django-telegram-auth-example,"✓  Linked qodana.cloud project: agents-eval
+By using this Docker image, you agree to
+- JetBrains Privacy Policy (https://jb.gg/jetbrains-privacy-policy)
+- Qodana Linters Agreement (https://www.jetbrains.com/legal/docs/agreements/qodana/license/)
+Licensed to JetBrains Team
+Subscription is active until June 30, 2025.
+Qodana license plan: Ultimate Plus
+                                        
+          _              _       
+         /\ \           /\ \        Qodana for Python 2024.1
+        /  \ \         /  \ \       Documentation
+       / /\ \ \       / /\ \ \      https://jb.gg/qodana-docs
+      / / /\ \ \     / / /\ \ \     Contact us at
+     / / /  \ \_\   / / /  \ \_\    qodana-support@jetbrains.com
+    / / / _ / / /  / / /   / / /    Or via our issue tracker
+   / / / /\ \/ /  / / /   / / /     https://jb.gg/qodana-issue
+  / / /__\ \ \/  / / /___/ / /      Or share your feedback at our forum
+ / / /____\ \ \ / / /____\/ /       https://jb.gg/qodana-forum
+ \/________\_\/ \/_________/     
+                                                   
+                                        
+Starting up Qodana for Python 2024.1 (build QDPY-241.17568.159)…done.
+Preparing for the Project opening stage ...
+Opening project…Waiting for startup activities
+Startup activities finished
+done.
+The Project opening stage completed in 3s
+Preparing for the Project configuration stage ...
+Detected 0 package.json files under the project to install dependencies
+The Project configuration stage completed in 9s
+Initializing project…Inspecting with the 'qodana.starter' profile
+Preparing for the Project analysis stage ...
+Analyzing code 10%
+Analyzing code 12%
+Analyzing code 10%
+Analyzing code 10%
+Analyzing code 10%
+Analyzing code 10%
+Analyzing code 15%
+Analyzing code 17%
+Analyzing code 20%
+Analyzing code 22%
+Analyzing code 25%
+Analyzing code 27%
+Analyzing code 30%
+Analyzing code 32%
+Analyzing code 34%
+Analyzing code 42%
+Analyzing code 47%
+Analyzing code 44%
+Analyzing code 42%
+Analyzing code 40%
+Analyzing code 50%
+Analyzing code 52%
+Analyzing code 55%
+Analyzing code 57%
+Analyzing code 60%
+Analyzing code 64%
+Analyzing code 69%
+Analyzing code 67%
+Analyzing code 62%
+Analyzing code 60%
+Analyzing code 72%
+The Project analysis stage completed in 11s
+
+Qodana - Sanity summary
+Analysis results: 17 problems detected
+17 suspicious problems were detected during Sanity Check. Probably there are some troubles with corresponding inspections. You may fix the problems or exclude the files containing them from the analysis
+---------------------------------------------------------------------------------------
+File                                               Inspection  Severity  Problems count
+---------------------------------------------------------------------------------------
+urls.py                                 Unresolved references  Critical               4
+wsgi.py                                 Unresolved references  Critical               2
+admin.py                                Unresolved references  Critical               2
+apps.py                                 Unresolved references  Critical               2
+models.py                               Unresolved references  Critical               2
+tests.py                                Unresolved references  Critical               2
+admin.py                                Unresolved references      High               1
+models.py                               Unresolved references      High               1
+tests.py                                Unresolved references      High               1
+---------------------------------------------------------------------------------------
+
+
+
+Qodana - Detailed summary
+Analysis results: 9 problems detected
+By severity: Moderate - 9
+----------------------------------------------------------------------------
+Name                                                Severity  Problems count
+----------------------------------------------------------------------------
+Unsatisfied package requirements                    Moderate               8
+PEP 8 coding style violation                        Moderate               1
+----------------------------------------------------------------------------
+
+
+The report is uploaded to https://qodana.cloud/projects/Alj20/reports/1Ljym
+Generating final reports...
+Done
+",https://qodana.cloud/projects/Alj20/reports/1Ljym,"[{'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Package containing module 'django' is not listed in the project requirements"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'project_name/urls.py', 'language': 'Python', 'line': 16, 'offset': 6, 'length': 6, 'code': {'startLine': 14, 'length': 6, 'offset': 79, 'surroundingCode': '    2. Add a URL to urlpatterns:  path(\'blog/\', include(\'blog.urls\'))\n""""""\nfrom django.contrib import admin\nfrom django.urls import include, path\n'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': '4900bc2c642a0d62d4e6404ae032b5cbb466f68d1bf9a809bb92e09ae0ac1467'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Package containing module 'django' is not listed in the project requirements"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'project_name/wsgi.py', 'language': 'Python', 'line': 12, 'offset': 6, 'length': 6, 'code': {'startLine': 10, 'length': 6, 'offset': 16, 'surroundingCode': ""import os\n\nfrom django.core.wsgi import get_wsgi_application\n\nos.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project_name.settings')""}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': '5497847dc45ccf764503acfc8bc6708c58c6c1949b2bd23a3cbcb92721ac348c'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Package containing module 'django' is not listed in the project requirements"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'manage.py', 'language': 'Python', 'line': 8, 'offset': 14, 'length': 6, 'code': {'startLine': 6, 'length': 6, 'offset': 99, 'surroundingCode': ""    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project_name.settings')\n    try:\n        from django.core.management import execute_from_command_line\n    except ImportError as exc:\n        raise ImportError(""}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': '5a944027464189a74a7f4b4ae6117831dcbb7ac7a95f995a93a785c8b838abe7'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Package containing module 'django' is not listed in the project requirements"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'project_name/urls.py', 'language': 'Python', 'line': 17, 'offset': 6, 'length': 6, 'code': {'startLine': 15, 'length': 6, 'offset': 42, 'surroundingCode': '""""""\nfrom django.contrib import admin\nfrom django.urls import include, path\n\nurlpatterns = ['}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': '9532f8968d85a1c9d1391bea658cffd7a551dde70f531bec9af8dec1b79b03b1'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Package containing module 'django' is not listed in the project requirements"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'telegram_auth/tests.py', 'language': 'Python', 'line': 1, 'offset': 6, 'length': 6, 'code': {'startLine': 1, 'length': 6, 'offset': 5, 'surroundingCode': 'from django.test import TestCase\n\n# Create your tests here.'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': 'a422ffa91daa0461634f4c25fa8a5e6333d5d12e0abe448a57ca08b993c3b35f'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Package containing module 'django' is not listed in the project requirements"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'telegram_auth/apps.py', 'language': 'Python', 'line': 1, 'offset': 6, 'length': 6, 'code': {'startLine': 1, 'length': 6, 'offset': 5, 'surroundingCode': 'from django.apps import AppConfig\n\nclass TelegramAuthConfig(AppConfig):'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': 'b9ebe57d853c38b70000d47be777995b283bcd9e5dc08566ad4a8baaee01af8a'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Package containing module 'django' is not listed in the project requirements"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'telegram_auth/models.py', 'language': 'Python', 'line': 1, 'offset': 6, 'length': 6, 'code': {'startLine': 1, 'length': 6, 'offset': 5, 'surroundingCode': 'from django.db import models\n\n# Create your models here.'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': 'de220f502d4591512965e85c4e6d4e3b7a51a264c62a73884f1e8b059bce75c0'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Package containing module 'django' is not listed in the project requirements"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'telegram_auth/admin.py', 'language': 'Python', 'line': 1, 'offset': 6, 'length': 6, 'code': {'startLine': 1, 'length': 6, 'offset': 5, 'surroundingCode': 'from django.contrib import admin\n\n# Register your models here if needed.'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': 'e6ac8bb2af88654ed094aa2f16e64c3e870a7596229827bbfdcd8daf8b17c22f'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'telegram_auth/apps.py', 'language': 'Python', 'line': 3, 'offset': 1, 'length': 36, 'code': {'startLine': 1, 'length': 36, 'offset': 35, 'surroundingCode': ""from django.apps import AppConfig\n\nclass TelegramAuthConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'telegram_auth'""}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': 'f0a765c5a410e2c967816e58dcb03cdd4c846030b180f1f23c159a3e36fee284'}]",9,"{'PyPackageRequirementsInspection': 8, 'PyPep8Inspection': 1}",True,
+158,Binacy/discord-http-interaction-bot,Binacy,discord-http-interaction-bot,"✓  Linked qodana.cloud project: agents-eval
+By using this Docker image, you agree to
+- JetBrains Privacy Policy (https://jb.gg/jetbrains-privacy-policy)
+- Qodana Linters Agreement (https://www.jetbrains.com/legal/docs/agreements/qodana/license/)
+Licensed to JetBrains Team
+Subscription is active until June 30, 2025.
+Qodana license plan: Ultimate Plus
+                                        
+          _              _       
+         /\ \           /\ \        Qodana for Python 2024.1
+        /  \ \         /  \ \       Documentation
+       / /\ \ \       / /\ \ \      https://jb.gg/qodana-docs
+      / / /\ \ \     / / /\ \ \     Contact us at
+     / / /  \ \_\   / / /  \ \_\    qodana-support@jetbrains.com
+    / / / _ / / /  / / /   / / /    Or via our issue tracker
+   / / / /\ \/ /  / / /   / / /     https://jb.gg/qodana-issue
+  / / /__\ \ \/  / / /___/ / /      Or share your feedback at our forum
+ / / /____\ \ \ / / /____\/ /       https://jb.gg/qodana-forum
+ \/________\_\/ \/_________/     
+                                                   
+                                        
+Starting up Qodana for Python 2024.1 (build QDPY-241.17568.159)…done.
+Preparing for the Project opening stage ...
+Opening project…Waiting for startup activities
+Startup activities finished
+done.
+The Project opening stage completed in 3s
+Preparing for the Project configuration stage ...
+Detected 0 package.json files under the project to install dependencies
+The Project configuration stage completed in 8s
+Initializing project…Inspecting with the 'qodana.starter' profile
+Preparing for the Project analysis stage ...
+Analyzing code 19%
+Analyzing code 16%
+Analyzing code 22%
+Analyzing code 19%
+Analyzing code 16%
+Analyzing code 16%
+Analyzing code 16%
+Analyzing code 25%
+Analyzing code 35%
+Analyzing code 32%
+Analyzing code 29%
+Analyzing code 25%
+Analyzing code 41%
+Analyzing code 38%
+Analyzing code 45%
+Analyzing code 48%
+Analyzing code 54%
+Analyzing code 58%
+Analyzing code 54%
+Analyzing code 61%
+Analyzing code 64%
+Analyzing code 67%
+Analyzing code 70%
+The Project analysis stage completed in 16s
+
+Qodana - Sanity summary
+Analysis results: 3 problems detected
+3 suspicious problems were detected during Sanity Check. Probably there are some troubles with corresponding inspections. You may fix the problems or exclude the files containing them from the analysis
+------------------------------------------------------------------------------------------------
+File                                                        Inspection  Severity  Problems count
+------------------------------------------------------------------------------------------------
+interaction_bot.py                               Unresolved references  Critical               3
+------------------------------------------------------------------------------------------------
+
+
+
+Qodana - Detailed summary
+Analysis results: 6 problems detected
+By severity: Moderate - 6
+----------------------------------------------------------------------------
+Name                                                Severity  Problems count
+----------------------------------------------------------------------------
+PEP 8 coding style violation                        Moderate               3
+Unsatisfied package requirements                    Moderate               2
+Method is not declared static                       Moderate               1
+----------------------------------------------------------------------------
+
+
+The report is uploaded to https://qodana.cloud/projects/Alj20/reports/wRq4W
+Generating final reports...
+Done
+",https://qodana.cloud/projects/Alj20/reports/wRq4W,"[{'tool': 'Code Inspection', 'category': 'Python', 'type': 'Method is not declared static', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Method `on_interaction` may be 'static'"", 'detailsInfo': 'Reports any methods that do not require a class instance creation and can be\nmade static.\n\n**Example:**\n\n\n    class MyClass(object):\n        def my_method(self, x):\n            print(x)\n\nIf a **Make function from method** quick-fix is applied, the code changes to:\n\n\n    def my_method(x):\n        print(x)\n\n\n    class MyClass(object):\n        pass\n\nIf you select the **Make method static** quick-fix, the `@staticmethod` decorator is added:\n\n\n    class MyClass(object):\n        @staticmethod\n        def my_method(x):\n            print(x)\n', 'sources': [{'type': 'file', 'path': 'bot/interaction_bot.py', 'language': 'Python', 'line': 11, 'offset': 15, 'length': 14, 'code': {'startLine': 9, 'length': 14, 'offset': 80, 'surroundingCode': ""        print(f'Logged in as {self.user.name} ({self.user.id})')\n\n    async def on_interaction(self, interaction):\n        if interaction.type == discord.InteractionType.application_command:\n            await interaction.response.send_message('Hello from the interaction bot!')""}}], 'attributes': {'module': 'project', 'inspectionName': 'PyMethodMayBeStaticInspection'}, 'hash': '6aa13a051f2d18abb90e39b5bd948e01976f8d590ed290d128037dc3cefbc22d'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Package containing module 'discord' is not listed in the project requirements"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'bot/interaction_bot.py', 'language': 'Python', 'line': 2, 'offset': 6, 'length': 7, 'code': {'startLine': 1, 'length': 7, 'offset': 20, 'surroundingCode': 'import discord\nfrom discord.ext import commands\n\nclass InteractionBot(commands.Bot):'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': '5186e43396c15ac316bac80bf12e982ddc84223703b649e6f6518904e969f1fc'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Package containing module 'discord' is not listed in the project requirements"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'bot/interaction_bot.py', 'language': 'Python', 'line': 1, 'offset': 8, 'length': 7, 'code': {'startLine': 1, 'length': 7, 'offset': 7, 'surroundingCode': 'import discord\nfrom discord.ext import commands\n'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': '6316c715e4368e63499e3a9386cb249f911c5ca84d40398e5c13b2f456d506a3'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'bot/interaction_bot.py', 'language': 'Python', 'line': 4, 'offset': 1, 'length': 35, 'code': {'startLine': 2, 'length': 35, 'offset': 34, 'surroundingCode': 'from discord.ext import commands\n\nclass InteractionBot(commands.Bot):\n    def __init__(self):\n        super().__init__(command_prefix=""!"", intents=discord.Intents.default())'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': '4209a6b318ab202ebae2d3a57018cc87e6bec42eff884df3b9a91ca355a39bab'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E305 expected 2 blank lines after class or function definition, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'bot/interaction_bot.py', 'language': 'Python', 'line': 19, 'offset': 1, 'length': 26, 'code': {'startLine': 17, 'length': 26, 'offset': 32, 'surroundingCode': ""    bot.run('your_token_here')\n\nif __name__ == '__main__':\n    main()\n""}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': '731f9055fdb64e588b2991b9bd82331c7b6bddf26b4e227c4ca2a9bd2f68ef9e'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'bot/interaction_bot.py', 'language': 'Python', 'line': 15, 'offset': 1, 'length': 11, 'code': {'startLine': 13, 'length': 11, 'offset': 88, 'surroundingCode': ""            await interaction.response.send_message('Hello from the interaction bot!')\n\ndef main():\n    bot = InteractionBot()\n    bot.run('your_token_here')""}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': 'e9338c90dd570b1e05f6073ec455792adc3aa0f8cff136eaa10234fb0301ab91'}]",6,"{'PyMethodMayBeStaticInspection': 1, 'PyPackageRequirementsInspection': 2, 'PyPep8Inspection': 3}",True,
+440,ido-ran/google-photos-api-python-quickstart,ido-ran,google-photos-api-python-quickstart,"✓  Linked qodana.cloud project: agents-eval
+By using this Docker image, you agree to
+- JetBrains Privacy Policy (https://jb.gg/jetbrains-privacy-policy)
+- Qodana Linters Agreement (https://www.jetbrains.com/legal/docs/agreements/qodana/license/)
+Licensed to JetBrains Team
+Subscription is active until June 30, 2025.
+Qodana license plan: Ultimate Plus
+                                        
+          _              _       
+         /\ \           /\ \        Qodana for Python 2024.1
+        /  \ \         /  \ \       Documentation
+       / /\ \ \       / /\ \ \      https://jb.gg/qodana-docs
+      / / /\ \ \     / / /\ \ \     Contact us at
+     / / /  \ \_\   / / /  \ \_\    qodana-support@jetbrains.com
+    / / / _ / / /  / / /   / / /    Or via our issue tracker
+   / / / /\ \/ /  / / /   / / /     https://jb.gg/qodana-issue
+  / / /__\ \ \/  / / /___/ / /      Or share your feedback at our forum
+ / / /____\ \ \ / / /____\/ /       https://jb.gg/qodana-forum
+ \/________\_\/ \/_________/     
+                                                   
+                                        
+Starting up Qodana for Python 2024.1 (build QDPY-241.17568.159)…done.
+Preparing for the Project opening stage ...
+Opening project…Waiting for startup activities
+Startup activities finished
+done.
+The Project opening stage completed in 3s
+Preparing for the Project configuration stage ...
+Detected 0 package.json files under the project to install dependencies
+The Project configuration stage completed in 9s
+Initializing project…Inspecting with the 'qodana.starter' profile
+Preparing for the Project analysis stage ...
+Analyzing code 21%
+Analyzing code 25%
+Analyzing code 21%
+Analyzing code 21%
+Analyzing code 21%
+Analyzing code 21%
+Analyzing code 21%
+Analyzing code 28%
+Analyzing code 32%
+Analyzing code 39%
+Analyzing code 35%
+Analyzing code 53%
+Analyzing code 50%
+Analyzing code 46%
+Analyzing code 42%
+Analyzing code 57%
+Analyzing code 60%
+Analyzing code 64%
+Analyzing code 67%
+Analyzing code 71%
+Analyzing code 75%
+The Project analysis stage completed in 11s
+
+Qodana - Sanity summary
+Analysis results: 4 problems detected
+4 suspicious problems were detected during Sanity Check. Probably there are some troubles with corresponding inspections. You may fix the problems or exclude the files containing them from the analysis
+-------------------------------------------------------------------------------------
+File                                             Inspection  Severity  Problems count
+-------------------------------------------------------------------------------------
+main.py                               Unresolved references  Critical               4
+-------------------------------------------------------------------------------------
+
+
+
+Qodana - Detailed summary
+Analysis results: 4 problems detected
+By severity: High - 1, Moderate - 3
+----------------------------------------------------------------------------
+Name                                                Severity  Problems count
+----------------------------------------------------------------------------
+Unsatisfied package requirements                        High               1
+PEP 8 coding style violation                        Moderate               2
+Unsatisfied package requirements                    Moderate               1
+----------------------------------------------------------------------------
+
+
+The report is uploaded to https://qodana.cloud/projects/Alj20/reports/Q9dOb
+Generating final reports...
+Done
+",https://qodana.cloud/projects/Alj20/reports/Q9dOb,"[{'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Package containing module 'googleapiclient' is not listed in the project requirements"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'main.py', 'language': 'Python', 'line': 2, 'offset': 6, 'length': 15, 'code': {'startLine': 1, 'length': 15, 'offset': 60, 'surroundingCode': 'from google_auth_oauthlib.flow import InstalledAppFlow\nfrom googleapiclient.discovery import build\n\n# Define the scope of the application'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': '4db0e7ef37d53415706f068b022a2181335bbbe9a53eb512117d567880075fc4'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'High', 'comment': ""Package requirements 'google-auth-oauthlib==0.4.6', 'google-api-python-client==2.41.0' are not satisfied"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'main.py', 'language': '', 'line': 0, 'offset': 0, 'length': 0, 'code': {'startLine': 0, 'length': 0, 'offset': 0, 'surroundingCode': ''}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': '7dddef13375d34405d5327bef0952dd317637440762bf1ff085157f48acd7c8d'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E305 expected 2 blank lines after class or function definition, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'main.py', 'language': 'Python', 'line': 27, 'offset': 1, 'length': 26, 'code': {'startLine': 25, 'length': 26, 'offset': 56, 'surroundingCode': '            print(f""{album[\'title\']} ({album[\'id\']})"")\n\nif __name__ == \'__main__\':\n    main()\n'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': '6b7e37bbe9763b9a6ad6fe78f2483ba09a2816cbda1877b4a655b61a5d275e1e'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'main.py', 'language': 'Python', 'line': 7, 'offset': 1, 'length': 11, 'code': {'startLine': 5, 'length': 11, 'offset': 69, 'surroundingCode': ""SCOPES = ['https://www.googleapis.com/auth/photoslibrary.readonly']\n\ndef main():\n    # Create the flow using the client secrets file from the Google API Console\n    flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)""}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': 'ac97fcc3d9558700dbb320feada63d2f11a90dbf6f60e7a4b52b9675421ffefd'}]",4,"{'PyPackageRequirementsInspection': 2, 'PyPep8Inspection': 2}",True,
+565,m0kr4n3/fastapi_project_template,m0kr4n3,fastapi_project_template,"✓  Linked qodana.cloud project: agents-eval
+By using this Docker image, you agree to
+- JetBrains Privacy Policy (https://jb.gg/jetbrains-privacy-policy)
+- Qodana Linters Agreement (https://www.jetbrains.com/legal/docs/agreements/qodana/license/)
+Licensed to JetBrains Team
+Subscription is active until June 30, 2025.
+Qodana license plan: Ultimate Plus
+                                        
+          _              _       
+         /\ \           /\ \        Qodana for Python 2024.1
+        /  \ \         /  \ \       Documentation
+       / /\ \ \       / /\ \ \      https://jb.gg/qodana-docs
+      / / /\ \ \     / / /\ \ \     Contact us at
+     / / /  \ \_\   / / /  \ \_\    qodana-support@jetbrains.com
+    / / / _ / / /  / / /   / / /    Or via our issue tracker
+   / / / /\ \/ /  / / /   / / /     https://jb.gg/qodana-issue
+  / / /__\ \ \/  / / /___/ / /      Or share your feedback at our forum
+ / / /____\ \ \ / / /____\/ /       https://jb.gg/qodana-forum
+ \/________\_\/ \/_________/     
+                                                   
+                                        
+Starting up Qodana for Python 2024.1 (build QDPY-241.17568.159)…done.
+Preparing for the Project opening stage ...
+Opening project…Waiting for startup activities
+Startup activities finished
+done.
+The Project opening stage completed in 3s
+Preparing for the Project configuration stage ...
+Detected 0 package.json files under the project to install dependencies
+The Project configuration stage completed in 8s
+Initializing project…Inspecting with the 'qodana.starter' profile
+Preparing for the Project analysis stage ...
+Analyzing code 16%
+Analyzing code 22%
+Analyzing code 16%
+Analyzing code 22%
+Analyzing code 19%
+Analyzing code 16%
+Analyzing code 16%
+Analyzing code 16%
+Analyzing code 25%
+Analyzing code 33%
+Analyzing code 30%
+Analyzing code 27%
+Analyzing code 36%
+Analyzing code 38%
+Analyzing code 41%
+Analyzing code 47%
+Analyzing code 47%
+Analyzing code 41%
+Analyzing code 50%
+Analyzing code 58%
+Analyzing code 61%
+Analyzing code 58%
+Analyzing code 58%
+The Project analysis stage completed in 15s
+
+Qodana - Sanity summary
+Analysis results: 12 problems detected
+12 suspicious problems were detected during Sanity Check. Probably there are some troubles with corresponding inspections. You may fix the problems or exclude the files containing them from the analysis
+---------------------------------------------------------------------------------------------
+File                                                     Inspection  Severity  Problems count
+---------------------------------------------------------------------------------------------
+user.py                                       Unresolved references  Critical               4
+auth.py                                       Unresolved references  Critical               4
+dependencies.py                               Unresolved references  Critical               2
+main.py                                       Unresolved references  Critical               2
+---------------------------------------------------------------------------------------------
+
+
+
+Qodana - Detailed summary
+Analysis results: 5 problems detected
+By severity: Moderate - 5
+----------------------------------------------------------------------------
+Name                                                Severity  Problems count
+----------------------------------------------------------------------------
+PEP 8 coding style violation                        Moderate               2
+Suspicious relative imports                         Moderate               2
+Unused local symbols                                Moderate               1
+----------------------------------------------------------------------------
+
+
+The report is uploaded to https://qodana.cloud/projects/Alj20/reports/nG72L
+Generating final reports...
+Done
+",https://qodana.cloud/projects/Alj20/reports/nG72L,"[{'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'app/models/user.py', 'language': 'Python', 'line': 6, 'offset': 1, 'length': 17, 'code': {'startLine': 4, 'length': 17, 'offset': 27, 'surroundingCode': ""Base = declarative_base()\n\nclass User(Base):\n    __tablename__ = 'users'\n""}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': '1398dac5996669191f25b5e39e128b974e3ba7c02041710b04eb7d5eb6af4021'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'app/routers/auth.py', 'language': 'Python', 'line': 7, 'offset': 1, 'length': 22, 'code': {'startLine': 5, 'length': 22, 'offset': 22, 'surroundingCode': 'router = APIRouter()\n\n@router.post(""/token"")\nasync def login(form_data: OAuth2PasswordRequestForm = Depends()):\n    # Here you would add logic to validate the user and create a token'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': '72b0d7365de73d202510a85d1649530b08679df7a11906bc418209e9be9ce318'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Suspicious relative imports', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'Relative import outside of a package', 'detailsInfo': 'Reports usages of relative imports inside plain directories, for example, directories neither containing `__init__.py` nor\nexplicitly marked as namespace packages.', 'sources': [{'type': 'file', 'path': 'app/main.py', 'language': 'Python', 'line': 2, 'offset': 1, 'length': 25, 'code': {'startLine': 1, 'length': 25, 'offset': 28, 'surroundingCode': 'from fastapi import FastAPI\nfrom .routers import auth\n\napp = FastAPI()'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyRelativeImportInspection'}, 'hash': '2edcd5f15488beda5faa4f74853626a47cb56d0e89e4e0a3ebe0b22f8917c3d3'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Suspicious relative imports', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'Relative import outside of a package', 'detailsInfo': 'Reports usages of relative imports inside plain directories, for example, directories neither containing `__init__.py` nor\nexplicitly marked as namespace packages.', 'sources': [{'type': 'file', 'path': 'app/routers/auth.py', 'language': 'Python', 'line': 3, 'offset': 1, 'length': 40, 'code': {'startLine': 1, 'length': 40, 'offset': 117, 'surroundingCode': 'from fastapi import APIRouter, Depends, HTTPException, status\nfrom fastapi.security import OAuth2PasswordRequestForm\nfrom ..dependencies import oauth2_scheme\n\nrouter = APIRouter()'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyRelativeImportInspection'}, 'hash': 'f672f7585ff84839899cfeda641130f51ceae0b2af5f90ef26f525c1cbe4b012'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unused local symbols', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Parameter 'form_data' value is not used"", 'detailsInfo': 'Reports local variables, parameters, and functions that are locally defined, but not used name in a function.', 'sources': [{'type': 'file', 'path': 'app/routers/auth.py', 'language': 'Python', 'line': 8, 'offset': 17, 'length': 48, 'code': {'startLine': 6, 'length': 48, 'offset': 40, 'surroundingCode': '\n@router.post(""/token"")\nasync def login(form_data: OAuth2PasswordRequestForm = Depends()):\n    # Here you would add logic to validate the user and create a token\n    return {""access_token"": ""your_token"", ""token_type"": ""bearer""}'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyUnusedLocalInspection'}, 'hash': '1bf5ec971ba07bcf947cbffa16efb7e83d6edda09ec88a7f51ff63ce80692e0b'}]",5,"{'PyPep8Inspection': 2, 'PyRelativeImportInspection': 2, 'PyUnusedLocalInspection': 1}",True,
+591,MaxHalford/taxi-demo-rp-mz-rv-rd-st,MaxHalford,taxi-demo-rp-mz-rv-rd-st,"✓  Linked qodana.cloud project: agents-eval
+By using this Docker image, you agree to
+- JetBrains Privacy Policy (https://jb.gg/jetbrains-privacy-policy)
+- Qodana Linters Agreement (https://www.jetbrains.com/legal/docs/agreements/qodana/license/)
+Licensed to JetBrains Team
+Subscription is active until June 30, 2025.
+Qodana license plan: Ultimate Plus
+                                        
+          _              _       
+         /\ \           /\ \        Qodana for Python 2024.1
+        /  \ \         /  \ \       Documentation
+       / /\ \ \       / /\ \ \      https://jb.gg/qodana-docs
+      / / /\ \ \     / / /\ \ \     Contact us at
+     / / /  \ \_\   / / /  \ \_\    qodana-support@jetbrains.com
+    / / / _ / / /  / / /   / / /    Or via our issue tracker
+   / / / /\ \/ /  / / /   / / /     https://jb.gg/qodana-issue
+  / / /__\ \ \/  / / /___/ / /      Or share your feedback at our forum
+ / / /____\ \ \ / / /____\/ /       https://jb.gg/qodana-forum
+ \/________\_\/ \/_________/     
+                                                   
+                                        
+Starting up Qodana for Python 2024.1 (build QDPY-241.17568.159)…done.
+Preparing for the Project opening stage ...
+Opening project…Waiting for startup activities
+Startup activities finished
+done.
+The Project opening stage completed in 3s
+Preparing for the Project configuration stage ...
+Detected 0 package.json files under the project to install dependencies
+The Project configuration stage completed in 7s
+Initializing project…Inspecting with the 'qodana.starter' profile
+Preparing for the Project analysis stage ...
+Analyzing code 14%
+Analyzing code 22%
+Analyzing code 17%
+Analyzing code 17%
+Analyzing code 20%
+Analyzing code 17%
+Analyzing code 14%
+Analyzing code 14%
+Analyzing code 14%
+Analyzing code 25%
+Analyzing code 28%
+Analyzing code 31%
+Analyzing code 34%
+Analyzing code 37%
+Analyzing code 40%
+Analyzing code 42%
+Analyzing code 45%
+Analyzing code 48%
+Analyzing code 51%
+Analyzing code 54%
+Analyzing code 57%
+Analyzing code 60%
+Analyzing code 68%
+Analyzing code 65%
+Analyzing code 65%
+The Project analysis stage completed in 13s
+
+Qodana - Sanity summary
+Analysis results: 4 problems detected
+4 suspicious problems were detected during Sanity Check. Probably there are some troubles with corresponding inspections. You may fix the problems or exclude the files containing them from the analysis
+----------------------------------------------------------------------------------------------
+File                                                      Inspection  Severity  Problems count
+----------------------------------------------------------------------------------------------
+predict.py                                     Unresolved references  Critical               2
+redis_manager.py                               Unresolved references  Critical               1
+streamlit_app.py                               Unresolved references  Critical               1
+----------------------------------------------------------------------------------------------
+
+
+
+Qodana - Detailed summary
+Analysis results: 9 problems detected
+By severity: High - 5, Moderate - 4
+----------------------------------------------------------------------------
+Name                                                Severity  Problems count
+----------------------------------------------------------------------------
+Unsatisfied package requirements                        High               5
+PEP 8 coding style violation                        Moderate               4
+----------------------------------------------------------------------------
+
+
+The report is uploaded to https://qodana.cloud/projects/Alj20/reports/G0lkE
+Generating final reports...
+Done
+",https://qodana.cloud/projects/Alj20/reports/G0lkE,"[{'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'High', 'comment': ""Package requirements 'streamlit', 'redis', 'river' are not satisfied"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'redis_cache/redis_manager.py', 'language': '', 'line': 0, 'offset': 0, 'length': 0, 'code': {'startLine': 0, 'length': 0, 'offset': 0, 'surroundingCode': ''}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': '00a52a2b566e3f4a094642225954697651c0cf5386fb9912470cacc4d11b83a3'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'High', 'comment': ""Package requirements 'streamlit', 'redis', 'river' are not satisfied"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'model/predict.py', 'language': '', 'line': 0, 'offset': 0, 'length': 0, 'code': {'startLine': 0, 'length': 0, 'offset': 0, 'surroundingCode': ''}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': '1a6df998f70572e74e9176134b75115b26f47bc970e342f0ef021452ca2a2aa3'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'High', 'comment': ""Package requirements 'streamlit', 'redis', 'river' are not satisfied"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'data_stream/redpanda_producer.py', 'language': '', 'line': 0, 'offset': 0, 'length': 0, 'code': {'startLine': 0, 'length': 0, 'offset': 0, 'surroundingCode': ''}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': '6559b8ab8624eb4ff2de5ff56633ab0e842a47203790be0eb321e1c0e5bfc808'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'High', 'comment': ""Package requirements 'streamlit', 'redis', 'river' are not satisfied"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'streamlit_app.py', 'language': '', 'line': 0, 'offset': 0, 'length': 0, 'code': {'startLine': 0, 'length': 0, 'offset': 0, 'surroundingCode': ''}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': 'f4d8a4c54999968214791b9b51ea43139d67df40a335e10fe1ec8926a7b98014'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'High', 'comment': ""Package requirements 'streamlit', 'redis', 'river' are not satisfied"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'setup.py', 'language': '', 'line': 0, 'offset': 0, 'length': 0, 'code': {'startLine': 0, 'length': 0, 'offset': 0, 'surroundingCode': ''}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': 'f7d07e2892d761672b5a0c67e64d70192bbe54149f086f6b0b4d6c90aa944ccc'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'model/predict.py', 'language': 'Python', 'line': 10, 'offset': 1, 'length': 31, 'code': {'startLine': 8, 'length': 31, 'offset': 38, 'surroundingCode': '    model.learn_one(features, label)\n\ndef predict_duration(features):\n    return model.predict_one(features)\n'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': '1b7a1ec369bcea3fdb9246ddf8a00ea50c6a8fa6b6b83a667be207fe1464e129'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'redis_cache/redis_manager.py', 'language': 'Python', 'line': 7, 'offset': 1, 'length': 29, 'code': {'startLine': 5, 'length': 29, 'offset': 36, 'surroundingCode': '\n# Placeholder for Redis operations\ndef cache_result(key, value):\n    r.set(key, value)\n'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': '6a63a483a05bee26e4470bf37f30e650a0d2bbb46772f683147102f6916f17bc'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'redis_cache/redis_manager.py', 'language': 'Python', 'line': 10, 'offset': 1, 'length': 27, 'code': {'startLine': 8, 'length': 27, 'offset': 23, 'surroundingCode': '    r.set(key, value)\n\ndef get_cached_result(key):\n    return r.get(key)\n'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': 'ac315197525953b9ad9c5aac8a5deac66a3695874f18ba86205e9e9fdb2015c3'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'model/predict.py', 'language': 'Python', 'line': 7, 'offset': 1, 'length': 33, 'code': {'startLine': 5, 'length': 33, 'offset': 49, 'surroundingCode': '\n# Placeholder for model training and prediction\ndef train_model(features, label):\n    model.learn_one(features, label)\n'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': 'c11109ea9f57d510e28076de356a0ecb6b9d3f111aa2e39f5dadaecf8fb6f52a'}]",9,"{'PyPackageRequirementsInspection': 5, 'PyPep8Inspection': 4}",True,
+592,mayflower/cloudbot,mayflower,cloudbot,"✓  Linked qodana.cloud project: agents-eval
+By using this Docker image, you agree to
+- JetBrains Privacy Policy (https://jb.gg/jetbrains-privacy-policy)
+- Qodana Linters Agreement (https://www.jetbrains.com/legal/docs/agreements/qodana/license/)
+Licensed to JetBrains Team
+Subscription is active until June 30, 2025.
+Qodana license plan: Ultimate Plus
+                                        
+          _              _       
+         /\ \           /\ \        Qodana for Python 2024.1
+        /  \ \         /  \ \       Documentation
+       / /\ \ \       / /\ \ \      https://jb.gg/qodana-docs
+      / / /\ \ \     / / /\ \ \     Contact us at
+     / / /  \ \_\   / / /  \ \_\    qodana-support@jetbrains.com
+    / / / _ / / /  / / /   / / /    Or via our issue tracker
+   / / / /\ \/ /  / / /   / / /     https://jb.gg/qodana-issue
+  / / /__\ \ \/  / / /___/ / /      Or share your feedback at our forum
+ / / /____\ \ \ / / /____\/ /       https://jb.gg/qodana-forum
+ \/________\_\/ \/_________/     
+                                                   
+                                        
+Starting up Qodana for Python 2024.1 (build QDPY-241.17568.159)…done.
+Preparing for the Project opening stage ...
+Opening project…Waiting for startup activities
+Startup activities finished
+done.
+The Project opening stage completed in 3s
+Preparing for the Project configuration stage ...
+Detected 0 package.json files under the project to install dependencies
+The Project configuration stage completed in 8s
+Initializing project…Inspecting with the 'qodana.starter' profile
+Preparing for the Project analysis stage ...
+Analyzing code 13%
+Analyzing code 22%
+Analyzing code 13%
+Analyzing code 13%
+Analyzing code 13%
+Analyzing code 19%
+Analyzing code 16%
+Analyzing code 13%
+Analyzing code 25%
+Analyzing code 30%
+Analyzing code 27%
+Analyzing code 38%
+Analyzing code 36%
+Analyzing code 33%
+Analyzing code 41%
+Analyzing code 44%
+Analyzing code 47%
+Analyzing code 50%
+Analyzing code 55%
+Analyzing code 52%
+Analyzing code 61%
+Analyzing code 61%
+Analyzing code 63%
+Analyzing code 63%
+Analyzing code 66%
+Analyzing code 69%
+Analyzing code 72%
+The Project analysis stage completed in 16s
+
+Qodana - Detailed summary
+Analysis results: 6 problems detected
+By severity: High - 5, Moderate - 1
+----------------------------------------------------------------------------
+Name                                                Severity  Problems count
+----------------------------------------------------------------------------
+Unsatisfied package requirements                        High               5
+PEP 8 coding style violation                        Moderate               1
+----------------------------------------------------------------------------
+
+
+The report is uploaded to https://qodana.cloud/projects/Alj20/reports/yWdG1
+Generating final reports...
+Done
+",https://qodana.cloud/projects/Alj20/reports/yWdG1,"[{'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'High', 'comment': ""Package requirements 'boto3==1.24.1', 'kubernetes==23.6.0', 'pytest==7.1.2' are not satisfied"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'mayflower/helpers/k8s_helper.py', 'language': '', 'line': 0, 'offset': 0, 'length': 0, 'code': {'startLine': 0, 'length': 0, 'offset': 0, 'surroundingCode': ''}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': '1a49b9b928c37e3eab79cd95c492d8ca0354928de861d6f054fbaab05ccf591f'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'High', 'comment': ""Package requirements 'boto3==1.24.1', 'kubernetes==23.6.0', 'pytest==7.1.2' are not satisfied"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'mayflower/cloudbot.py', 'language': '', 'line': 0, 'offset': 0, 'length': 0, 'code': {'startLine': 0, 'length': 0, 'offset': 0, 'surroundingCode': ''}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': '66ae6b65d97102505acdafd7a457e89e75f3be46caa462beee041979b8c1d9e9'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'High', 'comment': ""Package requirements 'boto3==1.24.1', 'kubernetes==23.6.0', 'pytest==7.1.2' are not satisfied"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'mayflower/__init__.py', 'language': '', 'line': 0, 'offset': 0, 'length': 0, 'code': {'startLine': 0, 'length': 0, 'offset': 0, 'surroundingCode': ''}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': '99fe2384d841c9c5f3129a23a3126cfacaee74208ef700b65d5ea2b0e04f623b'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'High', 'comment': ""Package requirements 'boto3==1.24.1', 'kubernetes==23.6.0', 'pytest==7.1.2' are not satisfied"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'mayflower/helpers/__init__.py', 'language': '', 'line': 0, 'offset': 0, 'length': 0, 'code': {'startLine': 0, 'length': 0, 'offset': 0, 'surroundingCode': ''}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': 'ba0ca4bec0db984023c76ec561987028bd469b230cf375df64257c3819fa599f'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'High', 'comment': ""Package requirements 'boto3==1.24.1', 'kubernetes==23.6.0', 'pytest==7.1.2' are not satisfied"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'mayflower/helpers/aws_helper.py', 'language': '', 'line': 0, 'offset': 0, 'length': 0, 'code': {'startLine': 0, 'length': 0, 'offset': 0, 'surroundingCode': ''}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': 'feb7af20be2a66fa50474e8a2a1c56973ac24f5b7b52963af948a2e79643429c'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E305 expected 2 blank lines after class or function definition, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'mayflower/cloudbot.py', 'language': 'Python', 'line': 6, 'offset': 1, 'length': 26, 'code': {'startLine': 4, 'length': 26, 'offset': 77, 'surroundingCode': '    print(""Mayflower Cloudbot is ready to assist with Kubernetes and AWS."")\n\nif __name__ == ""__main__"":\n    main()\n'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': 'da7a2d2148d7555c3058c78412ce837972f9a0d2bc1eb4a5636e309d8e86bee6'}]",6,"{'PyPackageRequirementsInspection': 5, 'PyPep8Inspection': 1}",True,
+841,rohankishore/Spotifyte,rohankishore,Spotifyte,"✓  Linked qodana.cloud project: agents-eval
+By using this Docker image, you agree to
+- JetBrains Privacy Policy (https://jb.gg/jetbrains-privacy-policy)
+- Qodana Linters Agreement (https://www.jetbrains.com/legal/docs/agreements/qodana/license/)
+Licensed to JetBrains Team
+Subscription is active until June 30, 2025.
+Qodana license plan: Ultimate Plus
+                                        
+          _              _       
+         /\ \           /\ \        Qodana for Python 2024.1
+        /  \ \         /  \ \       Documentation
+       / /\ \ \       / /\ \ \      https://jb.gg/qodana-docs
+      / / /\ \ \     / / /\ \ \     Contact us at
+     / / /  \ \_\   / / /  \ \_\    qodana-support@jetbrains.com
+    / / / _ / / /  / / /   / / /    Or via our issue tracker
+   / / / /\ \/ /  / / /   / / /     https://jb.gg/qodana-issue
+  / / /__\ \ \/  / / /___/ / /      Or share your feedback at our forum
+ / / /____\ \ \ / / /____\/ /       https://jb.gg/qodana-forum
+ \/________\_\/ \/_________/     
+                                                   
+                                        
+Starting up Qodana for Python 2024.1 (build QDPY-241.17568.159)…done.
+Preparing for the Project opening stage ...
+Opening project…Waiting for startup activities
+Startup activities finished
+done.
+The Project opening stage completed in 3s
+Preparing for the Project configuration stage ...
+Detected 0 package.json files under the project to install dependencies
+The Project configuration stage completed in 8s
+Initializing project…Inspecting with the 'qodana.starter' profile
+Preparing for the Project analysis stage ...
+Analyzing code 16%
+Analyzing code 22%
+Analyzing code 19%
+Analyzing code 16%
+Analyzing code 16%
+Analyzing code 16%
+Analyzing code 16%
+Analyzing code 25%
+Analyzing code 32%
+Analyzing code 29%
+Analyzing code 38%
+Analyzing code 35%
+Analyzing code 45%
+Analyzing code 41%
+Analyzing code 51%
+Analyzing code 48%
+Analyzing code 54%
+Analyzing code 61%
+Analyzing code 58%
+Analyzing code 64%
+Analyzing code 67%
+Analyzing code 70%
+Analyzing code 74%
+Analyzing code 77%
+The Project analysis stage completed in 11s
+
+Qodana - Sanity summary
+Analysis results: 8 problems detected
+8 suspicious problems were detected during Sanity Check. Probably there are some troubles with corresponding inspections. You may fix the problems or exclude the files containing them from the analysis
+-------------------------------------------------------------------------------------------
+File                                                   Inspection  Severity  Problems count
+-------------------------------------------------------------------------------------------
+gui.py                                      Unresolved references  Critical               4
+downloader.py                               Unresolved references  Critical               2
+main.py                                     Unresolved references  Critical               2
+-------------------------------------------------------------------------------------------
+
+
+
+Qodana - Detailed summary
+Analysis results: 6 problems detected
+By severity: High - 3, Moderate - 3
+----------------------------------------------------------------------------
+Name                                                Severity  Problems count
+----------------------------------------------------------------------------
+Unsatisfied package requirements                        High               3
+PEP 8 coding style violation                        Moderate               3
+----------------------------------------------------------------------------
+
+
+The report is uploaded to https://qodana.cloud/projects/Alj20/reports/7Qo4o
+Generating final reports...
+Done
+",https://qodana.cloud/projects/Alj20/reports/7Qo4o,"[{'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'High', 'comment': ""Package requirements 'PySide6==6.2.2', 'spotdl==3.9.0', 'pytest==7.1.1' are not satisfied"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'main.py', 'language': '', 'line': 0, 'offset': 0, 'length': 0, 'code': {'startLine': 0, 'length': 0, 'offset': 0, 'surroundingCode': ''}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': '1cc7da9e4321c70f4074a0ff569b562e919e32f292fea8359a52f0365fad1af0'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'High', 'comment': ""Package requirements 'PySide6==6.2.2', 'spotdl==3.9.0', 'pytest==7.1.1' are not satisfied"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'downloader.py', 'language': '', 'line': 0, 'offset': 0, 'length': 0, 'code': {'startLine': 0, 'length': 0, 'offset': 0, 'surroundingCode': ''}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': 'b3e56a772b7df14dd3a7333fc92c3f645347f1506b2d8bc31f69a56f5958c527'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'High', 'comment': ""Package requirements 'PySide6==6.2.2', 'spotdl==3.9.0', 'pytest==7.1.1' are not satisfied"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'gui.py', 'language': '', 'line': 0, 'offset': 0, 'length': 0, 'code': {'startLine': 0, 'length': 0, 'offset': 0, 'surroundingCode': ''}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': 'fec88fd6581090e254519fff1ed0c63d0255028034996df061c028df45339943'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'downloader.py', 'language': 'Python', 'line': 3, 'offset': 1, 'length': 30, 'code': {'startLine': 1, 'length': 30, 'offset': 29, 'surroundingCode': 'from spotdl import download\n\ndef download_track(track_url):\n    download.track(track_url, output_format=""mp3"")\n'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': '09d9ff04e475fda26d08560fd177da3b459f52e2718da7dbd4661c350972ba2b'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'downloader.py', 'language': 'Python', 'line': 6, 'offset': 1, 'length': 36, 'code': {'startLine': 4, 'length': 36, 'offset': 52, 'surroundingCode': '    download.track(track_url, output_format=""mp3"")\n\ndef download_playlist(playlist_url):\n    download.playlist(playlist_url, output_format=""mp3"")\n'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': '4ec5905ca202d7fc3507741c3f4d58e6b863612391fd12cb5552c5ab9c8b33bb'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'gui.py', 'language': 'Python', 'line': 3, 'offset': 1, 'length': 30, 'code': {'startLine': 1, 'length': 30, 'offset': 78, 'surroundingCode': 'from PySide6.QtWidgets import QMainWindow, QPushButton, QVBoxLayout, QWidget\n\nclass MainWindow(QMainWindow):\n    def __init__(self):\n        super().__init__()'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': 'cc0c7bddc2bfc768edf7f0df06ed6b5b7d745d5204e1063d86d32a972b97675d'}]",6,"{'PyPackageRequirementsInspection': 3, 'PyPep8Inspection': 3}",True,
+875,scivision/pybluez-examples,scivision,pybluez-examples,"✓  Linked qodana.cloud project: agents-eval
+By using this Docker image, you agree to
+- JetBrains Privacy Policy (https://jb.gg/jetbrains-privacy-policy)
+- Qodana Linters Agreement (https://www.jetbrains.com/legal/docs/agreements/qodana/license/)
+Licensed to JetBrains Team
+Subscription is active until June 30, 2025.
+Qodana license plan: Ultimate Plus
+                                        
+          _              _       
+         /\ \           /\ \        Qodana for Python 2024.1
+        /  \ \         /  \ \       Documentation
+       / /\ \ \       / /\ \ \      https://jb.gg/qodana-docs
+      / / /\ \ \     / / /\ \ \     Contact us at
+     / / /  \ \_\   / / /  \ \_\    qodana-support@jetbrains.com
+    / / / _ / / /  / / /   / / /    Or via our issue tracker
+   / / / /\ \/ /  / / /   / / /     https://jb.gg/qodana-issue
+  / / /__\ \ \/  / / /___/ / /      Or share your feedback at our forum
+ / / /____\ \ \ / / /____\/ /       https://jb.gg/qodana-forum
+ \/________\_\/ \/_________/     
+                                                   
+                                        
+Starting up Qodana for Python 2024.1 (build QDPY-241.17568.159)…done.
+Preparing for the Project opening stage ...
+Opening project…Waiting for startup activities
+Startup activities finished
+done.
+The Project opening stage completed in 3s
+Preparing for the Project configuration stage ...
+Detected 0 package.json files under the project to install dependencies
+The Project configuration stage completed in 7s
+Initializing project…Inspecting with the 'qodana.starter' profile
+Preparing for the Project analysis stage ...
+Analyzing code 17%
+Analyzing code 17%
+Analyzing code 17%
+Analyzing code 17%
+Analyzing code 17%
+Analyzing code 17%
+Analyzing code 17%
+Analyzing code 20%
+Analyzing code 31%
+Analyzing code 27%
+Analyzing code 24%
+Analyzing code 41%
+Analyzing code 37%
+Analyzing code 34%
+Analyzing code 44%
+Analyzing code 48%
+Analyzing code 55%
+Analyzing code 51%
+Analyzing code 58%
+Analyzing code 62%
+Analyzing code 62%
+The Project analysis stage completed in 15s
+
+Qodana - Detailed summary
+Analysis results: 0 problem detected
+
+The report is uploaded to https://qodana.cloud/projects/Alj20/reports/Zv92j
+Generating final reports...
+Done
+",https://qodana.cloud/projects/Alj20/reports/Zv92j,[],0,{},True,
+906,slack-samples/bolt-python-starter-template,slack-samples,bolt-python-starter-template,"✓  Linked qodana.cloud project: agents-eval
+By using this Docker image, you agree to
+- JetBrains Privacy Policy (https://jb.gg/jetbrains-privacy-policy)
+- Qodana Linters Agreement (https://www.jetbrains.com/legal/docs/agreements/qodana/license/)
+Licensed to JetBrains Team
+Subscription is active until June 30, 2025.
+Qodana license plan: Ultimate Plus
+                                        
+          _              _       
+         /\ \           /\ \        Qodana for Python 2024.1
+        /  \ \         /  \ \       Documentation
+       / /\ \ \       / /\ \ \      https://jb.gg/qodana-docs
+      / / /\ \ \     / / /\ \ \     Contact us at
+     / / /  \ \_\   / / /  \ \_\    qodana-support@jetbrains.com
+    / / / _ / / /  / / /   / / /    Or via our issue tracker
+   / / / /\ \/ /  / / /   / / /     https://jb.gg/qodana-issue
+  / / /__\ \ \/  / / /___/ / /      Or share your feedback at our forum
+ / / /____\ \ \ / / /____\/ /       https://jb.gg/qodana-forum
+ \/________\_\/ \/_________/     
+                                                   
+                                        
+Starting up Qodana for Python 2024.1 (build QDPY-241.17568.159)…done.
+Preparing for the Project opening stage ...
+Opening project…Waiting for startup activities
+Startup activities finished
+done.
+The Project opening stage completed in 3s
+Preparing for the Project configuration stage ...
+Detected 0 package.json files under the project to install dependencies
+The Project configuration stage completed in 8s
+Initializing project…Inspecting with the 'qodana.starter' profile
+Preparing for the Project analysis stage ...
+Analyzing code 13%
+Analyzing code 10%
+Analyzing code 20%
+Analyzing code 10%
+Analyzing code 10%
+Analyzing code 10%
+Analyzing code 17%
+Analyzing code 24%
+Analyzing code 34%
+Analyzing code 31%
+Analyzing code 27%
+Analyzing code 48%
+Analyzing code 44%
+Analyzing code 41%
+Analyzing code 37%
+Analyzing code 51%
+Analyzing code 55%
+Analyzing code 65%
+Analyzing code 62%
+Analyzing code 58%
+Analyzing code 68%
+Analyzing code 72%
+The Project analysis stage completed in 13s
+
+Qodana - Detailed summary
+Analysis results: 0 problem detected
+
+The report is uploaded to https://qodana.cloud/projects/Alj20/reports/kVD2r
+Generating final reports...
+Done
+",https://qodana.cloud/projects/Alj20/reports/kVD2r,[],0,{},True,

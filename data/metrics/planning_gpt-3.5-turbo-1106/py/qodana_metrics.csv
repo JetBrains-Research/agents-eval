@@ -1,0 +1,1624 @@
+id,full_name,owner,name,logs,url,problems,problems_count,problems_by_name_count,open_status,error
+6,aaronleetw/flask-boilerplate,aaronleetw,flask-boilerplate,"✓  Linked qodana.cloud project: agents-eval
+By using this Docker image, you agree to
+- JetBrains Privacy Policy (https://jb.gg/jetbrains-privacy-policy)
+- Qodana Linters Agreement (https://www.jetbrains.com/legal/docs/agreements/qodana/license/)
+Licensed to JetBrains Team
+Subscription is active until June 30, 2025.
+Qodana license plan: Ultimate Plus
+                                        
+          _              _       
+         /\ \           /\ \        Qodana for Python 2024.1
+        /  \ \         /  \ \       Documentation
+       / /\ \ \       / /\ \ \      https://jb.gg/qodana-docs
+      / / /\ \ \     / / /\ \ \     Contact us at
+     / / /  \ \_\   / / /  \ \_\    qodana-support@jetbrains.com
+    / / / _ / / /  / / /   / / /    Or via our issue tracker
+   / / / /\ \/ /  / / /   / / /     https://jb.gg/qodana-issue
+  / / /__\ \ \/  / / /___/ / /      Or share your feedback at our forum
+ / / /____\ \ \ / / /____\/ /       https://jb.gg/qodana-forum
+ \/________\_\/ \/_________/     
+                                                   
+                                        
+Starting up Qodana for Python 2024.1 (build QDPY-241.17568.159)…done.
+Preparing for the Project opening stage ...
+Opening project…Waiting for startup activities
+Startup activities finished
+done.
+The Project opening stage completed in 3s
+Preparing for the Project configuration stage ...
+Detected 0 package.json files under the project to install dependencies
+The Project configuration stage completed in 7s
+Initializing project…Inspecting with the 'qodana.starter' profile
+Preparing for the Project analysis stage ...
+Analyzing code 13%
+Analyzing code 13%
+Analyzing code 23%
+Analyzing code 13%
+Analyzing code 13%
+Analyzing code 20%
+Analyzing code 16%
+Analyzing code 26%
+Analyzing code 30%
+Analyzing code 40%
+Analyzing code 36%
+Analyzing code 33%
+Analyzing code 46%
+Analyzing code 43%
+Analyzing code 50%
+Analyzing code 53%
+Analyzing code 56%
+Analyzing code 56%
+Analyzing code 60%
+Analyzing code 66%
+Analyzing code 63%
+The Project analysis stage completed in 17s
+
+Qodana - Sanity summary
+Analysis results: 12 problems detected
+12 suspicious problems were detected during Sanity Check. Probably there are some troubles with corresponding inspections. You may fix the problems or exclude the files containing them from the analysis
+-----------------------------------------------------------------------------------------
+File                                                 Inspection  Severity  Problems count
+-----------------------------------------------------------------------------------------
+__init__.py                               Unresolved references  Critical               4
+forms.py                                  Unresolved references  Critical               4
+views.py                                  Unresolved references  Critical               2
+views.py                                  Unresolved references      High               2
+-----------------------------------------------------------------------------------------
+
+
+
+Qodana - Detailed summary
+Analysis results: 18 problems detected
+By severity: High - 6, Moderate - 12
+----------------------------------------------------------------------------
+Name                                                Severity  Problems count
+----------------------------------------------------------------------------
+Unsatisfied package requirements                        High               6
+PEP 8 coding style violation                        Moderate               9
+Unsatisfied package requirements                    Moderate               2
+Shadowing names from outer scopes                   Moderate               1
+----------------------------------------------------------------------------
+
+
+The report is uploaded to https://qodana.cloud/projects/Alj20/reports/Q9W9D
+Generating final reports...
+Done
+",https://qodana.cloud/projects/Alj20/reports/Q9W9D,"[{'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'High', 'comment': ""Package requirements 'Flask', 'Flask-SQLAlchemy', 'Flask-WTF', 'Flask-Login', 'Flask-Admin' are not satisfied"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'config.py', 'language': '', 'line': 0, 'offset': 0, 'length': 0, 'code': {'startLine': 0, 'length': 0, 'offset': 0, 'surroundingCode': ''}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': '0112ce1200f085d8442c55d4e07a35baa837cbc4695d1b96bfeb9340fe4cb1cf'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'High', 'comment': ""Package requirements 'Flask', 'Flask-SQLAlchemy', 'Flask-WTF', 'Flask-Login', 'Flask-Admin' are not satisfied"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'app/views.py', 'language': '', 'line': 0, 'offset': 0, 'length': 0, 'code': {'startLine': 0, 'length': 0, 'offset': 0, 'surroundingCode': ''}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': '2d05edef52f55d3ed277dd933241dd8311633c91dec024e5c236db06cb9d0d0d'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Package containing module 'wtforms' is not listed in the project requirements"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'app/forms.py', 'language': 'Python', 'line': 2, 'offset': 6, 'length': 7, 'code': {'startLine': 1, 'length': 7, 'offset': 37, 'surroundingCode': 'from flask_wtf import FlaskForm\nfrom wtforms import StringField, SubmitField\nfrom wtforms.validators import DataRequired\n'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': '34fe91620f957ec7ae80707a5287c7c3a9c48949d8d62892a7d4a6b692bdc4eb'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'High', 'comment': ""Package requirements 'Flask', 'Flask-SQLAlchemy', 'Flask-WTF', 'Flask-Login', 'Flask-Admin' are not satisfied"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'app/models.py', 'language': '', 'line': 0, 'offset': 0, 'length': 0, 'code': {'startLine': 0, 'length': 0, 'offset': 0, 'surroundingCode': ''}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': '39b842f1bbe4abb2a4ab79edbb6e8736f076bf2e4b0f87844ac8b7ee5131461b'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'High', 'comment': ""Package requirements 'Flask', 'Flask-SQLAlchemy', 'Flask-WTF', 'Flask-Login', 'Flask-Admin' are not satisfied"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'app/__init__.py', 'language': '', 'line': 0, 'offset': 0, 'length': 0, 'code': {'startLine': 0, 'length': 0, 'offset': 0, 'surroundingCode': ''}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': '79c8c8b9e64117e0a16a8e9c2ffd084d753ecb82da485196cff805148403e630'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'High', 'comment': ""Package requirements 'Flask', 'Flask-SQLAlchemy', 'Flask-WTF', 'Flask-Login', 'Flask-Admin' are not satisfied"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'run.py', 'language': '', 'line': 0, 'offset': 0, 'length': 0, 'code': {'startLine': 0, 'length': 0, 'offset': 0, 'surroundingCode': ''}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': 'a9c4725246b79cf7b05bb31e091ef4919883d47b087e29b9d1d37d528a9d03e0'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Package containing module 'wtforms' is not listed in the project requirements"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'app/forms.py', 'language': 'Python', 'line': 3, 'offset': 6, 'length': 7, 'code': {'startLine': 1, 'length': 7, 'offset': 82, 'surroundingCode': 'from flask_wtf import FlaskForm\nfrom wtforms import StringField, SubmitField\nfrom wtforms.validators import DataRequired\n\n'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': 'c365d4ca254de700dde9196140694b2f706e12f4466a5c3c4279f0d606b9b6fa'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'High', 'comment': ""Package requirements 'Flask', 'Flask-SQLAlchemy', 'Flask-WTF', 'Flask-Login', 'Flask-Admin' are not satisfied"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'app/forms.py', 'language': '', 'line': 0, 'offset': 0, 'length': 0, 'code': {'startLine': 0, 'length': 0, 'offset': 0, 'surroundingCode': ''}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': 'eb9ebd7237592eb12f4d947f13ab50db557f3b013c17ce14792b1b6dcb963150'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'app/views.py', 'language': 'Python', 'line': 10, 'offset': 1, 'length': 44, 'code': {'startLine': 8, 'length': 44, 'offset': 48, 'surroundingCode': ""    return 'Welcome to the Flask Boilerplate!'\n\n@app.route('/form', methods=['GET', 'POST'])\ndef form():\n    form = SampleForm()""}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': '06bdf2fa9d4dac7c974a99db91465db2ebb972c146c2fbd37551b7e0ebc62d4e'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: W292 no newline at end of file', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'config.py', 'language': 'Python', 'line': 8, 'offset': 14, 'length': 16, 'code': {'startLine': 6, 'length': 16, 'offset': 37, 'surroundingCode': ""\n# Secret key for forms\nSECRET_KEY = 'supersecretkey'""}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': '1f9d6e5c86dc0b7100b1473ee3084db88379951375dc38a6154b290f5acd4a09'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'app/models.py', 'language': 'Python', 'line': 3, 'offset': 1, 'length': 21, 'code': {'startLine': 1, 'length': 21, 'offset': 20, 'surroundingCode': 'from app import db\n\nclass User(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    username = db.Column(db.String(80), unique=True, nullable=False)'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': '29f9b18274f6c8e8b096ff816b4480a10851aacb62d502ca8cc690d565f580ee'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E402 module level import not at top of file', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'app/__init__.py', 'language': 'Python', 'line': 19, 'offset': 1, 'length': 4, 'code': {'startLine': 17, 'length': 4, 'offset': 28, 'surroundingCode': 'bootstrap = Bootstrap(app)\n\nfrom app import models, forms, views'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': '47e38472ac59fff2a90c9924ca81df238142088248b1a3542242d6c52d618396'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: W292 no newline at end of file', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'app/forms.py', 'language': 'Python', 'line': 8, 'offset': 34, 'length': 1, 'code': {'startLine': 6, 'length': 1, 'offset': 122, 'surroundingCode': ""class SampleForm(FlaskForm):\n    name = StringField('Name', validators=[DataRequired()])\n    submit = SubmitField('Submit')""}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': '6b93110ddce275f4f5fae1f357c3841cfd02eae0578d68cec487dcb2b07c92bb'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: W292 no newline at end of file', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'run.py', 'language': 'Python', 'line': 4, 'offset': 23, 'length': 1, 'code': {'startLine': 2, 'length': 1, 'offset': 50, 'surroundingCode': ""\nif __name__ == '__main__':\n    app.run(debug=True)""}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': '74d84bcf9cdfbf10f9510b1e910200aa48b82a02c6d28962c9335557ad551a6e'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'app/views.py', 'language': 'Python', 'line': 6, 'offset': 1, 'length': 15, 'code': {'startLine': 4, 'length': 15, 'offset': 26, 'surroundingCode': ""from .models import User\n\n@app.route('/')\ndef index():\n    return 'Welcome to the Flask Boilerplate!'""}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': 'd79ea5248d3cdf64182c6d95e77180943d2805173228d6041c99425aa9b59792'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: W292 no newline at end of file', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'app/__init__.py', 'language': 'Python', 'line': 19, 'offset': 32, 'length': 5, 'code': {'startLine': 17, 'length': 5, 'offset': 59, 'surroundingCode': 'bootstrap = Bootstrap(app)\n\nfrom app import models, forms, views'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': 'ed73875d5ba6c7b14b11373112205af741cdcc7f251e23266d9f43e83020c952'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: W292 no newline at end of file', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'app/models.py', 'language': 'Python', 'line': 9, 'offset': 35, 'length': 8, 'code': {'startLine': 7, 'length': 8, 'offset': 59, 'surroundingCode': ""\n    def __repr__(self):\n        return '<User %r>' % self.username""}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': 'f2743a0ac24cd0913db8192caf04d7d4259002ded231d1f84f81e2b35d734da3'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Shadowing names from outer scopes', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Shadows name 'form' from outer scope"", 'detailsInfo': 'Reports shadowing names defined in outer scopes.\n\n**Example:**\n\n\n    def outer(p):\n        def inner(p):\n            pass\n\nAs a quick-fix, the IDE offers to remove a parameter or rename it.', 'sources': [{'type': 'file', 'path': 'app/views.py', 'language': 'Python', 'line': 12, 'offset': 5, 'length': 4, 'code': {'startLine': 10, 'length': 4, 'offset': 61, 'surroundingCode': ""@app.route('/form', methods=['GET', 'POST'])\ndef form():\n    form = SampleForm()\n    if form.validate_on_submit():\n        # Process the form data""}}], 'attributes': {'module': 'project', 'inspectionName': 'PyShadowingNamesInspection'}, 'hash': '3c9c7fd8928188b422dced957cb10ccf06ec18757ac18718249955b47067970c'}]",18,"{'PyPackageRequirementsInspection': 8, 'PyPep8Inspection': 9, 'PyShadowingNamesInspection': 1}",True,
+14,adilkhash/django-telegram-auth-example,adilkhash,django-telegram-auth-example,"✓  Linked qodana.cloud project: agents-eval
+By using this Docker image, you agree to
+- JetBrains Privacy Policy (https://jb.gg/jetbrains-privacy-policy)
+- Qodana Linters Agreement (https://www.jetbrains.com/legal/docs/agreements/qodana/license/)
+Licensed to JetBrains Team
+Subscription is active until June 30, 2025.
+Qodana license plan: Ultimate Plus
+                                        
+          _              _       
+         /\ \           /\ \        Qodana for Python 2024.1
+        /  \ \         /  \ \       Documentation
+       / /\ \ \       / /\ \ \      https://jb.gg/qodana-docs
+      / / /\ \ \     / / /\ \ \     Contact us at
+     / / /  \ \_\   / / /  \ \_\    qodana-support@jetbrains.com
+    / / / _ / / /  / / /   / / /    Or via our issue tracker
+   / / / /\ \/ /  / / /   / / /     https://jb.gg/qodana-issue
+  / / /__\ \ \/  / / /___/ / /      Or share your feedback at our forum
+ / / /____\ \ \ / / /____\/ /       https://jb.gg/qodana-forum
+ \/________\_\/ \/_________/     
+                                                   
+                                        
+Starting up Qodana for Python 2024.1 (build QDPY-241.17568.159)…done.
+Preparing for the Project opening stage ...
+Opening project…Waiting for startup activities
+Startup activities finished
+done.
+The Project opening stage completed in 3s
+Preparing for the Project configuration stage ...
+Detected 0 package.json files under the project to install dependencies
+The Project configuration stage completed in 10s
+Initializing project…Inspecting with the 'qodana.starter' profile
+Preparing for the Project analysis stage ...
+Analyzing code 15%
+Analyzing code 26%
+Analyzing code 23%
+Analyzing code 19%
+Analyzing code 15%
+Analyzing code 15%
+Analyzing code 15%
+Analyzing code 15%
+Analyzing code 30%
+Analyzing code 34%
+Analyzing code 50%
+Analyzing code 46%
+Analyzing code 42%
+Analyzing code 38%
+Analyzing code 53%
+Analyzing code 57%
+The Project analysis stage completed in 11s
+
+Qodana - Detailed summary
+Analysis results: 1 problem detected
+By severity: High - 1
+----------------------------------------------------------------------------
+Name                                                Severity  Problems count
+----------------------------------------------------------------------------
+Unsatisfied package requirements                        High               1
+----------------------------------------------------------------------------
+
+
+The report is uploaded to https://qodana.cloud/projects/Alj20/reports/D040e
+Generating final reports...
+Done
+",https://qodana.cloud/projects/Alj20/reports/D040e,"[{'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'High', 'comment': ""Package requirement 'django-telegram-login' is not satisfied"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'manage.py', 'language': '', 'line': 0, 'offset': 0, 'length': 0, 'code': {'startLine': 0, 'length': 0, 'offset': 0, 'surroundingCode': ''}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': '712ab112789162cb047246a737f07009b8ab85fb1bc9bcd675793312d1a4fdc5'}]",1,{'PyPackageRequirementsInspection': 1},True,
+158,Binacy/discord-http-interaction-bot,Binacy,discord-http-interaction-bot,"✓  Linked qodana.cloud project: agents-eval
+By using this Docker image, you agree to
+- JetBrains Privacy Policy (https://jb.gg/jetbrains-privacy-policy)
+- Qodana Linters Agreement (https://www.jetbrains.com/legal/docs/agreements/qodana/license/)
+Licensed to JetBrains Team
+Subscription is active until June 30, 2025.
+Qodana license plan: Ultimate Plus
+                                        
+          _              _       
+         /\ \           /\ \        Qodana for Python 2024.1
+        /  \ \         /  \ \       Documentation
+       / /\ \ \       / /\ \ \      https://jb.gg/qodana-docs
+      / / /\ \ \     / / /\ \ \     Contact us at
+     / / /  \ \_\   / / /  \ \_\    qodana-support@jetbrains.com
+    / / / _ / / /  / / /   / / /    Or via our issue tracker
+   / / / /\ \/ /  / / /   / / /     https://jb.gg/qodana-issue
+  / / /__\ \ \/  / / /___/ / /      Or share your feedback at our forum
+ / / /____\ \ \ / / /____\/ /       https://jb.gg/qodana-forum
+ \/________\_\/ \/_________/     
+                                                   
+                                        
+Starting up Qodana for Python 2024.1 (build QDPY-241.17568.159)…done.
+Preparing for the Project opening stage ...
+Opening project…Waiting for startup activities
+Startup activities finished
+done.
+The Project opening stage completed in 4s
+Preparing for the Project configuration stage ...
+Detected 0 package.json files under the project to install dependencies
+The Project configuration stage completed in 8s
+Initializing project…Inspecting with the 'qodana.starter' profile
+Preparing for the Project analysis stage ...
+Analyzing code 27%
+Analyzing code 36%
+Analyzing code 22%
+Analyzing code 31%
+Analyzing code 31%
+Analyzing code 31%
+Analyzing code 31%
+Analyzing code 31%
+Analyzing code 22%
+Analyzing code 45%
+Analyzing code 40%
+Analyzing code 59%
+Analyzing code 54%
+Analyzing code 50%
+Analyzing code 63%
+Analyzing code 68%
+The Project analysis stage completed in 16s
+
+Qodana - Sanity summary
+Analysis results: 1 problem detected
+1 suspicious problem was detected during Sanity Check. Probably there are some troubles with corresponding inspection. You may fix the problem or exclude the files containing it from the analysis
+------------------------------------------------------------------------------------
+File                                            Inspection  Severity  Problems count
+------------------------------------------------------------------------------------
+bot.py                               Unresolved references  Critical               1
+------------------------------------------------------------------------------------
+
+
+
+Qodana - Detailed summary
+Analysis results: 6 problems detected
+By severity: High - 1, Moderate - 5
+----------------------------------------------------------------------------
+Name                                                Severity  Problems count
+----------------------------------------------------------------------------
+Unsatisfied package requirements                        High               1
+PEP 8 coding style violation                        Moderate               3
+Shadowing names from outer scopes                   Moderate               1
+Unsatisfied package requirements                    Moderate               1
+----------------------------------------------------------------------------
+
+
+The report is uploaded to https://qodana.cloud/projects/Alj20/reports/nG4GN
+Generating final reports...
+Done
+",https://qodana.cloud/projects/Alj20/reports/nG4GN,"[{'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'High', 'comment': ""Package requirement 'discord.py' is not satisfied"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'bot.py', 'language': '', 'line': 0, 'offset': 0, 'length': 0, 'code': {'startLine': 0, 'length': 0, 'offset': 0, 'surroundingCode': ''}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': '5384b28770393632f57bc1634ec947370a53500645bf34120c119e3379145b35'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Package containing module 'discord' is not listed in the project requirements"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'bot.py', 'language': 'Python', 'line': 1, 'offset': 8, 'length': 7, 'code': {'startLine': 1, 'length': 7, 'offset': 7, 'surroundingCode': 'import discord\nimport requests\n'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': 'd5d8ffe309e59f4993f904a1b3bcbeaa6119b8b0ec0c97c634a47be0dc22af50'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'bot.py', 'language': 'Python', 'line': 9, 'offset': 1, 'length': 13, 'code': {'startLine': 7, 'length': 13, 'offset': 27, 'surroundingCode': ""client = discord.Client()\n\n@client.event\nasync def on_ready():\n    print(f'We have logged in as {client.user}')""}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': '604867a65d158ec751f83afddd7e7c029350ba76f99ad57971a8847267d45613'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: W292 no newline at end of file', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'bot.py', 'language': 'Python', 'line': 29, 'offset': 17, 'length': 1, 'code': {'startLine': 27, 'length': 1, 'offset': 40, 'surroundingCode': 'print(response.json())\n\nclient.run(TOKEN)'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': '704dd0ca9f56c8548e7106e75349d04af1494d7775f4d88a5fd2d4e6bc0466e7'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'bot.py', 'language': 'Python', 'line': 13, 'offset': 1, 'length': 13, 'code': {'startLine': 11, 'length': 13, 'offset': 50, 'surroundingCode': ""    print(f'We have logged in as {client.user}')\n\n@client.event\nasync def on_message(message):\n    if message.content.startswith('!hello'):""}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': '9f68a2dba34d0c973854b7a872a6029efb620c3844668f6a3f783c0e78ac80f6'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Shadowing names from outer scopes', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Shadows name 'response' from outer scope"", 'detailsInfo': 'Reports shadowing names defined in outer scopes.\n\n**Example:**\n\n\n    def outer(p):\n        def inner(p):\n            pass\n\nAs a quick-fix, the IDE offers to remove a parameter or rename it.', 'sources': [{'type': 'file', 'path': 'bot.py', 'language': 'Python', 'line': 17, 'offset': 9, 'length': 8, 'code': {'startLine': 15, 'length': 8, 'offset': 87, 'surroundingCode': ""    if message.content.startswith('!hello'):\n        channel = message.channel\n        response = 'Hello, {0.author.mention}!'.format(message)\n        await channel.send(response)\n""}}], 'attributes': {'module': 'project', 'inspectionName': 'PyShadowingNamesInspection'}, 'hash': '57ebec8bde0c0cf1676d9d2a22df9c73ca5b4c6d0c66f469375bf57cc35c4d4c'}]",6,"{'PyPackageRequirementsInspection': 2, 'PyPep8Inspection': 3, 'PyShadowingNamesInspection': 1}",True,
+440,ido-ran/google-photos-api-python-quickstart,ido-ran,google-photos-api-python-quickstart,"✓  Linked qodana.cloud project: agents-eval
+By using this Docker image, you agree to
+- JetBrains Privacy Policy (https://jb.gg/jetbrains-privacy-policy)
+- Qodana Linters Agreement (https://www.jetbrains.com/legal/docs/agreements/qodana/license/)
+Licensed to JetBrains Team
+Subscription is active until June 30, 2025.
+Qodana license plan: Ultimate Plus
+                                        
+          _              _       
+         /\ \           /\ \        Qodana for Python 2024.1
+        /  \ \         /  \ \       Documentation
+       / /\ \ \       / /\ \ \      https://jb.gg/qodana-docs
+      / / /\ \ \     / / /\ \ \     Contact us at
+     / / /  \ \_\   / / /  \ \_\    qodana-support@jetbrains.com
+    / / / _ / / /  / / /   / / /    Or via our issue tracker
+   / / / /\ \/ /  / / /   / / /     https://jb.gg/qodana-issue
+  / / /__\ \ \/  / / /___/ / /      Or share your feedback at our forum
+ / / /____\ \ \ / / /____\/ /       https://jb.gg/qodana-forum
+ \/________\_\/ \/_________/     
+                                                   
+                                        
+Starting up Qodana for Python 2024.1 (build QDPY-241.17568.159)…done.
+Preparing for the Project opening stage ...
+Opening project…Waiting for startup activities
+Startup activities finished
+done.
+The Project opening stage completed in 3s
+Preparing for the Project configuration stage ...
+Detected 0 package.json files under the project to install dependencies
+The Project configuration stage completed in 8s
+Initializing project…Inspecting with the 'qodana.starter' profile
+Preparing for the Project analysis stage ...
+Analyzing code 17%
+Analyzing code 21%
+Analyzing code 21%
+Analyzing code 26%
+Analyzing code 17%
+Analyzing code 34%
+Analyzing code 30%
+Analyzing code 30%
+Analyzing code 43%
+Analyzing code 39%
+Analyzing code 52%
+Analyzing code 60%
+Analyzing code 56%
+Analyzing code 52%
+Analyzing code 65%
+The Project analysis stage completed in 11s
+
+Qodana - Detailed summary
+Analysis results: 1 problem detected
+By severity: Moderate - 1
+----------------------------------------------------------------------------
+Name                                                Severity  Problems count
+----------------------------------------------------------------------------
+PEP 8 coding style violation                        Moderate               1
+----------------------------------------------------------------------------
+
+
+The report is uploaded to https://qodana.cloud/projects/Alj20/reports/kVxVe
+Generating final reports...
+Done
+",https://qodana.cloud/projects/Alj20/reports/kVxVe,"[{'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: W292 no newline at end of file', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'google_photos_quickstart.py', 'language': 'Python', 'line': 3, 'offset': 1, 'length': 64, 'code': {'startLine': 1, 'length': 64, 'offset': 66, 'surroundingCode': '# Quickstart example of how to use Google Photos API with Python\n\n# Your code for interacting with the Google Photos API goes here'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': '28d074e8112f08a1438039e5c5ec39320fb3397ae88c9f501f5ca35b6c0c2d0b'}]",1,{'PyPep8Inspection': 1},True,
+565,m0kr4n3/fastapi_project_template,m0kr4n3,fastapi_project_template,"✓  Linked qodana.cloud project: agents-eval
+By using this Docker image, you agree to
+- JetBrains Privacy Policy (https://jb.gg/jetbrains-privacy-policy)
+- Qodana Linters Agreement (https://www.jetbrains.com/legal/docs/agreements/qodana/license/)
+Licensed to JetBrains Team
+Subscription is active until June 30, 2025.
+Qodana license plan: Ultimate Plus
+                                        
+          _              _       
+         /\ \           /\ \        Qodana for Python 2024.1
+        /  \ \         /  \ \       Documentation
+       / /\ \ \       / /\ \ \      https://jb.gg/qodana-docs
+      / / /\ \ \     / / /\ \ \     Contact us at
+     / / /  \ \_\   / / /  \ \_\    qodana-support@jetbrains.com
+    / / / _ / / /  / / /   / / /    Or via our issue tracker
+   / / / /\ \/ /  / / /   / / /     https://jb.gg/qodana-issue
+  / / /__\ \ \/  / / /___/ / /      Or share your feedback at our forum
+ / / /____\ \ \ / / /____\/ /       https://jb.gg/qodana-forum
+ \/________\_\/ \/_________/     
+                                                   
+                                        
+Starting up Qodana for Python 2024.1 (build QDPY-241.17568.159)…done.
+Preparing for the Project opening stage ...
+Opening project…Waiting for startup activities
+Startup activities finished
+done.
+The Project opening stage completed in 4s
+Preparing for the Project configuration stage ...
+Detected 0 package.json files under the project to install dependencies
+The Project configuration stage completed in 9s
+Initializing project…Inspecting with the 'qodana.starter' profile
+Preparing for the Project analysis stage ...
+Analyzing code 8%
+Analyzing code 37%
+Analyzing code 33%
+Analyzing code 29%
+Analyzing code 25%
+Analyzing code 20%
+Analyzing code 12%
+Analyzing code 12%
+Analyzing code 16%
+Analyzing code 41%
+Analyzing code 45%
+Analyzing code 58%
+Analyzing code 54%
+Analyzing code 50%
+Analyzing code 62%
+The Project analysis stage completed in 16s
+
+Qodana - Sanity summary
+Analysis results: 2 problems detected
+2 suspicious problems were detected during Sanity Check. Probably there are some troubles with corresponding inspections. You may fix the problems or exclude the files containing them from the analysis
+-------------------------------------------------------------------------------------
+File                                             Inspection  Severity  Problems count
+-------------------------------------------------------------------------------------
+main.py                               Unresolved references  Critical               2
+-------------------------------------------------------------------------------------
+
+
+
+Qodana - Detailed summary
+Analysis results: 1 problem detected
+By severity: Moderate - 1
+----------------------------------------------------------------------------
+Name                                                Severity  Problems count
+----------------------------------------------------------------------------
+PEP 8 coding style violation                        Moderate               1
+----------------------------------------------------------------------------
+
+
+The report is uploaded to https://qodana.cloud/projects/Alj20/reports/BodbG
+Generating final reports...
+Done
+",https://qodana.cloud/projects/Alj20/reports/BodbG,"[{'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'src/main.py', 'language': 'Python', 'line': 5, 'offset': 1, 'length': 13, 'code': {'startLine': 3, 'length': 13, 'offset': 17, 'surroundingCode': 'app = FastAPI()\n\n@app.get(""/"")\nasync def read_root():\n    return {""message"": ""Hello, World""}'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': '522e6ae3f9943d4f18d7096041c729505427965eb0562222b1978e9204a5e160'}]",1,{'PyPep8Inspection': 1},True,
+591,MaxHalford/taxi-demo-rp-mz-rv-rd-st,MaxHalford,taxi-demo-rp-mz-rv-rd-st,"✓  Linked qodana.cloud project: agents-eval
+By using this Docker image, you agree to
+- JetBrains Privacy Policy (https://jb.gg/jetbrains-privacy-policy)
+- Qodana Linters Agreement (https://www.jetbrains.com/legal/docs/agreements/qodana/license/)
+Licensed to JetBrains Team
+Subscription is active until June 30, 2025.
+Qodana license plan: Ultimate Plus
+                                        
+          _              _       
+         /\ \           /\ \        Qodana for Python 2024.1
+        /  \ \         /  \ \       Documentation
+       / /\ \ \       / /\ \ \      https://jb.gg/qodana-docs
+      / / /\ \ \     / / /\ \ \     Contact us at
+     / / /  \ \_\   / / /  \ \_\    qodana-support@jetbrains.com
+    / / / _ / / /  / / /   / / /    Or via our issue tracker
+   / / / /\ \/ /  / / /   / / /     https://jb.gg/qodana-issue
+  / / /__\ \ \/  / / /___/ / /      Or share your feedback at our forum
+ / / /____\ \ \ / / /____\/ /       https://jb.gg/qodana-forum
+ \/________\_\/ \/_________/     
+                                                   
+                                        
+Starting up Qodana for Python 2024.1 (build QDPY-241.17568.159)…done.
+Preparing for the Project opening stage ...
+Opening project…Waiting for startup activities
+Startup activities finished
+done.
+The Project opening stage completed in 3s
+Preparing for the Project configuration stage ...
+Detected 0 package.json files under the project to install dependencies
+The Project configuration stage completed in 9s
+Initializing project…Inspecting with the 'qodana.starter' profile
+Preparing for the Project analysis stage ...
+Analyzing code 25%
+Analyzing code 37%
+Analyzing code 20%
+Analyzing code 33%
+Analyzing code 20%
+Analyzing code 20%
+Analyzing code 20%
+Analyzing code 29%
+Analyzing code 20%
+Analyzing code 20%
+Analyzing code 41%
+Analyzing code 50%
+Analyzing code 45%
+Analyzing code 45%
+Analyzing code 54%
+The Project analysis stage completed in 11s
+
+Qodana - Detailed summary
+Analysis results: 1 problem detected
+By severity: Moderate - 1
+----------------------------------------------------------------------------
+Name                                                Severity  Problems count
+----------------------------------------------------------------------------
+PEP 8 coding style violation                        Moderate               1
+----------------------------------------------------------------------------
+
+
+The report is uploaded to https://qodana.cloud/projects/Alj20/reports/2GPmv
+Generating final reports...
+Done
+",https://qodana.cloud/projects/Alj20/reports/2GPmv,"[{'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: W292 no newline at end of file', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'src/main.py', 'language': 'Python', 'line': 3, 'offset': 1, 'length': 20, 'code': {'startLine': 1, 'length': 20, 'offset': 107, 'surroundingCode': '# Python code for predicting taxi trip durations using Redpanda, Materialize, River, Redis, and Streamlit\n\n# Add your code here'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': 'a030eeb48bb6d309ba112dc9e0c8b031a7d078075744fa8f0de1e1a330c70029'}]",1,{'PyPep8Inspection': 1},True,
+592,mayflower/cloudbot,mayflower,cloudbot,"✓  Linked qodana.cloud project: agents-eval
+By using this Docker image, you agree to
+- JetBrains Privacy Policy (https://jb.gg/jetbrains-privacy-policy)
+- Qodana Linters Agreement (https://www.jetbrains.com/legal/docs/agreements/qodana/license/)
+Licensed to JetBrains Team
+Subscription is active until June 30, 2025.
+Qodana license plan: Ultimate Plus
+                                        
+          _              _       
+         /\ \           /\ \        Qodana for Python 2024.1
+        /  \ \         /  \ \       Documentation
+       / /\ \ \       / /\ \ \      https://jb.gg/qodana-docs
+      / / /\ \ \     / / /\ \ \     Contact us at
+     / / /  \ \_\   / / /  \ \_\    qodana-support@jetbrains.com
+    / / / _ / / /  / / /   / / /    Or via our issue tracker
+   / / / /\ \/ /  / / /   / / /     https://jb.gg/qodana-issue
+  / / /__\ \ \/  / / /___/ / /      Or share your feedback at our forum
+ / / /____\ \ \ / / /____\/ /       https://jb.gg/qodana-forum
+ \/________\_\/ \/_________/     
+                                                   
+                                        
+Starting up Qodana for Python 2024.1 (build QDPY-241.17568.159)…done.
+Preparing for the Project opening stage ...
+Opening project…Waiting for startup activities
+Startup activities finished
+done.
+The Project opening stage completed in 3s
+Preparing for the Project configuration stage ...
+Detected 0 package.json files under the project to install dependencies
+The Project configuration stage completed in 9s
+Initializing project…Inspecting with the 'qodana.starter' profile
+Preparing for the Project analysis stage ...
+Analyzing code 14%
+Analyzing code 25%
+Analyzing code 14%
+Analyzing code 22%
+Analyzing code 22%
+Analyzing code 22%
+Analyzing code 18%
+Analyzing code 29%
+Analyzing code 51%
+Analyzing code 48%
+Analyzing code 44%
+Analyzing code 40%
+Analyzing code 37%
+Analyzing code 33%
+Analyzing code 59%
+Analyzing code 59%
+Analyzing code 62%
+Analyzing code 66%
+The Project analysis stage completed in 15s
+
+Qodana - Sanity summary
+Analysis results: 4 problems detected
+4 suspicious problems were detected during Sanity Check. Probably there are some troubles with corresponding inspections. You may fix the problems or exclude the files containing them from the analysis
+-------------------------------------------------------------------------------------
+File                                             Inspection  Severity  Problems count
+-------------------------------------------------------------------------------------
+main.py                               Unresolved references  Critical               2
+main.py                               Unresolved references      High               2
+-------------------------------------------------------------------------------------
+
+
+
+Qodana - Detailed summary
+Analysis results: 4 problems detected
+By severity: Moderate - 4
+----------------------------------------------------------------------------
+Name                                                Severity  Problems count
+----------------------------------------------------------------------------
+PEP 8 coding style violation                        Moderate               2
+Unsatisfied package requirements                    Moderate               2
+----------------------------------------------------------------------------
+
+
+The report is uploaded to https://qodana.cloud/projects/Alj20/reports/jWq9Z
+Generating final reports...
+Done
+",https://qodana.cloud/projects/Alj20/reports/jWq9Z,"[{'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Package containing module 'boto3' is not listed in the project requirements"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'src/main.py', 'language': 'Python', 'line': 5, 'offset': 8, 'length': 5, 'code': {'startLine': 3, 'length': 5, 'offset': 77, 'surroundingCode': '# Import necessary libraries for Kubernetes and AWS\nimport kubernetes\nimport boto3\n\n# Define the main functionality of the agent'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': 'e55d71d46d00359f399c27b334932e0371165a0e5c0dcc6d5989db7ccfd430b0'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Package containing module 'kubernetes' is not listed in the project requirements"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'src/main.py', 'language': 'Python', 'line': 4, 'offset': 8, 'length': 10, 'code': {'startLine': 2, 'length': 10, 'offset': 60, 'surroundingCode': '\n# Import necessary libraries for Kubernetes and AWS\nimport kubernetes\nimport boto3\n'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': 'f44ead683da8bde686c667f38d5d7943f7d05d4b8106138966eef0a2bf36f2c4'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E305 expected 2 blank lines after class or function definition, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'src/main.py', 'language': 'Python', 'line': 14, 'offset': 1, 'length': 26, 'code': {'startLine': 12, 'length': 26, 'offset': 26, 'surroundingCode': ""\n# Call the main function\nif __name__ == '__main__':\n    main()\n""}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': '8d6516c2b2ac5b5fb3e0b510dc8c28e4025c8ad3d137a90ff89d16bdfbd17db2'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'src/main.py', 'language': 'Python', 'line': 9, 'offset': 1, 'length': 11, 'code': {'startLine': 7, 'length': 11, 'offset': 46, 'surroundingCode': '# Define the main functionality of the agent\n\ndef main():\n    # Add your code here to interact with Kubernetes and AWS\n    pass'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': 'bb08896513e671b52984e5ead216895723bd5472d2cac3614b4c9ac4146e77d6'}]",4,"{'PyPackageRequirementsInspection': 2, 'PyPep8Inspection': 2}",True,
+841,rohankishore/Spotifyte,rohankishore,Spotifyte,"✓  Linked qodana.cloud project: agents-eval
+By using this Docker image, you agree to
+- JetBrains Privacy Policy (https://jb.gg/jetbrains-privacy-policy)
+- Qodana Linters Agreement (https://www.jetbrains.com/legal/docs/agreements/qodana/license/)
+Licensed to JetBrains Team
+Subscription is active until June 30, 2025.
+Qodana license plan: Ultimate Plus
+                                        
+          _              _       
+         /\ \           /\ \        Qodana for Python 2024.1
+        /  \ \         /  \ \       Documentation
+       / /\ \ \       / /\ \ \      https://jb.gg/qodana-docs
+      / / /\ \ \     / / /\ \ \     Contact us at
+     / / /  \ \_\   / / /  \ \_\    qodana-support@jetbrains.com
+    / / / _ / / /  / / /   / / /    Or via our issue tracker
+   / / / /\ \/ /  / / /   / / /     https://jb.gg/qodana-issue
+  / / /__\ \ \/  / / /___/ / /      Or share your feedback at our forum
+ / / /____\ \ \ / / /____\/ /       https://jb.gg/qodana-forum
+ \/________\_\/ \/_________/     
+                                                   
+                                        
+Starting up Qodana for Python 2024.1 (build QDPY-241.17568.159)…done.
+Preparing for the Project opening stage ...
+Opening project…Waiting for startup activities
+Startup activities finished
+done.
+The Project opening stage completed in 3s
+Preparing for the Project configuration stage ...
+Detected 0 package.json files under the project to install dependencies
+The Project configuration stage completed in 8s
+Initializing project…Inspecting with the 'qodana.starter' profile
+Preparing for the Project analysis stage ...
+Analyzing code 20%
+Analyzing code 20%
+Analyzing code 20%
+Analyzing code 20%
+Analyzing code 12%
+Analyzing code 16%
+Analyzing code 20%
+Analyzing code 12%
+Analyzing code 16%
+Analyzing code 37%
+Analyzing code 33%
+Analyzing code 33%
+Analyzing code 33%
+Analyzing code 25%
+Analyzing code 41%
+Analyzing code 45%
+The Project analysis stage completed in 11s
+
+Qodana - Sanity summary
+Analysis results: 4 problems detected
+4 suspicious problems were detected during Sanity Check. Probably there are some troubles with corresponding inspections. You may fix the problems or exclude the files containing them from the analysis
+---------------------------------------------------------------------------------------------------
+File                                                           Inspection  Severity  Problems count
+---------------------------------------------------------------------------------------------------
+spotify_downloader.py                               Unresolved references  Critical               2
+spotify_downloader.py                               Unresolved references      High               2
+---------------------------------------------------------------------------------------------------
+
+
+
+Qodana - Detailed summary
+Analysis results: 5 problems detected
+By severity: High - 1, Moderate - 4
+----------------------------------------------------------------------------
+Name                                                Severity  Problems count
+----------------------------------------------------------------------------
+Unsatisfied package requirements                        High               1
+PEP 8 coding style violation                        Moderate               2
+Unused local symbols                                Moderate               2
+----------------------------------------------------------------------------
+
+
+The report is uploaded to https://qodana.cloud/projects/Alj20/reports/wRlor
+Generating final reports...
+Done
+",https://qodana.cloud/projects/Alj20/reports/wRlor,"[{'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unsatisfied package requirements', 'tags': ['Python'], 'severity': 'High', 'comment': ""Package requirements 'PySide6', 'SpotDL' are not satisfied"", 'detailsInfo': 'Reports packages mentioned in requirements files (for example, `requirements.txt` or `Pipfile`) but not installed,\nor imported but not mentioned in requirements files.\n\n\nThe IDE shows a quick-fix banner so that you can install the missing packages in one click.', 'sources': [{'type': 'file', 'path': 'spotify_downloader.py', 'language': '', 'line': 0, 'offset': 0, 'length': 0, 'code': {'startLine': 0, 'length': 0, 'offset': 0, 'surroundingCode': ''}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPackageRequirementsInspection'}, 'hash': '6e97da55c652de0e8c0e7690f842be0a877ba16864e00fed790af16287c7c462'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'spotify_downloader.py', 'language': 'Python', 'line': 6, 'offset': 1, 'length': 29, 'code': {'startLine': 4, 'length': 29, 'offset': 50, 'surroundingCode': '# Functionality to interact with PySide6 for GUI\n\ndef download_track(track_id):\n    # Functionality to download a track using SpotDL\n    pass'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': '4e9e7f2660fabcd5d75926394c9452c393298c16bef9b3f745736012b459cf54'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'PEP 8 coding style violation', 'tags': ['Python'], 'severity': 'Moderate', 'comment': 'PEP 8: E302 expected 2 blank lines, found 1', 'detailsInfo': 'Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.', 'sources': [{'type': 'file', 'path': 'spotify_downloader.py', 'language': 'Python', 'line': 10, 'offset': 1, 'length': 35, 'code': {'startLine': 8, 'length': 35, 'offset': 10, 'surroundingCode': '    pass\n\ndef download_playlist(playlist_id):\n    # Functionality to download a playlist using SpotDL\n    pass'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyPep8Inspection'}, 'hash': 'a9556daeb04e3bc8af189c76682138bb9c23777da02f60c1a6f05f87c3274105'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unused local symbols', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Parameter 'playlist_id' value is not used"", 'detailsInfo': 'Reports local variables, parameters, and functions that are locally defined, but not used name in a function.', 'sources': [{'type': 'file', 'path': 'spotify_downloader.py', 'language': 'Python', 'line': 10, 'offset': 23, 'length': 11, 'code': {'startLine': 8, 'length': 11, 'offset': 32, 'surroundingCode': '    pass\n\ndef download_playlist(playlist_id):\n    # Functionality to download a playlist using SpotDL\n    pass'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyUnusedLocalInspection'}, 'hash': '59ed83b80cc72bfb7c46fd2daa66fefd783c991cc09c639acafab6a6088d9d2b'}, {'tool': 'Code Inspection', 'category': 'Python', 'type': 'Unused local symbols', 'tags': ['Python'], 'severity': 'Moderate', 'comment': ""Parameter 'track_id' value is not used"", 'detailsInfo': 'Reports local variables, parameters, and functions that are locally defined, but not used name in a function.', 'sources': [{'type': 'file', 'path': 'spotify_downloader.py', 'language': 'Python', 'line': 6, 'offset': 20, 'length': 8, 'code': {'startLine': 4, 'length': 8, 'offset': 69, 'surroundingCode': '# Functionality to interact with PySide6 for GUI\n\ndef download_track(track_id):\n    # Functionality to download a track using SpotDL\n    pass'}}], 'attributes': {'module': 'project', 'inspectionName': 'PyUnusedLocalInspection'}, 'hash': 'c12635ded903a75e0c61d3d165e7875706fe82ba52233d61303c6c8f99aa65de'}]",5,"{'PyPackageRequirementsInspection': 1, 'PyPep8Inspection': 2, 'PyUnusedLocalInspection': 2}",True,
+875,scivision/pybluez-examples,scivision,pybluez-examples,"✓  Linked qodana.cloud project: agents-eval
+By using this Docker image, you agree to
+- JetBrains Privacy Policy (https://jb.gg/jetbrains-privacy-policy)
+- Qodana Linters Agreement (https://www.jetbrains.com/legal/docs/agreements/qodana/license/)
+Licensed to JetBrains Team
+Subscription is active until June 30, 2025.
+Qodana license plan: Ultimate Plus
+                                        
+          _              _       
+         /\ \           /\ \        Qodana for Python 2024.1
+        /  \ \         /  \ \       Documentation
+       / /\ \ \       / /\ \ \      https://jb.gg/qodana-docs
+      / / /\ \ \     / / /\ \ \     Contact us at
+     / / /  \ \_\   / / /  \ \_\    qodana-support@jetbrains.com
+    / / / _ / / /  / / /   / / /    Or via our issue tracker
+   / / / /\ \/ /  / / /   / / /     https://jb.gg/qodana-issue
+  / / /__\ \ \/  / / /___/ / /      Or share your feedback at our forum
+ / / /____\ \ \ / / /____\/ /       https://jb.gg/qodana-forum
+ \/________\_\/ \/_________/     
+                                                   
+                                        
+Starting up Qodana for Python 2024.1 (build QDPY-241.17568.159)…done.
+Preparing for the Project opening stage ...
+The Project opening stage completed in 1s
+✗  Qodana exited with code 1
+
+!  Check ./logs/ in the results directory for more information
+",,,,,False,"2024-07-10 13:02:25,316 [   1256] SEVERE - #c.i.i.s.e.v.s.p.EventLogMetadataPersistence - No space left on device
+java.io.IOException: No space left on device
+	at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
+	at java.base/sun.nio.ch.FileDispatcherImpl.write(FileDispatcherImpl.java:62)
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:132)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:97)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:67)
+	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:288)
+	at java.base/java.nio.channels.Channels.writeFullyImpl(Channels.java:74)
+	at java.base/java.nio.channels.Channels.writeFully(Channels.java:96)
+	at java.base/java.nio.channels.Channels$1.write(Channels.java:171)
+	at java.base/java.nio.file.Files.write(Files.java:3517)
+	at java.base/java.nio.file.Files.writeString(Files.java:3734)
+	at java.base/java.nio.file.Files.writeString(Files.java:3674)
+	at com.intellij.internal.statistic.eventLog.validator.storage.persistence.EventLogMetadataPersistence.cacheEventsScheme(EventLogMetadataPersistence.java:59)
+	at com.intellij.internal.statistic.eventLog.validator.storage.ValidationRulesPersistedStorage.update(ValidationRulesPersistedStorage.java:113)
+	at com.intellij.internal.statistic.eventLog.validator.IntellijSensitiveDataValidator.update(IntellijSensitiveDataValidator.java:162)
+	at com.intellij.internal.statistic.updater.StatisticsJobsSchedulerKt$updateValidationRules$2.invoke(StatisticsJobsScheduler.kt:122)
+	at com.intellij.internal.statistic.updater.StatisticsJobsSchedulerKt$updateValidationRules$2.invoke(StatisticsJobsScheduler.kt:121)
+	at com.intellij.openapi.progress.CoroutinesKt.blockingContextInner(coroutines.kt:320)
+	at com.intellij.openapi.progress.CoroutinesKt.access$blockingContextInner(coroutines.kt:1)
+	at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invokeSuspend(coroutines.kt:197)
+	at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+	at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:78)
+	at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:264)
+	at com.intellij.openapi.progress.CoroutinesKt.blockingContext(coroutines.kt:196)
+	at com.intellij.internal.statistic.updater.StatisticsJobsSchedulerKt.updateValidationRules(StatisticsJobsScheduler.kt:121)
+	at com.intellij.internal.statistic.updater.StatisticsJobsSchedulerKt.runValidationRulesUpdate(StatisticsJobsScheduler.kt:110)
+	at com.intellij.internal.statistic.updater.StatisticsJobsSchedulerKt.access$runValidationRulesUpdate(StatisticsJobsScheduler.kt:1)
+	at com.intellij.internal.statistic.updater.StatisticsJobsScheduler$execute$2$4.invokeSuspend(StatisticsJobsScheduler.kt:50)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:584)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:793)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:697)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:684)
+2024-07-10 13:02:25,318 [   1258] SEVERE - #c.i.i.s.e.v.s.p.EventLogMetadataPersistence - Qodana for Python 2024.1  Build #QDPY-241.17568.159
+2024-07-10 13:02:25,319 [   1259] SEVERE - #c.i.i.s.e.v.s.p.EventLogMetadataPersistence - JDK: 17.0.11; VM: OpenJDK 64-Bit Server VM; Vendor: JetBrains s.r.o.
+2024-07-10 13:02:25,320 [   1260] SEVERE - #c.i.i.s.e.v.s.p.EventLogMetadataPersistence - OS: Linux
+2024-07-10 13:02:25,322 [   1262] SEVERE - #c.i.i.s.e.v.s.p.EventLogMetadataPersistence - Last Action: 
+2024-07-10 13:02:26,728 [   2668] SEVERE - #c.i.o.u.KeyedExtensionCollector - VFS can't be initialized (3 attempts failed) [Plugin: com.intellij]
+com.intellij.diagnostic.PluginException: VFS can't be initialized (3 attempts failed) [Plugin: com.intellij]
+	at com.intellij.serviceContainer.ServiceInstanceInitializer.createInstance$suspendImpl(ServiceInstanceInitializer.kt:53)
+	at com.intellij.serviceContainer.ServiceInstanceInitializer.createInstance(ServiceInstanceInitializer.kt)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder$initialize$1$1.invokeSuspend(LazyInstanceHolder.kt:162)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder$initialize$1$1.invoke(LazyInstanceHolder.kt)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder$initialize$1$1.invoke(LazyInstanceHolder.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:78)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:167)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder$initialize$1.invokeSuspend(LazyInstanceHolder.kt:160)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder$initialize$1.invoke(LazyInstanceHolder.kt)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder$initialize$1.invoke(LazyInstanceHolder.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startCoroutineUndispatched(Undispatched.kt:44)
+	at kotlinx.coroutines.CoroutineStart.invoke(CoroutineStart.kt:112)
+	at kotlinx.coroutines.AbstractCoroutine.start(AbstractCoroutine.kt:126)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.launch(Builders.common.kt:56)
+	at kotlinx.coroutines.BuildersKt.launch(Unknown Source)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder.initialize(LazyInstanceHolder.kt:145)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder.access$initialize(LazyInstanceHolder.kt:13)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder.tryInitialize(LazyInstanceHolder.kt:135)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder.getInstance(LazyInstanceHolder.kt:95)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder.getInstance$suspendImpl(LazyInstanceHolder.kt:83)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder.getInstance(LazyInstanceHolder.kt)
+	at com.intellij.platform.instanceContainer.internal.InstanceContainerImpl.instance(InstanceContainerImpl.kt:68)
+	at com.intellij.serviceContainer.ComponentManagerImpl.getServiceAsync(ComponentManagerImpl.kt:702)
+	at com.intellij.platform.ide.bootstrap.AppServicePreloadingKt$preloadCriticalServices$managingFsJob$1$1.invokeSuspend(appServicePreloading.kt:180)
+	at com.intellij.platform.ide.bootstrap.AppServicePreloadingKt$preloadCriticalServices$managingFsJob$1$1.invoke(appServicePreloading.kt)
+	at com.intellij.platform.ide.bootstrap.AppServicePreloadingKt$preloadCriticalServices$managingFsJob$1$1.invoke(appServicePreloading.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:78)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:167)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
+	at com.intellij.platform.diagnostic.telemetry.impl.TracerKt.span(tracer.kt:56)
+	at com.intellij.platform.diagnostic.telemetry.impl.TracerKt.span$default(tracer.kt:49)
+	at com.intellij.platform.ide.bootstrap.AppServicePreloadingKt$preloadCriticalServices$managingFsJob$1.invokeSuspend(appServicePreloading.kt:41)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:584)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:793)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:697)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:684)
+Caused by: java.lang.RuntimeException: VFS can't be initialized (3 attempts failed)
+	at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSConnector.init(PersistentFSConnector.java:105)
+	at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSConnector.connect(PersistentFSConnector.java:61)
+	at com.intellij.openapi.vfs.newvfs.persistent.FSRecordsImpl.connect(FSRecordsImpl.java:286)
+	at com.intellij.openapi.vfs.newvfs.persistent.FSRecords.connect(FSRecords.java:119)
+	at com.intellij.openapi.vfs.newvfs.persistent.FSRecords.connect(FSRecords.java:99)
+	at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSImpl.doConnect(PersistentFSImpl.java:223)
+	at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSImpl.connect(PersistentFSImpl.java:184)
+	at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSImpl.<init>(PersistentFSImpl.java:160)
+	at java.base/java.lang.invoke.MethodHandle.invokeWithArguments(MethodHandle.java:732)
+	at com.intellij.platform.instanceContainer.instantiation.InstantiateKt$instantiate$2.invoke(instantiate.kt:49)
+	at com.intellij.platform.instanceContainer.instantiation.InstantiateKt$instantiate$2.invoke(instantiate.kt:42)
+	at com.intellij.platform.instanceContainer.instantiation.InstantiateKt.instantiate(instantiate.kt:308)
+	at com.intellij.platform.instanceContainer.instantiation.InstantiateKt.instantiate(instantiate.kt:42)
+	at com.intellij.serviceContainer.ServiceInstanceInitializer.createInstance$suspendImpl(ServiceInstanceInitializer.kt:31)
+	... 38 more
+	Suppressed: [UNRECOGNIZED]: VFS init failure of unrecognized category: java.io.IOException: No space left on device
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSConnector.tryInit(PersistentFSConnector.java:285)
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSConnector.init(PersistentFSConnector.java:79)
+		... 51 more
+	Caused by: java.io.IOException: java.io.IOException: No space left on device
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$static$3(PersistentFSLoader.java:95)
+		at com.intellij.util.ExceptionUtil.runAllAndRethrowAllExceptions(ExceptionUtil.java:228)
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.initializeStorages(PersistentFSLoader.java:231)
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSConnector.tryInit(PersistentFSConnector.java:182)
+		... 52 more
+		Suppressed: java.util.concurrent.CompletionException: java.io.IOException: No space left on device
+			at java.base/java.util.concurrent.CompletableFuture.reportJoin(CompletableFuture.java:413)
+			at java.base/java.util.concurrent.CompletableFuture.join(CompletableFuture.java:2118)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$12(PersistentFSLoader.java:240)
+			at com.intellij.util.ExceptionUtil.runAllAndRethrowAllExceptions(ExceptionUtil.java:217)
+			... 54 more
+		Caused by: java.io.IOException: No space left on device
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite0(Native Method)
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite(FileDispatcherImpl.java:68)
+			at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:130)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:97)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:67)
+			at java.base/sun.nio.ch.FileChannelImpl.writeInternal(FileChannelImpl.java:878)
+			at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:864)
+			at com.intellij.util.io.IOUtil.fillFileRegionWithZeros(IOUtil.java:402)
+			at com.intellij.util.io.IOUtil.allocateFileRegion(IOUtil.java:386)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.ensureFileRegionAllocatedAndZeroed(MMappedFileStorage.java:492)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.map(MMappedFileStorage.java:466)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:453)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:439)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndexLocked(MMappedFileStorage.java:422)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndex(MMappedFileStorage.java:243)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByOffset(MMappedFileStorage.java:228)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsLockFreeOverMMappedFile.<init>(PersistentFSRecordsLockFreeOverMMappedFile.java:118)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsStorageFactory$createStorage$1.invoke(PersistentFSRecordsStorageFactory.kt:83)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsStorageFactory$createStorage$1.invoke(PersistentFSRecordsStorageFactory.kt:82)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsStorageFactory.createStorage$lambda$0(PersistentFSRecordsStorageFactory.kt:82)
+			at com.intellij.util.io.dev.StorageFactory.lambda$wrapStorageSafely$0(StorageFactory.java:32)
+			at com.intellij.util.io.IOUtil.wrapSafely(IOUtil.java:511)
+			at com.intellij.util.io.dev.StorageFactory.wrapStorageSafely(StorageFactory.java:30)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsStorageFactory.createStorage(PersistentFSRecordsStorageFactory.kt:82)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.createRecordsStorage(PersistentFSLoader.java:772)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$7(PersistentFSLoader.java:197)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1$1.invoke(PersistentFsConnectorHelper.kt:38)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContextInner(coroutines.kt:320)
+			at com.intellij.openapi.progress.CoroutinesKt.access$blockingContextInner(coroutines.kt:1)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invokeSuspend(coroutines.kt:197)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:78)
+			at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:264)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContext(coroutines.kt:196)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1.invokeSuspend(PersistentFsConnectorHelper.kt:37)
+			at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+			at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+			at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:115)
+			at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:103)
+			... 4 more
+		Suppressed: java.util.concurrent.CompletionException: java.io.IOException: No space left on device
+			at java.base/java.util.concurrent.CompletableFuture.reportJoin(CompletableFuture.java:413)
+			at java.base/java.util.concurrent.CompletableFuture.join(CompletableFuture.java:2118)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$14(PersistentFSLoader.java:246)
+			at com.intellij.util.ExceptionUtil.runAllAndRethrowAllExceptions(ExceptionUtil.java:217)
+			... 54 more
+		Caused by: java.io.IOException: No space left on device
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite0(Native Method)
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite(FileDispatcherImpl.java:68)
+			at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:130)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:97)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:67)
+			at java.base/sun.nio.ch.FileChannelImpl.writeInternal(FileChannelImpl.java:878)
+			at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:864)
+			at com.intellij.util.io.IOUtil.fillFileRegionWithZeros(IOUtil.java:402)
+			at com.intellij.util.io.IOUtil.allocateFileRegion(IOUtil.java:386)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.ensureFileRegionAllocatedAndZeroed(MMappedFileStorage.java:492)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.map(MMappedFileStorage.java:466)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:453)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:439)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndexLocked(MMappedFileStorage.java:422)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndex(MMappedFileStorage.java:243)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByOffset(MMappedFileStorage.java:228)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.blobstorage.StreamlinedBlobStorageOverMMappedFile.<init>(StreamlinedBlobStorageOverMMappedFile.java:75)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$createAttributesStorage_makeStorage$17(PersistentFSLoader.java:636)
+			at com.intellij.util.io.dev.StorageFactory.lambda$wrapStorageSafely$0(StorageFactory.java:32)
+			at com.intellij.util.io.IOUtil.wrapSafely(IOUtil.java:511)
+			at com.intellij.util.io.dev.StorageFactory.wrapStorageSafely(StorageFactory.java:30)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.createAttributesStorage_makeStorage(PersistentFSLoader.java:634)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.createAttributesStorage(PersistentFSLoader.java:589)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$5(PersistentFSLoader.java:194)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1$1.invoke(PersistentFsConnectorHelper.kt:38)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContextInner(coroutines.kt:320)
+			at com.intellij.openapi.progress.CoroutinesKt.access$blockingContextInner(coroutines.kt:1)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invokeSuspend(coroutines.kt:197)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:78)
+			at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:264)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContext(coroutines.kt:196)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1.invokeSuspend(PersistentFsConnectorHelper.kt:37)
+			at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+			at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+			at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:115)
+			at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:103)
+			... 4 more
+		Suppressed: java.util.concurrent.CompletionException: java.io.IOException: No space left on device
+			at java.base/java.util.concurrent.CompletableFuture.reportJoin(CompletableFuture.java:413)
+			at java.base/java.util.concurrent.CompletableFuture.join(CompletableFuture.java:2118)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$15(PersistentFSLoader.java:249)
+			at com.intellij.util.ExceptionUtil.runAllAndRethrowAllExceptions(ExceptionUtil.java:217)
+			... 54 more
+		Caused by: java.io.IOException: No space left on device
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite0(Native Method)
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite(FileDispatcherImpl.java:68)
+			at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:130)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:97)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:67)
+			at java.base/sun.nio.ch.FileChannelImpl.writeInternal(FileChannelImpl.java:878)
+			at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:864)
+			at com.intellij.util.io.IOUtil.fillFileRegionWithZeros(IOUtil.java:402)
+			at com.intellij.util.io.IOUtil.allocateFileRegion(IOUtil.java:386)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.ensureFileRegionAllocatedAndZeroed(MMappedFileStorage.java:492)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.map(MMappedFileStorage.java:466)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:453)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:439)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndexLocked(MMappedFileStorage.java:422)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndex(MMappedFileStorage.java:243)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByOffset(MMappedFileStorage.java:228)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.appendonlylog.AppendOnlyLogOverMMappedFile.<init>(AppendOnlyLogOverMMappedFile.java:368)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.appendonlylog.AppendOnlyLogFactory.lambda$open$0(AppendOnlyLogFactory.java:176)
+			at com.intellij.util.io.dev.StorageFactory.lambda$wrapStorageSafely$0(StorageFactory.java:32)
+			at com.intellij.util.io.IOUtil.wrapSafely(IOUtil.java:511)
+			at com.intellij.util.io.dev.StorageFactory.wrapStorageSafely(StorageFactory.java:30)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.appendonlylog.AppendOnlyLogFactory.open(AppendOnlyLogFactory.java:173)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.content.VFSContentStorageOverMMappedFile.<init>(VFSContentStorageOverMMappedFile.java:98)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.createContentStorage_makeStorage(PersistentFSLoader.java:721)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.createContentStorage(PersistentFSLoader.java:691)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$6(PersistentFSLoader.java:196)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1$1.invoke(PersistentFsConnectorHelper.kt:38)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContextInner(coroutines.kt:320)
+			at com.intellij.openapi.progress.CoroutinesKt.access$blockingContextInner(coroutines.kt:1)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invokeSuspend(coroutines.kt:197)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:78)
+			at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:264)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContext(coroutines.kt:196)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1.invokeSuspend(PersistentFsConnectorHelper.kt:37)
+			at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+			at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+			at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:115)
+			at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:103)
+			... 4 more
+	Suppressed: [UNRECOGNIZED]: VFS init failure of unrecognized category: java.io.IOException: No space left on device
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSConnector.tryInit(PersistentFSConnector.java:285)
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSConnector.init(PersistentFSConnector.java:79)
+		... 51 more
+	Caused by: java.io.IOException: java.io.IOException: No space left on device
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$static$3(PersistentFSLoader.java:95)
+		at com.intellij.util.ExceptionUtil.runAllAndRethrowAllExceptions(ExceptionUtil.java:228)
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.initializeStorages(PersistentFSLoader.java:231)
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSConnector.tryInit(PersistentFSConnector.java:182)
+		... 52 more
+		Suppressed: java.util.concurrent.CompletionException: java.io.IOException: No space left on device
+			at java.base/java.util.concurrent.CompletableFuture.reportJoin(CompletableFuture.java:413)
+			at java.base/java.util.concurrent.CompletableFuture.join(CompletableFuture.java:2118)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$12(PersistentFSLoader.java:240)
+			at com.intellij.util.ExceptionUtil.runAllAndRethrowAllExceptions(ExceptionUtil.java:217)
+			... 54 more
+		Caused by: java.io.IOException: No space left on device
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite0(Native Method)
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite(FileDispatcherImpl.java:68)
+			at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:130)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:97)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:67)
+			at java.base/sun.nio.ch.FileChannelImpl.writeInternal(FileChannelImpl.java:878)
+			at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:864)
+			at com.intellij.util.io.IOUtil.fillFileRegionWithZeros(IOUtil.java:402)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.ensureFileRegionAllocatedAndZeroed(MMappedFileStorage.java:488)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.map(MMappedFileStorage.java:466)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:453)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:439)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndexLocked(MMappedFileStorage.java:422)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndex(MMappedFileStorage.java:243)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByOffset(MMappedFileStorage.java:228)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsLockFreeOverMMappedFile.<init>(PersistentFSRecordsLockFreeOverMMappedFile.java:118)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsStorageFactory$createStorage$1.invoke(PersistentFSRecordsStorageFactory.kt:83)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsStorageFactory$createStorage$1.invoke(PersistentFSRecordsStorageFactory.kt:82)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsStorageFactory.createStorage$lambda$0(PersistentFSRecordsStorageFactory.kt:82)
+			at com.intellij.util.io.dev.StorageFactory.lambda$wrapStorageSafely$0(StorageFactory.java:32)
+			at com.intellij.util.io.IOUtil.wrapSafely(IOUtil.java:511)
+			at com.intellij.util.io.dev.StorageFactory.wrapStorageSafely(StorageFactory.java:30)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsStorageFactory.createStorage(PersistentFSRecordsStorageFactory.kt:82)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.createRecordsStorage(PersistentFSLoader.java:772)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$7(PersistentFSLoader.java:197)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1$1.invoke(PersistentFsConnectorHelper.kt:38)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContextInner(coroutines.kt:320)
+			at com.intellij.openapi.progress.CoroutinesKt.access$blockingContextInner(coroutines.kt:1)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invokeSuspend(coroutines.kt:197)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:78)
+			at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:264)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContext(coroutines.kt:196)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1.invokeSuspend(PersistentFsConnectorHelper.kt:37)
+			at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+			at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+			at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:115)
+			at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:103)
+			... 4 more
+		Suppressed: java.util.concurrent.CompletionException: java.io.IOException: No space left on device
+			at java.base/java.util.concurrent.CompletableFuture.reportJoin(CompletableFuture.java:413)
+			at java.base/java.util.concurrent.CompletableFuture.join(CompletableFuture.java:2118)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$15(PersistentFSLoader.java:249)
+			at com.intellij.util.ExceptionUtil.runAllAndRethrowAllExceptions(ExceptionUtil.java:217)
+			... 54 more
+		Caused by: java.io.IOException: No space left on device
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite0(Native Method)
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite(FileDispatcherImpl.java:68)
+			at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:130)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:97)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:67)
+			at java.base/sun.nio.ch.FileChannelImpl.writeInternal(FileChannelImpl.java:878)
+			at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:864)
+			at com.intellij.util.io.IOUtil.fillFileRegionWithZeros(IOUtil.java:402)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.ensureFileRegionAllocatedAndZeroed(MMappedFileStorage.java:488)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.map(MMappedFileStorage.java:466)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:453)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:439)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndexLocked(MMappedFileStorage.java:422)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndex(MMappedFileStorage.java:243)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByOffset(MMappedFileStorage.java:228)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.appendonlylog.AppendOnlyLogOverMMappedFile.<init>(AppendOnlyLogOverMMappedFile.java:368)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.appendonlylog.AppendOnlyLogFactory.lambda$open$0(AppendOnlyLogFactory.java:176)
+			at com.intellij.util.io.dev.StorageFactory.lambda$wrapStorageSafely$0(StorageFactory.java:32)
+			at com.intellij.util.io.IOUtil.wrapSafely(IOUtil.java:511)
+			at com.intellij.util.io.dev.StorageFactory.wrapStorageSafely(StorageFactory.java:30)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.appendonlylog.AppendOnlyLogFactory.open(AppendOnlyLogFactory.java:173)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.content.VFSContentStorageOverMMappedFile.<init>(VFSContentStorageOverMMappedFile.java:98)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.createContentStorage_makeStorage(PersistentFSLoader.java:721)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.createContentStorage(PersistentFSLoader.java:691)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$6(PersistentFSLoader.java:196)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1$1.invoke(PersistentFsConnectorHelper.kt:38)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContextInner(coroutines.kt:320)
+			at com.intellij.openapi.progress.CoroutinesKt.access$blockingContextInner(coroutines.kt:1)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invokeSuspend(coroutines.kt:197)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:78)
+			at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:264)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContext(coroutines.kt:196)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1.invokeSuspend(PersistentFsConnectorHelper.kt:37)
+			at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+			at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+			at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:115)
+			at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:103)
+			... 4 more
+	Suppressed: [UNRECOGNIZED]: VFS init failure of unrecognized category: java.io.IOException: No space left on device
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSConnector.tryInit(PersistentFSConnector.java:285)
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSConnector.init(PersistentFSConnector.java:79)
+		... 51 more
+	Caused by: java.io.IOException: java.io.IOException: No space left on device
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$static$3(PersistentFSLoader.java:95)
+		at com.intellij.util.ExceptionUtil.runAllAndRethrowAllExceptions(ExceptionUtil.java:228)
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.initializeStorages(PersistentFSLoader.java:231)
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSConnector.tryInit(PersistentFSConnector.java:182)
+		... 52 more
+		Suppressed: java.util.concurrent.CompletionException: java.io.IOException: No space left on device
+			at java.base/java.util.concurrent.CompletableFuture.reportJoin(CompletableFuture.java:413)
+			at java.base/java.util.concurrent.CompletableFuture.join(CompletableFuture.java:2118)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$12(PersistentFSLoader.java:240)
+			at com.intellij.util.ExceptionUtil.runAllAndRethrowAllExceptions(ExceptionUtil.java:217)
+			... 54 more
+		Caused by: java.io.IOException: No space left on device
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite0(Native Method)
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite(FileDispatcherImpl.java:68)
+			at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:130)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:97)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:67)
+			at java.base/sun.nio.ch.FileChannelImpl.writeInternal(FileChannelImpl.java:878)
+			at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:864)
+			at com.intellij.util.io.IOUtil.fillFileRegionWithZeros(IOUtil.java:402)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.ensureFileRegionAllocatedAndZeroed(MMappedFileStorage.java:488)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.map(MMappedFileStorage.java:466)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:453)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:439)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndexLocked(MMappedFileStorage.java:422)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndex(MMappedFileStorage.java:243)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByOffset(MMappedFileStorage.java:228)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsLockFreeOverMMappedFile.<init>(PersistentFSRecordsLockFreeOverMMappedFile.java:118)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsStorageFactory$createStorage$1.invoke(PersistentFSRecordsStorageFactory.kt:83)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsStorageFactory$createStorage$1.invoke(PersistentFSRecordsStorageFactory.kt:82)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsStorageFactory.createStorage$lambda$0(PersistentFSRecordsStorageFactory.kt:82)
+			at com.intellij.util.io.dev.StorageFactory.lambda$wrapStorageSafely$0(StorageFactory.java:32)
+			at com.intellij.util.io.IOUtil.wrapSafely(IOUtil.java:511)
+			at com.intellij.util.io.dev.StorageFactory.wrapStorageSafely(StorageFactory.java:30)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsStorageFactory.createStorage(PersistentFSRecordsStorageFactory.kt:82)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.createRecordsStorage(PersistentFSLoader.java:772)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$7(PersistentFSLoader.java:197)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1$1.invoke(PersistentFsConnectorHelper.kt:38)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContextInner(coroutines.kt:320)
+			at com.intellij.openapi.progress.CoroutinesKt.access$blockingContextInner(coroutines.kt:1)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invokeSuspend(coroutines.kt:197)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:78)
+			at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:264)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContext(coroutines.kt:196)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1.invokeSuspend(PersistentFsConnectorHelper.kt:37)
+			at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+			at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+			at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:115)
+			at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:103)
+			... 4 more
+		Suppressed: java.util.concurrent.CompletionException: java.io.IOException: No space left on device
+			at java.base/java.util.concurrent.CompletableFuture.reportJoin(CompletableFuture.java:413)
+			at java.base/java.util.concurrent.CompletableFuture.join(CompletableFuture.java:2118)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$15(PersistentFSLoader.java:249)
+			at com.intellij.util.ExceptionUtil.runAllAndRethrowAllExceptions(ExceptionUtil.java:217)
+			... 54 more
+		Caused by: java.io.IOException: No space left on device
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite0(Native Method)
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite(FileDispatcherImpl.java:68)
+			at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:130)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:97)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:67)
+			at java.base/sun.nio.ch.FileChannelImpl.writeInternal(FileChannelImpl.java:878)
+			at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:864)
+			at com.intellij.util.io.IOUtil.fillFileRegionWithZeros(IOUtil.java:402)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.ensureFileRegionAllocatedAndZeroed(MMappedFileStorage.java:488)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.map(MMappedFileStorage.java:466)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:453)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:439)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndexLocked(MMappedFileStorage.java:422)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndex(MMappedFileStorage.java:243)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByOffset(MMappedFileStorage.java:228)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.appendonlylog.AppendOnlyLogOverMMappedFile.<init>(AppendOnlyLogOverMMappedFile.java:368)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.appendonlylog.AppendOnlyLogFactory.lambda$open$0(AppendOnlyLogFactory.java:176)
+			at com.intellij.util.io.dev.StorageFactory.lambda$wrapStorageSafely$0(StorageFactory.java:32)
+			at com.intellij.util.io.IOUtil.wrapSafely(IOUtil.java:511)
+			at com.intellij.util.io.dev.StorageFactory.wrapStorageSafely(StorageFactory.java:30)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.appendonlylog.AppendOnlyLogFactory.open(AppendOnlyLogFactory.java:173)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.content.VFSContentStorageOverMMappedFile.<init>(VFSContentStorageOverMMappedFile.java:98)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.createContentStorage_makeStorage(PersistentFSLoader.java:721)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.createContentStorage(PersistentFSLoader.java:691)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$6(PersistentFSLoader.java:196)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1$1.invoke(PersistentFsConnectorHelper.kt:38)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContextInner(coroutines.kt:320)
+			at com.intellij.openapi.progress.CoroutinesKt.access$blockingContextInner(coroutines.kt:1)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invokeSuspend(coroutines.kt:197)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:78)
+			at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:264)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContext(coroutines.kt:196)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1.invokeSuspend(PersistentFsConnectorHelper.kt:37)
+			at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+			at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+			at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:115)
+			at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:103)
+			... 4 more
+2024-07-10 13:02:26,736 [   2676] SEVERE - #c.i.o.u.KeyedExtensionCollector - Qodana for Python 2024.1  Build #QDPY-241.17568.159
+2024-07-10 13:02:26,736 [   2676] SEVERE - #c.i.o.u.KeyedExtensionCollector - JDK: 17.0.11; VM: OpenJDK 64-Bit Server VM; Vendor: JetBrains s.r.o.
+2024-07-10 13:02:26,736 [   2676] SEVERE - #c.i.o.u.KeyedExtensionCollector - OS: Linux
+2024-07-10 13:02:26,737 [   2677] SEVERE - #c.i.o.u.KeyedExtensionCollector - Last Action: 
+2024-07-10 13:02:26,746 [   2686] SEVERE - #o.j.q.s.i.r.QodanaInspectionApplication - @NotNull method com/intellij/openapi/vfs/LocalFileSystem.getInstance must not return null
+java.lang.IllegalStateException: @NotNull method com/intellij/openapi/vfs/LocalFileSystem.getInstance must not return null
+	at com.intellij.openapi.vfs.LocalFileSystem.$$$reportNull$$$0(LocalFileSystem.java)
+	at com.intellij.openapi.vfs.LocalFileSystem.getInstance(LocalFileSystem.java:37)
+	at org.jetbrains.qodana.staticAnalysis.inspections.runner.startup.QodanaProjectLoader$doOpen$vfsProject$1.invokeSuspend(QodanaProjectLoader.kt:58)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:115)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:103)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:584)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:793)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:697)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:684)
+2024-07-10 13:02:26,746 [   2686] SEVERE - #o.j.q.s.i.r.QodanaInspectionApplication - Qodana for Python 2024.1  Build #QDPY-241.17568.159
+2024-07-10 13:02:26,747 [   2687] SEVERE - #o.j.q.s.i.r.QodanaInspectionApplication - JDK: 17.0.11; VM: OpenJDK 64-Bit Server VM; Vendor: JetBrains s.r.o.
+2024-07-10 13:02:26,747 [   2687] SEVERE - #o.j.q.s.i.r.QodanaInspectionApplication - OS: Linux
+2024-07-10 13:02:26,747 [   2687] SEVERE - #o.j.q.s.i.r.QodanaInspectionApplication - Last Action: 
+java.lang.IllegalStateException: @NotNull method com/intellij/openapi/vfs/LocalFileSystem.getInstance must not return null
+	at com.intellij.openapi.vfs.LocalFileSystem.$$$reportNull$$$0(LocalFileSystem.java)
+	at com.intellij.openapi.vfs.LocalFileSystem.getInstance(LocalFileSystem.java:37)
+	at org.jetbrains.qodana.staticAnalysis.inspections.runner.startup.QodanaProjectLoader$doOpen$vfsProject$1.invokeSuspend(QodanaProjectLoader.kt:58)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:115)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:103)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:584)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:793)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:697)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:684)
+
+"
+906,slack-samples/bolt-python-starter-template,slack-samples,bolt-python-starter-template,"✓  Linked qodana.cloud project: agents-eval
+By using this Docker image, you agree to
+- JetBrains Privacy Policy (https://jb.gg/jetbrains-privacy-policy)
+- Qodana Linters Agreement (https://www.jetbrains.com/legal/docs/agreements/qodana/license/)
+Licensed to JetBrains Team
+Subscription is active until June 30, 2025.
+Qodana license plan: Ultimate Plus
+                                        
+          _              _       
+         /\ \           /\ \        Qodana for Python 2024.1
+        /  \ \         /  \ \       Documentation
+       / /\ \ \       / /\ \ \      https://jb.gg/qodana-docs
+      / / /\ \ \     / / /\ \ \     Contact us at
+     / / /  \ \_\   / / /  \ \_\    qodana-support@jetbrains.com
+    / / / _ / / /  / / /   / / /    Or via our issue tracker
+   / / / /\ \/ /  / / /   / / /     https://jb.gg/qodana-issue
+  / / /__\ \ \/  / / /___/ / /      Or share your feedback at our forum
+ / / /____\ \ \ / / /____\/ /       https://jb.gg/qodana-forum
+ \/________\_\/ \/_________/     
+                                                   
+                                        
+Starting up Qodana for Python 2024.1 (build QDPY-241.17568.159)…done.
+Preparing for the Project opening stage ...
+The Project opening stage completed in 1s
+✗  Qodana exited with code 1
+
+!  Check ./logs/ in the results directory for more information
+",,,,,False,"2024-07-10 13:02:29,424 [   1342] SEVERE - #c.i.i.s.e.v.s.p.EventLogMetadataPersistence - No space left on device
+java.io.IOException: No space left on device
+	at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
+	at java.base/sun.nio.ch.FileDispatcherImpl.write(FileDispatcherImpl.java:62)
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:132)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:97)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:67)
+	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:288)
+	at java.base/java.nio.channels.Channels.writeFullyImpl(Channels.java:74)
+	at java.base/java.nio.channels.Channels.writeFully(Channels.java:96)
+	at java.base/java.nio.channels.Channels$1.write(Channels.java:171)
+	at java.base/java.nio.file.Files.write(Files.java:3517)
+	at java.base/java.nio.file.Files.writeString(Files.java:3734)
+	at java.base/java.nio.file.Files.writeString(Files.java:3674)
+	at com.intellij.internal.statistic.eventLog.validator.storage.persistence.EventLogMetadataPersistence.cacheEventsScheme(EventLogMetadataPersistence.java:59)
+	at com.intellij.internal.statistic.eventLog.validator.storage.ValidationRulesPersistedStorage.update(ValidationRulesPersistedStorage.java:113)
+	at com.intellij.internal.statistic.eventLog.validator.IntellijSensitiveDataValidator.update(IntellijSensitiveDataValidator.java:162)
+	at com.intellij.internal.statistic.updater.StatisticsJobsSchedulerKt$updateValidationRules$2.invoke(StatisticsJobsScheduler.kt:122)
+	at com.intellij.internal.statistic.updater.StatisticsJobsSchedulerKt$updateValidationRules$2.invoke(StatisticsJobsScheduler.kt:121)
+	at com.intellij.openapi.progress.CoroutinesKt.blockingContextInner(coroutines.kt:320)
+	at com.intellij.openapi.progress.CoroutinesKt.access$blockingContextInner(coroutines.kt:1)
+	at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invokeSuspend(coroutines.kt:197)
+	at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+	at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:78)
+	at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:264)
+	at com.intellij.openapi.progress.CoroutinesKt.blockingContext(coroutines.kt:196)
+	at com.intellij.internal.statistic.updater.StatisticsJobsSchedulerKt.updateValidationRules(StatisticsJobsScheduler.kt:121)
+	at org.jetbrains.qodana.staticAnalysis.inspections.runner.QodanaInspectionApplication$waitForStatisticsSchemaUpdate$2.invokeSuspend(QodanaInspectionApplication.kt:136)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:584)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:793)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:697)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:684)
+2024-07-10 13:02:29,426 [   1344] SEVERE - #c.i.i.s.e.v.s.p.EventLogMetadataPersistence - Qodana for Python 2024.1  Build #QDPY-241.17568.159
+2024-07-10 13:02:29,426 [   1344] SEVERE - #c.i.i.s.e.v.s.p.EventLogMetadataPersistence - JDK: 17.0.11; VM: OpenJDK 64-Bit Server VM; Vendor: JetBrains s.r.o.
+2024-07-10 13:02:29,426 [   1344] SEVERE - #c.i.i.s.e.v.s.p.EventLogMetadataPersistence - OS: Linux
+2024-07-10 13:02:29,427 [   1345] SEVERE - #c.i.i.s.e.v.s.p.EventLogMetadataPersistence - Last Action: 
+2024-07-10 13:02:30,842 [   2760] SEVERE - #c.i.o.u.KeyedExtensionCollector - VFS can't be initialized (3 attempts failed) [Plugin: com.intellij]
+com.intellij.diagnostic.PluginException: VFS can't be initialized (3 attempts failed) [Plugin: com.intellij]
+	at com.intellij.serviceContainer.ServiceInstanceInitializer.createInstance$suspendImpl(ServiceInstanceInitializer.kt:53)
+	at com.intellij.serviceContainer.ServiceInstanceInitializer.createInstance(ServiceInstanceInitializer.kt)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder$initialize$1$1.invokeSuspend(LazyInstanceHolder.kt:162)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder$initialize$1$1.invoke(LazyInstanceHolder.kt)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder$initialize$1$1.invoke(LazyInstanceHolder.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:78)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:167)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder$initialize$1.invokeSuspend(LazyInstanceHolder.kt:160)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder$initialize$1.invoke(LazyInstanceHolder.kt)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder$initialize$1.invoke(LazyInstanceHolder.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startCoroutineUndispatched(Undispatched.kt:44)
+	at kotlinx.coroutines.CoroutineStart.invoke(CoroutineStart.kt:112)
+	at kotlinx.coroutines.AbstractCoroutine.start(AbstractCoroutine.kt:126)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.launch(Builders.common.kt:56)
+	at kotlinx.coroutines.BuildersKt.launch(Unknown Source)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder.initialize(LazyInstanceHolder.kt:145)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder.access$initialize(LazyInstanceHolder.kt:13)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder.tryInitialize(LazyInstanceHolder.kt:135)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder.getInstance(LazyInstanceHolder.kt:95)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder.getInstance$suspendImpl(LazyInstanceHolder.kt:83)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder.getInstance(LazyInstanceHolder.kt)
+	at com.intellij.platform.instanceContainer.internal.InstanceContainerImpl.instance(InstanceContainerImpl.kt:68)
+	at com.intellij.serviceContainer.ComponentManagerImpl.getServiceAsync(ComponentManagerImpl.kt:702)
+	at com.intellij.platform.ide.bootstrap.AppServicePreloadingKt$preloadCriticalServices$managingFsJob$1$1.invokeSuspend(appServicePreloading.kt:180)
+	at com.intellij.platform.ide.bootstrap.AppServicePreloadingKt$preloadCriticalServices$managingFsJob$1$1.invoke(appServicePreloading.kt)
+	at com.intellij.platform.ide.bootstrap.AppServicePreloadingKt$preloadCriticalServices$managingFsJob$1$1.invoke(appServicePreloading.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:78)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:167)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
+	at com.intellij.platform.diagnostic.telemetry.impl.TracerKt.span(tracer.kt:56)
+	at com.intellij.platform.diagnostic.telemetry.impl.TracerKt.span$default(tracer.kt:49)
+	at com.intellij.platform.ide.bootstrap.AppServicePreloadingKt$preloadCriticalServices$managingFsJob$1.invokeSuspend(appServicePreloading.kt:41)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:584)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:793)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:697)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:684)
+Caused by: java.lang.RuntimeException: VFS can't be initialized (3 attempts failed)
+	at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSConnector.init(PersistentFSConnector.java:105)
+	at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSConnector.connect(PersistentFSConnector.java:61)
+	at com.intellij.openapi.vfs.newvfs.persistent.FSRecordsImpl.connect(FSRecordsImpl.java:286)
+	at com.intellij.openapi.vfs.newvfs.persistent.FSRecords.connect(FSRecords.java:119)
+	at com.intellij.openapi.vfs.newvfs.persistent.FSRecords.connect(FSRecords.java:99)
+	at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSImpl.doConnect(PersistentFSImpl.java:223)
+	at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSImpl.connect(PersistentFSImpl.java:184)
+	at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSImpl.<init>(PersistentFSImpl.java:160)
+	at java.base/java.lang.invoke.MethodHandle.invokeWithArguments(MethodHandle.java:732)
+	at com.intellij.platform.instanceContainer.instantiation.InstantiateKt$instantiate$2.invoke(instantiate.kt:49)
+	at com.intellij.platform.instanceContainer.instantiation.InstantiateKt$instantiate$2.invoke(instantiate.kt:42)
+	at com.intellij.platform.instanceContainer.instantiation.InstantiateKt.instantiate(instantiate.kt:308)
+	at com.intellij.platform.instanceContainer.instantiation.InstantiateKt.instantiate(instantiate.kt:42)
+	at com.intellij.serviceContainer.ServiceInstanceInitializer.createInstance$suspendImpl(ServiceInstanceInitializer.kt:31)
+	... 38 more
+	Suppressed: [UNRECOGNIZED]: VFS init failure of unrecognized category: java.io.IOException: No space left on device
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSConnector.tryInit(PersistentFSConnector.java:285)
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSConnector.init(PersistentFSConnector.java:79)
+		... 51 more
+	Caused by: java.io.IOException: java.io.IOException: No space left on device
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$static$3(PersistentFSLoader.java:95)
+		at com.intellij.util.ExceptionUtil.runAllAndRethrowAllExceptions(ExceptionUtil.java:228)
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.initializeStorages(PersistentFSLoader.java:231)
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSConnector.tryInit(PersistentFSConnector.java:182)
+		... 52 more
+		Suppressed: java.util.concurrent.CompletionException: java.io.IOException: No space left on device
+			at java.base/java.util.concurrent.CompletableFuture.reportJoin(CompletableFuture.java:413)
+			at java.base/java.util.concurrent.CompletableFuture.join(CompletableFuture.java:2118)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$12(PersistentFSLoader.java:240)
+			at com.intellij.util.ExceptionUtil.runAllAndRethrowAllExceptions(ExceptionUtil.java:217)
+			... 54 more
+		Caused by: java.io.IOException: No space left on device
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite0(Native Method)
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite(FileDispatcherImpl.java:68)
+			at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:130)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:97)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:67)
+			at java.base/sun.nio.ch.FileChannelImpl.writeInternal(FileChannelImpl.java:878)
+			at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:864)
+			at com.intellij.util.io.IOUtil.fillFileRegionWithZeros(IOUtil.java:402)
+			at com.intellij.util.io.IOUtil.allocateFileRegion(IOUtil.java:386)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.ensureFileRegionAllocatedAndZeroed(MMappedFileStorage.java:492)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.map(MMappedFileStorage.java:466)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:453)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:439)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndexLocked(MMappedFileStorage.java:422)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndex(MMappedFileStorage.java:243)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByOffset(MMappedFileStorage.java:228)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsLockFreeOverMMappedFile.<init>(PersistentFSRecordsLockFreeOverMMappedFile.java:118)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsStorageFactory$createStorage$1.invoke(PersistentFSRecordsStorageFactory.kt:83)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsStorageFactory$createStorage$1.invoke(PersistentFSRecordsStorageFactory.kt:82)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsStorageFactory.createStorage$lambda$0(PersistentFSRecordsStorageFactory.kt:82)
+			at com.intellij.util.io.dev.StorageFactory.lambda$wrapStorageSafely$0(StorageFactory.java:32)
+			at com.intellij.util.io.IOUtil.wrapSafely(IOUtil.java:511)
+			at com.intellij.util.io.dev.StorageFactory.wrapStorageSafely(StorageFactory.java:30)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsStorageFactory.createStorage(PersistentFSRecordsStorageFactory.kt:82)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.createRecordsStorage(PersistentFSLoader.java:772)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$7(PersistentFSLoader.java:197)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1$1.invoke(PersistentFsConnectorHelper.kt:38)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContextInner(coroutines.kt:320)
+			at com.intellij.openapi.progress.CoroutinesKt.access$blockingContextInner(coroutines.kt:1)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invokeSuspend(coroutines.kt:197)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:78)
+			at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:264)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContext(coroutines.kt:196)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1.invokeSuspend(PersistentFsConnectorHelper.kt:37)
+			at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+			at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+			at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:115)
+			at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:103)
+			... 4 more
+		Suppressed: java.util.concurrent.CompletionException: java.io.IOException: No space left on device
+			at java.base/java.util.concurrent.CompletableFuture.reportJoin(CompletableFuture.java:413)
+			at java.base/java.util.concurrent.CompletableFuture.join(CompletableFuture.java:2118)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$14(PersistentFSLoader.java:246)
+			at com.intellij.util.ExceptionUtil.runAllAndRethrowAllExceptions(ExceptionUtil.java:217)
+			... 54 more
+		Caused by: java.io.IOException: No space left on device
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite0(Native Method)
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite(FileDispatcherImpl.java:68)
+			at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:130)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:97)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:67)
+			at java.base/sun.nio.ch.FileChannelImpl.writeInternal(FileChannelImpl.java:878)
+			at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:864)
+			at com.intellij.util.io.IOUtil.fillFileRegionWithZeros(IOUtil.java:402)
+			at com.intellij.util.io.IOUtil.allocateFileRegion(IOUtil.java:386)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.ensureFileRegionAllocatedAndZeroed(MMappedFileStorage.java:492)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.map(MMappedFileStorage.java:466)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:453)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:439)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndexLocked(MMappedFileStorage.java:422)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndex(MMappedFileStorage.java:243)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByOffset(MMappedFileStorage.java:228)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.blobstorage.StreamlinedBlobStorageOverMMappedFile.<init>(StreamlinedBlobStorageOverMMappedFile.java:75)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$createAttributesStorage_makeStorage$17(PersistentFSLoader.java:636)
+			at com.intellij.util.io.dev.StorageFactory.lambda$wrapStorageSafely$0(StorageFactory.java:32)
+			at com.intellij.util.io.IOUtil.wrapSafely(IOUtil.java:511)
+			at com.intellij.util.io.dev.StorageFactory.wrapStorageSafely(StorageFactory.java:30)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.createAttributesStorage_makeStorage(PersistentFSLoader.java:634)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.createAttributesStorage(PersistentFSLoader.java:589)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$5(PersistentFSLoader.java:194)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1$1.invoke(PersistentFsConnectorHelper.kt:38)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContextInner(coroutines.kt:320)
+			at com.intellij.openapi.progress.CoroutinesKt.access$blockingContextInner(coroutines.kt:1)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invokeSuspend(coroutines.kt:197)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:78)
+			at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:264)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContext(coroutines.kt:196)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1.invokeSuspend(PersistentFsConnectorHelper.kt:37)
+			at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+			at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+			at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:115)
+			at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:103)
+			... 4 more
+		Suppressed: java.util.concurrent.CompletionException: java.io.IOException: No space left on device
+			at java.base/java.util.concurrent.CompletableFuture.reportJoin(CompletableFuture.java:413)
+			at java.base/java.util.concurrent.CompletableFuture.join(CompletableFuture.java:2118)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$15(PersistentFSLoader.java:249)
+			at com.intellij.util.ExceptionUtil.runAllAndRethrowAllExceptions(ExceptionUtil.java:217)
+			... 54 more
+		Caused by: java.io.IOException: No space left on device
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite0(Native Method)
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite(FileDispatcherImpl.java:68)
+			at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:130)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:97)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:67)
+			at java.base/sun.nio.ch.FileChannelImpl.writeInternal(FileChannelImpl.java:878)
+			at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:864)
+			at com.intellij.util.io.IOUtil.fillFileRegionWithZeros(IOUtil.java:402)
+			at com.intellij.util.io.IOUtil.allocateFileRegion(IOUtil.java:386)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.ensureFileRegionAllocatedAndZeroed(MMappedFileStorage.java:492)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.map(MMappedFileStorage.java:466)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:453)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:439)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndexLocked(MMappedFileStorage.java:422)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndex(MMappedFileStorage.java:243)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByOffset(MMappedFileStorage.java:228)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.appendonlylog.AppendOnlyLogOverMMappedFile.<init>(AppendOnlyLogOverMMappedFile.java:368)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.appendonlylog.AppendOnlyLogFactory.lambda$open$0(AppendOnlyLogFactory.java:176)
+			at com.intellij.util.io.dev.StorageFactory.lambda$wrapStorageSafely$0(StorageFactory.java:32)
+			at com.intellij.util.io.IOUtil.wrapSafely(IOUtil.java:511)
+			at com.intellij.util.io.dev.StorageFactory.wrapStorageSafely(StorageFactory.java:30)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.appendonlylog.AppendOnlyLogFactory.open(AppendOnlyLogFactory.java:173)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.content.VFSContentStorageOverMMappedFile.<init>(VFSContentStorageOverMMappedFile.java:98)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.createContentStorage_makeStorage(PersistentFSLoader.java:721)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.createContentStorage(PersistentFSLoader.java:691)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$6(PersistentFSLoader.java:196)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1$1.invoke(PersistentFsConnectorHelper.kt:38)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContextInner(coroutines.kt:320)
+			at com.intellij.openapi.progress.CoroutinesKt.access$blockingContextInner(coroutines.kt:1)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invokeSuspend(coroutines.kt:197)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:78)
+			at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:264)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContext(coroutines.kt:196)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1.invokeSuspend(PersistentFsConnectorHelper.kt:37)
+			at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+			at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+			at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:115)
+			at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:103)
+			... 4 more
+	Suppressed: [UNRECOGNIZED]: VFS init failure of unrecognized category: java.io.IOException: No space left on device
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSConnector.tryInit(PersistentFSConnector.java:285)
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSConnector.init(PersistentFSConnector.java:79)
+		... 51 more
+	Caused by: java.io.IOException: java.io.IOException: No space left on device
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$static$3(PersistentFSLoader.java:95)
+		at com.intellij.util.ExceptionUtil.runAllAndRethrowAllExceptions(ExceptionUtil.java:228)
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.initializeStorages(PersistentFSLoader.java:231)
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSConnector.tryInit(PersistentFSConnector.java:182)
+		... 52 more
+		Suppressed: java.util.concurrent.CompletionException: java.io.IOException: No space left on device
+			at java.base/java.util.concurrent.CompletableFuture.reportJoin(CompletableFuture.java:413)
+			at java.base/java.util.concurrent.CompletableFuture.join(CompletableFuture.java:2118)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$12(PersistentFSLoader.java:240)
+			at com.intellij.util.ExceptionUtil.runAllAndRethrowAllExceptions(ExceptionUtil.java:217)
+			... 54 more
+		Caused by: java.io.IOException: No space left on device
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite0(Native Method)
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite(FileDispatcherImpl.java:68)
+			at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:130)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:97)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:67)
+			at java.base/sun.nio.ch.FileChannelImpl.writeInternal(FileChannelImpl.java:878)
+			at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:864)
+			at com.intellij.util.io.IOUtil.fillFileRegionWithZeros(IOUtil.java:402)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.ensureFileRegionAllocatedAndZeroed(MMappedFileStorage.java:488)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.map(MMappedFileStorage.java:466)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:453)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:439)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndexLocked(MMappedFileStorage.java:422)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndex(MMappedFileStorage.java:243)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByOffset(MMappedFileStorage.java:228)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsLockFreeOverMMappedFile.<init>(PersistentFSRecordsLockFreeOverMMappedFile.java:118)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsStorageFactory$createStorage$1.invoke(PersistentFSRecordsStorageFactory.kt:83)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsStorageFactory$createStorage$1.invoke(PersistentFSRecordsStorageFactory.kt:82)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsStorageFactory.createStorage$lambda$0(PersistentFSRecordsStorageFactory.kt:82)
+			at com.intellij.util.io.dev.StorageFactory.lambda$wrapStorageSafely$0(StorageFactory.java:32)
+			at com.intellij.util.io.IOUtil.wrapSafely(IOUtil.java:511)
+			at com.intellij.util.io.dev.StorageFactory.wrapStorageSafely(StorageFactory.java:30)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsStorageFactory.createStorage(PersistentFSRecordsStorageFactory.kt:82)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.createRecordsStorage(PersistentFSLoader.java:772)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$7(PersistentFSLoader.java:197)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1$1.invoke(PersistentFsConnectorHelper.kt:38)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContextInner(coroutines.kt:320)
+			at com.intellij.openapi.progress.CoroutinesKt.access$blockingContextInner(coroutines.kt:1)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invokeSuspend(coroutines.kt:197)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:78)
+			at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:264)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContext(coroutines.kt:196)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1.invokeSuspend(PersistentFsConnectorHelper.kt:37)
+			at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+			at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+			at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:115)
+			at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:103)
+			... 4 more
+		Suppressed: java.util.concurrent.CompletionException: java.io.IOException: No space left on device
+			at java.base/java.util.concurrent.CompletableFuture.reportJoin(CompletableFuture.java:413)
+			at java.base/java.util.concurrent.CompletableFuture.join(CompletableFuture.java:2118)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$15(PersistentFSLoader.java:249)
+			at com.intellij.util.ExceptionUtil.runAllAndRethrowAllExceptions(ExceptionUtil.java:217)
+			... 54 more
+		Caused by: java.io.IOException: No space left on device
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite0(Native Method)
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite(FileDispatcherImpl.java:68)
+			at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:130)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:97)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:67)
+			at java.base/sun.nio.ch.FileChannelImpl.writeInternal(FileChannelImpl.java:878)
+			at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:864)
+			at com.intellij.util.io.IOUtil.fillFileRegionWithZeros(IOUtil.java:402)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.ensureFileRegionAllocatedAndZeroed(MMappedFileStorage.java:488)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.map(MMappedFileStorage.java:466)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:453)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:439)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndexLocked(MMappedFileStorage.java:422)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndex(MMappedFileStorage.java:243)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByOffset(MMappedFileStorage.java:228)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.appendonlylog.AppendOnlyLogOverMMappedFile.<init>(AppendOnlyLogOverMMappedFile.java:368)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.appendonlylog.AppendOnlyLogFactory.lambda$open$0(AppendOnlyLogFactory.java:176)
+			at com.intellij.util.io.dev.StorageFactory.lambda$wrapStorageSafely$0(StorageFactory.java:32)
+			at com.intellij.util.io.IOUtil.wrapSafely(IOUtil.java:511)
+			at com.intellij.util.io.dev.StorageFactory.wrapStorageSafely(StorageFactory.java:30)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.appendonlylog.AppendOnlyLogFactory.open(AppendOnlyLogFactory.java:173)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.content.VFSContentStorageOverMMappedFile.<init>(VFSContentStorageOverMMappedFile.java:98)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.createContentStorage_makeStorage(PersistentFSLoader.java:721)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.createContentStorage(PersistentFSLoader.java:691)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$6(PersistentFSLoader.java:196)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1$1.invoke(PersistentFsConnectorHelper.kt:38)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContextInner(coroutines.kt:320)
+			at com.intellij.openapi.progress.CoroutinesKt.access$blockingContextInner(coroutines.kt:1)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invokeSuspend(coroutines.kt:197)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:78)
+			at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:264)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContext(coroutines.kt:196)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1.invokeSuspend(PersistentFsConnectorHelper.kt:37)
+			at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+			at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+			at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:115)
+			at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:103)
+			... 4 more
+	Suppressed: [UNRECOGNIZED]: VFS init failure of unrecognized category: java.io.IOException: No space left on device
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSConnector.tryInit(PersistentFSConnector.java:285)
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSConnector.init(PersistentFSConnector.java:79)
+		... 51 more
+	Caused by: java.io.IOException: java.io.IOException: No space left on device
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$static$3(PersistentFSLoader.java:95)
+		at com.intellij.util.ExceptionUtil.runAllAndRethrowAllExceptions(ExceptionUtil.java:228)
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.initializeStorages(PersistentFSLoader.java:231)
+		at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSConnector.tryInit(PersistentFSConnector.java:182)
+		... 52 more
+		Suppressed: java.util.concurrent.CompletionException: java.io.IOException: No space left on device
+			at java.base/java.util.concurrent.CompletableFuture.reportJoin(CompletableFuture.java:413)
+			at java.base/java.util.concurrent.CompletableFuture.join(CompletableFuture.java:2118)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$12(PersistentFSLoader.java:240)
+			at com.intellij.util.ExceptionUtil.runAllAndRethrowAllExceptions(ExceptionUtil.java:217)
+			... 54 more
+		Caused by: java.io.IOException: No space left on device
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite0(Native Method)
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite(FileDispatcherImpl.java:68)
+			at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:130)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:97)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:67)
+			at java.base/sun.nio.ch.FileChannelImpl.writeInternal(FileChannelImpl.java:878)
+			at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:864)
+			at com.intellij.util.io.IOUtil.fillFileRegionWithZeros(IOUtil.java:402)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.ensureFileRegionAllocatedAndZeroed(MMappedFileStorage.java:488)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.map(MMappedFileStorage.java:466)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:453)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:439)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndexLocked(MMappedFileStorage.java:422)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndex(MMappedFileStorage.java:243)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByOffset(MMappedFileStorage.java:228)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsLockFreeOverMMappedFile.<init>(PersistentFSRecordsLockFreeOverMMappedFile.java:118)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsStorageFactory$createStorage$1.invoke(PersistentFSRecordsStorageFactory.kt:83)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsStorageFactory$createStorage$1.invoke(PersistentFSRecordsStorageFactory.kt:82)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsStorageFactory.createStorage$lambda$0(PersistentFSRecordsStorageFactory.kt:82)
+			at com.intellij.util.io.dev.StorageFactory.lambda$wrapStorageSafely$0(StorageFactory.java:32)
+			at com.intellij.util.io.IOUtil.wrapSafely(IOUtil.java:511)
+			at com.intellij.util.io.dev.StorageFactory.wrapStorageSafely(StorageFactory.java:30)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSRecordsStorageFactory.createStorage(PersistentFSRecordsStorageFactory.kt:82)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.createRecordsStorage(PersistentFSLoader.java:772)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$7(PersistentFSLoader.java:197)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1$1.invoke(PersistentFsConnectorHelper.kt:38)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContextInner(coroutines.kt:320)
+			at com.intellij.openapi.progress.CoroutinesKt.access$blockingContextInner(coroutines.kt:1)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invokeSuspend(coroutines.kt:197)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:78)
+			at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:264)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContext(coroutines.kt:196)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1.invokeSuspend(PersistentFsConnectorHelper.kt:37)
+			at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+			at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+			at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:115)
+			at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:103)
+			... 4 more
+		Suppressed: java.util.concurrent.CompletionException: java.io.IOException: No space left on device
+			at java.base/java.util.concurrent.CompletableFuture.reportJoin(CompletableFuture.java:413)
+			at java.base/java.util.concurrent.CompletableFuture.join(CompletableFuture.java:2118)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$15(PersistentFSLoader.java:249)
+			at com.intellij.util.ExceptionUtil.runAllAndRethrowAllExceptions(ExceptionUtil.java:217)
+			... 54 more
+		Caused by: java.io.IOException: No space left on device
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite0(Native Method)
+			at java.base/sun.nio.ch.FileDispatcherImpl.pwrite(FileDispatcherImpl.java:68)
+			at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:130)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:97)
+			at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:67)
+			at java.base/sun.nio.ch.FileChannelImpl.writeInternal(FileChannelImpl.java:878)
+			at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:864)
+			at com.intellij.util.io.IOUtil.fillFileRegionWithZeros(IOUtil.java:402)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.ensureFileRegionAllocatedAndZeroed(MMappedFileStorage.java:488)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.map(MMappedFileStorage.java:466)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:453)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage$Page.<init>(MMappedFileStorage.java:439)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndexLocked(MMappedFileStorage.java:422)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByIndex(MMappedFileStorage.java:243)
+			at com.intellij.util.io.dev.mmapped.MMappedFileStorage.pageByOffset(MMappedFileStorage.java:228)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.appendonlylog.AppendOnlyLogOverMMappedFile.<init>(AppendOnlyLogOverMMappedFile.java:368)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.appendonlylog.AppendOnlyLogFactory.lambda$open$0(AppendOnlyLogFactory.java:176)
+			at com.intellij.util.io.dev.StorageFactory.lambda$wrapStorageSafely$0(StorageFactory.java:32)
+			at com.intellij.util.io.IOUtil.wrapSafely(IOUtil.java:511)
+			at com.intellij.util.io.dev.StorageFactory.wrapStorageSafely(StorageFactory.java:30)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.appendonlylog.AppendOnlyLogFactory.open(AppendOnlyLogFactory.java:173)
+			at com.intellij.openapi.vfs.newvfs.persistent.dev.content.VFSContentStorageOverMMappedFile.<init>(VFSContentStorageOverMMappedFile.java:98)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.createContentStorage_makeStorage(PersistentFSLoader.java:721)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.createContentStorage(PersistentFSLoader.java:691)
+			at com.intellij.openapi.vfs.newvfs.persistent.PersistentFSLoader.lambda$initializeStorages$6(PersistentFSLoader.java:196)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1$1.invoke(PersistentFsConnectorHelper.kt:38)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContextInner(coroutines.kt:320)
+			at com.intellij.openapi.progress.CoroutinesKt.access$blockingContextInner(coroutines.kt:1)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invokeSuspend(coroutines.kt:197)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+			at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:78)
+			at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:264)
+			at com.intellij.openapi.progress.CoroutinesKt.blockingContext(coroutines.kt:196)
+			at com.intellij.openapi.vfs.newvfs.persistent.ExecuteOnCoroutine$async$1.invokeSuspend(PersistentFsConnectorHelper.kt:37)
+			at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+			at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+			at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:115)
+			at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:103)
+			... 4 more
+2024-07-10 13:02:30,850 [   2768] SEVERE - #c.i.o.u.KeyedExtensionCollector - Qodana for Python 2024.1  Build #QDPY-241.17568.159
+2024-07-10 13:02:30,851 [   2769] SEVERE - #c.i.o.u.KeyedExtensionCollector - JDK: 17.0.11; VM: OpenJDK 64-Bit Server VM; Vendor: JetBrains s.r.o.
+2024-07-10 13:02:30,851 [   2769] SEVERE - #c.i.o.u.KeyedExtensionCollector - OS: Linux
+2024-07-10 13:02:30,851 [   2769] SEVERE - #c.i.o.u.KeyedExtensionCollector - Last Action: 
+2024-07-10 13:02:30,860 [   2778] SEVERE - #o.j.q.s.i.r.QodanaInspectionApplication - @NotNull method com/intellij/openapi/vfs/LocalFileSystem.getInstance must not return null
+java.lang.IllegalStateException: @NotNull method com/intellij/openapi/vfs/LocalFileSystem.getInstance must not return null
+	at com.intellij.openapi.vfs.LocalFileSystem.$$$reportNull$$$0(LocalFileSystem.java)
+	at com.intellij.openapi.vfs.LocalFileSystem.getInstance(LocalFileSystem.java:37)
+	at org.jetbrains.qodana.staticAnalysis.inspections.runner.startup.QodanaProjectLoader$doOpen$vfsProject$1.invokeSuspend(QodanaProjectLoader.kt:58)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:115)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:103)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:584)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:793)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:697)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:684)
+2024-07-10 13:02:30,861 [   2779] SEVERE - #o.j.q.s.i.r.QodanaInspectionApplication - Qodana for Python 2024.1  Build #QDPY-241.17568.159
+2024-07-10 13:02:30,861 [   2779] SEVERE - #o.j.q.s.i.r.QodanaInspectionApplication - JDK: 17.0.11; VM: OpenJDK 64-Bit Server VM; Vendor: JetBrains s.r.o.
+2024-07-10 13:02:30,861 [   2779] SEVERE - #o.j.q.s.i.r.QodanaInspectionApplication - OS: Linux
+2024-07-10 13:02:30,862 [   2780] SEVERE - #o.j.q.s.i.r.QodanaInspectionApplication - Last Action: 
+java.lang.IllegalStateException: @NotNull method com/intellij/openapi/vfs/LocalFileSystem.getInstance must not return null
+	at com.intellij.openapi.vfs.LocalFileSystem.$$$reportNull$$$0(LocalFileSystem.java)
+	at com.intellij.openapi.vfs.LocalFileSystem.getInstance(LocalFileSystem.java:37)
+	at org.jetbrains.qodana.staticAnalysis.inspections.runner.startup.QodanaProjectLoader$doOpen$vfsProject$1.invokeSuspend(QodanaProjectLoader.kt:58)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:115)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:103)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:584)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:793)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:697)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:684)
+
+"

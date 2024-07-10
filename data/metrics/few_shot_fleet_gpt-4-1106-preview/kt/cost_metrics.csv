@@ -1,0 +1,11 @@
+id,full_name,owner,name,time,total_tokens,prompt_tokens,completion_tokens,api_calls_count,api_failed_calls_count,llm_calls_count,langsmith_project_link
+2,alidehkhodaei/notification-example,alidehkhodaei,notification-example,57.66327977180481,2909,1528,1381,0,0,1,
+10,davidvavra/showkase-screenshot-tests,davidvavra,showkase-screenshot-tests,37.796895027160645,2735,1528,1207,0,0,1,
+14,Foso/KotlinCompilerPluginExample,Foso,KotlinCompilerPluginExample,50.03859782218933,3156,1552,1604,0,0,1,
+33,Kotlin/kmm-basic-sample,Kotlin,kmm-basic-sample,66.37655305862427,3232,1514,1718,0,0,1,
+36,kotlin-orm/ktorm-example-spring-boot,kotlin-orm,ktorm-example-spring-boot,65.51237106323242,3351,1523,1828,0,0,1,
+39,MortezaNedaei/RTMP-ExoPlayer,MortezaNedaei,RTMP-ExoPlayer,117.45036506652832,5155,1527,3628,0,0,1,
+42,mvysny/vaadin-kotlin-pwa,mvysny,vaadin-kotlin-pwa,49.60733890533447,2839,1522,1317,0,0,1,
+45,nomisRev/ktor-k8s-zero-downtime,nomisRev,ktor-k8s-zero-downtime,50.97293019294739,3417,1528,1889,0,0,1,
+50,PleahMaCaka/forge-kotlin-template,PleahMaCaka,forge-kotlin-template,40.02999496459961,3029,1531,1498,0,0,1,
+67,ZebraDevs/DataWedge-Flutter-Demo,ZebraDevs,DataWedge-Flutter-Demo,47.9011390209198,3302,1532,1770,0,0,1,

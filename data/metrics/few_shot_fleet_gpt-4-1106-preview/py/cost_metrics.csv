@@ -1,0 +1,11 @@
+id,full_name,owner,name,time,total_tokens,prompt_tokens,completion_tokens,api_calls_count,api_failed_calls_count,llm_calls_count,langsmith_project_link
+6,aaronleetw/flask-boilerplate,aaronleetw,flask-boilerplate,67.65087699890137,3607,1542,2065,0,0,1,
+14,adilkhash/django-telegram-auth-example,adilkhash,django-telegram-auth-example,96.10917615890504,4324,1516,2808,0,0,1,
+158,Binacy/discord-http-interaction-bot,Binacy,discord-http-interaction-bot,70.69926691055298,3231,1523,1708,0,0,1,
+440,ido-ran/google-photos-api-python-quickstart,ido-ran,google-photos-api-python-quickstart,64.41901469230652,3423,1527,1896,0,0,1,
+565,m0kr4n3/fastapi_project_template,m0kr4n3,fastapi_project_template,62.018020153045654,3032,1530,1502,0,0,1,
+591,MaxHalford/taxi-demo-rp-mz-rv-rd-st,MaxHalford,taxi-demo-rp-mz-rv-rd-st,63.01212787628174,3591,1544,2047,0,0,1,
+592,mayflower/cloudbot,mayflower,cloudbot,59.38885283470154,2996,1526,1470,0,0,1,
+841,rohankishore/Spotifyte,rohankishore,Spotifyte,38.57862687110901,2745,1524,1221,0,0,1,
+875,scivision/pybluez-examples,scivision,pybluez-examples,44.33798003196716,3056,1521,1535,0,0,1,
+906,slack-samples/bolt-python-starter-template,slack-samples,bolt-python-starter-template,26.359630823135376,2490,1521,969,0,0,1,

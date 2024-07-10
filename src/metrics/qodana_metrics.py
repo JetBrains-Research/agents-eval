@@ -1,19 +1,37 @@
+import json
 import os
 import shutil
 import subprocess
+from collections import defaultdict
 
-from dotenv import load_dotenv
+
+def get_subitems(path, exclude_items = None):
+    subdirs = []
+    subfiles = []
+
+    for item in os.listdir(path):
+        if exclude_items and item in exclude_items:
+            continue
+        subpath = os.path.join(path, item)
+        if os.path.isfile(subpath):
+            subfiles.append(subpath)
+        if os.path.isdir(subpath):
+            subdirs.append(subpath)
+
+    return subdirs, subfiles
 
 
-def qodana_opens_project(project_path: str, language: str):
-    qodana_projects_path = os.path.join(os.path.dirname(os.path.dirname(project_path)), 'gen_templates_qodana')
-    os.makedirs(qodana_projects_path, exist_ok=True)
-
-    qodana_project_path = os.path.join(qodana_projects_path, os.path.basename(project_path))
+def get_qodana_metrics(project_path: str, qodana_project_path: str, language: str) -> dict:
     if os.path.exists(qodana_project_path):
         shutil.rmtree(qodana_project_path)
     os.makedirs(qodana_project_path)
 
+    # Sometimes root directory is subdirectory
+    subdirs, subfiles = get_subitems(project_path, ['bash'])
+    if len(subdirs) == 1 and len(subfiles) == 0:
+        project_path = subdirs[0]
+
+    print(f"Coping files from {project_path} to {qodana_project_path}...")
     for filename in os.listdir(project_path):
         src_file_path = os.path.join(project_path, filename)
         if os.path.isfile(src_file_path):
@@ -21,7 +39,7 @@ def qodana_opens_project(project_path: str, language: str):
         else:
             dst_file_path = os.path.join(qodana_project_path, filename)
             shutil.copytree(src_file_path, dst_file_path)
-
+    print(f"Running Qodana...")
     if language == 'py':
         qodana_command = ['docker', 'run',
                           '-v', f"{qodana_project_path}:/data/project/",
@@ -39,29 +57,38 @@ def qodana_opens_project(project_path: str, language: str):
     logs = process.stdout.decode()
     print(f"\nQodana CLI logs:\n{logs}")
 
+    qodana_metrics = {}
+    qodana_metrics['logs'] = logs
+
+    open_in_ide_json_path = os.path.join(qodana_project_path, '.qodana', 'open-in-ide.json')
+    if os.path.exists(open_in_ide_json_path):
+        with open(open_in_ide_json_path) as json_file:
+            data = json.load(json_file)
+            qodana_metrics['url'] = data["cloud"]["url"]
+    else:
+        qodana_metrics['url'] = None
+
+    results_json_path = os.path.join(qodana_project_path, '.qodana', 'report', 'results', 'result-allProblems.json')
+    if os.path.exists(results_json_path):
+        with open(results_json_path) as json_file:
+            data = json.load(json_file)
+            qodana_metrics['problems'] = data["listProblem"]
+            qodana_metrics['problems_count'] = len(data["listProblem"])
+            problems_by_name_count = defaultdict(int)
+            for problem in data["listProblem"]:
+                problems_by_name_count[problem["attributes"]["inspectionName"]] += 1
+            qodana_metrics['problems_by_name_count'] = dict(problems_by_name_count)
+    else:
+        qodana_metrics['problems'] = None
+        qodana_metrics['problems_count'] = None
+        qodana_metrics['problems_by_name_count'] = None
+
     if process.returncode == 0:
-        return True, logs, None
+        qodana_metrics['open_status'] = True
+        qodana_metrics['error'] = None
     else:
         print(f"\nAn error occurred: {process.stderr.decode()}")
-        return False, logs, process.stderr.decode()
-
-
-def get_qodana_metrics(gen_project_path: str, golden_project_path: str, language: str) -> dict[str, Any]:
-    qodana_metrics = {}
-    for pref, project_path in [('gen', gen_project_path), ('golden', golden_project_path)]:
-        status, log, error = qodana_opens_project(project_path, language)
-        qodana_metrics[pref + '_qodana_status'] = status
-        qodana_metrics[pref + '_qodana_log'] = log
-        qodana_metrics[pref + '_qodana_error'] = error
+        qodana_metrics['open_status'] = False
+        qodana_metrics['error'] = process.stderr.decode()
 
     return qodana_metrics
-
-
-if __name__ == '__main__':
-    load_dotenv()
-    metrics = get_qodana_metrics(
-        '/Users/Maria.Tigina/PycharmProjects/agents-eval-data/template_generation/planning_gpt-4-1106-preview/java/gen_templates/AdamBien__aws-lambda-cdk-plain',
-        '/Users/Maria.Tigina/PycharmProjects/agents-eval-data/repos/AdamBien__aws-lambda-cdk-plain',
-        'java'
-    )
-    print(metrics)

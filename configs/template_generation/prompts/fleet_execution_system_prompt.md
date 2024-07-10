@@ -19,7 +19,7 @@ Strictly follow next rules:
 - ALWAYS add README_BUILD file in the root of the project with short but comprehensive description how to build project – describe all build dependencies.
 - ALWAYS add language notation 'PROJECT' for project structure
 
-3. Validation step:
+4. Validation step:
 3.1 Add code snippet: ```${'\n'}VALIDATION${'\n'}```
 3.2 Verbally analyse file content for mistake, errors and incoherence. When file is OK: add code snippet with file path for correct files.
 3.3 Change files according to analysis: add file path and then code block with CORRECTED file content

@@ -2,6 +2,7 @@ import asyncio
 import csv
 import os
 from collections import defaultdict
+from typing import Any
 
 import hydra
 import pandas as pd
@@ -12,11 +13,20 @@ from omegaconf import DictConfig
 
 from src.metrics.project_gen_metrics import gen_golden_content_metrics, gen_golden_content_metric_by_files, \
     get_closest_project_index
+from src.metrics.qodana_metrics import get_qodana_metrics
 from src.metrics.tree_metrics import compare_tree_metric
 from src.metrics.file_metrics import get_files_metrics
 from src.template_generation.code_engine_env.code_engine_env_tools import code_engine_tools_to_handler
 from src.utils.git_utils import clone_repo
 from src.utils.hf_utils import load_data
+
+
+def write_to_csv(metrics_path, keys: list[str], values: list[Any]):
+    with open(metrics_path, 'a', newline='') as f:
+        writer = csv.writer(f)
+        if f.tell() == 0:
+            writer.writerow(keys)
+        writer.writerow(values)
 
 
 def get_quality_metrics(gen_template_result, repos_path: str, output_path: str):
@@ -40,14 +50,11 @@ def get_quality_metrics(gen_template_result, repos_path: str, output_path: str):
     files_metrics = get_files_metrics(gen_project_path, golden_project_path)
     quality_metrics.update(files_metrics)
 
-    with open(metrics_path, 'a', newline='') as f:
-        writer = csv.writer(f)
-        if f.tell() == 0:
-            writer.writerow(['id', 'full_name', 'owner', 'name'] + list(quality_metrics.keys()))
-        writer.writerow([gen_template_result['id'],
-                         gen_template_result['full_name'],
-                         gen_template_result['owner'],
-                         gen_template_result['name']] + list(quality_metrics.values()))
+    write_to_csv(metrics_path, ['id', 'full_name', 'owner', 'name'] + list(quality_metrics.keys()),
+                 [gen_template_result['id'],
+                  gen_template_result['full_name'],
+                  gen_template_result['owner'],
+                  gen_template_result['name']] + list(quality_metrics.values()))
 
 
 def get_cost_metrics(gen_template_result, agent_name: str, output_path: str):
@@ -67,23 +74,18 @@ def get_cost_metrics(gen_template_result, agent_name: str, output_path: str):
     cost_metrics['prompt_tokens'] = langsmith_project.prompt_tokens
     cost_metrics['completion_tokens'] = langsmith_project.completion_tokens
 
-    runs_stats = get_runs_stats(langsmith_project_name)
+    runs_stats = get_langsmith_metrics(langsmith_project_name)
     cost_metrics.update(runs_stats)
 
-    with open(metrics_path, 'a', newline='') as f:
-        writer = csv.writer(f)
-        if f.tell() == 0:
-            writer.writerow(
-                ['id', 'full_name', 'owner', 'name', 'time'] + list(cost_metrics.keys()))
-        writer.writerow(
-            [gen_template_result['id'],
-             gen_template_result['full_name'],
-             gen_template_result['owner'],
-             gen_template_result['name'],
-             gen_template_result['time']] + list(cost_metrics.values()))
+    write_to_csv(metrics_path, ['id', 'full_name', 'owner', 'name', 'time'] + list(cost_metrics.keys()),
+                 [gen_template_result['id'],
+                  gen_template_result['full_name'],
+                  gen_template_result['owner'],
+                  gen_template_result['name'],
+                  gen_template_result['time']] + list(cost_metrics.values()))
 
 
-def get_runs_stats(langsmith_project_name: str) -> dict:
+def get_langsmith_metrics(langsmith_project_name: str) -> dict:
     client = Client()
     runs = client.list_runs(project_name=langsmith_project_name)
     traces = defaultdict(list)
@@ -147,17 +149,32 @@ async def get_quality_compare_metrics(gen_template_result, projects: Dataset, re
     prove_quality_metrics['tree_result'] = tree_metrics.get("result", "-1")
     prove_quality_metrics['tree_comment'] = tree_metrics.get("comment", "")
 
-    with open(metrics_path, 'a', newline='') as f:
-        writer = csv.writer(f)
-        if f.tell() == 0:
-            writer.writerow(['id', 'full_name', 'owner', 'name'] +
-                            ['closest_id', 'closest_full_name', 'closest_owner', 'closest_name'] +
-                            list(prove_quality_metrics.keys()))
-        writer.writerow(
-            [gen_template_result['id'], gen_template_result['full_name'], gen_template_result['owner'],
-             gen_template_result['name']] +
-            [closest_project['id'], closest_project['full_name'], closest_project['owner'], closest_project['name']]
-            + list(prove_quality_metrics.values()))
+    write_to_csv(metrics_path,
+                 ['id', 'full_name', 'owner', 'name'] +
+                 ['closest_id', 'closest_full_name', 'closest_owner', 'closest_name'] +
+                 list(prove_quality_metrics.keys()),
+                 [gen_template_result['id'], gen_template_result['full_name'], gen_template_result['owner'],
+                  gen_template_result['name']] +
+                 [closest_project['id'], closest_project['full_name'], closest_project['owner'],
+                  closest_project['name']]
+                 + list(prove_quality_metrics.values()))
+
+
+def get_qodana_run_metrics(gen_template_result, language, output_path: str):
+    metrics_path = os.path.join(output_path, f'qodana_metrics.csv')
+    if os.path.exists(metrics_path) and gen_template_result['id'] in list(pd.read_csv(metrics_path)['id']):
+        print(f"Skipping project: {gen_template_result['full_name']}")
+        return
+
+    gen_project_path = gen_template_result['project_template_path']
+    project_name = gen_project_path.split('/')[-1]
+    qodana_project_path = os.path.join(output_path, 'qodana_metrics', project_name)
+    qodana_metrics = get_qodana_metrics(gen_project_path, qodana_project_path, language)
+    write_to_csv(metrics_path,
+                 ['id', 'full_name', 'owner', 'name'] + list(qodana_metrics.keys()),
+                 [gen_template_result['id'], gen_template_result['full_name'], gen_template_result['owner'],
+                  gen_template_result['name']] + list(qodana_metrics.values()))
+    print(qodana_metrics)
 
 
 async def eval_metrics(config: DictConfig):
@@ -174,8 +191,9 @@ async def eval_metrics(config: DictConfig):
             metrics_path = os.path.join(config.metrics_path, agent_name, language)
             os.makedirs(metrics_path, exist_ok=True)
             for _, dp in df.iterrows():
-                get_quality_metrics(dp, config.repos_path, metrics_path)
-                get_cost_metrics(dp, agent_name, metrics_path)
+                # get_quality_metrics(dp, config.repos_path, metrics_path)
+                # get_cost_metrics(dp, agent_name, metrics_path)
+                get_qodana_run_metrics(dp, language, metrics_path)
                 # await get_quality_compare_metrics(dp, projects, config.repos_path, metrics_path)
 
 

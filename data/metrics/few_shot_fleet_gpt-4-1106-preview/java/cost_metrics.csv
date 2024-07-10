@@ -1,0 +1,11 @@
+id,full_name,owner,name,time,total_tokens,prompt_tokens,completion_tokens,api_calls_count,api_failed_calls_count,llm_calls_count,langsmith_project_link
+1,AdamBien/aws-lambda-cdk-plain,AdamBien,aws-lambda-cdk-plain,44.776514768600464,3072,1528,1544,0,0,1,
+35,binxio/cfn-lint-plugin,binxio,cfn-lint-plugin,48.49489998817444,2789,1525,1264,0,0,1,
+45,ChristianAA/selenium-springboot-example,ChristianAA,selenium-springboot-example,78.1023998260498,3705,1527,2178,0,0,1,
+57,dadoonet/elasticsearch-java-client-demo,dadoonet,elasticsearch-java-client-demo,43.752217054367065,2674,1515,1159,0,0,1,
+63,datumbox/datumbox-framework-examples,datumbox,datumbox-framework-examples,39.265321016311646,2696,1522,1174,0,0,1,
+77,Esri/java-maven-starter-project,Esri,java-maven-starter-project,34.529409885406494,2561,1523,1038,0,0,1,
+82,flashvayne/chatgpt-spring-boot-starter,flashvayne,chatgpt-spring-boot-starter,58.66226005554199,3268,1526,1742,0,0,1,
+136,jonashackt/spring-reactive-redis-messaging,jonashackt,spring-reactive-redis-messaging,44.02277183532715,3043,1525,1518,0,0,1,
+176,melix/gradle-tapi-demo-artifacts,melix,gradle-tapi-demo-artifacts,38.58549094200134,2632,1533,1099,0,0,1,
+246,slack-samples/bolt-java-starter-template,slack-samples,bolt-java-starter-template,42.00272274017334,2759,1521,1238,0,0,1,
