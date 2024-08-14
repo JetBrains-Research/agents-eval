@@ -71,7 +71,7 @@ def upload_projects(config: DictConfig):
     )
 
 
-@hydra.main(config_path="../../configs/template_generation", config_name="data", version_base=None)
+@hydra.main(config_path="../../../configs/template_generation", config_name="data", version_base=None)
 def main(config: DictConfig):
     load_dotenv()
     upload_projects(config)

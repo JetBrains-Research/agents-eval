@@ -148,7 +148,7 @@ def calc_stats(config: DictConfig):
         df.to_csv(os.path.join(config.data_path, f'{category}_template_repos.csv'), index=False)
 
 
-@hydra.main(config_path="../../configs/template_generation", config_name="data", version_base=None)
+@hydra.main(config_path="../../../configs/template_generation", config_name="data", version_base=None)
 def main(config: DictConfig):
     calc_stats(config)
 
