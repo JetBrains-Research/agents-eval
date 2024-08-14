@@ -1,0 +1,68 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "get-file-text",
+      "description": "Reads file by given path. Returns text of the file or exception.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "filePath": {
+            "type": "string",
+            "description": "Path from working directory to the file that should be read."
+          }
+        },
+        "required": [
+          "filePath"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "set-file-text",
+      "description": "Set given text to the file by given path. Returns text description of success or exception.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "filePath": {
+            "type": "string",
+            "description": "Path from working directory to the file that should be modified."
+          },
+          "text": {
+            "type": "string",
+            "description": "Text that should be written to the file."
+          }
+        },
+        "required": [
+          "filePath",
+          "text"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "create-project-tree",
+      "description": "Creates file tree structure in given parent directory path by given text representation in format of tree cli tool.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "parentDirectory": {
+            "type": "string",
+            "description": "Path from the working directory to the parent directory where file structure should be created."
+          },
+          "tree_structure": {
+            "type": "string",
+            "description": "Tree structure in format of tree cli tool."
+          }
+        },
+        "required": [
+          "tree_structure"
+        ]
+      }
+    }
+  }
+]

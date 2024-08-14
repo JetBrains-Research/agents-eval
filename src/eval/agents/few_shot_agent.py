@@ -1,8 +1,6 @@
 from langchain_openai import ChatOpenAI
-from openai import AsyncOpenAI
 
 from src.eval.agents.base_agent import BaseAgent
-from src.eval.agents.utils.tokenization_utils import TokenizationUtils
 from src.eval.envs.base_env import BaseEnv
 from src.eval.prompts.few_shot_prompt import FewShotPrompt
 
@@ -28,24 +26,12 @@ class FewShotAgent(BaseAgent):
                 "content": user_prompt
             }
         ]
-        #
-        # tokenization_utils = TokenizationUtils(self._model_name)
-        #
-        # client = AsyncOpenAI()
-        # chat_response = await client.chat.completions.create(
-        #     model=self._model_name,
-        #     messages=tokenization_utils.truncate(input_messages),
-        #     temperature=self._temperature,
-        #     **self._model_kwargs
-        # )
-
-        # description = chat_response.choices[0].message.content
 
         model = ChatOpenAI(model_name=self._model_name, temperature=self._temperature, model_kwargs=self._model_kwargs)
 
-        description = model.invoke(execution_prompt + user_prompt).content
+        description = await model.ainvoke(execution_prompt + user_prompt)
 
-        await env.run_command('create_template', {'description': description})
+        await env.run_command('create_template', {'description': description.content})
 
         return {
             "input": input_messages,

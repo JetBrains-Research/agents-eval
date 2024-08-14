@@ -1,11 +1,3 @@
-def get_user_prompt(full_name: str, project_description: str, project_language: str) -> str:
-    return f"""
-    Generate template for project named 
-    {full_name.replace('/', '__')} which should be mainly written on 
-    {project_language} programing language and aligns following description: 
-    {project_description}. """
-
-
 def get_gpt_description_system_prompt() -> str:
     return """Rewrite in 1-2 small sentences maximum template description and README heading asif user wants to generate template code using GPT.\n 
     Input:\n

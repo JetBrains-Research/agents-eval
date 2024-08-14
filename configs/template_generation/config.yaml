@@ -3,12 +3,12 @@ hydra:
   job:
     name: ${agent.name}_${agent.model_name}
   run:
-    dir: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/template_generation/${hydra:job.name}
+    dir: /Users/Maria.Tigina/PycharmProjects/agents-eval-data/fleet/template_generation/${hydra:job.name}
   job_logging:
     root:
       handlers: [console, file]
 defaults:
   - _self_
   - data_source: hf
-  - env: fleet
-  - agent: few_shot
+  - env: code_engine
+  - agent: planning
