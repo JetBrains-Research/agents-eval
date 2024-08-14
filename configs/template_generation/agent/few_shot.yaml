@@ -6,4 +6,4 @@ model_kwargs:
   seed: 76097149
 prompt:
   _target_: src.eval.prompts.few_shot_prompt.FewShotPrompt
-  execution_system_prompt_path: configs/template_generation/prompts/fleet_execution_system_prompt.md
+  execution_system_prompt_path: configs/template_generation/prompts/fleet_execution_system_prompt_v1.md

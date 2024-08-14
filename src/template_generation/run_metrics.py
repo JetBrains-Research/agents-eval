@@ -11,12 +11,12 @@ from dotenv import load_dotenv
 from langsmith import Client
 from omegaconf import DictConfig
 
+from src.eval.envs.code_engine_env import CodeEngineEnv
 from src.metrics.project_gen_metrics import gen_golden_content_metrics, gen_golden_content_metric_by_files, \
     get_closest_project_index
 from src.metrics.qodana_metrics import get_qodana_metrics
 from src.metrics.tree_metrics import compare_tree_metric
 from src.metrics.file_metrics import get_files_metrics
-from src.template_generation.code_engine_env.code_engine_env_tools import code_engine_tools_to_handler
 from src.utils.git_utils import clone_repo
 from src.utils.hf_utils import load_data
 
@@ -74,8 +74,8 @@ def get_cost_metrics(gen_template_result, agent_name: str, output_path: str):
     cost_metrics['prompt_tokens'] = langsmith_project.prompt_tokens
     cost_metrics['completion_tokens'] = langsmith_project.completion_tokens
 
-    runs_stats = get_langsmith_metrics(langsmith_project_name)
-    cost_metrics.update(runs_stats)
+    langsmith_metrics = get_langsmith_metrics(langsmith_project_name)
+    cost_metrics.update(langsmith_metrics)
 
     write_to_csv(metrics_path, ['id', 'full_name', 'owner', 'name', 'time'] + list(cost_metrics.keys()),
                  [gen_template_result['id'],
@@ -93,7 +93,7 @@ def get_langsmith_metrics(langsmith_project_name: str) -> dict:
     for run in runs:
         traces[run.trace_id].append(run)
 
-    runs_stats = {
+    langsmith_metrics = {
         'api_calls_count': 0,
         'api_failed_calls_count': 0,
         'llm_calls_count': 0,
@@ -105,16 +105,16 @@ def get_langsmith_metrics(langsmith_project_name: str) -> dict:
             if run.name == 'AgentExecutor':
                 if client.run_is_shared(run.id):
                     client.unshare_run(run.id)
-                runs_stats['langsmith_project_link'] = client.share_run(run.id)
+                langsmith_metrics['langsmith_project_link'] = client.share_run(run.id)
             if run.name == 'ChatOpenAI':
-                runs_stats['llm_calls_count'] += 1
-            elif run.name in code_engine_tools_to_handler:
-                runs_stats['api_calls_count'] += 1
+                langsmith_metrics['llm_calls_count'] += 1
+            elif run.name in CodeEngineEnv.COMMAND_NAME_TO_CODE_ENGINE_HANDLER:
+                langsmith_metrics['api_calls_count'] += 1
                 print(run.outputs)
                 if 'Error occurred while executing command' in run.outputs['output']:
-                    runs_stats['api_failed_calls_count'] += 1
+                    langsmith_metrics['api_failed_calls_count'] += 1
 
-    return runs_stats
+    return langsmith_metrics
 
 
 async def get_quality_compare_metrics(gen_template_result, projects: Dataset, repos_path: str, output_path: str):
@@ -191,10 +191,10 @@ async def eval_metrics(config: DictConfig):
             metrics_path = os.path.join(config.metrics_path, agent_name, language)
             os.makedirs(metrics_path, exist_ok=True)
             for _, dp in df.iterrows():
-                # get_quality_metrics(dp, config.repos_path, metrics_path)
-                # get_cost_metrics(dp, agent_name, metrics_path)
+                get_quality_metrics(dp, config.repos_path, metrics_path)
+                get_cost_metrics(dp, agent_name, metrics_path)
                 get_qodana_run_metrics(dp, language, metrics_path)
-                # await get_quality_compare_metrics(dp, projects, config.repos_path, metrics_path)
+                await get_quality_compare_metrics(dp, projects, config.repos_path, metrics_path)
 
 
 @hydra.main(config_path="../../configs/template_generation", config_name="metrics", version_base=None)

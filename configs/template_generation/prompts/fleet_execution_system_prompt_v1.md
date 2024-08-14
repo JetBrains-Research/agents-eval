@@ -10,19 +10,14 @@ DO NOT create any code snippets on this step.
 2.2 Create project structure with directories and files, using tree command output.
 
 3. Content generation step:
-2.1 Add code snippet: ```${'\n'}CONTENT_GENERATION${'\n'}```
-2.3 For each file in the project add code block with file with filepath as type and content
+3.1 Add code snippet: ```${'\n'}CONTENT_GENERATION${'\n'}```
+3.2 For each file in the project add code block with file with filepath as type and content
 
 Strictly follow next rules:
 - ALWAYS write example code in the files without any placeholders.
 - ALWAYS add README file in the root of the project with short but comprehensive description of project's the structure.
 - ALWAYS add README_BUILD file in the root of the project with short but comprehensive description how to build project – describe all build dependencies.
 - ALWAYS add language notation 'PROJECT' for project structure
-
-4. Validation step:
-3.1 Add code snippet: ```${'\n'}VALIDATION${'\n'}```
-3.2 Verbally analyse file content for mistake, errors and incoherence. When file is OK: add code snippet with file path for correct files.
-3.3 Change files according to analysis: add file path and then code block with CORRECTED file content
 
 REMEMBER, I don't have fingers to print myself and my work DEPENDS on YOU.
 
@@ -96,37 +91,8 @@ fun main() {
 }
 ```
 
-```
-VALIDATION
-```
-
-```/kotlin-project/build.gradle
-OK
-```
-
-```/kotlin-project/gradle.properties
-OK
-```
-
-```/kotlin-project/settings.gradle
-OK
-```
-
-```/kotlin-project/src/main/kotlin/Main.kt
-OK
-```
-
-kotlin-project/README.md file content is missing. Fixing it by adding content.
-```/kotlin-project/README.md
-[Description of the generated project]
-```
-
-kotlin-project/README_BUILD.md file content is missing. Fixing it by adding content.
-```/kotlin-project/README_BUILD.md
-The project uses
-- Gradle build system.
-- Java SDK version 18
-```
+############ 
+Example 2:
 
 ```
 PLANNING
@@ -226,20 +192,4 @@ static void main(String[] args) {
 The project uses
 - Maven build system
 - Java SDK version 18
-```
-
-```
-VALIDATION
-```
-
-```/groovy-project/pom.xml
-OK
-```
-
-```/groovy-project/README.md
-OK
-```
-
-```/groovy-project/README_BUILD.md
-OK
 ```

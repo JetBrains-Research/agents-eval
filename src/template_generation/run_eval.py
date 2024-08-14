@@ -7,7 +7,6 @@ import time
 
 import hydra
 import pandas as pd
-import yaml
 from dotenv import load_dotenv
 from hydra.core.hydra_config import HydraConfig
 from langchain_core.tracers.context import tracing_v2_enabled
@@ -18,7 +17,6 @@ from src.configs.eval_configs import EvalConfig
 from src.eval.agents.base_agent import BaseAgent
 from src.eval.data_sources.base_data_source import BaseDataSource
 from src.eval.envs.base_env import BaseEnv
-from src.template_generation.prompts import get_user_prompt
 
 
 @retry(stop=stop_after_attempt(3))
@@ -36,11 +34,7 @@ async def run_template_generation_for_project(project, agent: BaseAgent, env: Ba
         await env.init({'content_root_path': project_template_path})
 
         # Build user prompt
-        user_prompt = get_user_prompt(
-            project['full_name'],
-            project['description'],
-            project['language']
-        )
+        user_prompt = project['gpt_description']
 
         # Init langsmith project
         client = Client()
