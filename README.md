@@ -1,3 +1,7 @@
+# Status: Archived 
+
+No longer maintained 
+
 # Agents and Planning Models Evaluation 🤖⛓
 
 Toolkit for collecting datasets for Agents and Planning models and running evaluation pipelines.
